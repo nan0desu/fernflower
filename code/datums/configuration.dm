@@ -36,6 +36,9 @@
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/Ticklag = 0.9
 	var/Tickcomp = 0
+	var/maxPlayers = 0
+	var/anotherServer = "unknown"
+	var/redirect_if_full = null
 
 	var/list/mode_names = list()
 	var/list/modes = list()				// allowed modes
@@ -286,6 +289,13 @@
 
 				if("alert_red_downto")
 					config.alert_desc_red_downto = value
+
+				if ("max_players")
+					config.maxPlayers = text2num(value)
+				if ("another_server")
+					config.anotherServer = value
+				if ("redirect_if_full")
+					config.redirect_if_full = value
 
 				if("alert_blue_downto")
 					config.alert_desc_blue_downto = value

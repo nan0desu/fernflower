@@ -1,3 +1,11 @@
+/client/proc/set_max_players(C as num)
+	set name = "Set slots count"
+	set desc = "Count of players who can enter game"
+	set category = "Debug"
+
+	config.maxPlayers = C
+	message_admins("\blue [key_name_admin(usr)] set slots count to [C ? C : "infinity"]", 1)
+	return
 
 
 /client/proc/toggle_singulo_possession()
@@ -66,7 +74,6 @@
 	dat += "<br><br><A HREF='?src=\ref[src];controlpanel=oldbanstodb'>Move bans to DB</A> - use only once!<br>"
 
 	usr << browse(dat, "window=controlpanel")
-
 
 /obj/admins/Topic(href, href_list)
 	..()
@@ -421,6 +428,42 @@
 				dat += "<br>Special:<br>"
 				for(var/t in donators_special)
 					dat += "[t]:[donators_special[t]]"
+				usr << browse(dat, "window=controlpanel")
+			if("oldbanstodb")
+				if(alert("Are you sure?","Move bans","Yes","No") == "No")
+					return
+				var/CMinutes = world.realtime / 600
+				//load
+				dat += "LoadBans()<br>"
+				var/savefile/Banlist = new("data/banlist.bdb")
+				if (!length(Banlist.dir)) dat += "Banlist is empty.<br>"
+				if (!Banlist.dir.Find("base"))
+					dat += "Banlist missing base dir.<br>"
+					Banlist.dir.Add("base")
+					Banlist.cd = "/base"
+				else
+					Banlist.cd = "/base"
+				usr << browse(dat, "window=controlpanel")
+
+				dat += "=============<br>"
+				Banlist.cd = "/base"
+				for (var/A in Banlist.dir)
+					Banlist.cd = "/base/[A]"
+					if (!Banlist["key"] || !Banlist["id"])
+						Banlist.dir.Remove(A)
+						dat += "Invalid Ban: [A].<br>"
+						continue
+
+					if (!Banlist["temp"])
+						AddBan(Banlist["key"], Banlist["id"], Banlist["reason"], Banlist["bannedby"], 0, 0, 1)
+						dat += "Permaban moved: [A]<br>"
+						continue
+					if (CMinutes >= Banlist["minutes"])
+						Banlist.dir.Remove(A)
+						dat += "Expired ban removed: [A]<br>"
+					else
+						AddBan(Banlist["key"], Banlist["id"], Banlist["reason"], Banlist["bannedby"], 1, Banlist["minutes"], 1)
+						dat += "Ban moved: [A]<br>"
 				usr << browse(dat, "window=controlpanel")
 			if("spybackup")
 				var/tfile = input("Write to:","Filename","data/spydump.txt") as text|null
