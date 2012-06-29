@@ -2,9 +2,9 @@
 /*
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 495.1136
-DIR: code code\game\machinery\bots code\game\objects\closets\secure code\modules 
-FILE: code\modules\projectiles\guns\energy\nuclear.dm
-LAST_COMPILE_TIME: 1340997286
+DIR: code code\game\machinery\bots code\game\objects\closets\secure code\modules code\modules\admin code\modules\mining code\modules\mining\Animus 
+FILE: code\modules\mining\Animus\adminstuff.dm
+LAST_COMPILE_TIME: 1340997996
 AUTO_FILE_DIR: ON
 */
 // END_INTERNALS
