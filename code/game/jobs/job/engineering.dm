@@ -21,7 +21,7 @@
 		H.equip_if_possible(new /obj/item/clothing/shoes/brown(H), H.slot_shoes)
 		H.equip_if_possible(new /obj/item/clothing/head/helmet/hardhat/white(H), H.slot_head)
 		H.equip_if_possible(new /obj/item/weapon/storage/belt/utility/full(H), H.slot_belt)
-		H.equip_if_possible(new /obj/item/clothing/gloves/black(H), H.slot_gloves)
+		H.equip_if_possible(new /obj/item/clothing/gloves/yellow(H), H.slot_gloves)
 		var/list/wire_index = list(
 				"Orange" = 1,
 				"Dark red" = 2,
@@ -67,6 +67,7 @@
 		H.equip_if_possible(new /obj/item/clothing/head/helmet/hardhat(H), H.slot_head)
 		H.equip_if_possible(new /obj/item/device/t_scanner(H), H.slot_r_store)
 		H.equip_if_possible(new /obj/item/device/pda/engineering(H), H.slot_l_store)
+		H.equip_if_possible(new /obj/item/clothing/gloves/yellow(H), H.slot_gloves)
 		return 1
 
 

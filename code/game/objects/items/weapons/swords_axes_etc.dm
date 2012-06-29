@@ -120,14 +120,14 @@ ENERGY SHIELD (where else should i even put this)
 		playsound(src.loc, "swing_hit", 50, 1, -1)
 		if (M.stuttering < 8 && (!(HULK in M.mutations))  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
 			M.stuttering = 8
-		M.Stun(8)
-		M.Weaken(8)
+		M.Stun(24)
+		M.Weaken(24)
 		for(var/mob/O in viewers(M))
 			if (O.client)	O.show_message("\red <B>[M] has been beaten with the police baton by [user]!</B>", 1, "\red You hear someone fall", 2)
 	else
 		playsound(src.loc, 'Genhit.ogg', 50, 1, -1)
-		M.Stun(5)
-		M.Weaken(5)
+		M.Stun(25)
+		M.Weaken(25)
 		for(var/mob/O in viewers(M))
 			if (O.client)	O.show_message("\red <B>[M] has been stunned with the police baton by [user]!</B>", 1, "\red You hear someone fall", 2)
 
