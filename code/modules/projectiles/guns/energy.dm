@@ -48,6 +48,3 @@
 			icon_state = text("[][]", modifystate, ratio)
 		else
 			icon_state = text("[][]", initial(icon_state), ratio)
-
-
-
