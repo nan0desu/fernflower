@@ -113,3 +113,5 @@
 	force = 10
 	m_amt = 200000
 	projectile_type = "/obj/item/projectile/energy/bolt/large"
+
+

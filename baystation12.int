@@ -2,9 +2,9 @@
 /*
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 495.1136
-DIR: code code\game code\game\machinery\bots code\game\objects code\game\objects\closets\secure code\game\objects\items code\game\objects\items\weapons code\modules code\modules\projectiles code\modules\projectiles\guns code\modules\projectiles\guns\energy code\modules\projectiles\projectile 
-FILE: code\modules\projectiles\projectile\energy.dm
-LAST_COMPILE_TIME: 1340985170
+DIR: code\game\machinery\bots code\game\objects\closets\secure code\modules\projectiles\guns\energy 
+FILE: code\modules\power\cable.dm
+LAST_COMPILE_TIME: 1340992235
 AUTO_FILE_DIR: ON
 */
 // END_INTERNALS

@@ -260,6 +260,23 @@
 		usr << "\blue You cannot do that."
 	..()
 
+/obj/item/weapon/cable_coil/verb/make_slipknot()
+	set name = "Make Cable Slipknot"
+	set category = "Object"
+	var/mob/M = usr
+
+	if(ishuman(M) && !M.restrained() && !M.stat && !M.paralysis && ! M.stunned)
+		if(!istype(usr.loc,/turf)) return
+		if(src.amount <= 14)
+			usr << "\red You need at least 15 lengths to make slipknot!"
+			return
+		new /obj/item/weapon/slipknot/cable/red(usr.loc)
+		usr << "\blue You wind some cable together to make deadly slipknot."
+		src.use(15)
+	else
+		usr << "\blue You cannot do that."
+	..()
+
 /obj/item/weapon/cable_coil/attackby(obj/item/weapon/W, mob/user)
 	..()
 	if( istype(W, /obj/item/weapon/wirecutters) && src.amount > 1)

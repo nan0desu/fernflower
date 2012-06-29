@@ -10,14 +10,14 @@
 	name = "\improper Electrode"
 	icon_state = "spark"
 	nodamage = 1
-	stun = 24
-	weaken = 24
-	stutter = 24
+	stun = 22
+	weaken = 22
+	stutter = 22
 	flag = "laser" //Give it a better chance to be blocked.
 
 	check_fire(var/mob/living/target as mob, var/mob/living/user as mob)
 		if((target.stunned + target.weakened) > 30)
-			return ..()
+			return 2
 		else
 			return ..()
 
@@ -35,7 +35,7 @@
 	icon_state = "toxin"
 	damage = 5
 	damage_type = TOX
-	weaken = 10
+	weaken = 5
 
 
 /obj/item/projectile/energy/bolt
@@ -44,10 +44,15 @@
 	damage = 10
 	damage_type = TOX
 	nodamage = 0
-	weaken = 15
-	stutter = 15
+	weaken = 10
+	stutter = 10
 
 
 /obj/item/projectile/energy/bolt/large
 	name = "\improper Large Bolt"
 	damage = 20
+
+
+
+
+
