@@ -4,18 +4,18 @@
 	throwforce = 10.0
 	throw_speed = 2
 	throw_range = 5
-	w_class = 2.0
+	w_class = 1.0
 	flags = TABLEPASS | USEDELAY | FPRINT | CONDUCT
 	slot_flags = SLOT_BELT
 	var/state = 0 //Straingling states: 0 - idle, 1..3 - victim being strangled (different states)
 	var/mob/living/carbon/human/victim = null
 	var/mob/agressor = null
 
-/obj/item/weapon/slipknot/cable/red
+/obj/item/weapon/slipknot/cable
 	name = "cable slipknot"
 	desc = "A slipknot made of cable wire. Can be used to grab and strangle someone."
 	icon = 'items.dmi'
-	icon_state = "cable_slipknot"
+	icon_state = "cable_slipknot_red"
 
 /obj/item/weapon/slipknot/attack(mob/M as mob, mob/user as mob)
 	agressor = user

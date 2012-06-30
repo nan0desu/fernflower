@@ -2,9 +2,9 @@
 /*
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 495.1136
-DIR: code code\game code\game\machinery\bots code\game\objects code\game\objects\closets\secure code\game\objects\stacks code\game\objects\storage icons icons\obj 
+DIR: code code\game code\game\machinery\bots code\game\objects code\game\objects\closets\secure code\game\objects\stacks icons icons\obj maps 
 FILE: icons\obj\storage.dmi
-LAST_COMPILE_TIME: 1341094001
+LAST_COMPILE_TIME: 1341095374
 AUTO_FILE_DIR: ON
 */
 // END_INTERNALS

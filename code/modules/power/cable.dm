@@ -270,7 +270,8 @@
 		if(src.amount <= 14)
 			usr << "\red You need at least 15 lengths to make slipknot!"
 			return
-		new /obj/item/weapon/slipknot/cable/red(usr.loc)
+		var/obj/item/weapon/slipknot/cable/B = new /obj/item/weapon/slipknot/cable(usr.loc)
+		B.icon_state = "cable_slipknot_[color]"
 		usr << "\blue You wind some cable together to make deadly slipknot."
 		src.use(15)
 	else
