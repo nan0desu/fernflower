@@ -121,7 +121,7 @@
 			K += item
 	return K
 
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","ÿ"="ß"))
+/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","y"="____255;"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
@@ -152,8 +152,20 @@
 			index = findtext(t, char)
 	return t
 
-/proc/sanitize(var/t,var/list/repl_chars = null)
-	return html_encode(sanitize_simple(t,repl_chars))
+/proc/sanitize(var/t,var/list/repl_chars = null, unicode = 0)
+	t = html_encode(sanitize_simple(t,repl_chars))
+
+	var/index = findtext(t, "____255;")
+	if(unicode)
+		while(index)
+			t = copytext(t, 1, index) + "&#1103;" + copytext(t, index+8)
+			index = findtext(t, "____255;")
+	else
+		while(index)
+			t = copytext(t, 1, index) + "&#255;" + copytext(t, index+8)
+			index = findtext(t, "____255;")
+
+	return t
 
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
 	return sanitize(strip_html_simple(t))
@@ -1024,6 +1036,13 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		output += A
 	return output
 
+/proc/get_turf_loc(var/atom/movable/M) //gets the location of the turf that the atom is on, or what the atom is in is on, etc
+	//in case they're in a closet or sleeper or something
+	var/atom/loc = M.loc
+	while(!istype(loc, /turf/))
+		loc = loc.loc
+	return loc
+
 // returns the turf located at the map edge in the specified direction relative to A
 // used for mass driver
 /proc/get_edge_target_turf(var/atom/A, var/direction)
@@ -1151,6 +1170,22 @@ proc/islist(list/list)
 	if(istype(list))
 		return 1
 	return 0
+
+proc/isemptylist(list/list)
+	if(!list.len)
+		return 1
+	return 0
+
+proc/clearlist(list/list)
+	if(istype(list))
+		list.len = 0
+	return
+
+proc/listclearnulls(list/list)
+	if(istype(list))
+		while(null in list)
+			list -= null
+	return
 
 /atom/proc/GetAllContents(searchDepth = 5)
 	var/list/toReturn = list()
@@ -1751,6 +1786,24 @@ proc/oview_or_orange(distance = world.view , center = usr , type)
 		if("range")
 			. = orange(distance,center)
 	return
+proc/get_opposite(var/checkdir)
+	switch(checkdir)
+		if(NORTH)
+			return SOUTH
+		if(SOUTH)
+			return NORTH
+		if(EAST)
+			return WEST
+		if(WEST)
+			return EAST
+		if(NORTHEAST)
+			return SOUTHWEST
+		if(NORTHWEST)
+			return SOUTHEAST
+		if(SOUTHEAST)
+			return NORTHWEST
+		if(SOUTHWEST)
+			return NORTHEAST
 
 /proc/stringsplit(txt, character)
 	var/cur_text = txt
@@ -1828,10 +1881,3 @@ proc/get_mob_with_client_list()
 			return EAST
 		if(NORTHWEST)
 			return SOUTHEAST
-
-/proc/get_turf_loc(var/mob/M) //gets the location of the turf that the mob is on, or what the mob is in is on, etc
-	//in case they're in a closet or sleeper or something
-	var/atom/loc = M.loc
-	while(!istype(loc, /turf/))
-		loc = loc.loc
-	return loc
