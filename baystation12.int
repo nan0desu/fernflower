@@ -2,9 +2,9 @@
 /*
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 495.1136
-DIR: code\game\machinery\bots code\game\objects\closets\secure 
-FILE: code\game\objects\devices\PDA\PDA.dm
-LAST_COMPILE_TIME: 1341054206
+DIR: code code\game\machinery\bots code\game\objects\closets\secure code\modules code\modules\admin code\modules\admin\verbs code\modules\mining code\modules\mining\Animus code\modules\mob 
+FILE: code\modules\mob\mob_verbs.dm
+LAST_COMPILE_TIME: 1341075835
 AUTO_FILE_DIR: ON
 */
 // END_INTERNALS
