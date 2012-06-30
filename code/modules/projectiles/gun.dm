@@ -38,6 +38,15 @@
 		for(var/obj/O in contents)
 			O.emp_act(severity)
 
+	attack_self()
+		if(target)
+			for(var/mob/living/M in target)
+			del(target)
+			usr.visible_message("\blue \The [usr] lowers \the [src]...")
+			return 0
+		return 1
+
+
 //Handling lowering yer gun.
 
 //Suiciding.
