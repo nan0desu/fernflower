@@ -11,6 +11,13 @@
 	flags = FPRINT
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 
+/obj/structure/closet/crate/handmadecrate
+	desc = "Hand-made crate."
+	name = "Hand-made crate."
+	icon_state = "handmadecrate"
+	icon_closed = "handmadecrate"
+	icon_opened = "handmadecrate_open"
+
 /obj/structure/closet/crate/internals
 	desc = "A internals crate."
 	name = "Internals crate"
