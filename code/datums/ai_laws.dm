@@ -9,10 +9,10 @@
 
 /datum/ai_laws/asimov
 	name = "Three Laws of Robotics"
+	randomly_selectable = 1
 
 /datum/ai_laws/nanotrasen
 	name = "Prime Directives"
-	randomly_selectable = 1
 
 /datum/ai_laws/robocop
 	name = "Prime Directives"
