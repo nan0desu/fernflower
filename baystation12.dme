@@ -1471,6 +1471,7 @@
 #include "code\modules\security levels\security levels.dm"
 #include "code\WorkInProgress\buildmode.dm"
 #include "code\WorkInProgress\explosion_particles.dm"
+#include "code\WorkInProgress\Traitoritems.dm"
 #include "code\WorkInProgress\AI_Visibility\ai.dm"
 #include "code\WorkInProgress\AI_Visibility\cameranet.dm"
 #include "code\WorkInProgress\AI_Visibility\chunk.dm"
