@@ -152,42 +152,16 @@
 			index = findtext(t, char)
 	return t
 
-/proc/sanitize(var/t)
+/proc/sanitize(var/t,var/list/repl_chars = null)
 	var/index = findtext(t, "\n")
 	while(index)
 		t = copytext(t, 1, index) + "#" + copytext(t, index+1)
 		index = findtext(t, "\n")
-
-	index = findtext(t, "\t")
-	while(index)
-		t = copytext(t, 1, index) + "#" + copytext(t, index+1)
-		index = findtext(t, "\t")
-	index = findtext(t, "я")
-	while(index)
-		t = copytext(t, 1, index) + "____255;" + copytext(t, index+1)
-		index = findtext(t, "я")
-
-	t = html_encode(t)
-
-	index = findtext(t, "____255;")
+		index = findtext(t, "&#255")
 	while(index)
 		t = copytext(t, 1, index) + "&#255;" + copytext(t, index+8)
-		index = findtext(t, "____255;")
-	return t
-
-/proc/sanitize_ya(var/t)
-	var/index = findtext(t, "я")
-	while(index)
-		t = copytext(t, 1, index) + "____255;" + copytext(t, index+1)
-		index = findtext(t, "я")
-
-	t = html_encode(t)
-
-	index = findtext(t, "____255;")
-	while(index)
-		t = copytext(t, 1, index) + "&#1071;" + copytext(t, index+8)
-		index = findtext(t, "____255;")
-	return t
+		index = findtext(t, "&#255")
+	return html_encode(t)
 
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
 	t = copytext(t,1,limit)
