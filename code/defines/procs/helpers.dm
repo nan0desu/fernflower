@@ -151,20 +151,16 @@
 			index = findtext(t, char)
 	return t
 
-/proc/sanitize(var/t,var/list/repl_chars = null, unicode = 0)
-	t = html_encode(sanitize_simple(t,repl_chars))
-
-	var/index = findtext(t, "____255;")
-	if(unicode)
-		while(index)
-			t = copytext(t, 1, index) + "&#1103;" + copytext(t, index+8)
-			index = findtext(t, "____255;")
-	else
-		while(index)
-			t = copytext(t, 1, index) + "&#255;" + copytext(t, index+8)
-			index = findtext(t, "____255;")
-
-	return t
+/proc/sanitize(var/t,var/list/repl_chars = null)
+	var/index = findtext(t, "\n")
+	while(index)
+		t = copytext(t, 1, index) + "#" + copytext(t, index+1)
+		index = findtext(t, "\n")
+		index = findtext(t, "____255;")
+	while(index)
+		t = copytext(t, 1, index) + "&#255;" + copytext(t, index+8)
+		index = findtext(t, "____255;")
+		return html_encode(sanitize_simple(t,repl_chars))
 
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
 	return sanitize(strip_html_simple(t))
