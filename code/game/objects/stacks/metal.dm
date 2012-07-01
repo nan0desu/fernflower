@@ -76,6 +76,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("closet", /obj/structure/closet, 2, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("filling cabinet", /obj/structure/filingcabinet, 3, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("hand-made crate", /obj/structure/closet/crate/handmadecrate, 25, one_per_turf=1, on_floor = 1,), \
+	//new/datum/stack_recipe("wall console frame", /obj/item/frame/medicalconsole, 3, one_per_turf = 0, on_floor = 1), \//
 	null, \
 	new/datum/stack_recipe("canister", /obj/machinery/portable_atmospherics/canister, 10, one_per_turf = 1, on_floor = 1), \
 	null, \
