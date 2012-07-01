@@ -121,7 +121,7 @@
 			K += item
 	return K
 
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","y"="____255;"))
+/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","ÿ"="ß"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
@@ -136,6 +136,7 @@
 	for(var/i=1, i<=length(text), i++)
 		switch(text2ascii(text,i))
 			if(62,60,92,47)	return			//rejects the text if it contains these bad characters: <, >, \ or /
+			if(127 to 255)	return			//rejects weird letters like ÿ
 			if(0 to 31)		return			//more weird stuff
 			if(32)							//whitespace
 			else			non_whitespace = 1
@@ -201,7 +202,16 @@
 	return sanitize(t)
 
 /proc/adminscrub(var/t,var/limit=MAX_MESSAGE_LEN)
-	return html_encode(strip_html_simple(t))
+	t = copytext(t,1,limit)
+	var/index = findtext(t, "<")
+	while(index)
+		t = copytext(t, 1, index) + copytext(t, index+1)
+		index = findtext(t, "<")
+	index = findtext(t, ">")
+	while(index)
+		t = copytext(t, 1, index) + copytext(t, index+1)
+		index = findtext(t, ">")
+	return html_encode(t)
 
 /proc/add_zero(t, u)
 	while (length(t) < u)
@@ -1210,7 +1220,6 @@ proc/clearlist(list/list)
 	if(istype(list))
 		list.len = 0
 	return
-
 proc/listclearnulls(list/list)
 	if(istype(list))
 		while(null in list)
@@ -1482,7 +1491,6 @@ proc/listclearnulls(list/list)
 	var/list/turfs_trg = get_area_turfs(A.type)
 
 	var/blanked_turfs = list()
-
 	var/src_min_x = 0
 	var/src_min_y = 0
 	for (var/turf/T in turfs_src)
@@ -1611,8 +1619,6 @@ proc/listclearnulls(list/list)
 				doors += D2
 			air_master.tiles_to_update |= T2
 
-	ul_UnblankLocal(blanked_turfs)
-
 	for(var/obj/O in doors)
 		O:update_nearby_tiles(1)
 
@@ -1650,7 +1656,6 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 	var/list/turfs_trg = get_area_turfs(A.type)
 
 	var/blanked_turfs = list()
-
 	var/src_min_x = 0
 	var/src_min_y = 0
 	for (var/turf/T in turfs_src)
