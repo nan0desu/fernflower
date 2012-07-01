@@ -2,9 +2,10 @@
 /*
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 495.1136
-DIR: code code\game code\game\machinery\bots code\game\objects code\game\objects\closets\secure code\game\objects\stacks icons icons\obj maps 
-FILE: icons\obj\storage.dmi
-LAST_COMPILE_TIME: 1341095374
+UPDATE_OBJ_TREE: ON
+DIR: code code\game code\game\machinery\bots code\game\objects code\game\objects\closets\secure code\game\objects\stacks maps 
+FILE: maps\tgstation.2.0.8.dmm
+LAST_COMPILE_TIME: 1341129365
 AUTO_FILE_DIR: ON
 */
 // END_INTERNALS

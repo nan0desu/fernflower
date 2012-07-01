@@ -2634,7 +2634,7 @@
 "aYH" = (/obj/structure/table/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/item/weapon/paper_bin{pixel_x = 1; pixel_y = 9},/obj/item/weapon/pen,/turf/simulated/floor,/area/quartermaster/sorting)
 "aYI" = (/obj/machinery/status_display{density = 0; layer = 4; pixel_x = 32; pixel_y = 0},/turf/simulated/floor{icon_state = "bluecorner"},/area/hallway/primary/central)
 "aYJ" = (/obj/machinery/door/window{dir = 2; icon = 'windoor.dmi'; name = "Captain's Quarters"; req_access_txt = "20"},/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor{icon_state = "wood"},/area/crew_quarters/captain)
-"aYK" = (/obj/item/weapon/hand_tele,/obj/structure/table/woodentable,/turf/simulated/floor{icon_state = "wood"},/area/crew_quarters/captain)
+"aYK" = (/obj/item/weapon/hand_tele,/obj/structure/table/woodentable,/obj/item/clothing/glasses/thermal/monocle,/turf/simulated/floor{icon_state = "wood"},/area/crew_quarters/captain)
 "aYL" = (/obj/item/weapon/soap/deluxe,/obj/structure/table/woodentable,/turf/simulated/floor{icon_state = "wood"},/area/crew_quarters/captain)
 "aYM" = (/obj/structure/table/woodentable,/obj/structure/disposalpipe/segment{dir = 1},/obj/item/weapon/megaphone,/turf/simulated/floor{icon_state = "wood"},/area/crew_quarters/captain)
 "aYN" = (/mob/living/carbon/monkey{name = "Pun Pun"},/turf/simulated/floor{icon_state = "wood"},/area/crew_quarters/captain)
