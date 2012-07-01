@@ -41,7 +41,7 @@
 	var/redirect_if_full = null
 
 	var/list/mode_names = list()
-	var/list/modes = list("secret")				// allowed modes
+	var/list/modes = list("SECRET")				// allowed modes
 	var/list/votable_modes = list()		// votable modes
 	var/list/probabilities = list()		// relative probability of each mode
 	var/allow_random_events = 0			// enables random events mid-round when set to 1
