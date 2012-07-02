@@ -3,7 +3,7 @@
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 40
-	damage_type = BURN
+	damage_type = BRUTE
 	flag = "laser"
 	eyeblur = 4
 	var/frequency = 1
@@ -53,7 +53,7 @@
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
-	damage_type = BURN
+	damage_type = BRUTE
 	flag = "laser"
 	eyeblur = 2
 
@@ -90,7 +90,7 @@
 	icon_state = "ice_2"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
-	damage_type = BURN
+	damage_type = BRUTE
 	flag = "laser"
 
 	on_hit(var/atom/target, var/blocked = 0)
@@ -105,7 +105,7 @@
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
-	damage_type = BURN
+	damage_type = BRUTE
 	flag = "laser"
 
 	on_hit(var/atom/target, var/blocked = 0)
