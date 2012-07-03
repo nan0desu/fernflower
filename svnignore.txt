@@ -1,8 +1,0 @@
-       diff.sh
-       list_res.sh
-       upload.sh
-       package.sh
-      deploy.sh
-      list_includes.sh
-       Makefile
-       fastfix.sh
