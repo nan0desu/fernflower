@@ -1497,7 +1497,7 @@
 		onclose(occupant, "exosuit_log")
 		return
 	if (href_list["change_name"])
-		var/newname = strip_html_simple(input(occupant,"Choose new exosuit name","Rename exosuit",initial(name)) as text)
+		var/newname = strip_html(input(occupant,"Choose new exosuit name","Rename exosuit",initial(name)) as text)
 		if(newname && trim(newname))
 			name = newname
 		else

@@ -202,6 +202,7 @@
 			//verbs += /client/proc/cmd_admin_remove_plasma 			--This proc is outdated, does not do anything
 			verbs += /client/proc/admin_call_shuttle
 			verbs += /client/proc/admin_cancel_shuttle
+			verbs += /client/proc/warn_key
 			verbs += /client/proc/cmd_admin_dress
 			verbs += /client/proc/respawn_character
 			verbs += /client/proc/spawn_xeno
@@ -300,7 +301,11 @@
 			verbs += /obj/admins/proc/adjump
 			verbs += /client/proc/callproc
 			verbs += /client/proc/get_admin_state
+			verbs += /client/proc/animuspanel
 			verbs += /client/proc/reload_admins
+			verbs += /client/proc/set_max_players
+			verbs += /client/proc/toggle_singulo_possession
+			verbs += /client/proc/controlpanel
 			verbs += /client/proc/cmd_debug_make_powernets
 			verbs += /client/proc/enable_debug_verbs
 			verbs += /client/proc/everyone_random

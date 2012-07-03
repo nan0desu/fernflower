@@ -302,7 +302,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 	hear(var/msg)
 		var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
-		msg = sanitize_simple(msg, replacechars)
+		msg = sanitize(msg, replacechars)
 		if(findtext(msg,phrase))
 			if(istype(imp_in, /mob/))
 				var/mob/T = imp_in
@@ -316,7 +316,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	implanted(mob/source as mob)
 		phrase = input("Choose activation phrase:") as text
 		var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
-		phrase = sanitize_simple(phrase, replacechars)
+		phrase = sanitize(phrase, replacechars)
 		usr.mind.store_memory("Explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
 		usr << "The implanted explosive implant in [source] can be activated by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate."
 

@@ -33,7 +33,7 @@
 
 	warn(M)
 
-/obj/admins/proc/controlpanel()
+/client/proc/controlpanel()
 	set name = "Control panel"
 	set category = "Debug"
 	set desc = "You are admin of admins!"
@@ -82,8 +82,6 @@
 		dat += "<b>Control panel</b> (<A HREF='?src=\ref[src];controlpanel=returntomenu'>return</A>)<br><br>"
 		switch(href_list["controlpanel"])
 			if("returntomenu")
-				if(usr.client.holder)
-					usr.client.holder.controlpanel() //hack?
 				return
 			if("readfile")
 				var/fname = input("Filename","Filename","config/config.txt")

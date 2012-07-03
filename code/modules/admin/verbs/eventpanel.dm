@@ -1,7 +1,6 @@
-/obj/admins/proc/animuspanel()
+/client/proc/animuspanel()
 	set name = "Events panel"
 	set category = "Fun"
-	set desc = "Tool to make events and stuff. Use carefully."
 
 	if (!istype(src,/obj/admins))
 		src = usr.client.holder
@@ -29,8 +28,6 @@
 		dat += "<b>Events panel</b> (<A HREF='?src=\ref[src];animuspanel=returntomenu'>return</A>)<br><br>"
 		switch(href_list["animuspanel"])
 			if("returntomenu")
-				if(usr.client.holder)
-					usr.client.holder.animuspanel() //hack?
 				return
 			if("statistics")
 				var/lcount = 0 //humans (live) count

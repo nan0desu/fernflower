@@ -121,46 +121,43 @@
 			K += item
 	return K
 
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","ÿ"="ß"))
-	for(var/char in repl_chars)
-		var/index = findtext(t, char)
-		while(index)
-			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
-			index = findtext(t, char)
-	return t
-
-//For sanitizing user inputs
-/proc/reject_bad_text(var/text)
-	if(length(text) > 512)	return			//message too long
-	var/non_whitespace = 0
-	for(var/i=1, i<=length(text), i++)
-		switch(text2ascii(text,i))
-			if(62,60,92,47)	return			//rejects the text if it contains these bad characters: <, >, \ or /
-			if(0 to 31)		return			//more weird stuff
-			if(32)							//whitespace
-			else			non_whitespace = 1
-	if(non_whitespace)		return text		//only accepts the text if it has some non-spaces
-
-/proc/strip_html_simple(var/t,var/limit=MAX_MESSAGE_LEN)
-	var/list/strip_chars = list("<",">","&","'")
-	t = copytext(t,1,limit)
-	for(var/char in strip_chars)
-		var/index = findtext(t, char)
-		while(index)
-			t = copytext(t, 1, index) + copytext(t, index+1)
-			index = findtext(t, char)
-	return t
-
-/proc/sanitize(var/t,var/list/repl_chars = null)
+/proc/sanitize(var/t)
 	var/index = findtext(t, "\n")
 	while(index)
 		t = copytext(t, 1, index) + "#" + copytext(t, index+1)
 		index = findtext(t, "\n")
-		index = findtext(t, "&#255")
+
+	index = findtext(t, "\t")
+	while(index)
+		t = copytext(t, 1, index) + "#" + copytext(t, index+1)
+		index = findtext(t, "\t")
+	index = findtext(t, "ÿ")
+	while(index)
+		t = copytext(t, 1, index) + "____255;" + copytext(t, index+1)
+		index = findtext(t, "ÿ")
+
+	t = html_encode(t)
+
+	index = findtext(t, "____255;")
 	while(index)
 		t = copytext(t, 1, index) + "&#255;" + copytext(t, index+8)
-		index = findtext(t, "&#255")
-	return html_encode(t)
+		index = findtext(t, "____255;")
+
+	return t
+
+/proc/sanitize_ya(var/t)
+	var/index = findtext(t, "ÿ")
+	while(index)
+		t = copytext(t, 1, index) + "____255;" + copytext(t, index+1)
+		index = findtext(t, "ÿ")
+
+	t = html_encode(t)
+
+	index = findtext(t, "____255;")
+	while(index)
+		t = copytext(t, 1, index) + "&#1103;" + copytext(t, index+8)
+		index = findtext(t, "____255;")
+	return t
 
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
 	t = copytext(t,1,limit)

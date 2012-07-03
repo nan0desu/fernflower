@@ -200,10 +200,10 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	usr.machine = src
 	add_fingerprint(usr)
 
-	if(reject_bad_text(href_list["write"]))
+	if(sanitize(href_list["write"]))
 		dpt = ckey(href_list["write"]) //write contains the string of the receiving department's name
 
-		var/new_message = copytext(reject_bad_text(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
+		var/new_message = copytext(sanitize(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
 		if(new_message)
 			message = new_message
 			screen = 9
@@ -218,7 +218,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			priority = -1
 
 	if(href_list["writeAnnouncement"])
-		var/new_message = copytext(reject_bad_text(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
+		var/new_message = copytext(sanitize(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
 		if(new_message)
 			message = new_message
 			switch(href_list["priority"])
