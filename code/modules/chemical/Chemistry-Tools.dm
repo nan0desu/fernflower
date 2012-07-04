@@ -3933,7 +3933,7 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 		..()
 		reagents.add_reagent("lube", 250)
 
-		/obj/item/weapon/reagent_containers/glass/bottle/zombiepowder
+/obj/item/weapon/reagent_containers/glass/bottle/zombiepowder
 	name = "Zombie Powder Bottle"
 	desc = "A small bottle of Zombie Powder. Santiago Delaverte's Favorite!"
 	icon = 'chemical.dmi'
@@ -4009,11 +4009,11 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 
 /obj/item/weapon/reagent_containers/glass/bottle/ethanol
 	name = "Ethanol Bottle"
-	desc = "A small bottle of Ethanol. Quin Tei's Favorite!"
+	desc = "A small bottle of Ethanol.Morgan James's Favorite!"
 	icon = 'chemical.dmi'
 	icon_state = "bottle20"
 
 	New()
 		..()
-		reagents.add_reagent("Ethanol", 30)
+		reagents.add_reagent("ethanol", 30)
 
