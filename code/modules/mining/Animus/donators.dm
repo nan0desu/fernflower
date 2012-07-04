@@ -81,7 +81,7 @@
 /datum/donators/proc/donatorpanel()
 	var/dat = "<title>Donator panel</title>"
 	dat += "Your money: [money]/[maxmoney]<br>"
-	dat += "Allowed number of items: [allowed_num_items]/3<br><br>"
+	dat += "Allowed number of items: [allowed_num_items]/10<br><br>"
 	dat += "<b>Select items:</b> <br>"
 
 	//here items list
