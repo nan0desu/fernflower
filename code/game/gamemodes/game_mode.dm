@@ -62,6 +62,7 @@ Devices and Tools;
 /obj/item/weapon/aiModule/syndicate:7:Hacked AI Upload Module;
 /obj/item/weapon/plastique:2:C-4 (Destroys walls, not people);
 /obj/item/weapon/syndie/c4explosive:4:Low Power Explosive Charge, with Detonator;
+/obj/item/weapon/syndie/c4explosive/heavy:7:High (!) Power Explosive Charge, with Detonator;
 /obj/item/device/powersink:5:Powersink (DANGER!);
 /obj/item/device/radio/beacon/syndicate:7:Singularity Beacon (DANGER!);
 /obj/item/weapon/circuitboard/teleporter:10:Teleporter Circuit Board;

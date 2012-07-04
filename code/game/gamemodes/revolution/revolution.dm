@@ -365,8 +365,6 @@
 				var/hstatus = ""
 				if(i.current.stat == 2)
 					hstatus = "Dead"
-				else if(i.current.z != 1)
-					hstatus = "Abandoned the station"
 				names += i.current.real_name + " ([hstatus])"
 			else
 				names += "[i.key] (character destroyed)"
@@ -387,12 +385,9 @@
 		var/list/names = new
 		for(var/datum/mind/i in heads)
 			if(i.current)
-				var/turf/T = get_turf(i.current)
 				var/hstatus = ""
 				if(i.current.stat == 2)
 					hstatus = "Dead"
-				else if((T) && (T.z != 1))
-					hstatus = "Abandoned the station"
 				names += i.current.real_name + " ([hstatus])" + ((i in targets)?"(target)":"")
 			else
 				names += "[i.key] (character destroyed)" + ((i in targets)?"(target)":"")

@@ -17,10 +17,10 @@
 		if(H.backbag == 4) H.equip_if_possible(new /obj/item/weapon/storage/backpack/satchel_sec(H), H.slot_back)
 		H.equip_if_possible(new /obj/item/device/radio/headset/heads/hos(H), H.slot_ears)
 		H.equip_if_possible(new /obj/item/clothing/under/rank/head_of_security(H), H.slot_w_uniform)
-		H.equip_if_possible(new /obj/item/clothing/suit/storage/armourrigvest(H), H.slot_wear_suit)
 		H.equip_if_possible(new /obj/item/clothing/shoes/jackboots(H), H.slot_shoes)
+		H.equip_if_possible(new /obj/item/clothing/mask/gas(H), H.slot_wear_mask)
 		H.equip_if_possible(new /obj/item/device/pda/heads/hos(H), H.slot_belt)
-//		H.equip_if_possible(new /obj/item/clothing/suit/armor/hos(H), H.slot_wear_suit) //We're Bay12, not Goon.  We don't need armor 24/7
+		H.equip_if_possible(new /obj/item/clothing/suit/armor/hos(H), H.slot_wear_suit) //We're Bay12, not Goon.  We don't need armor 24/7
 		H.equip_if_possible(new /obj/item/clothing/gloves/hos(H), H.slot_gloves)
 		H.equip_if_possible(new /obj/item/clothing/head/helmet/HoS(H), H.slot_head)
 		H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses/sechud(H), H.slot_glasses)
