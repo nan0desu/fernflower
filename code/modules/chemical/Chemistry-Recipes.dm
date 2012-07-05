@@ -42,10 +42,10 @@ datum
 			required_reagents = list("aluminum" = 1, "silicon" = 1, "oxygen" = 1)
 			result_amount = 3
 
-		ethanol
-			name = "Ethanol"
-			id = "Ethanol"
-			result = "Ethanol"
+		spirit
+			name = "Spirit"
+			id = "spirit"
+			result = "spirit"
 			required_reagents = list("oxygen" = 1, "nitrogen" = 1)
 			result_amount = 5
 
@@ -60,7 +60,7 @@ datum
 			name = "Sterilizine"
 			id = "sterilizine"
 			result = "sterilizine"
-			required_reagents = list("ethanol" = 1, "anti_toxin" = 1, "chlorine" = 1)
+			required_reagents = list("spirit" = 1, "anti_toxin" = 1, "chlorine" = 1)
 			result_amount = 3
 
 		inaprovaline
@@ -88,7 +88,7 @@ datum
 			name = "Tramadol"
 			id = "tramadol"
 			result = "tramadol"
-			required_reagents = list("inaprovaline" = 1, "ethanol" = 1, "oxygen" = 1)
+			required_reagents = list("inaprovaline" = 1, "spirit" = 1, "oxygen" = 1)
 			result_amount = 3
 
 		//cyanide
@@ -283,11 +283,11 @@ datum
 			required_reagents = list("oxygen" = 1, "anti_toxin" = 1, "carbon" = 1)
 			result_amount = 3
 
-		ethanoloxidation
-			name = "ethanoloxidation"	//Kind of a placeholder in case someone ever changes it so that chemicals
-			id = "ethanoloxidation"		//	react in the body. Also it would be silly if it didn't exist.
+		spiritoxidation
+			name = "spiritoxidation"	//Kind of a placeholder in case someone ever changes it so that chemicals
+			id = "spiritoxidation"		//	react in the body. Also it would be silly if it didn't exist.
 			result = "water"
-			required_reagents = list("ethylredoxrazine" = 1, "ethanol" = 1)
+			required_reagents = list("ethylredoxrazine" = 1, "spirit" = 1)
 			result_amount = 2
 
 		glycerol
@@ -420,7 +420,7 @@ datum
 			name = "Chloral Hydrate"
 			id = "chloralhydrate"
 			result = "chloralhydrate"
-			required_reagents = list("ethanol" = 1, "chlorine" = 3, "water" = 1)
+			required_reagents = list("spirit" = 1, "chlorine" = 3, "water" = 1)
 			result_amount = 1
 
 		zombiepowder
@@ -441,7 +441,7 @@ datum
 			name = "Lipozine"
 			id = "Lipozine"
 			result = "lipozine"
-			required_reagents = list("sodiumchloride" = 1, "ethanol" = 1, "radium" = 1)
+			required_reagents = list("sodiumchloride" = 1, "spirit" = 1, "radium" = 1)
 			result_amount = 3
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -546,7 +546,7 @@ datum
 			name = "Diethylamine"
 			id = "diethylamine"
 			result = "diethylamine"
-			required_reagents = list ("ammonia" = 1, "ethanol" = 1)
+			required_reagents = list ("ammonia" = 1, "spirit" = 1)
 			result_amount = 2
 
 		space_cleaner
@@ -1126,7 +1126,7 @@ datum
 			name = "Hooch"
 			id = "hooch"
 			result = "hooch"
-			required_reagents = list ("sugar" = 1, "ethanol" = 2, "fuel" = 1)
+			required_reagents = list ("sugar" = 1, "spirit" = 2, "fuel" = 1)
 			result_amount = 3
 
 		irish_coffee

@@ -1793,7 +1793,7 @@ datum
 		ethylredoxrazine						// FUCK YOU, ALCOHOL
 			name = "Ethylredoxrazine"
 			id = "ethylredoxrazine"
-			description = "A powerfuld oxidizer that reacts with ethanol."
+			description = "A powerfuld oxidizer that reacts with spirit."
 			reagent_state = SOLID
 			color = "#605048" // rgb: 96, 80, 72
 
@@ -2673,9 +2673,9 @@ datum
 
 
 //ALCOHOL WOO
-		ethanol
-			name = "Ethanol" //Parent class for all alcoholic reagents.
-			id = "ethanol"
+		spirit
+			name = "Spirit" //Parent class for all alcoholic reagents.
+			id = "spirit"
 			description = "A well-known alcohol with a variety of applications."
 			reagent_state = LIQUID
 			nutriment_factor = 0 //So alcohol can fill you up! If they want to.
@@ -2696,7 +2696,7 @@ datum
 				var/d = data
 
 				// make all the beverages work together
-				for(var/datum/reagent/ethanol/A in holder.reagent_list)
+				for(var/datum/reagent/spirit/A in holder.reagent_list)
 					if(A.data) d += A.data
 
 				M.dizziness +=dizzy_adj.
