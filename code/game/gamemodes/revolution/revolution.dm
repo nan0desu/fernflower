@@ -351,8 +351,6 @@
 				var/hstatus = ""
 				if(i.current.stat == 2)
 					hstatus = "Dead"
-				else if(i.current.z != 1)
-					hstatus = "Abandoned the station"
 				names += i.current.real_name + " ([hstatus])"
 			else
 				names += "[i.key] (character destroyed)"
