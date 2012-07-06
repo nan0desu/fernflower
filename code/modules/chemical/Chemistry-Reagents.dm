@@ -94,7 +94,6 @@ datum
 				..()
 				return
 
-
 		blood
 			data = list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"virus2"=null,"antibodies"=0)
 			name = "Blood"
@@ -2671,8 +2670,8 @@ datum
 				if(!istype(T)) return
 				T.Bless()
 
-
 //ALCOHOL WOO
+
 		spirit
 			name = "Spirit" //Parent class for all alcoholic reagents.
 			id = "spirit"

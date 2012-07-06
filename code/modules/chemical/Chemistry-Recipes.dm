@@ -46,8 +46,8 @@ datum
 			name = "Spirit"
 			id = "spirit"
 			result = "spirit"
-			required_reagents = list("oxygen" = 1, "nitrogen" = 1)
-			result_amount = 5
+			required_reagents = list("oxygen" = 2, "nitrogen" = 2)
+			result_amount = 4
 
 		stoxin
 			name = "Sleep Toxin"
