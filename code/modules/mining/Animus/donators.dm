@@ -1,15 +1,19 @@
 /var/list/donators = list()
 /var/list/donators_special = list()
 
+
 /proc/load_donators()
 	var/text = file2text("config/donators.txt")
+
 
 	if (!text)
 		diary << "No donators.txt file found"
 		return
 	diary << "Reading donators.txt"
 
+
 	var/list/CL = dd_text2list(text, "\n")
+
 
 	for (var/t in CL)
 		if (!t)
@@ -19,14 +23,17 @@
 		if (copytext(t, 1, 2) == "#")
 			continue
 
+
 		var/special = 0
 		if (copytext(t, 1, 2) == "$")
 			t = copytext(t, 2)
 			special = 1
 
+
 		var/pos = findtext(t, " ")
 		var/byondkey = null
 		var/value = null
+
 
 		if (pos)
 			byondkey = lowertext(copytext(t, 1, pos))
@@ -36,15 +43,19 @@
 			else
 				donators_special[byondkey] = value
 
+
 /client/var/datum/donators/donator = null
+
 
 /client/verb/cmd_donator_panel()
 	set name = "Donator panel"
 	set category = "OOC"
 
+
 	if(!ticker || ticker.current_state < 3)
 		alert("Please wait until game setting up!")
 		return
+
 
 	if(!donator)
 		var/exists = 0
@@ -61,10 +72,14 @@
 				donator.maxmoney = donators[ckey]
 				donator.money = donator.maxmoney
 
+
 	donator.donatorpanel()
 
 
+
+
 /var/list/donators_datums = list() //need for protect from garbage collector
+
 
 /datum/donators
 	var/client/owner = null
@@ -73,6 +88,7 @@
 	var/maxmoney = 0
 	var/allowed_num_items = 10
 	var/special_used = 0
+
 
 	New()
 		..()
@@ -181,7 +197,7 @@
 	dat += "Tacticool Turtleneck: <A href='?src=\ref[src];item=/obj/item/clothing/under/syndicate/tacticool;cost=200'>200</A><br>"
 	dat += "Soul stone shard: <A href='?src=\ref[src];item=/obj/item/device/soulstone;cost=1200'>1200</A><br>"
 
-	if(donators_special[ownerkey] && !special_used)
+ if(donators_special[ownerkey] && !special_used)
 		dat += "<br>Special for [ownerkey]:<br>"
 		switch(donators_special[ownerkey])
 			if("catman")
@@ -189,7 +205,6 @@
 			if("black catman")
 				dat += "Make youself cat: <A href='?src=\ref[src];special=black catman'>click</A><br>"
 
-	usr << browse(dat, "window=donatorpanel;size=250x400")
 
 
 /datum/donators/Topic(href, href_list)
@@ -213,27 +228,34 @@
 				H.mutantrace = "catb"
 				special_used = 1
 
+
 /datum/donators/proc/attemptSpawnItem(var/item,var/cost)
 	if(cost > money)
 		usr << "\red You don't have enough funds."
 		return 0
 
+
 	if(!allowed_num_items)
 		usr << "\red You already spawned max count of items."
 		return
+
 
 	var/mob/living/carbon/human/H = owner.mob
 	if(!istype(H))
 		usr << "\red You must be a human to use this."
 		return 0
 
+
 	if(H.stat)
 		return 0
+
 
 	money -= cost
 	allowed_num_items--
 
+
 	var/obj/spawned = new item(H)
+
 
 	var/list/slots = list (
 		"backpack" = H.slot_in_backpack,
@@ -249,7 +271,11 @@
 	else
 		usr << "\blue Your [spawned] has been spawned in your [where]!"
 
+
 	owner.cmd_donator_panel()
+
+
+
 
 
 
