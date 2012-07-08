@@ -86,7 +86,7 @@
 	var/ownerkey
 	var/money = 0
 	var/maxmoney = 0
-	var/allowed_num_items = 3
+	var/allowed_num_items = 10
 	var/special_used = 0
 
 
@@ -98,7 +98,7 @@
 /datum/donators/proc/donatorpanel()
 	var/dat = "<title>Donator panel</title>"
 	dat += "Your money: [money]/[maxmoney]<br>"
-	dat += "Allowed number of items: [allowed_num_items]/3<br><br>"
+	dat += "Allowed number of items: [allowed_num_items]/10<br><br>"
 	dat += "<b>Select items:</b> <br>"
 
 	//here items list
@@ -198,7 +198,7 @@
 	dat += "Tacticool Turtleneck: <A href='?src=\ref[src];item=/obj/item/clothing/under/syndicate/tacticool;cost=200'>200</A><br>"
 	dat += "Soul stone shard: <A href='?src=\ref[src];item=/obj/item/device/soulstone;cost=1200'>1200</A><br>"
 
- if(donators_special[ownerkey] && !special_used)
+	if(donators_special[ownerkey] && !special_used)
 		dat += "<br>Special for [ownerkey]:<br>"
 		switch(donators_special[ownerkey])
 			if("catman")
