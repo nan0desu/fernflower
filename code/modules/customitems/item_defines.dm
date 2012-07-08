@@ -166,7 +166,7 @@
 		..()
 		reagents.add_reagent("stoxin", 5)
 		reagents.add_reagent("sugar", 10)
-		reagents.add_reagent("spirit", 5)
+		reagents.add_reagent("ethanol", 5)
 //////////////////////////////////
 //////////// Clothing ////////////
 //////////////////////////////////

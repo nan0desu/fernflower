@@ -42,10 +42,10 @@ datum
 			required_reagents = list("aluminum" = 1, "silicon" = 1, "oxygen" = 1)
 			result_amount = 3
 
-		spirit
-			name = "Spirit"
-			id = "spirit"
-			result = "spirit"
+		ethanol
+			name = "Ethanol"
+			id = "ethanol"
+			result = "ethanol"
 			required_reagents = list("oxygen" = 2, "nitrogen" = 2)
 			result_amount = 4
 
@@ -60,7 +60,7 @@ datum
 			name = "Sterilizine"
 			id = "sterilizine"
 			result = "sterilizine"
-			required_reagents = list("spirit" = 1, "anti_toxin" = 1, "chlorine" = 1)
+			required_reagents = list("ethanol" = 1, "anti_toxin" = 1, "chlorine" = 1)
 			result_amount = 3
 
 		inaprovaline
@@ -88,7 +88,7 @@ datum
 			name = "Tramadol"
 			id = "tramadol"
 			result = "tramadol"
-			required_reagents = list("inaprovaline" = 1, "spirit" = 1, "oxygen" = 1)
+			required_reagents = list("inaprovaline" = 1, "ethanol" = 1, "oxygen" = 1)
 			result_amount = 3
 
 		//cyanide
@@ -283,9 +283,9 @@ datum
 			required_reagents = list("oxygen" = 1, "anti_toxin" = 1, "carbon" = 1)
 			result_amount = 3
 
-		spiritoxidation
-			name = "spiritoxidation"	//Kind of a placeholder in case someone ever changes it so that chemicals
-			id = "spiritoxidation"		//	react in the body. Also it would be silly if it didn't exist.
+		ethanoloxidation
+			name = "ethanoloxidation"	//Kind of a placeholder in case someone ever changes it so that chemicals
+			id = "ethanoloxidation"		//	react in the body. Also it would be silly if it didn't exist.
 			result = "water"
 			required_reagents = list("ethylredoxrazine" = 1, "milk" = 1)
 			result_amount = 2

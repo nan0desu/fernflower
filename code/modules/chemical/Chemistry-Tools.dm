@@ -4008,13 +4008,13 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 		usr << "\blue It is currently empty."
 
 /obj/item/weapon/reagent_containers/glass/bottle/ethinol
-	name = "Spirit Bottle"
+	name = "Ethanol Bottle"
 	desc = "A small bottle of Ethinol.Morgan James's Favorite!"
 	icon = 'chemical.dmi'
 	icon_state = "bottle20"
 
 	New()
 		..()
-		reagents.add_reagent("spirit", 30)
+		reagents.add_reagent("ethanol", 30)
 
 
