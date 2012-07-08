@@ -86,7 +86,7 @@
 	var/ownerkey
 	var/money = 0
 	var/maxmoney = 0
-	var/allowed_num_items = 10
+	var/allowed_num_items = 3
 	var/special_used = 0
 
 
@@ -94,10 +94,11 @@
 		..()
 		donators_datums += src
 
+
 /datum/donators/proc/donatorpanel()
 	var/dat = "<title>Donator panel</title>"
 	dat += "Your money: [money]/[maxmoney]<br>"
-	dat += "Allowed number of items: [allowed_num_items]/10<br><br>"
+	dat += "Allowed number of items: [allowed_num_items]/3<br><br>"
 	dat += "<b>Select items:</b> <br>"
 
 	//here items list
@@ -204,7 +205,10 @@
 				dat += "Make youself cat: <A href='?src=\ref[src];special=catman'>click</A><br>"
 			if("black catman")
 				dat += "Make youself cat: <A href='?src=\ref[src];special=black catman'>click</A><br>"
+
+
 	usr << browse(dat, "window=donatorpanel;size=250x400")
+
 
 
 
