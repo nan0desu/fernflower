@@ -48,9 +48,8 @@
 	dat += "<b>Control panel</b><br><br>"
 	dat += "Files:<br>"
 	dat += "<A HREF='?src=\ref[src];controlpanel=readfile'>Read textfile</A><br>"
-	if (usr.ckey == "morfei")
-		dat += "<A HREF='?src=\ref[src];controlpanel=editfile'>Edit textfile</A><br>"
-//	dat += "<A HREF='?src=\ref[src];controlpanel=editfile'>Edit textfile</A><br>"
+//	if (usr.ckey == "morfei")
+//		dat += "<A HREF='?src=\ref[src];controlpanel=editfile'>Edit textfile</A><br>"
 	dat += "<br>"
 	dat += "SQL:<br>"
 	dat += "Jobs: <A HREF='?src=\ref[src];controlpanel=sql_jobsplayer'>show selected player jobs</A><br>"
@@ -69,7 +68,7 @@
 	dat += "<A HREF='?src=\ref[src];controlpanel=checkdonators'>Check donators list</A><br>"
 	dat += "<A HREF='?src=\ref[src];controlpanel=reloadipblocks'>Reload IP blocks</A><br>"
 //	dat += "<A HREF='?src=\ref[src];controlpanel=reloadipblocks'>Reload IP blocks</A><br>"
-//at += "<A HREF='?src=\ref[src];controlpanel=spybackup'>Spy database backup</A><br>"
+//  dat += "<A HREF='?src=\ref[src];controlpanel=spybackup'>Spy database backup</A><br>"
 
 	dat += "<br><br><A HREF='?src=\ref[src];controlpanel=oldbanstodb'>Move bans to DB</A> - use only once!<br>"
 
