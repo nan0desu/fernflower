@@ -14,8 +14,7 @@
 	dat += "<A HREF='?src=\ref[src];animuspanel=statistics'>Statistics</A><br>"
 	//if(usr.ckey == "morfei") //test stuff - now it's my own
 	dat += "<A HREF='?src=\ref[src];animuspanel=zombieevent'>Zombie Event</A><br>"
-	else
-		dat += "Zombie Event<br>"
+	dat += "Zombie Event<br>"
 	dat += "<A HREF='?src=\ref[src];animuspanel=easybuttons'>Buttons</A><br>"
 
 	usr << browse(dat, "window=animuspanel")
