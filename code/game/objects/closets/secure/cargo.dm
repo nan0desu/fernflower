@@ -52,6 +52,7 @@
 		//
 		var/obj/item/weapon/storage/backpack/BPK = new /obj/item/weapon/storage/backpack(src)
 		var/obj/item/weapon/storage/box/B = new(BPK)
+		new /obj/item/clothing/gloves/fingerless/black(src)
 		new /obj/item/weapon/pen(B)
 		new /obj/item/device/pda/quartermaster(src)
 		new /obj/item/device/radio/headset/headset_cargo(src)

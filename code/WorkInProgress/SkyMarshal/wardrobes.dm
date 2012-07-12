@@ -541,7 +541,7 @@
 		new /obj/item/device/radio/headset/headset_cargo(src)
 		new /obj/item/clothing/shoes/black(src)
 		new /obj/item/clothing/under/rank/cargotech(src)
-
+		new /obj/item/clothing/gloves/fingerless/black(src)
 /obj/item/wardrobe/mining
 	name = "\improper Shaft Miner Wardrobe"
 	descriptor = "clothing and basic equipment for a Shaft Miner"
