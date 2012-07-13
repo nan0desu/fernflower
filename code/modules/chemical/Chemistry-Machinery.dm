@@ -848,3 +848,161 @@
 			if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
 		del(O)
+
+/obj/machinery/advancedchem_dispenser/
+	name = "advanced chem dispenser"
+	density = 1
+	anchored = 1
+	icon = 'chemical.dmi'
+	icon_state = "dispenser"
+	use_power = 1
+	idle_power_usage = 40
+	var/energy = 9999
+	var/max_energy = 9999
+	var/amount = 30
+	var/beaker = null
+	var/list/dispensable_reagents = list("thermite","cyanide","lexorin","space_drugs","adminordrazine","lube","pacid","synaptizine","hyperzine","leporazine","tricordrazine","alkysine","dermaline","dexalinp","bicaridine","ryetalyn","cryoxadone","clonexadone","glycerol","chloralhydrate","zombiepowder","LSD","neurotoxin",)
+	var/charging_reagents = 0
+
+	ex_act(severity)
+		switch(severity)
+			if(1.0)
+				del(src)
+				return
+			if(2.0)
+				if (prob(50))
+					del(src)
+					return
+
+	blob_act()
+		if (prob(50))
+			del(src)
+
+	meteorhit()
+		del(src)
+		return
+
+	proc/updateWindow(mob/user as mob)
+		winset(user, "chemdispenser.energy", "text=\"Energy: [round(src.energy)]\"")
+		winset(user, "chemdispenser.amount", "text=\"Amount: [src.amount]\"")
+		if (beaker)
+			winset(user, "chemdispenser.eject", "text=\"Eject beaker\"")
+		else
+			winset(user, "chemdispenser.eject", "text=\"\[Insert beaker\]\"")
+		if(charging_reagents)
+			winset(user, "chemdispenser.charging", "text=\"Charging\"")
+		else
+			winset(user, "chemdispenser.charging", "text=\"Not Charging\"")
+	proc/initWindow(mob/user as mob)
+		var/i = 0
+		var list/nameparams = params2list(winget(user, "chemdispenser_reagents.template_name", "pos;size;type;image;image-mode"))
+		var list/buttonparams = params2list(winget(user, "chemdispenser_reagents.template_dispense", "pos;size;type;image;image-mode;text;is-flat"))
+		for(var/re in dispensable_reagents)
+			for(var/da in typesof(/datum/reagent) - /datum/reagent)
+				var/datum/reagent/temp = new da()
+				if(temp.id == re)
+					var list/newparams1 = nameparams.Copy()
+					var list/newparams2 = buttonparams.Copy()
+					var/posy = 8 + 40 * i
+					newparams1["pos"] = text("8,[posy]")
+					newparams2["pos"] = text("248,[posy]")
+					newparams1["parent"] = "chemdispenser_reagents"
+					newparams2["parent"] = "chemdispenser_reagents"
+					newparams1["text"] = temp.name
+					newparams2["command"] = text("skincmd \"chemdispenser;[temp.id]\"")
+					winset(user, "chemdispenser_reagent_name[i]", list2params(newparams1))
+					winset(user, "chemdispenser_reagent_dispense[i]", list2params(newparams2))
+					i++
+		winset(user, "chemdispenser_reagents", "size=340x[8 + 40 * i]")
+
+	SkinCmd(mob/user as mob, var/data as text)
+		if(stat & BROKEN) return
+		if(usr.stat || usr.restrained()) return
+		if(!in_range(src, usr)) return
+
+		usr.machine = src
+
+		if (data == "amountc")
+			var/num = text2num(input("Enter desired output amount", "Amount", "30"))
+			if (num)
+				amount = text2num(num)
+		else if (data == "eject")
+			if (src.beaker)
+				var/obj/item/weapon/reagent_containers/glass/B = src.beaker
+				B.loc = src.loc
+				src.beaker = null
+		else if (data == "tcharge")
+			src.charging_reagents = !src.charging_reagents
+		else if (copytext(data, 1, 7) == "amount")
+			if (text2num(copytext(data, 7)))
+				amount = text2num(copytext(data, 7))
+		else
+			if (dispensable_reagents.Find(data) && beaker != null)
+				var/obj/item/weapon/reagent_containers/glass/B = src.beaker
+				var/datum/reagents/R = B.reagents
+				var/space = R.maximum_volume - R.total_volume
+				R.add_reagent(data, min(amount, round(energy) * 10, space))
+				energy = max(energy - min(amount, space) / 10, 0)
+
+		amount = round(amount, 10) // Chem dispenser doesnt really have that much prescion
+		if (amount < 0) // Since the user can actually type the commands himself, some sanity checking
+			amount = 0
+		if (amount > 100)
+			amount = 100
+
+		for(var/mob/player)
+			if (player.machine == src && player.client)
+				updateWindow(player)
+
+		src.add_fingerprint(usr)
+		return
+
+	attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+		if (istype(W,/obj/item/weapon/vending_charge/chemistry))
+			var/obj/item/weapon/vending_charge/chemistry/C = W
+			energy += C.charge_amt
+			del(C)
+			user << "You load the charge into the machine."
+			return
+
+		if(!istype(W, /obj/item/weapon/reagent_containers/glass))
+			return
+
+		var/obj/item/weapon/reagent_containers/glass/B = W
+
+		if(src.beaker)
+			user << "A beaker is already loaded into the machine."
+			return
+
+		src.beaker =  B
+		user.drop_item()
+		B.loc = src
+		user << "You add the beaker to the machine!"
+		for(var/mob/player)
+			if (player.machine == src && player.client)
+				updateWindow(player)
+
+	attack_ai(mob/user as mob)
+		return src.attack_hand(user)
+
+	attack_paw(mob/user as mob)
+		return src.attack_hand(user)
+
+	attack_hand(mob/user as mob)
+		if(stat & BROKEN)
+			return
+		user.machine = src
+
+		initWindow(user)
+		updateWindow(user)
+		winshow(user, "chemdispenser", 1)
+		user.skincmds["chemdispenser"] = src
+		return
+
+
+/obj/machinery/advancedchem_dispenser/process()
+	if(stat & NOPOWER) return
+	if(!charging_reagents || src.energy > 30) return
+
+	use_power(10000)
+	src.energy += 0.05

@@ -2895,7 +2895,7 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 	icon_state = "atoxinbottle"
 	New()
 		..()
-		reagents.add_reagent("adminodrazine", 30)
+		reagents.add_reagent("adminordrazine", 30)
 		src.pixel_x = rand(-10.0, 10)
 		src.pixel_y = rand(-10.0, 10)
 
