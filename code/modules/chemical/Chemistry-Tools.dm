@@ -3937,6 +3937,7 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 /obj/item/weapon/lubricatecleaner
 	name = "Lubricate Cleaner"
 	desc = "Weird looking cleaner. You don't know what the goddamn thing it is."
+	icon = "janitor.dmi"
 	icon_state = "cleaner"
 	item_state = "cleaner"
 	New()
