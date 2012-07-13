@@ -81,7 +81,7 @@
 		user.take_organ_damage(0,10)
 		return
 
-	if ((user.mutations & CLUMSY) && prob(50))
+	if ((user.mutations & CLUMSY) && prob(5))
 		user << "\red The [src] slips out of your hand and hits your head."
 		user.take_organ_damage(10)
 		user.Paralyse(20)
@@ -95,7 +95,7 @@
 			M << "\red The power of [src.deity_name] clears your mind of heresy!"
 			user << "\red You see how [M]'s eyes become clear, the cult no longer holds control over him!"
 			ticker.mode.remove_cultist(M.mind)
-		if ((istype(M, /mob/living/carbon/human) && prob(60)))
+		if ((istype(M, /mob/living/carbon/human) && prob(70)))
 			bless(M)
 			for(var/mob/O in viewers(M, null))
 				O.show_message(text("\red <B>[] heals [] with the power of [src.deity_name]!</B>", user, M), 1)
