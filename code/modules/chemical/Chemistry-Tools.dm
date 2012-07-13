@@ -2889,6 +2889,16 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 		src.pixel_x = rand(-10.0, 10)
 		src.pixel_y = rand(-10.0, 10)
 
+/obj/item/weapon/reagent_containers/food/drinks/ambrosia
+	name = "Ambrosia Bottle"
+	desc = "Contains the liquid essence of gods."
+	icon_state = "atoxinbottle"
+	New()
+		..()
+		reagents.add_reagent("adminodrazine", 30)
+		src.pixel_x = rand(-10.0, 10)
+		src.pixel_y = rand(-10.0, 10)
+
 /obj/item/weapon/reagent_containers/food/drinks/starkist
 	name = "Star-kist"
 	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
