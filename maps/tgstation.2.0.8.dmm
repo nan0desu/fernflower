@@ -8755,7 +8755,7 @@
 "dms" = (/obj/structure/cable{d2 = 2; icon_state = "4-8"; pixel_y = 1},/turf/simulated/floor{dir = 0; icon_state = "blue"},/area/security/prison)
 "dmt" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"; tag = "90Curve"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = "90Curve"},/turf/simulated/floor{dir = 0; icon_state = "blue"},/area/security/prison)
 "dmu" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "2-8"; pixel_y = 0; tag = "Streight"},/turf/simulated/floor{dir = 0; icon_state = "blue"},/area/security/prison)
-"dmv" = (/obj/structure/table/reinforced,/obj/machinery/light/spot{dir = 4; layer = 2.8},/obj/item/weapon/handcuffs,/turf/simulated/floor{icon_state = "blue"; dir = 6},/area/security/prison)
+"dmv" = (/obj/machinery/light/spot{dir = 4; layer = 2.8},/obj/machinery/vending/coffee,/turf/simulated/floor{icon_state = "blue"; dir = 6},/area/security/prison)
 "dmw" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor{icon_state = "white"},/area/security/prison)
 "dmx" = (/obj/item/weapon/reagent_containers/glass/bucket/wateringcan,/turf/simulated/floor{icon_state = "white"},/area/security/prison)
 "dmy" = (/turf/simulated/floor{icon_state = "vault"; dir = 1},/area/security/prison)
