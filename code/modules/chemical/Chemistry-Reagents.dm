@@ -1818,15 +1818,16 @@ datum
 				if(!data) data = 1
 				data++
 				switch(data)
-					if(10)
+					if(5 to 10)
 						M:confused += 2
 						M:drowsyness += 2
+						M:sleeping += 2
 					if(11 to 50)
-						M:sleeping += 5
+						M:sleeping += 3
 					if(51 to INFINITY)
-						M:sleeping += 5
+						M:sleeping += 4
 						M:adjustToxLoss(2)
-				holder.remove_reagent(src.id, 0.04)
+				holder.remove_reagent(src.id, 0.07)
 				..()
 				return
 
