@@ -135,6 +135,44 @@ KNIFE
 		user.take_organ_damage(20)
 		return
 	return ..()
+
+/obj/item/weapon/kitchenknife/b_knife
+	name = "plastic balisong knife"
+	icon = 'items.dmi'
+	icon_state = "closedmosed"
+	force = 2
+	var/mode = 0
+
+	attack_self(mob/user)
+
+		if(user.r_hand == src || user.l_hand == src)
+			if(!src.mode)
+				src.mode = 1
+				src.icon_state = "opendmosed"
+
+				if(prob(75))
+					for(var/mob/O in viewers(user, null))
+						O.show_message("\red [usr] fast flips balisong. You can not to see, how he\she did this!", 1)
+				else
+					user << "\red <b>Damn! You wounded your finger!</b>"
+					user.adjustBruteLoss(5)
+					for(var/mob/O in viewers(user, null))
+						O.show_message("\red [usr] try to flip balisong, but wound his finger.", 1)
+			else
+				src.mode = 0
+				src.icon_state = "closedmosed"
+				for(var/mob/O in viewers(user, null))
+					O.show_message("\red [src] fast flips balisong. You can not to see, how he\she did this!", 1)
+
+		else
+			return ..()
+		return
+
+	attack(mob/living/carbon as mob, mob/user as mob)
+		if (src.mode)
+			..()
+		else
+			return
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////// TRAY -Agouri :3   ///////////////////////////////////////////////
 
