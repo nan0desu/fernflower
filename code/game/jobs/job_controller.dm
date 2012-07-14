@@ -321,9 +321,9 @@ var/global/datum/controller/occupations/job_master
 			pda.ownjob = H.wear_id.assignment
 			pda.name = "PDA-[H.real_name] ([pda.ownjob])"
 
-		/*if(rank == "Clown")
+		if(rank == "Clown")
 			spawn(1)
-				clname(H)*/
+				clname(H)
 		return 1
 
 

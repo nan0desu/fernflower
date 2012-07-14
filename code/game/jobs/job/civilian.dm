@@ -165,7 +165,7 @@
 
 
 
-/*
+
 //Griff
 /datum/job/clown
 	title = "Clown"
@@ -232,9 +232,6 @@
 		H.mind.special_verbs += /client/proc/mimewall
 		H.miming = 1
 		return 1
-*/
-
-
 
 /datum/job/janitor
 	title = "Janitor"
