@@ -390,13 +390,87 @@ ZIPPO
 	smoketime = 400
 	maxsmoketime = 400
 
-/obj/item/clothing/mask/pipe/elite
-	name = "elite pipe"
-	desc = "A nicotine delivery system popularized by folksy backwoodsmen and still used by honourfull nobles."
-	smoketime = 700
-	maxsmoketime = 700
-	icon_on = "trubka2"
-	icon_off = "trubka"
+/obj/item/clothing/mask/elitepipe/
+	name = "elite smoking pipe"
+	desc = "A pipe, for smoking. Probably used by honorfull nobles in comfy chairs."
+	icon_state = "trubka"
+	throw_speed = 0.5
+	item_state = "trubka"
+	w_class = 1
+	body_parts_covered = null
+	var/lit = 0
+	var/icon_on = "trubka2"  //Note - these are in masks.dmi
+	var/icon_off = "trubka"
+	var/lastHolder = null
+	var/smoketime = 700
+	var/maxsmoketime = 700 //make sure this is equal to your smoketime
+	proc
+		light(var/flavor_text = "[usr] lights the [name].")
+
+	attackby(obj/item/weapon/W as obj, mob/user as mob)
+		..()
+		if(istype(W, /obj/item/weapon/weldingtool))
+			var/obj/item/weapon/weldingtool/WT = W
+			if(WT.isOn())
+				light("\red [user] casually lights the [name] with [W], what a badass.")
+
+		else if(istype(W, /obj/item/weapon/lighter/zippo))
+			var/obj/item/weapon/lighter/zippo/Z = W
+			if(Z.lit > 0)
+				light("\red With a single flick of their wrist, [user] smoothly lights their [name] with their [W]. Damn they're cool.")
+
+		else if(istype(W, /obj/item/weapon/lighter))
+			var/obj/item/weapon/lighter/L = W
+			if(L.lit > 0)
+				light("\red After some fiddling, [user] manages to light their [name] with [W].")
+
+		else if(istype(W, /obj/item/weapon/match))
+			var/obj/item/weapon/match/M = W
+			if(M.lit > 0)
+				light("\red [user] lights their [name] with their [W].")
+
+	light(var/flavor_text = "[usr] lights the [name].")
+		if(!src.lit)
+			src.lit = 1
+			src.damtype = "fire"
+			src.icon_state = icon_on
+			src.item_state = icon_on
+			for(var/mob/O in viewers(usr, null))
+				O.show_message(flavor_text, 1)
+			processing_objects.Add(src)
+
+	process()
+		var/turf/location = get_turf(src)
+		src.smoketime--
+		if(src.smoketime < 1)
+			new /obj/effect/decal/ash(location)
+			if(ismob(src.loc))
+				var/mob/living/M = src.loc
+				M << "\red Your [src.name] goes out, and you empty the ash."
+				src.lit = 0
+				src.icon_state = icon_off
+				src.item_state = icon_off
+			processing_objects.Remove(src)
+			return
+		if(location)
+			location.hotspot_expose(700, 5)
+		return
+
+	dropped(mob/user as mob)
+		if(src.lit == 1)
+			for(var/mob/O in viewers(user, null))
+				O.show_message(text("\red [] puts out the [].", user,src.name), 1)
+				src.lit = 0
+				src.icon_state = icon_off
+				src.item_state = icon_off
+			processing_objects.Remove(src)
+		return ..()
+
+/obj/item/clothing/mask/pipe/attack_self(mob/user as mob) //Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
+	if(src.smoketime <= 0)
+		user << "\blue You refill the pipe with tobacco."
+		smoketime = maxsmoketime
+	return
 
 ////////////
 //CIG PACK//
