@@ -3,7 +3,7 @@
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 40
-	damage_type = BRUTE
+	damage_type = BURN
 	flag = "laser"
 	eyeblur = 4
 	var/frequency = 1
@@ -53,10 +53,28 @@
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
-	damage_type = BRUTE
+	damage_type = BURN
 	flag = "laser"
 	eyeblur = 2
 
+/obj/item/projectile/beam/lasir
+	name = "laser"
+	icon_state = "laser"
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	damage = 40
+	damage_type = BURN
+	flag = "laser"
+	eyeblur = 4
+
+	on_hit(var/atom/target, var/blocked = 0)
+		var/mob/M = target
+		if(istype(target, /mob/living/))
+			if(M.nutrition < 4000) //sanity check
+				M.adjustFireLoss(40)
+		else if (istype(target, /mob/dead/))
+			M.show_message("\blue The laser beam dissipates harmlessly through your body.")
+		else
+			return 1
 
 /obj/item/projectile/beam/heavylaser
 	name = "heavy laser"
@@ -83,14 +101,12 @@
 	name = "emitter beam"
 	icon_state = "emitter"
 
-
-
 /obj/item/projectile/bluetag
 	name = "lasertag beam"
 	icon_state = "ice_2"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
-	damage_type = BRUTE
+	damage_type = BURN
 	flag = "laser"
 
 	on_hit(var/atom/target, var/blocked = 0)
@@ -105,7 +121,7 @@
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
-	damage_type = BRUTE
+	damage_type = BURN
 	flag = "laser"
 
 	on_hit(var/atom/target, var/blocked = 0)

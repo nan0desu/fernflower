@@ -26,7 +26,7 @@
 					charge_cost = 100
 					fire_sound = 'Laser.ogg'
 					user << "\red [src] is now set to kill."
-					projectile_type = "/obj/item/projectile/beam"
+					projectile_type = "/obj/item/projectile/beam/lasir"
 				if(1)
 					mode = 2
 					charge_cost = 200

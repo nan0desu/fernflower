@@ -8,7 +8,7 @@
 	m_amt = 2000
 	force = 7
 	origin_tech = "combat=3;magnets=2"
-	projectile_type = "/obj/item/projectile/beam"
+	projectile_type = "/obj/item/projectile/beam/lasir"
 
 /obj/item/weapon/gun/energy/laser/practice
 	name = "practice laser gun"
@@ -62,7 +62,7 @@ obj/item/weapon/gun/energy/laser/retro
 		var/mob/living/silicon/robot/R = src.loc
 		if(R && R.cell)
 			R.cell.use(100)
-			in_chamber = new/obj/item/projectile/beam(src)
+			in_chamber = new/obj/item/projectile/beam/lasir(src)
 			return 1
 	return 0
 
