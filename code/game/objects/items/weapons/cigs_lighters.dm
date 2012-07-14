@@ -390,6 +390,14 @@ ZIPPO
 	smoketime = 400
 	maxsmoketime = 400
 
+/obj/item/clothing/mask/pipe/elite
+	name = "elite pipe"
+	desc = "A nicotine delivery system popularized by folksy backwoodsmen and still used by honourfull nobles."
+	smoketime = 700
+	maxsmoketime = 700
+	icon_on = "trubka2"
+	icon_off = "trubka"
+
 ////////////
 //CIG PACK//
 ////////////

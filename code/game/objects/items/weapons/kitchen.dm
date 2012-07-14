@@ -137,10 +137,10 @@ KNIFE
 	return ..()
 
 /obj/item/weapon/kitchenknife/b_knife
-	name = "plastic balisong knife"
+	name = "balisong knife"
 	icon = 'items.dmi'
 	icon_state = "closedmosed"
-	force = 2
+	force = 3
 	var/mode = 0
 
 	attack_self(mob/user)
