@@ -439,9 +439,16 @@ datum
 
 		lipozine
 			name = "Lipozine"
-			id = "Lipozine"
+			id = "lipozine"
 			result = "lipozine"
 			required_reagents = list("sodiumchloride" = 1, "milk" = 1, "radium" = 1)
+			result_amount = 3
+
+		accumulator
+			name = "Accumulator"
+			id = "accumulator"
+			result = "accumulator"
+			required_reagents = list("sulfur" = 1, "aluminum" = 2)
 			result_amount = 3
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -916,6 +923,17 @@ datum
 			on_reaction(var/datum/reagents/holder, var/created_volume)
 				var/location = get_turf(holder.my_atom)
 				new /obj/item/weapon/reagent_containers/food/snacks/sliceable/meat/syntiflesh(location)
+				return
+
+		accumulator_solid
+			name = "Solid accumulator"
+			id = "accumulator_solid"
+			result = null
+			required_reagents = list("accumulator" = 20, "iron" = 5)
+			result_amount = 1
+			on_reaction(var/datum/reagents/holder, var/created_volume)
+				var/location = get_turf(holder.my_atom)
+				new /obj/item/weapon/clot(location)
 				return
 
 		hot_ramen

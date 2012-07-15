@@ -161,6 +161,52 @@
 	icon_closed = "hydrocrate"
 	density = 1
 
+/obj/structure/closet/crate/engeneering
+	name = "Engenering crate"
+	desc = "Plates, screens and all for repair wall machinery"
+	icon = 'storage.dmi'
+	icon_state = "crate"
+	icon_opened = "crateopen"
+	icon_closed = "crate"
+	density = 1
+
+/obj/structure/closet/crate/engeneering/prespawned
+	New()
+		..()
+		new /obj/item/weapon/circuitboard/light_switch(src)
+		new /obj/item/weapon/circuitboard/light_switch(src)
+		new /obj/item/weapon/circuitboard/light_switch(src)
+		new /obj/item/weapon/circuitboard/status_display(src)
+		new /obj/item/weapon/circuitboard/status_display(src)
+		new /obj/item/weapon/circuitboard/status_display(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/firealarm(src)
+		new /obj/item/weapon/circuitboard/firealarm(src)
+		new /obj/item/weapon/circuitboard/firealarm(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/console_screen(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/scanning_module(src)
+		new /obj/item/weapon/stock_parts/capacitor(src)
+		new /obj/item/weapon/stock_parts/capacitor(src)
+		new /obj/item/weapon/stock_parts/capacitor(src)
+
 /obj/structure/closet/crate/hydroponics/prespawned
 	//This exists so the prespawned hydro crates spawn with their contents.
 /*	name = "Hydroponics crate"

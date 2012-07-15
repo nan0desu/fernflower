@@ -159,6 +159,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("mouse traps", /obj/item/weapon/storage/mousetraps), \
 	new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3), \
 	new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/helmet/cardborg), \
+	new/datum/stack_recipe("handmade cell frame", /obj/item/weapon/frame/power_cell, 2), \
 )
 
 /obj/item/stack/sheet/cardboard

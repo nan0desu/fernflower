@@ -1854,6 +1854,13 @@ datum
 				..()
 				return
 
+		accumulator
+			name = "Accumulator"
+			id = "accumulator"
+			description = "A liquid energy charger."
+			reagent_state = LIQUID
+			color = "#090909"
+
 
 /////////////////////////Food Reagents////////////////////////////
 // Part of the food code. Nutriment is used instead of the old "heal_amt" code. Also is where all the food
