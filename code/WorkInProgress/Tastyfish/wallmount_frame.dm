@@ -38,7 +38,7 @@
 					playsound(src.loc, 'Deconstruct.ogg', 50, 1)
 					user << "\blue You start to add cables to the frame."
 					if(do_after(user, 20))
-						P:amount -= 5
+						P:amount -= 2
 						if(!P:amount) del(P)
 						user << "\blue You add cables to the frame."
 						state = 2

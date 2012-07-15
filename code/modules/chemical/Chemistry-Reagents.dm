@@ -1860,6 +1860,15 @@ datum
 			description = "A liquid energy charger."
 			reagent_state = LIQUID
 			color = "#090909"
+			on_mob_life(var/mob/living/M as mob)
+				if(istype(M, /mob/living/silicon/robot))
+					var/max
+					max = M:cell.maxcharge
+					if (M:cell.charge > max)
+						return
+					else
+						M:cell.charge += 100
+						holder.del_reagent("accumulator")
 
 
 /////////////////////////Food Reagents////////////////////////////
