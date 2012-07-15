@@ -69,33 +69,66 @@
 	on_hit(var/atom/target, var/blocked = 0)
 		var/mob/M = target
 		if(istype(target, /mob/living/))
-			if(M.nutrition < 4000) //sanity check
-				M.adjustFireLoss(40)
-		else if (istype(target, /mob/dead/))
-			M.show_message("\blue The laser beam dissipates harmlessly through your body.")
-		else
-			return 1
+			M.adjustFireLoss(40)
+			return
 
 /obj/item/projectile/beam/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 60
+	damage_type = BURN
+	flag = "laser"
+	eyeblur = 6
+
+	on_hit(var/atom/target, var/blocked = 0)
+		var/mob/M = target
+		if(istype(target, /mob/living/))
+			M.adjustFireLoss(60)
+			return
 
 /obj/item/projectile/beam/xray
 	name = "xray beam"
 	icon_state = "xray"
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 30
+	damage_type = BURN
+	eyeblur = 2
+
+	on_hit(var/atom/target, var/blocked = 0)
+		var/mob/M = target
+		if(istype(target, /mob/living/))
+			M.adjustFireLoss(30)
+			return
 
 /obj/item/projectile/beam/pulse
 	name = "pulse"
 	icon_state = "u_laser"
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 40
+	damage_type = BURN
+	eyeblur = 5
 
+	on_hit(var/atom/target, var/blocked = 0)
+		var/mob/M = target
+		if(istype(target, /mob/living/))
+			M.adjustFireLoss(40)
+			return
 
 /obj/item/projectile/beam/deathlaser
 	name = "death laser"
 	icon_state = "heavylaser"
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 60
+	damage_type = BURN
+	flag = "laser"
+	eyeblur = 6
+
+	on_hit(var/atom/target, var/blocked = 0)
+		var/mob/M = target
+		if(istype(target, /mob/living/))
+			M.adjustFireLoss(60)
+			return
 
 /obj/item/projectile/beam/emitter
 	name = "emitter beam"
