@@ -273,3 +273,9 @@
 	icon_state = "fingerless_black"
 	item_state = "fingerless_black"
 	color="black"
+
+/obj/item/clothing/gloves/batman_gloves
+	name = "batman gloves"
+	desc = "."
+	icon_state = "batman_gloves"
+	item_state = "batman_gloves"

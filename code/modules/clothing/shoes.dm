@@ -183,3 +183,9 @@
 	name = "full brown shoes"
 	icon_state = "fullbrown"
 	color = "fullbrown"
+
+/obj/item/clothing/shoes/batman_boots
+	name = "batman boots"
+	desc = "."
+	icon_state = "batman_boots"
+	item_state = "batman_boots"

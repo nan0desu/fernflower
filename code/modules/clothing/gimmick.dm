@@ -710,3 +710,27 @@ obj/item/clothing/suit/justice
 	icon_state = "creamsuit"
 	item_state = "creamsuit"
 	flags = FPRINT | TABLEPASS
+
+/obj/item/clothing/suit/karlson
+	name = "Karlson suit"
+	desc = "Oldschool and silly suit."
+	icon_state = "karlson"
+	item_state = "karlson"
+
+/obj/item/clothing/suit/bluedress
+	name = "bluedress"
+	desc = "."
+	icon_state = "bluedress"
+	item_state = "bluedress"
+
+/obj/item/clothing/suit/whitedress
+	name = "whitedress"
+	desc = "."
+	icon_state = "whitedress"
+	item_state = "whitedress"
+
+/obj/item/clothing/suit/bluedress
+	name = "bluedress"
+	desc = "."
+	icon_state = "bluedress"
+	item_state = "bluedress"

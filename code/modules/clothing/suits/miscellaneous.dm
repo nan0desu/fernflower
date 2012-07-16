@@ -189,3 +189,44 @@
 	item_state = "weddingdress"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
 	flags_inv = HIDESHOES
+
+/obj/item/clothing/suit/monkd
+	name = "monkd"
+	desc = "."
+	icon_state = "monkd"
+	item_state = "monkd"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/suit/bender
+	name = "bender"
+	desc = "."
+	icon_state = "bender"
+	item_state = "bender"
+	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS|FEET
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+
+/obj/item/clothing/suit/batman_suit
+	name = "batman_suit"
+	desc = "."
+	icon_state = "batman_suit"
+	item_state = "batman_suit"
+	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS|HEAD
+	flags_inv = HIDEJUMPSUIT
+
+/obj/item/clothing/suit/archon_robe
+	name = "archon_robe"
+	desc = "."
+	icon_state = "archon_robe"
+	item_state = "archon_robe"
+	body_parts_covered = UPPER_TORSO
+
+/obj/item/clothing/suit/crimson_tabard
+	name = "crimson_tabard"
+	desc = "."
+	icon_state = "crimson_tabard"
+	item_state = "crimson_tabard"
+	body_parts_covered = UPPER_TORSO
+
+
+
+

@@ -151,3 +151,21 @@
 	see_face = 0.0
 	armor = list(melee = 0, bullet = 0, laser = 2,energy = 2, bomb = 0, bio = 0, rad = 0)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES
+
+/obj/item/clothing/head/helmet/bender
+	name = "bender hat"
+	desc = "."
+	icon_state = "bender"
+	item_state = "bender"
+	flags = FPRINT | TABLEPASS | HEADCOVERSEYES | HEADCOVERSMOUTH
+	see_face = 0.0
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES
+
+/obj/item/clothing/head/helmet/bat_hat
+	name = "batman hat"
+	desc = "."
+	icon_state = "bat_hat"
+	item_state = "bat_hat"
+	flags = FPRINT | TABLEPASS | HEADCOVERSEYES | HEADCOVERSMOUTH
+	see_face = 0.0
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES

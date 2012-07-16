@@ -178,3 +178,15 @@
 	desc = "A traditional female mime's mask."
 	icon_state = "sexymime"
 	item_state = "sexymime"
+
+/obj/item/clothing/mask/horsehead
+	name = "horsehead"
+	desc = "."
+	icon_state = "horsehead"
+	item_state = "horsehead"
+
+/obj/item/clothing/mask/batman
+	name = "batman"
+	desc = "."
+	icon_state = "batman"
+	item_state = "batman"
