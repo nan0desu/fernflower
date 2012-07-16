@@ -255,22 +255,23 @@ var/global/datum/controller/occupations/job_master
 
 		if(H.mind && H.mind.assigned_role != "Cyborg" && H.mind.assigned_role != "AI" && H.mind.assigned_role != "Clown")
 			if(H.backbag == 1) //Clown always gets his backbuddy.
-				H.equip_if_possible(new /obj/item/weapon/storage/box(H), H.slot_r_hand)
+				H.equip_if_possible(new /obj/item/weapon/storage/box/survival(H), H.slot_r_hand)
 
 			if(H.backbag == 2)
 				var/obj/item/weapon/storage/backpack/BPK = new/obj/item/weapon/storage/backpack(H)
 				H.equip_if_possible(BPK, H.slot_back,1)
-				H.equip_if_possible(new /obj/item/weapon/storage/box(H.back), H.slot_in_backpack)
+				H.equip_if_possible(new /obj/item/weapon/storage/box/survival(H.back), H.slot_in_backpack)
+
 
 			if(H.backbag == 3)
 				var/obj/item/weapon/storage/backpack/BPK = new/obj/item/weapon/storage/backpack/satchel(H)
 				H.equip_if_possible(BPK, H.slot_back,1)
-				H.equip_if_possible(new /obj/item/weapon/storage/box(H.back), H.slot_in_backpack)
+				H.equip_if_possible(new /obj/item/weapon/storage/box/survival(H.back), H.slot_in_backpack)
 
 			if(H.backbag == 4)
 				var/obj/item/weapon/storage/backpack/BPK = new/obj/item/weapon/storage/backpack/satchel_norm(H)
 				H.equip_if_possible(BPK, H.slot_back,1)
-				H.equip_if_possible(new /obj/item/weapon/storage/box(H.back), H.slot_in_backpack)
+				H.equip_if_possible(new /obj/item/weapon/storage/box/survival(H.back), H.slot_in_backpack)
 
 		//Give'em glasses if they are nearsighted
 		if(H.disabilities & 1)
