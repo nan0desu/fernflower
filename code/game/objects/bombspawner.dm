@@ -145,8 +145,8 @@
 			V.attached_device = S
 
 			S.holder = V
-			if(V.secured != 1)
-				V.toggle_secure()
+			if(S.secured != 1)
+				S.toggle_secure()
 			PT.master = V
 			OT.master = V
 
@@ -169,8 +169,8 @@
 			V.attached_device = P
 
 			P.holder = V
-			if(V.secured != 1)
-				V.toggle_secure()
+			if(P.secured != 1)
+				P.toggle_secure()
 			PT.master = V
 			OT.master = V
 
