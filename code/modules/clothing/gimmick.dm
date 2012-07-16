@@ -525,24 +525,28 @@
 	desc = "Oldschool and silly suit."
 	icon_state = "karlson"
 	item_state = "karlson"
+	color = "karlson"
 
 /obj/item/clothing/under/bluedress
 	name = "bluedress"
 	desc = "."
 	icon_state = "bluedress"
 	item_state = "bluedress"
+	color = "bluedress"
 
 /obj/item/clothing/under/whitedress
 	name = "whitedress"
 	desc = "."
 	icon_state = "whitedress"
 	item_state = "whitedress"
+	color = "whitedress"
 
 /obj/item/clothing/under/bluedress
-	name = "bluedress"
+	name = "black shirtf"
 	desc = "."
-	icon_state = "bluedress"
-	item_state = "bluedress"
+	icon_state = "black_shirtf"
+	item_state = "black_shirtf"
+	color = "black_shirtf"
 
 /obj/item/clothing/head/bowler
 	name = "bowler hat"

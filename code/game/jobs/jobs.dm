@@ -96,7 +96,9 @@ var/list/civilian_positions = list(
 	"Shaft Miner",
 	"Lawyer",
 	"Chaplain",
-	"Assistant"
+	"Assistant",
+	"Clown",
+	"Mime"
 )
 
 
@@ -120,7 +122,7 @@ var/list/nonhuman_positions = list(
 
 /proc/GetRank(var/job)
 	switch(job)
-		if("Bartender","Chef","Lawyer","Librarian","Janitor","Assistant","Unassigned")
+		if("Bartender","Chef","Lawyer","Librarian","Janitor","Assistant","Unassigned", "Clown", "Mime")
 			return 0
 		if("Chaplain","Botanist","Hydroponicist","Medical Doctor","Atmospheric Technician","Geneticist", "Virologist", "Surgeon", "Emergency Physician", "Counselor")
 			return 1
