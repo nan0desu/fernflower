@@ -114,3 +114,17 @@
 				new /obj/item/weapon/shard( W.loc )
 				if(W.reinf) new /obj/item/stack/rods( W.loc)
 		del(A)
+
+/obj/item/weapon/twohanded/fireaxe/battleaxe
+	icon_state = "twohandedaxe0"
+	name = "Battle axe"
+	desc = "Truly, the weapon of a madman."
+	force = 5
+	w_class = 4.0
+	slot_flags = SLOT_BACK
+	force_unwielded = 5
+	force_wielded = 18
+
+/obj/item/weapon/twohanded/fireaxe/battleaxe/update_icon()  //Currently only here to fuck with the on-mob icons.
+	icon_state = "twohandedaxe[wielded]"
+	return
