@@ -370,6 +370,8 @@
 			var/obj/item/weapon/reagent_containers/glass/beaker/B1 = new(src)
 			var/obj/item/weapon/reagent_containers/glass/beaker/B2 = new(src)
 
+			if(attached_device.secured != 1)
+				attached_device.toggle_secure()
 			B1.reagents.add_reagent("fluorosurfactant", 40)
 			B2.reagents.add_reagent("water", 40)
 			B2.reagents.add_reagent("cleaner", 10)
