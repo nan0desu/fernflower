@@ -17,8 +17,8 @@ em						{font-style: normal;	font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #b82e00;	font-weight: bold;}
 
-.adminobserver			{color: #98FB98;	font-weight: bold;}
-.admin					{color: #FFDEAD;	font-weight: bold;}
+.adminobserver			{color: #FFD700;	font-weight: bold;}
+.admin					{color: #98FB98;	font-weight: bold;}
 
 .mod				{color: #735638;	font-weight: bold;}
 .modooc				{color: #184880;	font-weight: bold;}
