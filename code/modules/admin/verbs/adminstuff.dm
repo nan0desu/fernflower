@@ -318,7 +318,7 @@
 					dat += "Connection error.<br>"
 				usr << browse(dat, "window=controlpanel")
 				return
-			if("sql_population")
+		/*	if("sql_population")
 				var/tfile = input("Write to:","Filename","data/population.txt") as text|null
 				dat += "Target filename: [tfile]<br>"
 				var/separator = input("Input separator:","Separator") as text|null
@@ -342,7 +342,7 @@
 						dat += "Query error.<br>"
 				else
 					dat += "Connection error.<br>"
-				usr << browse(dat, "window=controlpanel")
+				usr << browse(dat, "window=controlpanel") */
 			if("sql_banslog")
 				var/DBConnection/dbcon = new()
 				dbcon.Connect("dbi:mysql:[sqldb]:[sqladdress]:[sqlport]","[sqllogin]","[sqlpass]")
