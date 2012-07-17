@@ -541,7 +541,7 @@
 	item_state = "whitedress"
 	color = "whitedress"
 
-/obj/item/clothing/under/black shirtf
+/obj/item/clothing/under/black_shirtf
 	name = "black shirtf"
 	desc = "."
 	icon_state = "black_shirtf"
@@ -578,7 +578,7 @@
 	icon_state = "justicepink"
 	item_state = "justicepink"
 
-obj/item/clothing/suit/justice
+/obj/item/clothing/suit/justice
 	name = "justice suit"
 	desc = "This pretty much looks ridiculous."
 	icon_state = "justice"

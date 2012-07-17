@@ -152,25 +152,16 @@
 	var/broken = 0
 	var/locked = 1
 
-/obj/structure/closet/crate/hydroponics
-	name = "Hydroponics crate"
-	desc = "All you need to destroy those pesky weeds and pests."
-	icon = 'storage.dmi'
-	icon_state = "hydrocrate"
-	icon_opened = "hydrocrateopen"
-	icon_closed = "hydrocrate"
-	density = 1
-
-/obj/structure/closet/crate/engeneering
+/obj/structure/closet/crate/secure/engineering
 	name = "Engenering crate"
 	desc = "Plates, screens and all for repair wall machinery"
 	icon = 'storage.dmi'
-	icon_state = "engi_crate"
-	icon_opened = "engi_crate_open"
-	icon_closed = "engi_crate"
+	icon_state = "engineering_crate"
+	icon_opened = "engineering_crate_open"
+	icon_closed = "engineering_crate"
 	density = 1
 
-/obj/structure/closet/crate/engeneering/prespawned
+/obj/structure/closet/crate/secure/engineering/prespawned
 	New()
 		..()
 		new /obj/item/weapon/circuitboard/light_switch(src)
