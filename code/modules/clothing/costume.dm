@@ -17,6 +17,22 @@
 	new /obj/item/clothing/head/helmet/gladiator(src.loc)
 	del(src)
 
+/obj/effect/landmark/costume/batman/New()
+	new /obj/item/clothing/head/helmet/bat_hat(src.loc)
+	new /obj/item/clothing/suit/batman_suit(src.loc)
+	new /obj/item/clothing/gloves/batman_gloves(src.loc)
+	del(src)
+
+/obj/effect/landmark/costume/bender/New()
+	new /obj/item/clothing/head/helmet/bender(src.loc)
+	new /obj/item/clothing/suit/bender(src.loc)
+	del(src)
+
+/obj/effect/landmark/costume/karlson/New()
+	new /obj/item/clothing/under/karlson(src.loc)
+	new /obj/item/clothing/suit/karlson(src.loc)
+	del(src)
+
 /obj/effect/landmark/costume/madscientist/New()
 	new /obj/item/clothing/under/gimmick/rank/captain/suit(src.loc)
 	new /obj/item/clothing/head/flatcap(src.loc)
