@@ -541,7 +541,7 @@
 	item_state = "whitedress"
 	color = "whitedress"
 
-/obj/item/clothing/under/bluedress
+/obj/item/clothing/under/black shirtf
 	name = "black shirtf"
 	desc = "."
 	icon_state = "black_shirtf"
