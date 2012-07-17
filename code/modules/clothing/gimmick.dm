@@ -739,3 +739,10 @@ obj/item/clothing/suit/justice
 	item_state = "creamsuit"
 	flags = FPRINT | TABLEPASS
 
+/obj/item/clothing/suit/karlson
+	name = "Karlson suit"
+	desc = "Oldschool and silly suit."
+	icon_state = "karlson"
+	item_state = "karlson"
+	color = "karlson"
+

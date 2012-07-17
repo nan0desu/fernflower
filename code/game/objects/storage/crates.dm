@@ -165,9 +165,9 @@
 	name = "Engenering crate"
 	desc = "Plates, screens and all for repair wall machinery"
 	icon = 'storage.dmi'
-	icon_state = "crate"
-	icon_opened = "crateopen"
-	icon_closed = "crate"
+	icon_state = "engi_crate"
+	icon_opened = "engi_crate_open"
+	icon_closed = "engi_crate"
 	density = 1
 
 /obj/structure/closet/crate/engeneering/prespawned
