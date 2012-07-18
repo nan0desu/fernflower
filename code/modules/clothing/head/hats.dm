@@ -43,7 +43,7 @@
 	item_state = "pwig"
 
 /obj/item/clothing/head/deerstalker_hat
-	name = "sherlock"
+	name = "deerstalker"
 	desc = "Like Sherlock Holmes hat."
 	icon_state = "sherlock"
 	item_state = "sherlock"

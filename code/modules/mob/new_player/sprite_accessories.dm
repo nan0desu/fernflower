@@ -153,6 +153,19 @@
 	spikey
 		name = "Spikey"
 		icon_state = "hair_spikey"
+
+	matilda
+		name = "Matilda"
+		icon_state = "hair_matilda"
+
+	nimfa
+		name = "Nimfa"
+		icon_state = "hair_nimfa"
+
+	sersea
+		name = "Sersea"
+		icon_state = "hair_sersea"
+
 //////
 //Begin Alien Hairstyle
 //////
@@ -243,8 +256,11 @@
 		name = "Adam Jensen Beard"
 		icon_state = "facial_jensen"
 
-	shaved
+	kranah
+		name = "Lukas Kranah Beard"
+		icon_state = "facial_kranah"
 
+	shaved
 		name = "Shaved"
 		icon_state = "bald"
 		choose_female = 1 // shaved is the only facial hair on women because why would chicks have beards???
