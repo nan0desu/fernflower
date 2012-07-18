@@ -166,6 +166,13 @@
 		name = "Sersea"
 		icon_state = "hair_sersea"
 
+	ponka
+		name = "Ponka"
+		icon_state = "hair_ponka"
+
+	arlekina
+		name = "Arlekina"
+		icon_state = "hair_arlekina"
 //////
 //Begin Alien Hairstyle
 //////
