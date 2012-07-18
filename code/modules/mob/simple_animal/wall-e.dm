@@ -13,7 +13,7 @@
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	meat_type = /obj\power.dmi\coil_yellow1
+	meat_type = /obj/item/weapon/cable_coil/yellow
 	response_help  = "knock the"
 	response_disarm = "gently pushes aside the"
 	response_harm   = "kicks the"

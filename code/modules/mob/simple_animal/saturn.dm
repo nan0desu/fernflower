@@ -1,6 +1,6 @@
 //Saturn
 /mob/living/simple_animal/saturn
-	name = "\saturn"
+	name = "saturn"
 	real_name = "Saturn"
 	desc = "It's a Saturn."
 	icon = 'mob.dmi'

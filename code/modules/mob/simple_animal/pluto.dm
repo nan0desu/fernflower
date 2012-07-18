@@ -1,6 +1,6 @@
 //Pluto
 /mob/living/simple_animal/pluto
-	name = "\pluto"
+	name = "pluto"
 	real_name = "Pluto"
 	desc = "It's a Pluto."
 	icon = 'mob.dmi'
