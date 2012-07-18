@@ -190,3 +190,9 @@
 	desc = "Wow! Real Batman mask!"
 	icon_state = "batman"
 	item_state = "batman"
+
+/obj/item/clothing/mask/joker
+	desc = "Why so serious?"
+	name = "joker mask"
+	icon_state = "joker"
+	item_state = "joker"
