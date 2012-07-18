@@ -42,7 +42,7 @@
 	icon_state = "pwig"
 	item_state = "pwig"
 
-/obj/item/clothing/head/Deerstalker hat
+/obj/item/clothing/head/deerstalker_hat
 	name = "sherlock"
 	desc = "Like Sherlock Holmes hat."
 	icon_state = "sherlock"

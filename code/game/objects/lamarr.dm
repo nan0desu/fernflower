@@ -92,5 +92,6 @@
 		var/obj/alien/facehugger/A = new /obj/alien/facehugger( src.loc )
 		A.name = "Lamarr"
 		occupied = 0
+		A.lamarr = 1
 	update_icon()
 	return
