@@ -29,8 +29,8 @@
 
 //WHY DOES THIS EXIST
 /obj/item/clothing/mask/spiderman
-	desc = "A mask of Deadpool!"
-	name = "\improper Deadpool mask"
+	desc = "A mask of Spider-man!"
+	name = "\improper Spider-Man mask"
 	icon_state = "spiderman"
 	item_state = "spiderman"
 	flags = FPRINT|TABLEPASS|SUITSPACE|HEADSPACE|MASKCOVERSMOUTH|BLOCKHAIR
@@ -181,12 +181,12 @@
 
 /obj/item/clothing/mask/horsehead
 	name = "horsehead"
-	desc = "."
+	desc = "derp-derp."
 	icon_state = "horsehead"
 	item_state = "horsehead"
 
 /obj/item/clothing/mask/batman
 	name = "batman"
-	desc = "."
+	desc = "Wow! Real Batman mask!"
 	icon_state = "batman"
 	item_state = "batman"

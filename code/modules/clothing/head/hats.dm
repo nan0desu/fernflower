@@ -42,9 +42,9 @@
 	icon_state = "pwig"
 	item_state = "pwig"
 
-/obj/item/clothing/head/sherlock
+/obj/item/clothing/head/Deerstalker hat
 	name = "sherlock"
-	desc = "."
+	desc = "Like Sherlock Holmes hat."
 	icon_state = "sherlock"
 	item_state = "sherlock"
 
@@ -160,7 +160,7 @@
 
 /obj/item/clothing/head/helmet/bender
 	name = "bender hat"
-	desc = "."
+	desc = "I will build my lunapark - with blackjack and whores!"
 	icon_state = "bender"
 	item_state = "bender"
 	flags = FPRINT | TABLEPASS | HEADCOVERSEYES | HEADCOVERSMOUTH
@@ -169,7 +169,7 @@
 
 /obj/item/clothing/head/helmet/bat_hat
 	name = "batman hat"
-	desc = "."
+	desc = "I'm the goddamn BATMAN."
 	icon_state = "batman_hat"
 	item_state = "batman_hat"
 	flags = FPRINT | TABLEPASS | HEADCOVERSEYES | HEADCOVERSMOUTH
