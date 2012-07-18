@@ -99,6 +99,13 @@
 	item_state = "johnny"
 	flags = FPRINT | TABLEPASS
 
+/obj/item/clothing/suit/johnny_coat_open
+	name = "johnny~~ open coat"
+	desc = "Johnny~~"
+	icon_state = "johnny_open"
+	item_state = "johnny_open"
+	flags = FPRINT | TABLEPASS
+
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
 	desc = "A worn out, curiously comfortable t-shirt with a picture of Ian. You wouldn't go so far as to say it feels like being hugged when you wear it but it's pretty close. Good for sleeping in."

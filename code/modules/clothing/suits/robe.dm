@@ -83,3 +83,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
+/obj/item/clothing/suit/yoba
+	name = "yoba"
+	desc = "A magnificant, green, gem-lined robe that seems to radiate power."
+	icon_state = "yoba"
+	item_state = "yoba"

@@ -56,3 +56,12 @@
 				for(var/mob/M in viewers(usr, null))
 					if(M.client)
 						M.show_message(text("\blue [usr] draws his gun, but keeps it pointed safely at the ground."), 2)
+
+/obj/item/clothing/suit/sherlock
+	name = "sherlock's coat"
+	desc = "Elementary, my dear Watson!"
+	icon_state = "sherlock"
+	item_state = "sherlock"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	allowed = list(/obj/item/weapon/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/cigpacket,/obj/item/weapon/lighter,/obj/item/device/detective_scanner,/obj/item/device/taperecorder,/obj/item/taperoll/police)
+	armor = list(melee = 50, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
