@@ -25,13 +25,22 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	var/list/ItemList				// Parsed list of items
 	var/uses 						// Numbers of crystals
 	var/uplink_data					// designated uplink items
+	var/traitor_job
+	var/all_items
 	// List of items not to shove in their hands.
 	var/list/NotInHand = list(/obj/machinery/singularity_beacon/syndicate)
 
 	New()
 		welcome = ticker.mode.uplink_welcome
+		all_items = ticker.mode.uplink_items
 		if(!item_data)
-			items = dd_replacetext(ticker.mode.uplink_items, "\n", "")	// Getting the text string of items
+			if(traitor_job)
+				if(traitor_job == "Chemist")
+					all_items += {"Whitespace:Seperator;
+					Special Items:;
+					/obj/item/weapon/reagent_containers/pill/cyanide:2:Cyanide pill;"}
+			items = dd_replacetext(all_items, "\n", "")	// Getting the text string of items
+
 		else
 			items = dd_replacetext(item_data)
 		ItemList = dd_text2list(src.items, ";")	// Parsing the items text string

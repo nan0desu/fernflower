@@ -22,7 +22,6 @@
 
 	var/num_players = 0
 
-
 /datum/game_mode/traitor/announce()
 	world << "<B>The current game mode is - Traitor!</B>"
 	world << "<B>There is a syndicate traitor on the station. Do not let the traitor succeed!</B>"
@@ -336,13 +335,14 @@
 		else if (istype(R, /obj/item/device/pda))
 			// generate a passcode if the uplink is hidden in a PDA
 			var/pda_pass = "[rand(100,999)] [pick("Alpha","Bravo","Delta","Omega")]"
-
 			var/obj/item/device/uplink/pda/T = new /obj/item/device/uplink/pda(R)
 			R:uplink = T
 			T.lock_code = pda_pass
 			T.hostpda = R
 			traitor_mob << "The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name] [loc]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features."
 			traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([R.name] [loc]).")
+			T.traitor_job = traitor_mob.mind.assigned_role
+
 	//Begin code phrase.
 	if(!safety)//If they are not a rev. Can be added on to.
 		traitor_mob << "The Syndicate provided you with the following information on how to identify other agents:"
