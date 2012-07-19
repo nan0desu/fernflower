@@ -173,6 +173,10 @@
 	arlekina
 		name = "Arlekina"
 		icon_state = "hair_arlekina"
+
+	baily
+		name = "Baily"
+		icon_state = "hair_baily"
 //////
 //Begin Alien Hairstyle
 //////

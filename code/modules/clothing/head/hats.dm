@@ -137,6 +137,11 @@
 	item_state = "helmet"
 	var/flipped = 0
 
+/obj/item/clothing/head/women_blue_hat
+	name = "women blue hat"
+	desc = "women blue hat."
+	icon_state = "blue_hat"
+	item_state = "blue_hat"
 
 // CHUMP HELMETS: COOKING THEM DESTROYS THE CHUMP HELMET SPAWN.
 /obj/item/clothing/head/syndicatefake

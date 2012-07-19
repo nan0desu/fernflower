@@ -400,7 +400,7 @@ ZIPPO
 	body_parts_covered = null
 	var/lit = 0
 	var/icon_on = "trubka"  //Note - these are in masks.dmi
-	var/icon_off = "trubka3"
+	var/icon_off = "trubkaoff"
 	var/lastHolder = null
 	var/smoketime = 700
 	var/maxsmoketime = 700 //make sure this is equal to your smoketime
