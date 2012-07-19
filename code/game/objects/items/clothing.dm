@@ -114,10 +114,10 @@ THERMAL GLASSES
 		var/obj/item/clothing/under/V = new U
 		src.clothing_choices += V
 
-//	for(var/U in typesof(/obj/item/clothing/under/rank)-(/obj/item/clothing/under/rank))
+	for(var/U in typesof(/obj/item/clothing/under/rank)-(/obj/item/clothing/under/rank))
 
-//		var/obj/item/clothing/under/V = new U
-//		src.clothing_choices += V
+		var/obj/item/clothing/under/V = new U
+		src.clothing_choices += V
 
 	return
 
@@ -163,18 +163,18 @@ THERMAL GLASSES
 
 	var/obj/item/clothing/under/A
 
-	A = input("Select Colour to change it to", "BOOYEA", A) in clothing_choices|null
+	A = input("Select Colour to change it to", "BOOYEA", A) in clothing_choices
 
 	if(!A)
 		return
 
+	desc = null
 	permeability_coefficient = 0.90
 
-	name = A.name
 	desc = A.desc
+	name = A.name
 	icon_state = A.icon_state
 	item_state = A.item_state
-	usr.update_clothing()
 	color = A.color
 
 /obj/item/clothing/under/chameleon/emp_act(severity)
@@ -192,12 +192,12 @@ THERMAL GLASSES
 /obj/item/clothing/under/chameleon/psyche/emp_act(severity)
 	return
 
-/*
+
 /obj/item/clothing/suit/swat_suit/death_commando
 	name = "Death Commando Suit"
 	icon_state = "death_commando_suit"
 	item_state = "death_commando_suit"
-	flags = FPRINT | TABLEPASS | SUITSPACE*/
+	flags = FPRINT | TABLEPASS | SUITSPACE
 
 /obj/item/clothing/mask/gas/death_commando
 	name = "Death Commando Mask"
