@@ -393,9 +393,9 @@ ZIPPO
 /obj/item/clothing/mask/elitepipe/
 	name = "elite smoking pipe"
 	desc = "A pipe, for smoking. Probably used by honorfull nobles in comfy chairs."
-	icon_state = "trubka"
+	icon_state = "trubkaoff"
 	throw_speed = 0.5
-	item_state = "trubka"
+	item_state = "trubkaoff"
 	w_class = 1
 	body_parts_covered = null
 	var/lit = 0
