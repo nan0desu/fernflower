@@ -33,6 +33,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	New()
 		welcome = ticker.mode.uplink_welcome
 		all_items = ticker.mode.uplink_items
+		traitor_job = src.loc:ownjob
 		if(!item_data)
 			if(traitor_job)
 				if(traitor_job == "Chemist")
@@ -45,6 +46,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 			items = dd_replacetext(item_data)
 		ItemList = dd_text2list(src.items, ";")	// Parsing the items text string
 		uses = ticker.mode.uplink_uses
+
 
 //Let's build a menu!
 	proc/generate_menu()
