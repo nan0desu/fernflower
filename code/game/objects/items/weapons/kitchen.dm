@@ -141,6 +141,7 @@ KNIFE
 	icon = 'items.dmi'
 	icon_state = "closedmosed"
 	force = 3
+	w_class = 2.0
 	var/mode = 0
 
 	attack_self(mob/user)
