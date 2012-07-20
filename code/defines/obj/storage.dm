@@ -1,3 +1,13 @@
+/obj/item/weapon/storage/smallbackpack
+	name = "cute backpack"
+	desc = "cute backpack."
+	icon_state = "backpack"
+	w_class = 4.0
+	flags = FPRINT|TABLEPASS
+	slot_flags = SLOT_BACK	//ERROOOOO
+	max_w_class = 3
+	max_combined_w_class = 21
+
 /obj/item/weapon/storage/backpack
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."

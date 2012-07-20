@@ -541,6 +541,13 @@
 	item_state = "bluedress"
 	color = "bluedress"
 
+/obj/item/clothing/under/smoking
+	name = "smoking"
+	desc = "For sirious man."
+	icon_state = "smoking"
+	item_state = "smoking"
+	color = "smoking"
+
 /obj/item/clothing/under/whitedress
 	name = "whitedress"
 	desc = "."
