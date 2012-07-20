@@ -328,6 +328,19 @@
 
 	proc/apply_danger_level(var/new_danger_level)
 		alarm_area.atmosalm = new_danger_level
+		if (new_danger_level==2)
+			var/list/cameras = list()
+			for(var/obj/machinery/camera/C in alarm_area)
+				cameras += C
+			for(var/mob/living/silicon/aiPlayer in world)
+				aiPlayer.triggerAlarm("Atmosphere", src, cameras, src)
+			for(var/obj/machinery/computer/station_alert/a in world)
+				a.triggerAlarm("Atmosphere", src, cameras, src)
+		else
+			for(var/mob/living/silicon/aiPlayer in world)
+				aiPlayer.cancelAlarm("Atmosphere", src, src)
+			for(var/obj/machinery/computer/station_alert/a in world)
+				a.cancelAlarm("Atmosphere", src, src)
 
 		for (var/area/A in alarm_area.related)
 			for (var/obj/machinery/alarm/AA in A)
