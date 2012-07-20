@@ -997,6 +997,7 @@
 #include "code\game\objects\devices\PDA\chatroom.dm"
 #include "code\game\objects\devices\PDA\PDA.dm"
 #include "code\game\objects\devices\PDA\radio.dm"
+#include "code\game\objects\items\air_alarm_frame.dm"
 #include "code\game\objects\items\apc_frame.dm"
 #include "code\game\objects\items\blueprints.dm"
 #include "code\game\objects\items\candle.dm"

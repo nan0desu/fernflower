@@ -97,15 +97,35 @@
 		TLV["pressure"] =		list(ONE_ATMOSPHERE*0.50,ONE_ATMOSPHERE*0.70,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */
 		TLV["temperature"] =	list(40, 60, 100, 120) // K
 
-	New()
+	New(turf/loc, var/ndir, var/building=0)
 		..()
+		if (radio_controller)
+			set_frequency(frequency)
+		// offset 24 pixels in direction of dir
+		// this allows the Air Alarm to be embedded in a wall, yet still inside an area
+		if (building)
+			dir = ndir
+			pixel_x = (dir & 3)? 0 : (dir == 4 ? 24 : -24)
+			pixel_y = (dir & 3)? (dir ==1 ? 24 : -24) : 0
+			if (ndir == SOUTH)
+				dir = NORTH
+			if (ndir == NORTH)
+				dir = SOUTH
+			if (ndir == EAST)
+				dir = WEST
+			if (ndir == WEST)
+				dir = EAST
 		alarm_area = get_area(src)
+		if (!alarm_area.powered(ENVIRON))
+			src.stat |= NOPOWER
+			icon_state = "alarmp"
 		if (alarm_area.master)
 			alarm_area = alarm_area.master
 		area_uid = alarm_area.uid
 		if (name == "alarm")
 			name = "[alarm_area.name] Air Alarm"
-
+		if (building)
+			initialize()
 		// breathable air according to human/Life()
 		TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
 		TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa

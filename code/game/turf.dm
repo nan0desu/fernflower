@@ -699,9 +699,13 @@
 			for(var/mob/O in viewers(user, 5))
 				O.show_message("<span class='warning'>The wall was sliced apart by [user]!</span>", 1, "<span class='warning'>You hear metal being sliced apart and sparks flying.</span>", 2)
 		return
-
+	//APC and Air Alarm
 	else if(istype(W,/obj/item/apc_frame))
 		var/obj/item/apc_frame/AH = W
+		AH.try_build(src)
+		return
+	else if(istype(W,/obj/item/air_alarm_frame))
+		var/obj/item/air_alarm_frame/AH = W
 		AH.try_build(src)
 		return
 
@@ -936,10 +940,14 @@
 			else
 				del(MS)
 
-	//APC
+	//APC and Air Alarm
 	else if( istype(W,/obj/item/apc_frame) )
 		var/obj/item/apc_frame/AH = W
 		AH.try_build(src)
+	else if(istype(W,/obj/item/air_alarm_frame))
+		var/obj/item/air_alarm_frame/AH = W
+		AH.try_build(src)
+		return
 
 	//Poster stuff
 	else if(istype(W,/obj/item/weapon/contraband/poster))

@@ -565,6 +565,13 @@
 	icon_state = "apc_frame"
 	flags = FPRINT | TABLEPASS| CONDUCT
 
+/obj/item/air_alarm_frame
+	name = "Air Alarm frame"
+	desc = "Used for building Atmos Alarms"
+	icon = 'monitors.dmi'
+	icon_state = "alarmp"
+	flags = FPRINT | TABLEPASS| CONDUCT
+
 /obj/effect/landmark
 	name = "landmark"
 	icon = 'screen1.dmi'
