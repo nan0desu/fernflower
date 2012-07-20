@@ -156,3 +156,31 @@ ENERGY SHIELD (where else should i even put this)
 		user << "\blue [src] can now be concealed."
 	add_fingerprint(user)
 	return
+
+/obj/item/weapon/shitcurity_space_law/attack(mob/M as mob, mob/living/user as mob)
+
+	src.add_fingerprint(user)
+
+	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
+
+	log_admin("ATTACK: [user] ([user.ckey]) attacked [M] ([M.ckey]) with [src].")
+	message_admins("ATTACK: [user] ([user.ckey]) attacked [M] ([M.ckey]) with [src].")
+	log_attack("<font color='red'>[user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
+
+
+	if (user.a_intent == "hurt")
+		if(!..()) return
+		playsound(src.loc, "swing_hit", 50, 1, -1)
+		if (M.stuttering < 8 && (!(HULK in M.mutations))  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			M.stuttering = 8
+		M.Stun(12)
+		M.Weaken(12)
+		for(var/mob/O in viewers(M))
+			if (O.client)	O.show_message("\red <B>[M] has been beaten with the Space Law by [user]!</B>", 1, "\red You hear someone fall", 2)
+	else
+		playsound(src.loc, 'Genhit.ogg', 50, 1, -1)
+		M.Stun(25)
+		M.Weaken(25)
+		for(var/mob/O in viewers(M))
+			if (O.client)	O.show_message("\red <B>[M] has been stunned with the Space Law by [user]!</B>", 1, "\red You hear someone fall", 2)

@@ -28,6 +28,28 @@
 	name = "extended-capacity emergency oxygen tank"
 	volume = 6
 
+/obj/item/weapon/tank/emergency_oxygen/gold
+	icon_state = "emergency_engi"
+	name = "golden emergency oxygen tank"
+	volume = 15
+
+	verb/rename_ballon()
+		set name = "Name Oxygen Tank"
+		set category = "Object"
+		set desc = "Click to rename your oxygen tank. If you're the assistant."
+
+		var/mob/M = usr
+		if(!M.mind)	return 0
+		if(!M.mind.assigned_role == "Assistant")
+			M << "\red You don't feel cool enough to name this gun, chump."
+			return 0
+
+		var/input = copytext(sanitize(input("What do you want to name the emergency oxygen tank?",,"")),1,MAX_NAME_LEN)
+
+		if(src && input && !M.stat && in_range(M,src))
+			name = input
+			M << "You name the emergency oxygen tank [input]. Say hello to your new friend."
+			return 1
 
 /obj/item/weapon/tank/emergency_oxygen/double
 	icon_state = "emergency_double"

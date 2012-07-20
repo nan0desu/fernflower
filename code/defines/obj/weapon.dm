@@ -40,6 +40,17 @@
 	origin_tech = "materials=4;magnets=3;syndicate=4"
 	var/active = 0
 
+/obj/item/weapon/shitcurity_space_law
+	name = "Space Law"
+	desc = "A set of Syndicate guidelines for keeping turmoil and death on their space stations."
+	icon_state = "bookSpaceLaw"
+	flags = FPRINT | TABLEPASS
+	slot_flags = SLOT_BELT
+	force = 10
+	throw_speed = 1
+	throw_range = 4
+	throwforce = 10
+	w_class = 1
 
 /obj/item/weapon/nullrod
 	name = "null rod"
@@ -94,7 +105,7 @@
 		user << "\blue You hit the floor with the [src]."
 		call(/obj/effect/rune/proc/revealrunes)(src)
 
-/*/obj/item/weapon/sord
+/obj/item/weapon/sord
 	name = "\improper SORD"
 	desc = "This thing is so unspeakably shitty you are having a hard time even holding it."
 	icon_state = "sord"
@@ -103,7 +114,7 @@
 	slot_flags = SLOT_BELT
 	force = 2
 	throwforce = 1
-	w_class = 3*/
+	w_class = 3
 
 /obj/item/weapon/claymore
 	name = "claymore"
@@ -377,7 +388,7 @@
 	name = "energy axe"
 	desc = "An energised battle axe."
 	icon_state = "axe0"
-	force = 40.0
+	force = 60.0
 	throwforce = 25.0
 	throw_speed = 1
 	throw_range = 5
@@ -458,7 +469,7 @@
 	icon_state = "soapnt"
 
 /obj/item/weapon/soap/deluxe
-	desc = "A deluxe Waffle Co. brand bar of soap." //What is this I don't even. "Smells of comdoms." --SkyMarshal
+	desc = "A deluxe Waffle Co. brand bar of soap. Smells of uranium." //What is this I don't even. "Smells of comdoms." --SkyMarshal
 	icon_state = "soapdeluxe"
 
 /obj/item/weapon/soap/syndie
@@ -703,6 +714,13 @@
 	icon_state = "silver"
 	item_state = "silver_id"
 
+/obj/item/weapon/card/id/throw
+	name = "identification card"
+	desc = "A throwning card which shows blood and traitorish."
+	icon_state = "silver"
+	item_state = "silver_id"
+	throwforce = 20
+
 /obj/item/weapon/card/id/gold
 	name = "identification card"
 	desc = "A golden card which shows authority."
@@ -711,7 +729,7 @@
 
 /obj/item/weapon/card/id/syndicate
 	name = "agent card"
-//	desc = "Shhhhh."
+	desc = "Shhhhh."
 	access = list(ACCESS_MAINT_TUNNELS)
 	origin_tech = "syndicate=3"
 
@@ -743,6 +761,38 @@
 		access = get_all_centcom_access()
 		..()
 
+/obj/item/weapon/card/id/fullacc
+	name = "full access's ID"
+	desc = "The ID of the Inspector himself."
+	icon_state = "gold"
+	item_state = "gold_id"
+	registered_name = "John Dow"
+	assignment = "Inspector"
+	New()
+		access = get_access("Captain")
+		..()
+
+/obj/item/weapon/card/id/fullacc2
+	name = "full access's ID"
+	desc = "The ID of the Inspector Bodyguard himself."
+	icon_state = "gold"
+	item_state = "gold_id"
+	registered_name = "Agent #1"
+	assignment = "Inspector Bodyguard"
+	New()
+		access = get_access("Captain")
+		..()
+
+/obj/item/weapon/card/id/fullacc3
+	name = "full access's ID"
+	desc = "The ID of the Inspector Medic himself."
+	icon_state = "gold"
+	item_state = "gold_id"
+	registered_name = "Agent #2"
+	assignment = "Inspector Medic"
+	New()
+		access = get_access("Captain")
+		..()
 
 /obj/item/weapon/clipboard
 	name = "clipboard"

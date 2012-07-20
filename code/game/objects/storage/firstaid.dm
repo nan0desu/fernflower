@@ -52,6 +52,21 @@
 	new /obj/item/weapon/reagent_containers/pill/antitox( src )
 	return
 
+/obj/item/weapon/storage/firstaid/death/New()
+	..()
+	if (empty) return
+
+	icon_state = pick("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
+
+	new /obj/item/weapon/reagent_containers/hypospray/ert( src )
+	new /obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate( src )
+	new /obj/item/weapon/reagent_containers/glass/bottle/chloralhydrate( src )
+	new /obj/item/weapon/reagent_containers/syringe( src )
+	new /obj/item/weapon/gun/syringe( src )
+	new /obj/item/weapon/reagent_containers/glass/bottle/LSD( src )
+	new /obj/item/weapon/reagent_containers/glass/bottle/zombiepowder( src )
+	return
+
 /obj/item/weapon/storage/firstaid/o2/New()
 	..()
 	if (empty) return

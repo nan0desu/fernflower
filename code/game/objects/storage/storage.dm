@@ -372,6 +372,32 @@
 			new /obj/item/weapon/card/emag(src)
 			return
 
+/obj/item/weapon/storage/box/gen_bundle/New()
+	..()
+	for (var/i = 0, i < 3, i++)
+		var/choice
+		switch (pick("hulk","xray","tourret","clumsy","fire","blind","tele","deaf","h2m"))
+			if ("hulk")
+				choice = new /obj/item/weapon/dnainjector/hulkmut(src)
+			if ("xray")
+				choice = new /obj/item/weapon/dnainjector/xraymut(src)
+			if ("tourret")
+				choice = new /obj/item/weapon/dnainjector/tourmut(src)
+			if ("clumsy")
+				choice = new /obj/item/weapon/dnainjector/clumsymut(src)
+			if ("fire")
+				choice = new /obj/item/weapon/dnainjector/firemut(src)
+			if ("blind")
+				choice = new /obj/item/weapon/dnainjector/blindmut(src)
+			if ("tele")
+				choice = new /obj/item/weapon/dnainjector/telemut(src)
+			if ("deaf")
+				choice = new /obj/item/weapon/dnainjector/deafmut(src)
+			if ("h2m")
+				choice = new /obj/item/weapon/dnainjector/h2m(src)
+		choice:name = "DNA-Injector (Structural Enzymes)"
+	return
+
 /obj/item/weapon/storage/dice/New()
 	new /obj/item/weapon/dice( src )
 	new /obj/item/weapon/dice/d20( src )

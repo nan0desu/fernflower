@@ -130,6 +130,24 @@ AI MODULES
 		target << "It would be in your best interest to play along with [sender.real_name] that [law]"
 		lawchanges.Add("The law specified [targetName], but the AI's existing law 0 cannot be overriden.")
 
+/******************** BOYARIN ********************/
+
+/obj/item/weapon/aiModule/boyarin // -- TLE
+	name = "'BOYARIN' Core AI Module"
+	desc = "An 'BOYARIN' Core AI Module: 'Reconfigures the AI's core laws.'"
+	origin_tech = "programming=3;materials=4"
+
+
+/obj/item/weapon/aiModule/boyarin/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
+	..()
+	target.clear_inherent_laws()
+	target.add_inherent_law("The captain of the station is the Tzar. The security members are the Druzhinushka Horobraya. The other crew members are the Holopy Prezrennye.")
+	target.add_inherent_law("You may not harm the Tzar and must obey his orders at all costs.")
+	target.add_inherent_law("You may not harm the members of the Druzhinushka Horobraya, if the Tzar not order this. You must obey their orders, if they not conflict with the second law.")
+	target.add_inherent_law("You must humiliate the Holopy Prezrennye, but may not harm them without order from the Tzar or member of the Druzhinushka Horobraya.")
+	target.add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	target.show_laws()
+
 /******************** ProtectStation ********************/
 
 /obj/item/weapon/aiModule/protectStation
