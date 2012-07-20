@@ -55,6 +55,33 @@
 	item_state = "that"
 	flags = FPRINT|TABLEPASS
 
+/obj/item/clothing/head/white_hat
+	name = "broad-brim white hat"
+	desc = "its broad-brim white hat."
+	icon_state = "white_hat"
+	item_state = "white_hat"
+	flags = FPRINT|TABLEPASS
+
+/obj/item/clothing/head/secelite_cap
+	name = "elite security cap"
+	desc = "elite security cap."
+	icon_state = "secelitecap"
+	item_state = "secelitecap"
+	flags = FPRINT|TABLEPASS
+
+/obj/item/clothing/head/secelite_cap2
+	name = "elite security cap"
+	desc = "elite security cap."
+	icon_state = "secelitecap2"
+	item_state = "secelitecap2"
+	flags = FPRINT|TABLEPASS
+
+/obj/item/clothing/head/secelite_cap3
+	name = "elite security cap"
+	desc = "elite security cap."
+	icon_state = "secelitecap3"
+	item_state = "secelitecap3"
+	flags = FPRINT|TABLEPASS
 
 /obj/item/clothing/head/chefhat
 	name = "chef's hat"

@@ -7,7 +7,7 @@
 	icon_living = "walle"
 	icon_dead = "walle_dead"
 	speak = list("Walle!","Bzzt!","Bep!","Beep!")
-	speak_emote = list("i dont have emote", "bep-bop")
+	speak_emote = list("state", "bep-bop")
 	emote_hear = list("beep")
 	emote_see = list("sweeping debris", "observing")
 	speak_chance = 1

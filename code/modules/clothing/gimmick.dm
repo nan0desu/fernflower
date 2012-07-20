@@ -529,10 +529,31 @@
 
 /obj/item/clothing/under/karlson
 	name = "Karlson suit"
-	desc = "Oldschool and silly suit."
+	desc = "what a funny man."
 	icon_state = "karlson"
 	item_state = "karlson"
 	color = "karlson"
+
+/obj/item/clothing/under/secelite
+	name = "Security elite jumpsuit"
+	desc = "Best of the best."
+	icon_state = "secelite"
+	item_state = "secelite"
+	color = "secelite"
+
+/obj/item/clothing/under/secelite2
+	name = "Security elite jumpsuit"
+	desc = "Best of the best."
+	icon_state = "secelite2"
+	item_state = "secelite2"
+	color = "secelite2"
+
+/obj/item/clothing/under/secelite3
+	name = "Security elite jumpsuit"
+	desc = "Best of the best."
+	icon_state = "secelite3"
+	item_state = "secelite3"
+	color = "secelite3"
 
 /obj/item/clothing/under/bluedress
 	name = "bluedress"
