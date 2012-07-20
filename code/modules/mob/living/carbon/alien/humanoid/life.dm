@@ -254,7 +254,9 @@
 
 		update_canmove()
 			if(paralysis || stunned || weakened || buckled) canmove = 0
-			else canmove = 1
+			else
+				lying = 0
+				canmove = 1
 
 		handle_breath(datum/gas_mixture/breath)
 			if(src.nodamage)
