@@ -609,12 +609,16 @@ proc/process_ghost_teleport_locs()
 	name = "Bar Maintenance"
 	icon_state = "fsmaint"
 
+/area/maintenance/fsmaint3
+	name = "Chapel Maintenance"
+	icon_state = "fsmaint"
+
 /area/maintenance/asmaint
-	name = "Library Maintenance"
+	name = "Medbay Maintenance"
 	icon_state = "asmaint"
 
 /area/maintenance/asmaint2
-	name = "Med-Sci Maintenance"
+	name = "Science Maintenance"
 	icon_state = "asmaint"
 
 /area/maintenance/apmaint
