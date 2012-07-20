@@ -75,6 +75,12 @@
 		return
 	usr << "That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	usr << desc
+	if ((usr != src) && istype(usr, /mob/living/carbon/human) && istype(src, /mob))
+		for(var/mob/O in viewers(usr, null))
+			if (O != src)
+				O.show_message("\red [usr] looks at the [src].", 1)
+			else
+				O.show_message("\red [usr] looks at you", 1)
 	// *****RM
 	//usr << "[name]: Dn:[density] dir:[dir] cont:[contents] icon:[icon] is:[icon_state] loc:[loc]"
 	return
