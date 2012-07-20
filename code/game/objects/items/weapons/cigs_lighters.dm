@@ -393,14 +393,14 @@ ZIPPO
 /obj/item/clothing/mask/elitepipe/
 	name = "elite smoking pipe"
 	desc = "A pipe, for smoking. Probably used by honorfull nobles in comfy chairs."
-	icon_state = "trubkaoff"
+	icon_state = "trubka"
 	throw_speed = 0.5
-	item_state = "trubkaoff"
+	item_state = "trubka"
 	w_class = 1
 	body_parts_covered = null
 	var/lit = 0
-	var/icon_on = "trubka"  //Note - these are in masks.dmi
-	var/icon_off = "trubkaoff"
+	var/icon_on = "trubka2"  //Note - these are in masks.dmi
+	var/icon_off = "trubka"
 	var/lastHolder = null
 	var/smoketime = 700
 	var/maxsmoketime = 700 //make sure this is equal to your smoketime
