@@ -43,6 +43,7 @@
 /obj/item/weapon/shitcurity_space_law
 	name = "Space Law"
 	desc = "A set of Syndicate guidelines for keeping turmoil and death on their space stations."
+	icon = 'library.dmi'
 	icon_state = "bookSpaceLaw"
 	flags = FPRINT | TABLEPASS
 	slot_flags = SLOT_BELT

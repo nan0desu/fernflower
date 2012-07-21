@@ -67,3 +67,25 @@
 	name = "emergency response team medical suit"
 	desc = "A suit worn by medical members of a NanoTrasen Emergency Response Team. Has white highlights. Armoured and space ready."
 	icon_state = "ert_medical"
+
+/obj/item/clothing/head/helmet/space/bodyguard
+	name = "inspector bodyguard helmet"
+	desc = "A helmet worn by members of the NanoTrasen Inspection Team. Armoured and space ready."
+	icon_state = "ert_commander"
+	item_state = "helm-command"
+	armor = list(melee = 90, bullet = 90, laser = 90,energy = 90, bomb = 90, bio = 100, rad = 90)
+
+/obj/item/clothing/suit/space/bodyguard
+	name = "inspector bodyguard suit"
+	desc = "A suit worn by members of the NanoTrasen Inspection Team. Armoured, space ready, and fire resistant."
+	icon_state = "ert_commander"
+	item_state = "suit-command"
+	w_class = 3
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/melee/energy/sword,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency_oxygen)
+	slowdown = -1
+	armor = list(melee = 90, bullet = 90, laser = 90,energy = 90, bomb = 90, bio = 100, rad = 90)
+	protective_temperature = 10000
+	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank, /obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/crowbar, \
+	/obj/item/weapon/screwdriver, /obj/item/weapon/weldingtool, /obj/item/weapon/wirecutters, /obj/item/weapon/wrench, /obj/item/device/multitool, \
+	/obj/item/device/radio, /obj/item/device/analyzer, /obj/item/weapon/gun/energy/laser, /obj/item/weapon/gun/energy/pulse_rifle, \
+	/obj/item/weapon/gun/energy/taser, /obj/item/weapon/melee/baton, /obj/item/weapon/gun/energy/gun)

@@ -69,6 +69,35 @@
 			crit_fail = 1
 			icon_state = "brokenpack"
 
+/obj/item/weapon/storage/backpack/holding/inspector/New()
+	..()
+	new /obj/item/weapon/melee/classic_baton(src)
+	new /obj/item/weapon/flashbang/clusterbang(src)
+	new /obj/item/weapon/reagent_containers/food/drinks/ambrosia(src)
+	new /obj/item/weapon/gun/projectile/mateba(src)
+	new /obj/item/weapon/melee/energy/axe(src)
+	new /obj/item/weapon/cloaking_device(src)
+	new /obj/item/weapon/storage/firstaid/death(src)
+
+/obj/item/weapon/storage/backpack/holding/agent1/New()
+	..()
+	new /obj/item/weapon/rcd(src)
+	new /obj/item/weapon/rcd_ammo(src)
+	new /obj/item/weapon/rcd_ammo(src)
+	new /obj/item/weapon/rcd_ammo(src)
+	new /obj/item/weapon/chem_grenade/metalfoam(src)
+	new /obj/item/weapon/syndie/c4explosive/heavy(src)
+	new /obj/item/weapon/syndie/c4detonator(src)
+
+/obj/item/weapon/storage/backpack/holding/agent2/New()
+	..()
+	new /obj/item/weapon/reagent_containers/food/drinks/ambrosia(src)
+	new /obj/item/weapon/storage/firstaid/fire(src)
+	new /obj/item/weapon/storage/firstaid/toxin(src)
+	new /obj/item/weapon/storage/firstaid/adv(src)
+	new /obj/item/weapon/storage/emp_kit(src)
+	new /obj/item/weapon/storage/flashbang_kit(src)
+	new /obj/item/weapon/storage/handcuff_kit(src)
 
 /obj/item/weapon/storage/backpack/santabag
 	name = "Santa's Gift Bag"

@@ -580,6 +580,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		"blue wizard",
 		"red wizard",
 		"marisa wizard",
+		"inspector",
+		"agent 1",
+		"agent 2",
 		)
 	var/dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in dresspacks
 	if (isnull(dresscode))
@@ -885,6 +888,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M.equip_if_possible(new /obj/item/weapon/staff(M), M.slot_l_hand)
 			M.equip_if_possible(new /obj/item/weapon/storage/backpack(M), M.slot_back)
 			M.equip_if_possible(new /obj/item/weapon/storage/box(M), M.slot_in_backpack)
+
 		if("soviet admiral")
 			M.equip_if_possible(new /obj/item/clothing/head/hgpiratecap(M), M.slot_head)
 			M.equip_if_possible(new /obj/item/clothing/shoes/combat(M), M.slot_shoes)
@@ -901,6 +905,75 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			W.access = get_all_accesses()
 			W.access += get_all_centcom_access()
 			W.assignment = "Admiral"
+			W.registered_name = M.real_name
+			M.equip_if_possible(W, M.slot_wear_id)
+
+		if("inspector")
+			M.equip_if_possible(new /obj/item/clothing/under/syndicate/combat(M), M.slot_w_uniform)
+			M.equip_if_possible(new /obj/item/clothing/suit/space/space_inspector(M), M.slot_wear_suit)
+			M.equip_if_possible(new /obj/item/clothing/shoes/combat(M), M.slot_shoes)
+			M.equip_if_possible(new /obj/item/clothing/gloves/combat(M), M.slot_gloves)
+			M.equip_if_possible(new /obj/item/device/radio/headset/heads/captain(M), M.slot_ears)
+			M.equip_if_possible(new /obj/item/clothing/glasses/senglasses(M), M.slot_glasses)
+			M.equip_if_possible(new /obj/item/clothing/mask/gas/plaguedoctor(M), M.slot_wear_mask)
+			M.equip_if_possible(new /obj/item/clothing/head/helmet/inspector(M), M.slot_head)
+			M.equip_if_possible(new /obj/item/weapon/storage/belt/security/fvll(M), M.slot_belt)
+			M.equip_if_possible(new /obj/item/weapon/pepperspray/elited(M), M.slot_r_store)
+			M.equip_if_possible(new /obj/item/weapon/flashbang/clusterbang(M), M.slot_l_store)
+			M.equip_if_possible(new /obj/item/weapon/storage/backpack/holding/inspector(M), M.slot_back)
+
+			var/obj/item/weapon/card/id/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.icon_state = "centcom"
+			W.access = get_all_accesses()
+			W.access += get_all_centcom_access()
+			W.assignment = "Inspector"
+			W.registered_name = M.real_name
+			M.equip_if_possible(W, M.slot_wear_id)
+
+		if("agent 1")
+			M.equip_if_possible(new /obj/item/clothing/under/syndicate/combat(M), M.slot_w_uniform)
+			M.equip_if_possible(new /obj/item/clothing/suit/space/bodyguard(M), M.slot_wear_suit)
+			M.equip_if_possible(new /obj/item/clothing/shoes/combat(M), M.slot_shoes)
+			M.equip_if_possible(new /obj/item/clothing/gloves/combat(M), M.slot_gloves)
+			M.equip_if_possible(new /obj/item/device/radio/headset/heads/captain(M), M.slot_ears)
+			M.equip_if_possible(new /obj/item/clothing/glasses/senglasses(M), M.slot_glasses)
+			M.equip_if_possible(new /obj/item/clothing/mask/gas/swat(M), M.slot_wear_mask)
+			M.equip_if_possible(new /obj/item/clothing/head/helmet/space/bodyguard(M), M.slot_head)
+			M.equip_if_possible(new /obj/item/weapon/storage/belt/utility/fvll(M), M.slot_belt)
+			M.equip_if_possible(new /obj/item/weapon/pepperspray/elited(M), M.slot_r_store)
+			M.equip_if_possible(new /obj/item/weapon/flashbang/clusterbang(M), M.slot_l_store)
+			M.equip_if_possible(new /obj/item/weapon/storage/backpack/holding/agent1(M), M.slot_back)
+
+			var/obj/item/weapon/card/id/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.icon_state = "centcom"
+			W.access = get_all_accesses()
+			W.access += get_all_centcom_access()
+			W.assignment = "Inspection Bodyguard"
+			W.registered_name = M.real_name
+			M.equip_if_possible(W, M.slot_wear_id)
+
+		if("agent 2")
+			M.equip_if_possible(new /obj/item/clothing/under/syndicate/combat(M), M.slot_w_uniform)
+			M.equip_if_possible(new /obj/item/clothing/suit/space/bodyguard(M), M.slot_wear_suit)
+			M.equip_if_possible(new /obj/item/clothing/shoes/combat(M), M.slot_shoes)
+			M.equip_if_possible(new /obj/item/clothing/gloves/combat(M), M.slot_gloves)
+			M.equip_if_possible(new /obj/item/device/radio/headset/heads/captain(M), M.slot_ears)
+			M.equip_if_possible(new /obj/item/clothing/glasses/senglasses(M), M.slot_glasses)
+			M.equip_if_possible(new /obj/item/clothing/mask/gas/swat(M), M.slot_wear_mask)
+			M.equip_if_possible(new /obj/item/clothing/head/helmet/space/bodyguard(M), M.slot_head)
+			M.equip_if_possible(new /obj/item/weapon/storage/belt/security/fvll(M), M.slot_belt)
+			M.equip_if_possible(new /obj/item/weapon/pepperspray/elited(M), M.slot_r_store)
+			M.equip_if_possible(new /obj/item/weapon/flashbang/clusterbang(M), M.slot_l_store)
+			M.equip_if_possible(new /obj/item/weapon/storage/backpack/holding/agent2(M), M.slot_back)
+
+			var/obj/item/weapon/card/id/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.icon_state = "centcom"
+			W.access = get_all_accesses()
+			W.access += get_all_centcom_access()
+			W.assignment = "Inspection Bodyguard"
 			W.registered_name = M.real_name
 			M.equip_if_possible(W, M.slot_wear_id)
 

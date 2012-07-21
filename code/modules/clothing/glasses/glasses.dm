@@ -89,10 +89,8 @@
 /obj/item/clothing/glasses/thermal
 	name = "sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes. Has an odd tint."
-	//icon_state = "thermal"
-	//item_state = "glasses"
-	icon_state = "sun"
-	item_state = "sunglasses"
+	icon_state = "thermal"
+	item_state = "glasses"
 	origin_tech = "magnets=3;syndicate=4"
 	vision_flags = SEE_MOBS
 	invisa_view = 2
@@ -115,3 +113,14 @@
 	desc = "A set of implantable lenses designed to augment your vision."
 	icon_state = "thermalimplants"
 	item_state = "syringe_kit"
+
+/obj/item/clothing/glasses/senglasses
+	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
+	name = "sunglasses"
+	icon_state = "sun"
+	item_state = "sunglasses"
+	vision_flags = SEE_MOBS
+	protective_temperature = 1300
+
+	prescription
+		prescription = 1

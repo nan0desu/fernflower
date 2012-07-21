@@ -55,6 +55,7 @@
 		"/obj/item/weapon/cable_coil",
 		"/obj/item/device/t_scanner",
 		"/obj/item/device/analyzer",
+		"/obj/item/weapon/gun/energy/pulse_rifle/M1911",
 		"/obj/item/device/pda")
 
 
@@ -67,6 +68,14 @@
 	new /obj/item/weapon/wirecutters(src)
 	new /obj/item/weapon/cable_coil(src,30,pick("red","yellow","orange"))
 
+/obj/item/weapon/storage/belt/utility/fvll/New()
+	..()
+	new /obj/item/weapon/screwdriver(src)
+	new /obj/item/weapon/wrench(src)
+	new /obj/item/weapon/weldingtool(src)
+	new /obj/item/weapon/crowbar(src)
+	new /obj/item/weapon/wirecutters(src)
+	new /obj/item/weapon/gun/energy/pulse_rifle/M1911(src)
 
 /obj/item/weapon/storage/belt/utility/atmostech/New()
 	..()
@@ -86,6 +95,14 @@
 	new /obj/item/weapon/handcuffs(src)
 	new /obj/item/weapon/handcuffs(src)
 
+/obj/item/weapon/storage/belt/security/fvll/New()
+	..()
+	new /obj/item/weapon/melee/baton(src)
+	new /obj/item/weapon/gun/energy/pulse_rifle/M1911(src)
+	new /obj/item/weapon/flashbang(src)
+	new /obj/item/weapon/handcuffs(src)
+	new /obj/item/weapon/handcuffs(src)
+	new /obj/item/weapon/handcuffs(src)
 
 /obj/item/weapon/storage/belt/medical
 	name = "medical belt"
@@ -144,6 +161,7 @@
 		"/obj/item/weapon/zippo",
 		"/obj/item/device/taperecorder",
 		"/obj/item/weapon/evidencebag",
+		"/obj/item/weapon/gun/energy/pulse_rifle/M1911",
 		"/obj/item/taperoll/police"
 		)
 

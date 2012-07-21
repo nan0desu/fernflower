@@ -2894,7 +2894,8 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 /obj/item/weapon/reagent_containers/food/drinks/ambrosia
 	name = "Ambrosia Bottle"
 	desc = "Contains the liquid essence of gods."
-	icon_state = "atoxinbottle"
+	icon = 'drinks.dmi'
+	icon_state = "holyflask"
 	New()
 		..()
 		reagents.add_reagent("adminordrazine", 30)

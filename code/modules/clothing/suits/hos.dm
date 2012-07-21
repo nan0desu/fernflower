@@ -28,3 +28,11 @@
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 	flags_inv = 0
+
+/obj/item/clothing/head/helmet/inspector
+	name = "inspector's hat"
+	desc = "The hat of the Inspector. For showing the everyone who's in charge."
+	icon_state = "hoscap"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	armor = list(melee = 99, bullet = 99, laser = 99, energy = 99, bomb = 99, bio = 99, rad = 99)
+	flags_inv = HIDEEARS
