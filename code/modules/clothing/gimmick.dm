@@ -106,6 +106,13 @@
 	item_state = "johnny_open"
 	flags = FPRINT | TABLEPASS
 
+/obj/item/clothing/suit/darkpurplecoat
+	name = "dark purple coat"
+	desc = "for not sirious man"
+	icon_state = "darkpurplecoat"
+	item_state = "darkpurplecoat"
+	flags = FPRINT | TABLEPASS
+
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
 	desc = "A worn out, curiously comfortable t-shirt with a picture of Ian. You wouldn't go so far as to say it feels like being hugged when you wear it but it's pretty close. Good for sleeping in."
@@ -568,6 +575,13 @@
 	icon_state = "smoking"
 	item_state = "smoking"
 	color = "smoking"
+
+/obj/item/clothing/under/joker
+	name = "green vest"
+	desc = "For not sirious man."
+	icon_state = "jokervest"
+	item_state = "jokervest"
+	color = "jokervest"
 
 /obj/item/clothing/under/whitedress
 	name = "whitedress"
