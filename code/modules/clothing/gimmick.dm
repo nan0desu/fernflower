@@ -564,7 +564,7 @@
 
 /obj/item/clothing/under/smoking
 	name = "smoking"
-	desc = "For sirious man."
+	desc = "For serious man."
 	icon_state = "smoking"
 	item_state = "smoking"
 	color = "smoking"

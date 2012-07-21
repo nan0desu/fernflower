@@ -92,7 +92,6 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("wall machine frame", /obj/machinery/constructable_frame/wallmount_frame, 2, one_per_turf = 1, on_floor = 1), \
 	null, \
 	new/datum/stack_recipe("apc frame", /obj/item/apc_frame, 2), \
-	new/datum/stack_recipe("air alarm frame", /obj/item/air_alarm_frame, 2), \
 	new/datum/stack_recipe("tube light frame", /obj/structure/light_frame), \
 	new/datum/stack_recipe("small light frame", /obj/structure/light_frame/small), \
 	new/datum/stack_recipe("table lamp frame", /obj/structure/light_frame/lamp), \
