@@ -944,6 +944,11 @@
 
 	// Delete all items from the overlay lists
 	clothing_overlays.Cut()
+	var/g = "male"
+	if(src.gender == "female")
+		g = 1
+	else
+		g = 0
 
 	// Uniform
 	if(w_uniform)
@@ -953,7 +958,7 @@
 			var/t1 = w_uniform.color
 			if (!t1)
 				t1 = icon_state
-			clothing_overlays += image("icon" = 'uniform.dmi', "icon_state" = text("[][]",t1, (!(lying) ? "_s" : "_l")), "layer" = UNIFORM_LAYER)
+			clothing_overlays += image("icon" = ((g) ? 'uniform_f.dmi':'uniform.dmi'), "icon_state" = text("[][]",t1, (!(lying) ? "_s" : "_l")), "layer" = UNIFORM_LAYER)
 			if (w_uniform.blood_DNA)
 				var/icon/stain_icon = icon('blood.dmi', "uniformblood[!lying ? "" : "2"]")
 				clothing_overlays += image("icon" = stain_icon, "layer" = B_UNIFORM_LAYER)
@@ -974,7 +979,7 @@
 			var/t1 = gloves.item_state
 			if (!t1)
 				t1 = gloves.icon_state
-			var/icon/gloves_icon = new /icon("icon" = 'hands.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
+			var/icon/gloves_icon = new /icon("icon" = ((g) ? 'hands_f.dmi':'hands.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
 			if(lo.status & DESTROYED)
 				gloves_icon.Blend(new /icon('limb_mask.dmi', "right_[lying?"l":"s"]"), ICON_MULTIPLY)
 			if(ro.status & DESTROYED)
@@ -998,22 +1003,22 @@
 	// Glasses
 	if (glasses)
 		var/t1 = glasses.icon_state
-		clothing_overlays += image("icon" = 'eyes.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = GLASSES_LAYER)
+		clothing_overlays += image("icon" = ((g) ? 'eyes_f.dmi' :'eyes.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = GLASSES_LAYER)
 
 	// Ears
 	if (l_ear)
 		var/t1 = l_ear.icon_state
-		clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = EARS_LAYER)
+		clothing_overlays += image("icon" = ((g) ? 'ears_f.dmi' :'ears.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = EARS_LAYER)
 	if (r_ear)
 		var/t1 = r_ear.icon_state
-		clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = EARS_LAYER)
+		clothing_overlays += image("icon" = ((g) ? 'ears_f.dmi' :'ears.dmi'),, "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = EARS_LAYER)
 
 	// Shoes
 	lo = organs["l_foot"]
 	ro = organs["r_foot"]
 	if (!(lo.status & DESTROYED && ro.status & DESTROYED) && shoes)
 		var/t1 = shoes.icon_state
-		var/icon/shoes_icon = new /icon("icon" = 'feet.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
+		var/icon/shoes_icon = new /icon("icon" = ((g) ? 'feet_f.dmi':'feet.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
 		if(lo.status & DESTROYED && !lying)
 			shoes_icon.Blend(new /icon('limb_mask.dmi', "right[lying?"_l":""]"), ICON_MULTIPLY)
 		else if(ro.status & DESTROYED && !lying)
@@ -1067,7 +1072,7 @@
 		var/t1 = belt.item_state
 		if (!t1)
 			t1 = belt.icon_state
-		clothing_overlays += image("icon" = 'belt.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = BELT_LAYER)
+		clothing_overlays += image("icon" = ((g) ? 'belt_f.dmi' : 'belt.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = BELT_LAYER)
 		belt.screen_loc = ui_belt
 
 
@@ -1084,7 +1089,7 @@
 
 	if (back)
 		var/t1 = back.icon_state
-		clothing_overlays += image("icon" = 'back.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = BACK_LAYER)
+		clothing_overlays += image("icon" = ((g) ? 'back_f.dmi' :'back.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = BACK_LAYER)
 		back.screen_loc = ui_back
 
 	if(client)
@@ -1095,7 +1100,7 @@
 		pulling = null
 		var/h1 = handcuffed.icon_state
 		if (!lying)
-			clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[h1]1", "layer" = CUFFED_LAYER)
+			clothing_overlays += image("icon" = ((g) ? 'mob_f.dmi' :'mob.dmi'), "icon_state" = "[h1]1", "layer" = CUFFED_LAYER)
 		else
 			clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[h1]2", "layer" = CUFFED_LAYER)
 
@@ -1131,7 +1136,7 @@
 		if (wear_suit)
 			if (istype(wear_suit, /obj/item/clothing/suit))
 				var/t1 = wear_suit.icon_state
-				clothing_overlays += image("icon" = 'suit.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = SUIT_LAYER)
+				clothing_overlays += image("icon" = ((g) ? 'suit_f.dmi' :'suit.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = SUIT_LAYER)
 				if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
 					if (handcuffed)
 						handcuffed.loc = loc
@@ -1422,10 +1427,10 @@
 			&& !istype(part, /datum/organ/external/chest) \
 			&& !istype(part, /datum/organ/external/head) \
 			&& !(part.status & DESTROYED))
-			var/icon/temp = new /icon('human.dmi', "[part.icon_name]_s")
+			var/icon/temp = new /icon('human.dmi', "[part.icon_name]_[g]_s")
 			if(part.status & ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			stand_icon.Blend(temp, ICON_OVERLAY)
-			temp = new /icon('human.dmi', "[part.icon_name]_l")
+			temp = new /icon('human.dmi', "[part.icon_name]_[g]_l")
 			if(part.status & ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			lying_icon.Blend(temp , ICON_OVERLAY)
 
