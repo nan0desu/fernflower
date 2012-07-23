@@ -1000,7 +1000,7 @@
 	// Glasses
 		if (glasses)
 			var/t1 = glasses.icon_state
-			clothing_overlays += image("icon" = ((g) ? 'eyes_f.dmi' :'eyes.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = GLASSES_LAYER)
+			clothing_overlays += image("icon" = 'eyes_f.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = GLASSES_LAYER)
 
 	// Ears
 		if (l_ear)
@@ -1127,8 +1127,8 @@
 
 		if (wear_suit)
 			if (istype(wear_suit, /obj/item/clothing/suit))
-			var/t1 = wear_suit.icon_state
-			clothing_overlays += image("icon" = 'suit_f.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = SUIT_LAYER)
+				var/t1 = wear_suit.icon_state
+				clothing_overlays += image("icon" = 'suit_f.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = SUIT_LAYER)
 			if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
 				if (handcuffed)
 					handcuffed.loc = loc
@@ -1265,7 +1265,7 @@
 		ro = organs["r_foot"]
 		if (!(lo.status & DESTROYED && ro.status & DESTROYED) && shoes)
 			var/t1 = shoes.icon_state
-			var/icon/shoes_icon = new /icon("icon" = ((g) ? 'feet_f.dmi':'feet.dmi'), "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
+			var/icon/shoes_icon = new /icon("icon" = 'feet.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
 			if(lo.status & DESTROYED && !lying)
 				shoes_icon.Blend(new /icon('limb_mask.dmi', "right[lying?"_l":""]"), ICON_MULTIPLY)
 			else if(ro.status & DESTROYED && !lying)
@@ -1358,7 +1358,7 @@
 				if (!lying)
 					clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[o]_splint", "layer" = CUFFED_LAYER)
 				else
-				clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[o]_splint2", "layer" = CUFFED_LAYER)
+					clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[o]_splint2", "layer" = CUFFED_LAYER)
 
 		if (r_hand)
 			clothing_overlays += image("icon" = 'items_righthand.dmi', "icon_state" = r_hand.item_state ? r_hand.item_state : r_hand.icon_state, "layer" = INHANDS_LAYER)
