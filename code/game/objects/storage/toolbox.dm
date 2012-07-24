@@ -4,6 +4,8 @@
 	new /obj/item/weapon/extinguisher/mini(src)
 	if(prob(50))
 		new /obj/item/device/flashlight(src)
+		if(prob(75))
+			new /obj/item/weapon/battery(src)
 	new /obj/item/device/radio(src)
 
 /obj/item/weapon/storage/toolbox/mechanical/New()

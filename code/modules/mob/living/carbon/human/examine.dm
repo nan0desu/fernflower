@@ -14,6 +14,7 @@
 	var/skipears = 0
 	var/skipeyes = 0
 
+
 	//exosuits and helmets obscure our view and stuff.
 	if (src.wear_suit)
 		skipgloves = src.wear_suit.flags_inv & HIDEGLOVES
@@ -427,3 +428,13 @@
 
 	msg += "\blue *---------*"
 	usr << msg
+
+	if (usr != src && istype(src, /mob/living))
+		for(var/mob/O in viewers(usr, null))
+			if (istype(O, usr))
+				break
+			if (O != src)
+				O.show_message("<b>[usr]</b> looks at the <b>[src]</b>.", 1)
+			else
+				O.show_message("<b>[usr]</b> looks at <b>you</b>", 1)
+	usr << "<b>You</b> looks on <b>[src]</b>"

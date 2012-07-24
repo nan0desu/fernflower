@@ -12,6 +12,45 @@
 	var/brightness_on = 4 //luminosity when on
 	var/icon_on = "flight1"
 	var/icon_off = "flight0"
+	var/cell
+
+	proc/Lighting()
+		update_brightness(src.loc)
+		if(cell:charge <= 0)
+			usr << "Battery is out."
+			on = 0
+			update_brightness(src.loc)
+			return
+		spawn()
+			while(src)
+				cell:charge -= 50
+				if(cell:charge <= 0)
+					on = !on
+					update_brightness(src.loc)
+					return
+				if(!on)
+					return
+				sleep(50)
+
+/obj/item/device/flashlight/attackby(var/obj/item/weapon/battery/B, var/mob/user)
+	if(cell)
+		user << "Battery already inserted"
+	else
+		src.cell =  B
+		user.drop_item()
+		B.loc = src
+		user << "You insert battery"
+	return
+
+/obj/item/device/flashlight/verb/remove_battery()
+	if(cell)
+		if(on)
+			usr << "Switch off the light first"
+		else
+			var/obj/item/weapon/battery/B = src.cell
+			B.loc = src.loc.loc
+			src.cell = null
+	return
 
 /obj/item/device/flashlight/initialize()
 	..()
@@ -22,27 +61,51 @@
 		icon_state = icon_off
 		src.ul_SetLuminosity(0)
 
-/obj/item/device/flashlight/proc/update_brightness(var/mob/user = null)
-	if (on)
+/obj/item/device/flashlight/proc/update_brightness(var/mob/user)
+	if (isturf(src.loc))
+		if(on)
+			icon_state = icon_on
+			ul_SetLuminosity(brightness_on, brightness_on, 0)
+		else
+			icon_state = icon_off
+			ul_SetLuminosity(0)
+	else if (user)
+		if(src.loc == user)
+			if(on)
+				icon_state = icon_on
+				user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+			else
+				icon_state = icon_off
+				user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+			////////////////////////
+/*	if (on)
 		icon_state = icon_on
 		if(src.loc == user)
-			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+		user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			ul_SetLuminosity(brightness_on, brightness_on, 0)
 
 	else
 		icon_state = icon_off
 		if(src.loc == user)
-			user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+		user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			ul_SetLuminosity(0)
+*/
 
 /obj/item/device/flashlight/attack_self(mob/user)
 //	if(!isturf(user.loc))
 //		user << "You cannot turn the light on while in this [user.loc]" //To prevent some lighting anomalities.
 //		return
-	on = !on
-	update_brightness(user)
+	if(!on)
+		if(cell)
+			on = !on
+			Lighting()
+		else
+			user << "No power."
+	else
+		on = !on
+		update_brightness(src.loc)
 	return
 
 
@@ -89,7 +152,7 @@
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
 		user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
-		src.ul_SetLuminosity(brightness_on)
+		src.ul_SetLuminosity(src.LuminosityRed + brightness_on, src.LuminosityGreen + brightness_on, src.LuminosityBlue)
 
 
 /obj/item/device/flashlight/pen

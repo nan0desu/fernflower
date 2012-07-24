@@ -89,7 +89,8 @@
 	handle_mutations_and_radiation()
 
 	//Chemicals in the body
-	handle_chemicals_in_body()
+	if(slowed_metabolism && prob(50))
+		handle_chemicals_in_body()
 
 	//stuff in the stomach
 	handle_stomach()
@@ -934,17 +935,21 @@
 							if(E.status & SPLINTED && prob(10))
 								drop_item()
 								emote("scream")
+								call_sound_emote("scream")
 							else
 								drop_item()
 								emote("scream")
+								call_sound_emote("scream")
 					else if(E.name == "r_hand" || E.name == "r_arm")
 						if(!hand && equipped())
 							if(E.status & SPLINTED && prob(10))
 								drop_item()
 								emote("scream")
+								call_sound_emote("scream")
 							else
 								drop_item()
 								emote("scream")
+								call_sound_emote("scream")
 					else if(E.name == "l_leg" || E.name == "l_foot" \
 						|| E.name == "r_leg" || E.name == "r_foot" && !lying)
 						if(!E.status & SPLINTED)
@@ -952,6 +957,7 @@
 			// can't stand
 			if(leg_tally == 0 && !paralysis && !(lying || resting))
 				emote("scream")
+				call_sound_emote("scream")
 				emote("collapse")
 				paralysis = 10
 
@@ -1091,6 +1097,7 @@
 			if(head && !head.disfigured)
 				if(head.brute_dam >= 45 || head.burn_dam >= 45)
 					emote("scream")
+					call_sound_emote("scream")
 					disfigure_face()
 					face_op_stage = 0.0
 
