@@ -170,11 +170,6 @@
 		new /obj/item/weapon/circuitboard/status_display(src)
 		new /obj/item/weapon/circuitboard/status_display(src)
 		new /obj/item/weapon/circuitboard/status_display(src)
-		new /obj/item/weapon/circuitboard/alarm(src)
-		new /obj/item/weapon/circuitboard/alarm(src)
-		new /obj/item/weapon/circuitboard/alarm(src)
-		new /obj/item/weapon/circuitboard/alarm(src)
-		new /obj/item/weapon/circuitboard/alarm(src)
 		new /obj/item/weapon/circuitboard/firealarm(src)
 		new /obj/item/weapon/circuitboard/firealarm(src)
 		new /obj/item/weapon/circuitboard/firealarm(src)
@@ -197,6 +192,11 @@
 		new /obj/item/weapon/stock_parts/capacitor(src)
 		new /obj/item/weapon/stock_parts/capacitor(src)
 		new /obj/item/weapon/stock_parts/capacitor(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
+		new /obj/item/weapon/circuitboard/alarm(src)
 
 /obj/structure/closet/crate/hydroponics/prespawned
 	//This exists so the prespawned hydro crates spawn with their contents.
