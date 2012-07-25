@@ -150,6 +150,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 					/obj/item/weapon/aiModule/boyarin:4:B.O.Y.A.R.I.N. AI Module;"}
 			items = dd_replacetext(all_items, "\n", "")	// Getting the text string of items
 
+
 		else
 			items = dd_replacetext(item_data)
 		ItemList = dd_text2list(src.items, ";")	// Parsing the items text string
