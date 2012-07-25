@@ -1530,7 +1530,7 @@
 
 		stench()
 			for(var/mob/living/carbon/human/H in viewers(usr, null))
-				if (istype(src, /mob/living) && !istype(H.wear_mask, /obj/item/clothing/mask/gas) && prob(50))
+				if (internal || istype(src, /mob/living) && !istype(H.wear_mask, /obj/item/clothing/mask/gas) && prob(50))
 					H.show_message("<b>You</b> feel a bad smell, coming from [src]")
 
 	handle_shock()

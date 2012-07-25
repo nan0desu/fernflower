@@ -1294,5 +1294,5 @@
 #include "code\ZAS\Variable Settings.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
-#include "maps\tgstation.2.0.8(stable).dmm"
+#include "maps\tgstation.2.08 (test).dmm"
 // END_INCLUDE
