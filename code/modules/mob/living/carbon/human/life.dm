@@ -42,6 +42,8 @@
 		if(!lying && !buckled)
 			lying = 1
 			update_clothing()
+		if(prob (2) && timeofdeath >= 500)
+			stench()
 		return
 
 	life_tick++
@@ -91,8 +93,9 @@
 	//Chemicals in the body
 	if(slowed_metabolism)
 		if(prob(50))
+			handle_chemicals_in_body()
 	else
-	handle_chemicals_in_body()
+		handle_chemicals_in_body()
 
 
 	//stuff in the stomach
@@ -938,21 +941,17 @@
 							if(E.status & SPLINTED && prob(10))
 								drop_item()
 								emote("scream")
-								call_sound_emote("scream")
 							else
 								drop_item()
 								emote("scream")
-								call_sound_emote("scream")
 					else if(E.name == "r_hand" || E.name == "r_arm")
 						if(!hand && equipped())
 							if(E.status & SPLINTED && prob(10))
 								drop_item()
 								emote("scream")
-								call_sound_emote("scream")
 							else
 								drop_item()
 								emote("scream")
-								call_sound_emote("scream")
 					else if(E.name == "l_leg" || E.name == "l_foot" \
 						|| E.name == "r_leg" || E.name == "r_foot" && !lying)
 						if(!E.status & SPLINTED)
@@ -960,7 +959,6 @@
 			// can't stand
 			if(leg_tally == 0 && !paralysis && !(lying || resting))
 				emote("scream")
-				call_sound_emote("scream")
 				emote("collapse")
 				paralysis = 10
 
@@ -1100,7 +1098,6 @@
 			if(head && !head.disfigured)
 				if(head.brute_dam >= 45 || head.burn_dam >= 45)
 					emote("scream")
-					call_sound_emote("scream")
 					disfigure_face()
 					face_op_stage = 0.0
 
@@ -1530,6 +1527,11 @@
 					changeling.chem_charges = between(0, ((max((0.9 - (changeling.chem_charges / 50)), 0.1)*changeling.chem_recharge_multiplier) + changeling.chem_charges), changeling.chem_storage)
 					if ((changeling.geneticdamage > 0))
 						changeling.geneticdamage = changeling.geneticdamage-1
+
+		stench()
+			for(var/mob/living/carbon/human/H in viewers(usr, null))
+				if (istype(src, /mob/living) && !istype(H.wear_mask, /obj/item/clothing/mask/gas) && prob(50))
+					H.show_message("<b>You</b> feel a bad smell, coming from [src]")
 
 	handle_shock()
 		..()
