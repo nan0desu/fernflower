@@ -89,8 +89,11 @@
 	handle_mutations_and_radiation()
 
 	//Chemicals in the body
-	if(slowed_metabolism && prob(50))
-		handle_chemicals_in_body()
+	if(slowed_metabolism)
+		if(prob(50))
+	else
+	handle_chemicals_in_body()
+
 
 	//stuff in the stomach
 	handle_stomach()
