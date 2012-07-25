@@ -200,6 +200,20 @@
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
 	charge_type = "medical"
 
+/obj/machinery/vending/wallmed1/emergency
+	name = "Emergency NanoMed"
+	desc = "Wall-mounted Medical Equipment dispenser."
+	icon_state = "wallmed"
+	icon_deny = "wallmed-deny"
+	req_access_txt = "0"
+	product_paths = "/obj/item/weapon/reagent_containers/pill/dexalin;/obj/item/stack/medical/advanced/bruise_pack;/obj/item/stack/medical/advanced/ointment;/obj/item/weapon/reagent_containers/syringe/inaprovaline;/obj/item/device/healthanalyzer"
+	product_amounts = "4,4;4;3;2"
+//	product_prices = "1;1;2;2"
+//	points = 5
+	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
+	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?"
+	charge_type = "medical"
+
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
 	desc = "Wall-mounted Medical Equipment dispenser."
