@@ -522,12 +522,12 @@
 	containername = "Glass sheets crate"
 	group = "Engineering"
 
-/datum/supply_packs/glass50
+/datum/supply_packs/energy
 	name = "Energy Equipment pack"
 	contains = list("/obj/item/battery_box",
-						"/obj/item/battery_box",
-						"/obj/item/weapon/cell/fully_charged",
-						"/obj/item/weapon/cell/fully_charged")
+					"/obj/item/battery_box",
+					"/obj/item/weapon/cell/fully_charged",
+					"/obj/item/weapon/cell/fully_charged")
 	cost = 20
 	containertype = "/obj/structure/closet/crate"
 	containername = "Energy Equipments crate"
