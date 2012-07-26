@@ -1011,7 +1011,7 @@
 				clothing_overlays += image("icon" = 'ears_f.dmi', "icon_state" = l_ear.icon_state, "layer" = EARS_LAYER)
 			if (r_ear)
 			//	var/t1 = r_ear.icon_state
-				clothing_overlays += image("icon" = 'ears_f.dmi',, "icon_state" = r_ear.icon_state, "layer" = EARS_LAYER)
+				clothing_overlays += image("icon" = 'ears_f.dmi', "icon_state" = r_ear.icon_state, "layer" = EARS_LAYER)
 
 	// Shoes
 			lo = organs["l_foot"]
@@ -1505,7 +1505,7 @@
 				clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = l_ear.icon_state, "layer" = EARS_LAYER)
 			if (r_ear)
 			//	var/t1 = r_ear.icon_state
-				clothing_overlays += image("icon" = 'ears.dmi',, "icon_state" = r_ear.icon_state, "layer" = EARS_LAYER)
+				clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = r_ear.icon_state, "layer" = EARS_LAYER)
 
 	// Shoes
 			lo = organs["l_foot"]
