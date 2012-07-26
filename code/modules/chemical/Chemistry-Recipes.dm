@@ -1445,3 +1445,10 @@ datum
 			required_reagents = list("nothing" = 1, "gin" = 1)
 			result_amount = 2
 
+
+		metabolic
+			name = "Metabolic"
+			id = "metabolic"
+			result = "metabolic"
+			required_reagents = list("leporazine" = 1, "lithium" = 1, "oxygen" = 1)
+			result_amount = 2

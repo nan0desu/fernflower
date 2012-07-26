@@ -366,20 +366,6 @@ datum
 				..()
 				return
 
-		minttoxin
-			name = "Mint Toxin"
-			id = "minttoxin"
-			description = "Useful for dealing with undesirable customers."
-			reagent_state = LIQUID
-			color = "#CF3600" // rgb: 207, 54, 0
-
-			on_mob_life(var/mob/living/M as mob)
-				if(!M) M = holder.my_atom
-				if (FAT in M.mutations)
-					M.gib()
-				..()
-				return
-
 		stoxin
 			name = "Sleep Toxin"
 			id = "stoxin"
@@ -929,6 +915,9 @@ datum
 					T.overlays = null
 					T.overlays = image('effects.dmi',icon_state = "thermite")
 				return
+
+
+
 
 
 
@@ -3717,4 +3706,19 @@ datum
 				if(!M) M = holder.my_atom
 				M:bodytemperature -= 5
 				..()
+				return
+
+
+		metabolic
+			name = "Metabolic"
+			id = "metabolic"
+			description = "thick, loose reagent with the smell of pepper"
+			reagent_state = SOLID
+			color = "#005020" // rgb: 0, 50, 20
+
+			on_mob_life(var/mob/living/M as mob)
+
+				if(M:slowed_metabolism==1) M<<"metabolism already slowed"
+				M:slowed_metabolism = 1
+				..(0,02)
 				return
