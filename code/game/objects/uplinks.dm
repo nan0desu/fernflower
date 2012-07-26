@@ -37,116 +37,116 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 		if(!item_data)
 			if(traitor_job)
 				if(traitor_job == "Chemist")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/reagent_containers/glass/bottle/cyanide:6:Cyanide Bottle;"}
 				if(traitor_job == "Chaplain")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/device/soulstone:4:Soulstone;"}
 				if(traitor_job == "Detective")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/gun/projectile/mateba:10:Mateba;"}
 				if(traitor_job == "Assistant")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/tank/emergency_oxygen/gold:2:Golden Oxygen Tank;"}
 				if(traitor_job == "CMO")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/storage/firstaid/death:7:Death Aid;"}
 				if(traitor_job == "Geneticist")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/storage/box/gen_bundle:10:Genetic Bundle;"}
 				if(traitor_job == "Roboticist")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/reagent_containers/glass/bottle/nanites:5:Nanomicrobes;"}
 				if(traitor_job == "RD")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/reagent_containers/glass/bottle/nanites:5:Xenomicrobes;"}
 				if(traitor_job == "Doctor")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/gun/syringe/rapidsyringe:4:Rapid Syringe Gun;"}
 				if(traitor_job == "HOS")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/melee/classic_baton:4:Classic Baton;"}
 				if(traitor_job == "Warden")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/shield/energy:3:Energy Shield;"}
 				if(traitor_job == "Clown")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/storage/lockbox/clusterbang:2:Clusterbang;"}
 				if(traitor_job == "Mime")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/spawnergrenade/manhacks:4:Mimeguard Delivery;"}
 				if(traitor_job == "Scientist")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/mob/living/carbon/metroid:5:Friendly Metroid;"}
 				if(traitor_job == "Chef")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/reagent_containers/food/drinks/jar:3:Tasty Metroid Jam;"}
 				if(traitor_job == "Bartender")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/gun/projectile/shotgun/pump/combat:6:Combat Shotgun;"}
 				if(traitor_job == "Botanist")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/seeds/angelmycelium:3:Death Angel Seed;"}
 				if(traitor_job == "QUARTERMASTER")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/money/c1000:1:1000 Credits;"}
 				if(traitor_job == "CARGOTECH")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/coin/gold:2:Gold Coin;"}
 				if(traitor_job == "MINER")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/pickaxe/diamonddrill:5:Diamond Drill;"}
 				if(traitor_job == "JANITOR")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/lubricatecleaner:4:Lube Sprayer;"}
 				if(traitor_job == "LIBRARIAN")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/tome/imbued:10:Cult Tome;"}
 				if(traitor_job == "LAWYER")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/shitcurity_space_law:4:Stunning Space Law;"}
 				if(traitor_job == "HOP")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/card/id/throw:2:Throwning ID card;"}
 				if(traitor_job == "CHIEF")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/cell/infinite:3:Infinite Power Cell;"}
 				if(traitor_job == "ENGINEER")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/clothing/gloves/combat:2:Elite Insulated Gloves;"}
 				if(traitor_job == "ATMOSTECH")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/twohanded/fireaxe:4:Combat Fireaxe;"}
 				if(traitor_job == "CAPTAIN")
-					all_items += {"Whitespace:Seperator;
-					Special Items:;
+					all_items += {" Whitespace:Seperator;
+					Special Items;
 					/obj/item/weapon/aiModule/boyarin:4:B.O.Y.A.R.I.N. AI Module;"}
 			items = dd_replacetext(all_items, "\n", "")	// Getting the text string of items
 
