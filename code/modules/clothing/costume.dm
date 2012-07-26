@@ -18,7 +18,7 @@
 	del(src)
 
 /obj/effect/landmark/costume/palputin/New()
-	new /obj/item/clothing/under/johnny(src.loc)
+	new /obj/item/clothing/suit/johnny_coat(src.loc)
 	new /obj/item/weapon/staff/stick(src.loc)
 	new /obj/item/weapon/lighter/zippo/fluff/li_matsuda_1(src.loc)
 	new /obj/item/clothing/mask/cigarette/cigar/havana(src.loc)

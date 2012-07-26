@@ -152,7 +152,7 @@
 	dat += "BDSM Boots: <A href='?src=\ref[src];item=/obj/item/clothing/shoes/fluff/leatherboots;cost=400'>400</A><br>"
 	dat += "<b>Pajamas:</b> <br>"
 	dat += "Vice Policeman: <A href='?src=\ref[src];item=/obj/item/clothing/under/rank/vice;cost=900'>900</A><br>"
-	dat += "Johny~~ Suit: <A href='?src=\ref[src];item=/obj/item/clothing/under/johnny;cost=1200'>1200</A><br>"
+	dat += "Johny~~ Suit: <A href='?src=\ref[src];item=/obj/item/clothing/suit/johnny_coat;cost=1200'>1200</A><br>"
 	dat += "Rainbow Suit: <A href='?src=\ref[src];item=/obj/item/clothing/under/rainbow;cost=200'>200</A><br>"
 	dat += "Cloud Suit: <A href='?src=\ref[src];item=/obj/item/clothing/under/cloud;cost=900'>900</A><br>"
 	dat += "Lightblue Suit: <A href='?src=\ref[src];item=/obj/item/clothing/under/lightblue;cost=200'>200</A><br>"
