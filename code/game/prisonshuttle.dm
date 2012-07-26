@@ -129,15 +129,17 @@ proc/move_arrival_shuttle()
 	arrival_shuttle_moving = 1
 	start_arrival_shuttle_location = arrival_shuttle_location
 	spawn(arrival_shuttle_tickstomove*15)  // 15 sec
+		var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 		var/area/fromArea
 		var/area/toArea
 		if (arrival_shuttle_location == 1)
 			fromArea = locate(/area/shuttle/arrival/pre_game)
 			toArea = locate(/area/shuttle/arrival/spess)
+			a.autosay("\"Ashenvale\" transport shuttle has started from the CentComm.", "Shuttle Autopilot")
 		else
 			fromArea = locate(/area/shuttle/prison/station)
-			toArea = locate(/area/shuttle/prison/spess)
-
+			toArea = locate(/area/shuttle/arrival/spess)
+			a.autosay("\"Ashenvale\" transport shuttle has started from the [station_name()].", "Shuttle Autopilot")
 
 		var/list/dstturfs = list()
 		var/throwy = world.maxy
@@ -172,14 +174,12 @@ proc/move_arrival_shuttle()
 		spawn(arrival_shuttle_tickstomove*60)   //60 sec
 		if (start_arrival_shuttle_location == 1)
 			fromArea = locate(/area/shuttle/arrival/spess)
-			toArea = locate(/area/shuttle/prison/station)
+			toArea = locate(/area/shuttle/arrival/station)
+			a.autosay("\"Ashenvale\" transport shuttle has arrived to the [station_name()].", "Shuttle Autopilot")
 		else
-			fromArea = locate(/area/shuttle/prison/spess)
+			fromArea = locate(/area/shuttle/arrival/spess)
 			toArea = locate(/area/shuttle/arrival/pre_game)
-
-
-		var/list/dstturfs = list()
-		var/throwy = world.maxy
+			a.autosay("\"Ashenvale\" transport shuttle has arrived to the CentComm.", "Shuttle Autopilot")
 
 		for(var/turf/T in toArea)
 			dstturfs += T
@@ -210,3 +210,4 @@ proc/move_arrival_shuttle()
 		else
 			start_arrival_shuttle_location = 1
 		arrival_shuttle_moving = 0
+		del(a)
