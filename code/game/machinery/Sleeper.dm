@@ -429,4 +429,12 @@
 		if(src.occupant)
 			src.occupant.sleeping = 5
 		return
-
+/////////////////////////////////////////
+/obj/anabiosis_chamber
+	name = "Anabiosis chamber"
+	desc = "Cryogenic machinery for transporting people in far travelel"
+	icon = 'cloning.dmi'
+	icon_state = "pod_0"
+	density = 1
+	anchored = 1
+	opacity = 0

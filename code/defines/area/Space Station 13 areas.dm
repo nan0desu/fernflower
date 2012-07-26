@@ -140,6 +140,9 @@ proc/process_ghost_teleport_locs()
 /area/shuttle/arrival/station
 	icon_state = "shuttle"
 
+/area/shuttle/arrival/spess
+	icon_state = "shuttle2"
+
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
 	music = "music/escape.ogg"

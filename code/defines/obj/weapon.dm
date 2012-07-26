@@ -1445,6 +1445,9 @@ eternal248: Found broken and buggy Z-levels 7-12, ended up leading to my discove
 	var/construction_cost = list("metal"=750,"glass"=75)
 	var/construction_time=100
 
+/obj/item/weapon/cell/fully_charged
+	charge = 1000
+
 /obj/item/weapon/cell/crap
 	name = "\improper NanoTrasen Brand Rechargable AA Battery"
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
