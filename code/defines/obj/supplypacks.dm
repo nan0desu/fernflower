@@ -468,6 +468,51 @@
 	containername = "Metal sheets crate"
 	group = "Engineering"
 
+/datum/supply_packs/silver50
+	name = "20 Silver Sheets"
+	contains = list("/obj/item/stack/sheet/silver")
+	amount = 20
+	cost = 50
+	containertype = "/obj/structure/closet/crate"
+	containername = "Silver sheets crate"
+	group = "Medical / Science"
+
+/datum/supply_packs/gold50
+	name = "20 Gold Sheets"
+	contains = list("/obj/item/stack/sheet/gold")
+	amount = 20
+	cost = 70
+	containertype = "/obj/structure/closet/crate"
+	containername = "Gold sheets crate"
+	group = "Medical / Science"
+
+/datum/supply_packs/plasma50
+	name = "20 Plasma Sheets"
+	contains = list("/obj/item/stack/sheet/plasma")
+	amount = 20
+	cost = 50
+	containertype = "/obj/structure/closet/crate"
+	containername = "Plasma sheets crate"
+	group = "Medical / Science"
+
+/datum/supply_packs/uranium50
+	name = "20 Uranium Sheets"
+	contains = list("/obj/item/stack/sheet/uranium")
+	amount = 20
+	cost = 80
+	containertype = "/obj/structure/closet/crate"
+	containername = "Uranium sheets crate"
+	group = "Medical / Science"
+
+/datum/supply_packs/diamond50
+	name = "15 Diamond Sheets"
+	contains = list("/obj/item/stack/sheet/diamond")
+	amount = 15
+	cost = 120
+	containertype = "/obj/structure/closet/crate"
+	containername = "Diamond sheets crate"
+	group = "Medical / Science"
+
 /datum/supply_packs/glass50
 	name = "50 Glass Sheets"
 	contains = list("/obj/item/stack/sheet/glass")
@@ -475,19 +520,7 @@
 	cost = 10
 	containertype = "/obj/structure/closet/crate"
 	containername = "Glass sheets crate"
-	group = "Engineering"
-
-/datum/supply_packs/glass50
-	name = "Energy Equipment pack"
-	contains = list("/obj/item/battery_box",
-					"/obj/item/battery_box",
-					"/obj/item/weapon/cell/fully_charged",
-					"/obj/item/weapon/cell/fully_charged",
-					)
-	cost = 20
-	containertype = "/obj/structure/closet/crate"
-	containername = "Energy Equipments crate"
-	group = "Engineering"
+	group = "Medical / Science"
 
 /datum/supply_packs/electrical
 	name = "Electrical maintenance crate"
