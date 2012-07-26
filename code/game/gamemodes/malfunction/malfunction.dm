@@ -68,10 +68,12 @@
 		send_intercept()
 		sleep(10*60*5) // 5 minutes
 		if(intercept_hacked)
-			sleep(10 * 60 * 20) // 30 minutes
+			sleep(10 * 60 * 20) // 20 minutes
 			command_alert("Diagnosis suite failure detected. Running backup diagnosis tool.", "Anomaly Alert")
 			sleep(100)
-		command_alert("Nanotrasen has received reports that some AI cores may have been tampered with.  You are advised to monitor your assigned AI for any abberant bahavior, and are authorized to take corrective action, should it be necessary.", "Security Alert")
+			command_alert("Nanotrasen has received reports that some AI cores may have been tampered with.  You are advised to monitor your assigned AI for any abberant bahavior, and are authorized to take corrective action, should it be necessary.", "Security Alert")
+		else
+			command_alert("Nanotrasen has received reports that some AI cores may have been tampered with.  You are advised to monitor your assigned AI for any abberant bahavior, and are authorized to take corrective action, should it be necessary.", "Security Alert")
 
 	..()
 
@@ -161,11 +163,13 @@
 	if (ticker.mode:apcs < 3)
 		usr << "You don't have enough hacked APCs to take over the station yet."
 		return
+
 	command_alert("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", "Anomaly Alert")
+	world << sound('aimalf.ogg')
 	ticker.mode:malf_mode_declared = 1
 	for(var/datum/mind/AI_mind in ticker.mode:malf_ai)
 		AI_mind.current.verbs -= /datum/game_mode/malfunction/proc/takeover
-	world << sound('aimalf.ogg')
+
 
 
 /datum/game_mode/malfunction/proc/ai_win()
