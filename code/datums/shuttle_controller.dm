@@ -287,6 +287,7 @@ datum/shuttle_controller
 										shake_camera(M, 4, 1) // buckled, not a lot of shaking
 									else
 										shake_camera(M, 10, 2) // unbuckled, HOLY SHIT SHAKE THE ROOM
+										M.stunned += 5
 
 						return 1
 

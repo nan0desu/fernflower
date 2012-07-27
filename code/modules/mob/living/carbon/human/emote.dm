@@ -553,7 +553,8 @@
 /mob/living/carbon/human/proc/call_sound_emote(var/E)
 	switch(E)
 		if("scream")
-			if (src.gender == "male")
-				playsound(usr,pick('Screams_Male_1.ogg','Screams_Male_2.ogg','Screams_Male_3.ogg'),50,1)
-			else
-				playsound(usr,pick('Screams_Woman_1.ogg','Screams_Woman_2.ogg','Screams_Woman_3.ogg'),50,1)
+			for(var/mob/M in viewers(usr, null))
+				if (src.gender == "male")
+					M << sound(pick('Screams_Male_1.ogg','Screams_Male_2.ogg','Screams_Male_3.ogg'))
+				else
+					M << sound(pick('Screams_Woman_1.ogg','Screams_Woman_2.ogg','Screams_Woman_3.ogg'))
