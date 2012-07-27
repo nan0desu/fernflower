@@ -177,6 +177,23 @@
 	baily
 		name = "Baily"
 		icon_state = "hair_baily"
+
+	shelma
+		name = "Shelma"
+		icon_state = "hair_shelma"
+
+	one
+		name = "One"
+		icon_state = "hair_one"
+
+	two
+		name = "Two"
+		icon_state = "hair_two"
+
+	three
+		name = "Three"
+		icon_state = "hair_three"
+
 //////
 //Begin Alien Hairstyle
 //////

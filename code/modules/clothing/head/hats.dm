@@ -170,6 +170,12 @@
 	icon_state = "blue_hat"
 	item_state = "blue_hat"
 
+/obj/item/clothing/head/secelitetop
+	name = "security elite top hat"
+	desc = "security elite top hat."
+	icon_state = "secelitetop"
+	item_state = "secelitetop"
+
 // CHUMP HELMETS: COOKING THEM DESTROYS THE CHUMP HELMET SPAWN.
 /obj/item/clothing/head/syndicatefake
 	name = "red space helmet replica"
