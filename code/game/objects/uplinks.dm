@@ -25,7 +25,7 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 	var/list/ItemList				// Parsed list of items
 	var/uses 						// Numbers of crystals
 	var/uplink_data					// designated uplink items
-	var/traitor_job
+	var/traitor_job = "Syndicate"
 	var/all_items
 	// List of items not to shove in their hands.
 	var/list/NotInHand = list(/obj/machinery/singularity_beacon/syndicate)
@@ -148,6 +148,8 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 					all_items += {" Whitespace:Seperator;
 					Special Items;
 					/obj/item/weapon/aiModule/boyarin:4:B.O.Y.A.R.I.N. AI Module;"}
+				if(traitor_job == "Syndicate")
+					all_items = ticker.mode.uplink_items
 			items = dd_replacetext(all_items, "\n", "")	// Getting the text string of items
 
 
