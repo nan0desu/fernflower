@@ -236,7 +236,7 @@ datum/shuttle_controller
 						settimeleft(SHUTTLETRANSITTIME)
 						start_location.move_contents_to(end_location, null, NORTH)
 
-						for(var/obj/machinery/door/D in world)
+						for(var/obj/machinery/door/unpowered/D in world)
 							if( get_area(D) == end_location )
 								spawn(0)
 									D.close()
@@ -245,7 +245,7 @@ datum/shuttle_controller
 						start_location = locate(/area/shuttle/escape_pod1/station)
 						end_location = locate(/area/shuttle/escape_pod1/transit)
 						start_location.move_contents_to(end_location, null, NORTH)
-						for(var/obj/machinery/door/D in world)
+						for(var/obj/machinery/door/unpowered/D in world)
 							if( get_area(D) == end_location )
 								spawn(0)
 									D.close()
@@ -253,7 +253,7 @@ datum/shuttle_controller
 						start_location = locate(/area/shuttle/escape_pod2/station)
 						end_location = locate(/area/shuttle/escape_pod2/transit)
 						start_location.move_contents_to(end_location, null, NORTH)
-						for(var/obj/machinery/door/D in world)
+						for(var/obj/machinery/door/unpowered/D in world)
 							if( get_area(D) == end_location )
 								spawn(0)
 									D.close()
@@ -261,7 +261,7 @@ datum/shuttle_controller
 						start_location = locate(/area/shuttle/escape_pod3/station)
 						end_location = locate(/area/shuttle/escape_pod3/transit)
 						start_location.move_contents_to(end_location, null, NORTH)
-						for(var/obj/machinery/door/D in world)
+						for(var/obj/machinery/door/unpowered/D in world)
 							if( get_area(D) == end_location )
 								spawn(0)
 									D.close()
@@ -269,7 +269,7 @@ datum/shuttle_controller
 						start_location = locate(/area/shuttle/escape_pod5/station)
 						end_location = locate(/area/shuttle/escape_pod5/transit)
 						start_location.move_contents_to(end_location, null, EAST)
-						for(var/obj/machinery/door/D in world)
+						for(var/obj/machinery/door/unpowered/D in world)
 							if( get_area(D) == end_location )
 								spawn(0)
 									D.close()
@@ -287,7 +287,8 @@ datum/shuttle_controller
 										shake_camera(M, 4, 1) // buckled, not a lot of shaking
 									else
 										shake_camera(M, 10, 2) // unbuckled, HOLY SHIT SHAKE THE ROOM
-										M.stunned += 5
+										M.Stun (10)
+										M.Weaken (10)
 
 						return 1
 

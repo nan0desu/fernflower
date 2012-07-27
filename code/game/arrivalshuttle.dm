@@ -48,7 +48,12 @@ proc/move_arrival_shuttle()
 					shake_camera(M, 4, 1)
 				else
 					shake_camera(M, 10, 2)
-					M.stunned += 5
+					M.Stun (10)
+					M.Weaken (10)
+	for(var/obj/machinery/door/unpowered/D in world)
+		if( get_area(D) == toArea )
+			spawn(0)
+				D.close()
 	arrival_shuttle_location = 0
 	if (start_arrival_shuttle_location == 1)
 		toArea = locate(/area/shuttle/arrival/station)
@@ -67,7 +72,12 @@ proc/move_arrival_shuttle()
 					shake_camera(M, 4, 1)
 				else
 					shake_camera(M, 10, 2)
-					M.stunned += 5
+					M.Stun (10)
+					M.Weaken (10)
+	for(var/obj/machinery/door/unpowered/D in world)
+		if( get_area(D) == toArea )
+			spawn(0)
+				D.close()
 	if(start_arrival_shuttle_location == 1)
 		arrival_shuttle_location = 2
 		a.autosay("\"\"Ashenvale\" transport shuttle has arrived to the [station_name()].\"", "Shuttle Autopilot")
