@@ -98,7 +98,7 @@ proc/move_prison_shuttle()
 /////////////////////////////////////////
 
 /obj/machinery/computer/arrival_shuttle
-	name = "Prison Shuttle Console"
+	name = "Arrival Shuttle Console"
 	icon = 'computer.dmi'
 	icon_state = "shuttle"
 	req_access = list(ACCESS_SECURITY)
