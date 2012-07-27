@@ -112,7 +112,7 @@ proc/move_prison_shuttle()
 	dat = text("<center>Arrival shuttle:<br> <b><A href='?src=\ref[src];move=[1]'>Send</A></b></center>")
 	user << browse("[dat]", "window=miningshuttle;size=200x100")
 
-/obj/machinery/computer/prison_shuttle/Topic(href, href_list)
+/obj/machinery/computer/arrival_shuttle/Topic(href, href_list)
 	if(..())
 		return
 	usr.machine = src
@@ -135,11 +135,11 @@ proc/move_arrival_shuttle()
 		if (arrival_shuttle_location == 1)
 			fromArea = locate(/area/shuttle/arrival/pre_game)
 			toArea = locate(/area/shuttle/arrival/spess)
-			a.autosay("\"Ashenvale\" transport shuttle has started from the CentComm.", "Shuttle Autopilot")
+			a.autosay("\"\"Ashenvale\" transport shuttle has started from the CentComm.\"", "Shuttle Autopilot")
 		else
 			fromArea = locate(/area/shuttle/prison/station)
 			toArea = locate(/area/shuttle/arrival/spess)
-			a.autosay("\"Ashenvale\" transport shuttle has started from the [station_name()].", "Shuttle Autopilot")
+			a.autosay("\"\"Ashenvale\" transport shuttle has started from the [station_name()].\"", "Shuttle Autopilot")
 
 		var/list/dstturfs = list()
 		var/throwy = world.maxy
@@ -175,11 +175,11 @@ proc/move_arrival_shuttle()
 		if (start_arrival_shuttle_location == 1)
 			fromArea = locate(/area/shuttle/arrival/spess)
 			toArea = locate(/area/shuttle/arrival/station)
-			a.autosay("\"Ashenvale\" transport shuttle has arrived to the [station_name()].", "Shuttle Autopilot")
+			a.autosay("\"\"Ashenvale\" transport shuttle has arrived to the [station_name()].\"", "Shuttle Autopilot")
 		else
 			fromArea = locate(/area/shuttle/arrival/spess)
 			toArea = locate(/area/shuttle/arrival/pre_game)
-			a.autosay("\"Ashenvale\" transport shuttle has arrived to the CentComm.", "Shuttle Autopilot")
+			a.autosay("\"\"Ashenvale\" transport shuttle has arrived to the CentComm.\"", "Shuttle Autopilot")
 
 		for(var/turf/T in toArea)
 			dstturfs += T
