@@ -39,115 +39,115 @@ A list of items and costs is stored under the datum of every game mode, alongsid
 				if(traitor_job == "Chemist")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/reagent_containers/glass/bottle/cyanide:6:Cyanide Bottle;"}
+					/obj/item/weapon/reagent_containers/glass/bottle/cyanide:6:Cyanide Bottle; "}
 				if(traitor_job == "Chaplain")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/device/soulstone:4:Soulstone;"}
+					/obj/item/device/soulstone:4:Soulstone; "}
 				if(traitor_job == "Detective")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/gun/projectile/mateba:10:Mateba;"}
+					/obj/item/weapon/gun/projectile/mateba:10:Mateba; "}
 				if(traitor_job == "Assistant")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/tank/emergency_oxygen/gold:2:Golden Oxygen Tank;"}
-				if(traitor_job == "CMO")
+					/obj/item/weapon/tank/emergency_oxygen/gold:2:Golden Oxygen Tank; "}
+				if(traitor_job == "Chief Medical Officer")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/storage/firstaid/death:7:Death Aid;"}
+					/obj/item/weapon/storage/firstaid/death:7:Death Aid; "}
 				if(traitor_job == "Geneticist")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/storage/box/gen_bundle:10:Genetic Bundle;"}
+					/obj/item/weapon/storage/box/gen_bundle:10:Genetic Bundle; "}
 				if(traitor_job == "Roboticist")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/reagent_containers/glass/bottle/nanites:5:Nanomicrobes;"}
-				if(traitor_job == "RD")
+					/obj/item/weapon/reagent_containers/glass/bottle/nanites:5:Nanomicrobes; "}
+				if(traitor_job == "Research Director")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/reagent_containers/glass/bottle/nanites:5:Xenomicrobes;"}
-				if(traitor_job == "Doctor")
+					/obj/item/weapon/reagent_containers/glass/bottle/nanites:5:Xenomicrobes; "}
+				if(traitor_job == "Medical Doctor")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/gun/syringe/rapidsyringe:4:Rapid Syringe Gun;"}
-				if(traitor_job == "HOS")
+					/obj/item/weapon/gun/syringe/rapidsyringe:4:Rapid Syringe Gun; "}
+				if(traitor_job == "Head of Security")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/melee/classic_baton:4:Classic Baton;"}
+					/obj/item/weapon/melee/classic_baton:4:Classic Baton; "}
 				if(traitor_job == "Warden")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/shield/energy:3:Energy Shield;"}
+					/obj/item/weapon/shield/energy:3:Energy Shield; "}
 				if(traitor_job == "Clown")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/storage/lockbox/clusterbang:2:Clusterbang;"}
+					/obj/item/weapon/storage/lockbox/clusterbang:2:Clusterbang; "}
 				if(traitor_job == "Mime")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/spawnergrenade/manhacks:4:Mimeguard Delivery;"}
+					/obj/item/weapon/spawnergrenade/manhacks:4:Mimeguard Delivery; "}
 				if(traitor_job == "Scientist")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/mob/living/carbon/metroid:5:Friendly Metroid;"}
+					/mob/living/carbon/metroid:5:Friendly Metroid; "}
 				if(traitor_job == "Chef")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/reagent_containers/food/drinks/jar:3:Tasty Metroid Jam;"}
+					/obj/item/weapon/reagent_containers/food/drinks/jar:3:Tasty Metroid Jam; "}
 				if(traitor_job == "Bartender")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/gun/projectile/shotgun/pump/combat:6:Combat Shotgun;"}
+					/obj/item/weapon/gun/projectile/shotgun/pump/combat:6:Combat Shotgun; "}
 				if(traitor_job == "Botanist")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/seeds/angelmycelium:3:Death Angel Seed;"}
+					/obj/item/seeds/angelmycelium:3:Death Angel Seed; "}
 				if(traitor_job == "QUARTERMASTER")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/money/c1000:1:1000 Credits;"}
-				if(traitor_job == "CARGOTECH")
+					/obj/item/weapon/money/c1000:1:1000 Credits; "}
+				if(traitor_job == "CARGO TECHICIAN")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/coin/gold:2:Gold Coin;"}
-				if(traitor_job == "MINER")
+					/obj/item/weapon/coin/gold:2:Gold Coin; "}
+				if(traitor_job == "SHAFT MINER")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/pickaxe/diamonddrill:5:Diamond Drill;"}
+					/obj/item/weapon/pickaxe/diamonddrill:5:Diamond Drill; "}
 				if(traitor_job == "JANITOR")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/lubricatecleaner:4:Lube Sprayer;"}
+					/obj/item/weapon/lubricatecleaner:4:Lube Sprayer; "}
 				if(traitor_job == "LIBRARIAN")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/tome/imbued:10:Cult Tome;"}
+					/obj/item/weapon/tome/imbued:10:Cult Tome; "}
 				if(traitor_job == "LAWYER")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/shitcurity_space_law:4:Stunning Space Law;"}
-				if(traitor_job == "HOP")
+					/obj/item/weapon/shitcurity_space_law:4:Stunning Space Law; "}
+				if(traitor_job == "Head of Personnel")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/card/id/throw:2:Throwning ID card;"}
-				if(traitor_job == "CHIEF")
+					/obj/item/weapon/card/id/throw:2:Throwning ID card; "}
+				if(traitor_job == "CHIEF ENGINEER")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/cell/infinite:3:Infinite Power Cell;"}
-				if(traitor_job == "ENGINEER")
+					/obj/item/weapon/cell/infinite:3:Infinite Power Cell; "}
+				if(traitor_job == "STATION ENGINEER")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/clothing/gloves/combat:2:Elite Insulated Gloves;"}
-				if(traitor_job == "ATMOSTECH")
+					/obj/item/clothing/gloves/combat:2:Elite Insulated Gloves; "}
+				if(traitor_job == "ATMOSPHERIC TECHNICIAN")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/twohanded/fireaxe:4:Combat Fireaxe;"}
+					/obj/item/weapon/twohanded/fireaxe:4:Combat Fireaxe; "}
 				if(traitor_job == "CAPTAIN")
 					all_items += {" Whitespace:Seperator;
 					Special Items;
-					/obj/item/weapon/aiModule/boyarin:4:B.O.Y.A.R.I.N. AI Module;"}
+					/obj/item/weapon/aiModule/boyarin:4:B.O.Y.A.R.I.N. AI Module; "}
 				if(traitor_job == "Syndicate")
 					all_items = ticker.mode.uplink_items
 			items = dd_replacetext(all_items, "\n", "")	// Getting the text string of items
