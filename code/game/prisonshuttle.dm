@@ -1,10 +1,6 @@
 var/prison_shuttle_tickstomove = 10
 var/prison_shuttle_moving = 0
 var/prison_shuttle_location = 0 // 0 = station 13, 1 = mining station
-var/arrival_shuttle_tickstomove = 10
-var/arrival_shuttle_moving = 0
-var/arrival_shuttle_location = 1 // 0 -spess, 1 - CK, 2 - NSS Exodus
-var/start_arrival_shuttle_location = 0
 
 proc/move_prison_shuttle()
 	if(prison_shuttle_moving)	return

@@ -1,3 +1,8 @@
+var/arrival_shuttle_tickstomove = 10
+var/arrival_shuttle_moving = 0
+var/arrival_shuttle_location = 1 // 0 -spess, 1 - CK, 2 - NSS Exodus
+var/start_arrival_shuttle_location = 0
+
 /obj/machinery/computer/arrival_shuttle
 	name = "Arrival Shuttle Console"
 	icon = 'computer.dmi'
@@ -31,6 +36,7 @@
 proc/move_arrival_shuttle()
 	if (arrival_shuttle_moving)
 		return
+	arrival_shuttle_moving = 1
 	var/area/fromArea
 	var/area/toArea
 	var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
