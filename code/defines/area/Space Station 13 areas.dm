@@ -141,7 +141,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "shuttle"
 
 /area/shuttle/arrival/spess
-	icon_state = "shuttle2"
+	icon_state = "shuttle"
 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
@@ -219,6 +219,16 @@ proc/process_ghost_teleport_locs()
 	icon_state = "shuttle2"
 
 /area/shuttle/mining/outpost
+	icon_state = "shuttle"
+
+/area/shuttle/research
+	name = "\improper Research Shuttle"
+	music = "music/escape.ogg"
+
+/area/shuttle/research/station
+	icon_state = "shuttle2"
+
+/area/shuttle/research/outpost
 	icon_state = "shuttle"
 
 /area/shuttle/transport1/centcom
@@ -442,6 +452,7 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Syndicate Station"
 	icon_state = "yellow"
 	requires_power = 0
+	ul_Lighting = 0
 
 /area/syndicate_station/start
 	name = "\improper Syndicate Station Start"
@@ -613,15 +624,15 @@ proc/process_ghost_teleport_locs()
 	icon_state = "fsmaint"
 
 /area/maintenance/fsmaint3
-	name = "Chapel Maintenance"
-	icon_state = "fsmaint"
+	name = "Social Mainteance"
+	icon_state = "fmaint"
 
 /area/maintenance/asmaint
-	name = "Medbay Maintenance"
+	name = "Library Maintenance"
 	icon_state = "asmaint"
 
 /area/maintenance/asmaint2
-	name = "Science Maintenance"
+	name = "Med-Sci Maintenance"
 	icon_state = "asmaint"
 
 /area/maintenance/apmaint
@@ -932,6 +943,10 @@ proc/process_ghost_teleport_locs()
 	core
 		name = "\improper Engineering Core"
 		icon_state = "engine_core"
+
+	cooling
+		name = "\improper Emergency Cooling Room"
+		icon_state = "engine"
 
 //reactor areas
 
@@ -1272,6 +1287,20 @@ proc/process_ghost_teleport_locs()
 /area/toxins/supermatter
 	name = "\improper Supermatter Laboratory"
 	icon_state = "supermatter"
+
+//Anomaly
+
+/area/anomaly/hallway
+	name = "Anomaly Hallway"
+	icon_state = "anomaly"
+
+/area/anomaly/lab
+	name = "Anomaly Lab"
+	icon_state = "anomaly"
+
+/area/anomaly/outpost
+	name = "Research Outpost"
+	icon_state = "anomaly"
 
 //Storage
 
