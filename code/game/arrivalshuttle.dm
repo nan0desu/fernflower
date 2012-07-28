@@ -7,11 +7,13 @@
 	var/allowedtocall = 0
 	var/location = 0 //0 = station, 1 = mining base
 
+
 /obj/machinery/computer/arrival_shuttle/attack_hand(user as mob)
 	src.add_fingerprint(usr)
 	var/dat
 	dat = text("<center>Arrival shuttle:<br> <b><A href='?src=\ref[src];move=[1]'>Send</A></b></center>")
 	user << browse("[dat]", "window=miningshuttle;size=200x100")
+
 
 /obj/machinery/computer/arrival_shuttle/Topic(href, href_list)
 	if(..())
@@ -24,6 +26,7 @@
 			move_arrival_shuttle()
 		else
 			usr << "\blue Shuttle is already moving."
+
 
 proc/move_arrival_shuttle()
 	if (arrival_shuttle_moving)
@@ -87,4 +90,3 @@ proc/move_arrival_shuttle()
 	arrival_shuttle_moving = 0
 	del(a)
 	return
-
