@@ -25,7 +25,8 @@
 	var/vote_period = 60				// length of voting period (seconds, default 1 minute)
 	var/vote_no_default = 0				// vote does not default to nochange/norestart (tbi)
 	var/vote_no_dead = 0				// dead people can't vote (tbi)
-	var/socket_talk	= 0					// use socket_talk to communicate with other processes
+	var/socket_talk	= 0
+	var/whitelist_internal_security = 1				// use socket_talk to communicate with other processes
 //	var/enable_authentication = 0		// goon authentication
 	var/del_new_on_log = 1				// del's new players if they log before they spawn in
 	var/feature_object_spell_system = 0 //spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
@@ -199,6 +200,9 @@
 
 				if ("default_no_vote")
 					config.vote_no_default = 1
+
+				if ("whitelist_internal_security")
+					config.whitelist_internal_security = 1
 
 				if ("vote_delay")
 					config.vote_delay = text2num(value)

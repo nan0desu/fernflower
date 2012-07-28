@@ -64,6 +64,17 @@
 	armor = list(melee = 5, bullet = 5, laser = 5,energy = 5, bomb = 15, bio = 15, rad = 15)
 	flags_inv = 0
 
+/obj/item/clothing/head/internalsecurity
+	name = "white tophat"
+	desc = "Standard Internal Security gear. Protects the head from impacts with style."
+	icon_state = "secelitetop"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	item_state = "secelitetop"
+	armor = list(melee = 50, bullet = 15, laser = 50,energy = 10, bomb = 25, bio = 0, rad = 0)
+	protective_temperature = 500
+	heat_transfer_coefficient = 0.10
+	flags_inv = HIDEEARS
+
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks."

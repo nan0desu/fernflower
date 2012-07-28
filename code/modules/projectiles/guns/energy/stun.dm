@@ -114,4 +114,15 @@
 	m_amt = 200000
 	projectile_type = "/obj/item/projectile/energy/bolt/large"
 
+/obj/item/weapon/gun/energy/elitetaser
+	name = "elite taser gun"
+	desc = "A small, high capacity gun used for non-lethal takedowns."
+	icon_state = "elitetaser"
+	item_state = "elitetaser100"
+	fire_sound = 'Taser.ogg'
+	charge_cost = 25
+	projectile_type = "/obj/item/projectile/energy/electrode"
+	cell_type = "/obj/item/weapon/cell/crap"
+	force = 10
+
 

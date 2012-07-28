@@ -308,6 +308,19 @@
 	new /obj/item/weapon/tank/emergency_oxygen/anesthetic( src )
 	return
 
+/obj/item/weapon/storage/box/sleepsmokegrenades/New()
+	..()
+	contents = list()
+	sleep(1)
+	new /obj/item/weapon/chem_grenade/sleepsmoke( src )
+	new /obj/item/weapon/chem_grenade/sleepsmoke( src )
+	new /obj/item/weapon/chem_grenade/sleepsmoke( src )
+	new /obj/item/weapon/chem_grenade/sleepsmoke( src )
+	new /obj/item/weapon/chem_grenade/sleepsmoke( src )
+	new /obj/item/weapon/chem_grenade/sleepsmoke( src )
+	new /obj/item/weapon/chem_grenade/sleepsmoke( src )
+	return
+
 /obj/item/weapon/storage/box/ert/New()
 	..()
 	contents = list()

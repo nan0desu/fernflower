@@ -220,3 +220,121 @@
 		broken = 1
 		user << "\red The bulb has burnt out!"
 		icon_state = "flashburnt"
+
+/obj/item/device/internalsecurityflash
+	name = "hard flash"
+	desc = "Used for blinding and being an noble."
+	icon_state = "flash"
+	throwforce = 5
+	w_class = 1.0
+	throw_speed = 4
+	throw_range = 10
+	flags = FPRINT | TABLEPASS| CONDUCT
+	item_state = "electronic"
+	origin_tech = "magnets=2;combat=1"
+
+/obj/item/device/internalsecurityflash/proc/clown_check(var/mob/user)
+	if(user && (CLUMSY in user.mutations) && prob(50))
+		user << "\red The Flash slips out of your hand."
+		user.drop_item()
+		return 0
+	return 1
+
+/obj/item/device/internalsecurityflash/proc/flash_recharge()
+	//capacitor recharges over time
+//sanity
+
+/obj/item/device/internalsecurityflash/attack(mob/living/M as mob, mob/user as mob)
+	if(!user || !M)	return	//sanity
+	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name]  by [user.name] ([user.ckey])</font>")
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [M.name] ([M.ckey])</font>")
+
+	log_admin("ATTACK: [user] ([user.ckey]) flashed [M] ([M.ckey]) with [src].")
+	message_admins("ATTACK: [user] ([user.ckey]) flashed [M] ([M.ckey]) with [src].")
+	log_attack("<font color='red'>[user.name] ([user.ckey]) Used the [src.name] to flash [M.name] ([M.ckey])</font>")
+
+	playsound(src.loc, 'flash.ogg', 100, 1)
+	var/flashfail = 0
+
+	if(iscarbon(M))
+		M.Weaken(32)
+		M.Stun(32)
+
+	else if(issilicon(M))
+		if(!M:flashproof())
+			M.Weaken(rand(5,10))
+		else
+			flashfail++
+
+	if(isrobot(user))
+		spawn(0)
+			var/atom/movable/overlay/animation = new(user.loc)
+			animation.layer = user.layer + 1
+			animation.icon_state = "blank"
+			animation.icon = 'mob.dmi'
+			animation.master = user
+			flick("blspell", animation)
+			sleep(10)
+			del(animation)
+
+	if(!flashfail)
+		flick("flash2", src)
+		for(var/mob/O in viewers(user, null))
+			O.show_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
+	else
+		for(var/mob/O in viewers(user, null))
+			O.show_message("<span class='notice'>[user] fails to blind [M] with the flash!</span>")
+	return
+
+
+
+
+/obj/item/device/internalsecurityflash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
+
+
+	//spamming the flash before it's fully charged (60seconds) increases the chance of it  breaking
+	//It will never break on the first use.
+	playsound(src.loc, 'flash.ogg', 100, 1)
+	flick("flash2", src)
+	if(user && isrobot(user))
+		spawn(0)
+			var/atom/movable/overlay/animation = new(user.loc)
+			animation.layer = user.layer + 1
+			animation.icon_state = "blank"
+			animation.icon = 'mob.dmi'
+			animation.master = user
+			flick("blspell", animation)
+			sleep(10)
+			del(animation)
+
+	for(var/mob/living/carbon/M in oviewers(3, null))
+		if(prob(100))
+			if (locate(/obj/item/weapon/cloaking_device, M))
+				for(var/obj/item/weapon/cloaking_device/S in M)
+					S.active = 0
+					S.icon_state = "shield0"
+		var/safety = M:eyecheck()
+		if(!safety)
+			flick("flash", M.flash)
+
+	return
+
+/obj/item/device/flash/emp_act(severity)
+	if(broken)	return
+	flash_recharge()
+	switch(times_used)
+		if(0 to 5)
+			if(prob(2*times_used))
+				broken = 1
+				icon_state = "flashburnt"
+				return
+			times_used++
+			if(istype(loc, /mob/living/carbon))
+				var/mob/living/carbon/M = loc
+				var/safety = M.eyecheck()
+				if(safety <= 0)
+					M.Weaken(10)
+					flick("e_flash", M.flash)
+					for(var/mob/O in viewers(M, null))
+						O.show_message("<span class='disarm'>[M] is blinded by the flash!</span>")
+	..()

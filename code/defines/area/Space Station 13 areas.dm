@@ -815,6 +815,10 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Chapel"
 	icon_state = "chapel"
 
+/area/security/internal
+	name = "Internal Security"
+	icon_state = "security"
+
 /area/chapel/office
 	name = "\improper Chapel Office"
 	icon_state = "chapeloffice"

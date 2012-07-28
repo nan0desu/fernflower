@@ -359,7 +359,7 @@
 
 	cleaner
 		name = "Cleaner Grenade"
-		desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+		desc = "Used for knocking out the living things."
 		active = 2
 		path = 1
 
@@ -375,6 +375,30 @@
 			B1.reagents.add_reagent("fluorosurfactant", 40)
 			B2.reagents.add_reagent("water", 40)
 			B2.reagents.add_reagent("cleaner", 10)
+
+			beaker_two = B1
+			beaker_one = B2
+			icon_state = "chemg_locked"
+
+	sleepsmoke
+		name = "Special Smoke Grenade"
+		desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+		active = 2
+		path = 1
+
+		New()
+			..()
+			attached_device = new /obj/item/device/assembly/timer(src)
+			attached_device.master = src
+			var/obj/item/weapon/reagent_containers/glass/beaker/B1 = new(src)
+			var/obj/item/weapon/reagent_containers/glass/beaker/B2 = new(src)
+
+			if(attached_device.secured != 1)
+				attached_device.toggle_secure()
+			B1.reagents.add_reagent("chloralhydrate", 20)
+			B1.reagents.add_reagent("sugar", 20)
+			B2.reagents.add_reagent("potassium", 20)
+			B2.reagents.add_reagent("phosphorous", 20)
 
 			beaker_two = B1
 			beaker_one = B2

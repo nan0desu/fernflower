@@ -103,6 +103,8 @@
 		load_alienwhitelist()
 	if (config.usewhitelist)
 		load_whitelist()
+	if (config.whitelist_internal_security)
+		load_whitelist_internal_security()
 	LoadBansjob()
 	src.update_status()
 	makepowernets()

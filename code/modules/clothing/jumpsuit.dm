@@ -47,6 +47,12 @@
 	item_state = "bl_suit"
 	color = "black"
 
+/obj/item/clothing/under/internalsecurity
+	name = "internal security jumpsuit"
+	icon_state = "secelite"
+	item_state = "secelite"
+	color = "internalsecurity"
+
 /obj/item/clothing/under/color/blackf
 	name = "feminine black jumpsuit"
 	desc = "It's very smart and in a ladies size!"

@@ -45,6 +45,13 @@
 	item_state = "armor_reflec"
 	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
 
+/obj/item/clothing/suit/armor/internalsecurity
+	name = "internal security coat"
+	desc = "A coat, which is worn only by honorfull IS members."
+	icon_state = "retpolcoat"
+	item_state = "retpolcoat"
+	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
+
 /obj/item/clothing/suit/storage/gearharness
 	name = "gear harness"
 	desc = "A simple security harness, used for storing small objects."
