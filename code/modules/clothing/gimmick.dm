@@ -576,7 +576,7 @@
 	item_state = "smoking"
 	color = "smoking"
 
-/obj/item/clothing/under/joker
+/obj/item/clothing/under/jokervest
 	name = "green vest"
 	desc = "For not sirious man."
 	icon_state = "jokervest"
@@ -589,6 +589,13 @@
 	icon_state = "whitedress"
 	item_state = "whitedress"
 	color = "whitedress"
+
+/obj/item/clothing/under/miniskirt
+	name = "miniskirt"
+	desc = "for cuttiest girl."
+	icon_state = "miniskirt"
+	item_state = "miniskirt"
+	color = "miniskirt"
 
 /obj/item/clothing/under/black_shirtf
 	name = "black shirtf"
