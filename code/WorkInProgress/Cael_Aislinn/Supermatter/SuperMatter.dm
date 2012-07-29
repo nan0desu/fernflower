@@ -82,7 +82,7 @@
 	if(det > explosiondet)
 		roundinfo.core = 1
 		//proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, force = 0)
-		explosion(src.loc,8,15,20,30,1)
+		explosion(src.loc,15,25,40,70,1)
 		det = 0
 
 	if (!removed)
