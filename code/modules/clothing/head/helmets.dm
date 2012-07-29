@@ -102,3 +102,14 @@
 	protective_temperature = 500
 	heat_transfer_coefficient = 0.10
 	flags_inv = HIDEEARS|HIDEEYES
+
+/obj/item/clothing/head/knight_helmet
+	name = "knight helmet"
+	desc = "knight helmet."
+	icon_state = "knight_helmet"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	item_state = "knight_helmet"
+	armor = list(melee = 60, bullet = 15, laser = 30,energy = 10, bomb = 25, bio = 0, rad = 0)
+	protective_temperature = 100
+	heat_transfer_coefficient = 0.10
+	flags_inv = HIDEEARS|HIDEEYES

@@ -119,6 +119,7 @@
 	icon_state = "ianshirt"
 	item_state = "ianshirt"
 
+/obj/it
 /obj/item/clothing/under/rainbow
 	name = "rainbow"
 	desc = "rainbow"
