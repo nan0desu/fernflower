@@ -429,7 +429,7 @@
 	msg += "\blue *---------*"
 	usr << msg
 
-	if (usr != src && istype(src, /mob/living))
+	if (usr != src && istype(src, /mob/living) && istype(usr, /mob/living))
 		for(var/mob/O in viewers(usr, null))
 			if (istype(O, usr))
 				break
