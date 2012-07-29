@@ -195,3 +195,9 @@
 	desc = "."
 	icon_state = "sexymime_boots"
 	item_state = "sexymime_boots"
+
+/obj/item/clothing/shoes/black_heel
+	name = "black_heel"
+	desc = "."
+	icon_state = "black_heel"
+	item_state = "black_heel"
