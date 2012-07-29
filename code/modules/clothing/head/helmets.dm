@@ -91,3 +91,14 @@
 	flags = FPRINT|TABLEPASS|SUITSPACE
 	armor = list(melee = 0, bullet = 0, laser = 2,energy = 2, bomb = 0, bio = 0, rad = 0)
 	flags_inv = 0
+
+/obj/item/clothing/head/stormtrooper_helmet
+	name = "stormtrooper helmet"
+	desc = "Helmet of the Old Empire Stormtrooper."
+	icon_state = "stormtrooper_helmet"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	item_state = "stormtrooper_helmet"
+	armor = list(melee = 50, bullet = 15, laser = 50,energy = 10, bomb = 25, bio = 0, rad = 0)
+	protective_temperature = 500
+	heat_transfer_coefficient = 0.10
+	flags_inv = HIDEEARS|HIDEEYES

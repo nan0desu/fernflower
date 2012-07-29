@@ -176,6 +176,19 @@
 	icon_state = "secelitetop"
 	item_state = "secelitetop"
 
+/obj/item/clothing/head/red_hat
+	name = "red hat"
+	desc = "red hat."
+	icon_state = "red_hat"
+	item_state = "red_hat"
+
+/obj/item/clothing/head/sombrero
+	name = "sombrero"
+	desc = "sombrero."
+	icon_state = "sombrero"
+	item_state = "sombrero"
+
+
 // CHUMP HELMETS: COOKING THEM DESTROYS THE CHUMP HELMET SPAWN.
 /obj/item/clothing/head/syndicatefake
 	name = "red space helmet replica"

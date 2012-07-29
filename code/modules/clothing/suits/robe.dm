@@ -88,3 +88,9 @@
 	desc = "A magnificant, green, gem-lined robe that seems to radiate power."
 	icon_state = "yoba"
 	item_state = "yoba"
+
+/obj/item/clothing/suit/poncho
+	name = "poncho"
+	desc = "its poncho."
+	icon_state = "poncho"
+	item_state = "poncho"

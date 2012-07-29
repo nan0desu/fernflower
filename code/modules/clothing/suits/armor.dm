@@ -107,5 +107,12 @@
 	src.item_state = "reactiveoff"
 	..()
 
-
-
+/obj/item/clothing/suit/armor/stormtrooper
+	name = "stormtrooper armor"
+	desc = "A long time ago in a galaxy far, far away."
+	icon_state = "stormtrooper"
+	item_state = "stormtrooper"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	slowdown = 1
+	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
