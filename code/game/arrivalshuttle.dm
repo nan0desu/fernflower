@@ -12,7 +12,7 @@ var/flying_time_to_station = 30  //30 sec
 	req_access = list(ACCESS_SECURITY)
 	var/hacked = 0
 	var/allowedtocall = 0
-	var/location = 0 //0 = station, 1 = mining base
+	var/location = 0 // 0 -spess, 1 - CK, 2 - NSS Exodus
 
 
 /obj/machinery/computer/arrival_shuttle/attack_hand(user as mob)
@@ -61,10 +61,9 @@ proc/move_arrival_shuttle()
 		if(M.client)
 			spawn()
 				if(M.buckled)
-					shake_camera(M, 4, 1)
+					shake_camera(M, 2, 1)
 				else
-					shake_camera(M, 10, 2)
-					M.Stun (10)
+					shake_camera(M, 4, 2)
 					M.Weaken (10)
 	for(var/obj/machinery/door/unpowered/D in world)
 		if( get_area(D) == toArea )
