@@ -699,7 +699,7 @@
 						if(!isnull(P))
 							if (!P.toff && cartridge:shock_charges > 0)
 								log_admin("ATTACK: [U] ([U.ckey]) triggered a Detomatix Cartridge.")
-								message_admins("ATTACK: [U] ([U.ckey]) triggered a Detomatix Cartridge.")
+								message_admins("ATTACK: [U] ([U.ckey])(<A HREF='?src=\ref[src];adminplayerobservejump=\ref[U]'>JMP</A>) triggered a Detomatix Cartridge.")
 								log_attack("<font color='red'>[U.name] ([U.ckey]) triggered a Detomatix Cartridge.</font>")
 
 								cartridge:shock_charges--
