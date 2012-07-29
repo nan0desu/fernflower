@@ -128,7 +128,6 @@
 	new /obj/item/clothing/mask/surgical(src.loc)
 	del(src)
 
-
 /obj/effect/landmark/costume/imperium_monk/New()
 	new /obj/item/clothing/suit/imperium_monk(src.loc)
 	if (prob(25))
@@ -139,12 +138,10 @@
 	new /obj/item/clothing/suit/holidaypriest(src.loc)
 	del(src)
 
-
 /obj/effect/landmark/costume/spiderman/New()
 	new /obj/item/clothing/under/spiderman(src.loc)
 	new /obj/item/clothing/mask/spiderman(src.loc)
 	del(src)
-
 
 /obj/effect/landmark/costume/marisawizard/New()
 	new /obj/item/clothing/head/wizard/marisa(src.loc)
@@ -172,6 +169,13 @@
 	new /obj/item/clothing/shoes/sexymime_boots(src.loc)
 	new /obj/item/clothing/gloves/sexymime_gloves(src.loc)
 	del(src)
+
+/obj/effect/landmark/costume/rosh/New()
+	new /obj/item/clothing/under/rosh(src.loc)
+	new /obj/item/clothing/shoes/rosh_boots(src.loc)
+	new /obj/item/clothing/gloves/rosh_gloves(src.loc)
+	del(src)
+
 
 
 /*

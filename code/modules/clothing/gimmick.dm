@@ -605,6 +605,13 @@
 	item_state = "black_shirtf"
 	color = "black_shirtf"
 
+/obj/item/clothing/under/rosh
+	name = "rosh"
+	desc = "."
+	icon_state = "rosh"
+	item_state = "rosh"
+	color = "rosh"
+
 /obj/item/clothing/head/bowler
 	name = "bowler hat"
 	desc = "Gentleman, elite aboard!"

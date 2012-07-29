@@ -128,7 +128,7 @@
 	dat += "Waiter Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/waiter;cost=750'>750</A><br>"
 	dat += "Commie Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/commie;cost=1100'>1100</A><br>"
 	dat += "Girly-girl Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/nyangirl;cost=750'>750</A><br>"
-	dat += "Emperor Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/palputin;cost=1700'>1700</A><br>"
+	dat += "Rosh Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/rosh;cost=1200'>1200</A><br>"
 	dat += "Butler Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/butler;cost=750'>750</A><br>"
 	dat += "Highlander Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/highlander;cost=1100'>1100</A><br>"
 	dat += "Scratch Set: <A href='?src=\ref[src];item=/obj/effect/landmark/costume/scratch;cost=750'>750</A><br>"
