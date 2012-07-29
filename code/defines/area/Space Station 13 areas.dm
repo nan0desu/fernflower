@@ -141,7 +141,7 @@ proc/process_ghost_teleport_locs()
 	icon_state = "shuttle"
 
 /area/shuttle/arrival/spess
-	icon_state = "shuttle"
+	icon_state = "shuttle3"
 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
@@ -346,6 +346,9 @@ proc/process_ghost_teleport_locs()
 
 /area/centcom/control
 	name = "\improper Centcom Control"
+
+/area/centcom/arrival
+	name = "\improper Centcom Arrival Shuttle"
 
 /area/centcom/evac
 	name = "\improper Centcom Emergency Shuttle"
@@ -1291,6 +1294,22 @@ proc/process_ghost_teleport_locs()
 /area/toxins/supermatter
 	name = "\improper Supermatter Laboratory"
 	icon_state = "supermatter"
+
+/area/toxins/supermatter/engine
+	name = "\improper Supermatter Engine"
+	icon_state = "supa_engine"
+
+/area/toxins/supermatter/turbine
+	name = "\improper Supermatter Engine Power Generator"
+	icon_state = "supa_turbine"
+
+/area/toxins/supermatter/hallway
+	name = "\improper Supermatter Engine Hallway"
+	icon_state = "supa_hallway"
+
+/area/toxins/anomaly
+	name = "\improper Anomalistic Laboratory"
+	icon_state = "ano_lab"
 
 //Anomaly
 

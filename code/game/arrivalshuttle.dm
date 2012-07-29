@@ -1,7 +1,9 @@
 var/arrival_shuttle_tickstomove = 10
 var/arrival_shuttle_moving = 0
 var/arrival_shuttle_location = 1 // 0 -spess, 1 - CK, 2 - NSS Exodus
-var/start_arrival_shuttle_location = 0
+var/start_arrival_shuttle_location = 0 // for coordinate, frome where flying shuttle
+var/flying_time_from_station = 30  //30 sec
+var/flying_time_to_station = 60  //60 sec
 
 /obj/machinery/computer/arrival_shuttle
 	name = "Arrival Shuttle Console"
@@ -42,13 +44,18 @@ proc/move_arrival_shuttle()
 	var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 	if (arrival_shuttle_location == 1)
 		fromArea = locate(/area/shuttle/arrival/pre_game)
-		a.autosay("\"\"Ashenvale\" transport shuttle has started from the CentComm in 30 seconds.\"", "Shuttle Autopilot")
+		a.autosay("\"\"Ashenvale\" transport shuttle has started from the CentComm [(flying_time_from_station == 0) ? "now" : "in [flying_time_from_station] seconds."]\"", "Shuttle Autopilot")
 	else
 		fromArea = locate(/area/shuttle/arrival/station)
-		a.autosay("\"\"Ashenvale\" transport shuttle has started from the [station_name()] in 30 seconds.\"", "Shuttle Autopilot")
+		a.autosay("\"\"Ashenvale\" transport shuttle has started from the [station_name()] [(flying_time_from_station == 0) ? "now" : "in [flying_time_from_station] seconds."]\"", "Shuttle Autopilot")
 	toArea = locate(/area/shuttle/arrival/spess)
 	start_arrival_shuttle_location = arrival_shuttle_location
-	sleep(arrival_shuttle_tickstomove*30)
+	sleep(arrival_shuttle_tickstomove*flying_time_from_station)
+//	if(arrival_shuttle_location == 2)
+//		if(check_people())
+//			a.autosay("Please, leave \"Ashenvale\" before it can return to CentComm.", "Shuttle Autopilot")
+//			del(a)
+//			return
 	fromArea.move_contents_to(toArea)
 	for(var/mob/M in toArea)
 		if(M.client)
@@ -66,13 +73,13 @@ proc/move_arrival_shuttle()
 	arrival_shuttle_location = 0
 	if (start_arrival_shuttle_location == 1)
 		toArea = locate(/area/shuttle/arrival/station)
-		a.autosay("\"\"Ashenvale\" transport shuttle has escape from the CentComm.\"", "Shuttle Autopilot")
+		a.autosay("\"\"Ashenvale\" transport shuttle has escape from the CentComm. [(flying_time_to_station != 0) ? "ETA: [flying_time_to_station] sec." : ""]\"", "Shuttle Autopilot")
 	else
 		toArea = locate(/area/shuttle/arrival/pre_game)
-		a.autosay("\"\"Ashenvale\" transport shuttle has escape from the [station_name()].\"", "Shuttle Autopilot")
+		a.autosay("\"\"Ashenvale\" transport shuttle has escape from the [station_name()]. [(flying_time_to_station != 0) ? "ETA: [flying_time_to_station] sec." : ""]\"", "Shuttle Autopilot")
 	fromArea = locate(/area/shuttle/arrival/spess)
 	arrival_shuttle_location = 0
-	sleep(arrival_shuttle_tickstomove*60)
+	sleep(arrival_shuttle_tickstomove*flying_time_to_station)
 	fromArea.move_contents_to(toArea)
 	for(var/mob/M in toArea)
 		if(M.client)
@@ -95,4 +102,50 @@ proc/move_arrival_shuttle()
 		a.autosay("\"\"Ashenvale\" transport shuttle has arrived to the CentComm.\"", "Shuttle Autopilot")
 	arrival_shuttle_moving = 0
 	del(a)
+//	move_back_arrival_shuttle(1)
 	return
+/*
+proc/move_back_arrival_shuttle(var/auto = 0)
+	if(arrival_shuttle_location == 1)
+		return
+	var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
+	while(src)
+		if(check_people())
+			sleep(100)
+			a.autosay("Please, leave \"Ashenvale\" before it can return to CentComm.", "Shuttle Autopilot")
+			sleep(200)
+			continue
+		else
+			var/b = flying_time_from_station
+			flying_time_from_station = 0
+			move_arrival_shuttle()
+			flying_time_from_station = b
+			del(a)
+			return
+
+proc/check_people()
+	world << "Locating."
+	switch(arrival_shuttle_location)
+		if(0)
+			for(var/mob/living/carbon/C in world)
+				if(get_turf(C) == locate(/area/shuttle/arrival/spess))
+					world << "Find."
+					return 1
+			world << "Not find."
+			return 0
+		if(1)
+			for(var/mob/living/carbon/C in world)
+				if(get_turf(C) == locate(/area/shuttle/arrival/pre_game))
+					world << "Find."
+					return 1
+			world << "Not find."
+			return 0
+		if(2)
+			for(var/mob/living/carbon/C in world)
+				if(get_turf(C) == locate(/area/shuttle/arrival/station))
+					world << "Find."
+					return 1
+			world << "Not find."
+			return 0
+
+*/
