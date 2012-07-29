@@ -4,7 +4,7 @@
 
 #define NITROGEN_RETARDATION_FACTOR 4	//Higher == N2 slows reaction more
 #define THERMAL_RELEASE_MODIFIER 50		//Higher == less heat released during reaction
-#define PLASMA_RELEASE_MODIFIER 750		//Higher == less plasma released by reaction
+#define PLASMA_RELEASE_MODIFIER 50		//Higher == less plasma released by reaction
 #define OXYGEN_RELEASE_MODIFIER 1500	//Higher == less oxygen released at high temperature/power
 #define REACTION_POWER_MODIFIER 1.1		//Higher == more overall power
 
@@ -61,7 +61,10 @@
 //a lot of these variables are pretty hacked, so dont rely on the comments
 /obj/machinery/power/supermatter/process()
 	//core can no longer spontaneously explode
-/*
+	var/datum/gas_mixture/env = loc.return_air()
+	//nothing can happen in a vacuum
+	var/datum/gas_mixture/removed = env
+	var/retardation_factor = 0.5
 	previousdet = det
 	det += (removed.temperature - 1000) / 150
 	det = max(det, 0)
@@ -84,7 +87,6 @@
 
 	if (!removed)
 		return 1
-*/
 
 	//var/power = max(round((removed.temperature - T0C) / 20), 0) //Total laser power plus an overload factor
 
@@ -94,7 +96,7 @@
 		var/turf/T = get_step(L, dir)
 		for(var/obj/beam/e_beam/item in T)
 			power += item.power
-			*/
+	*/
 
 /*
 #define NITROGEN_RETARDATION_FACTOR 4	//Higher == N2 slows reaction more
@@ -104,11 +106,6 @@
 #define REACTION_POWER_MODIFIER 0.5	//Higher == more overall power
 */
 
-	var/datum/gas_mixture/env = loc.return_air()
-
-	//nothing can happen in a vacuum
-	var/datum/gas_mixture/removed = env
-	var/retardation_factor = 0.5
 	if(env.total_moles)
 		//Remove gas from surrounding area
 		var/transfer_moles = gasefficency * env.total_moles
@@ -154,11 +151,14 @@
 	env.merge(removed)
 
 	//talk to sky re hallucinations, because i'm lazy like that
-	/*for(var/mob/living/l in view(src, 6)) // you have to be seeing the core to get hallucinations
-		if(prob(10) && !(l.glasses && istype(l.glasses, /obj/item/clothing/glasses/meson)))
+	for(var/mob/living/l in view(src, 6)) // you have to be seeing the core to get hallucinations
+		if(istype(l, /mob/living/carbon/human))
+			if(prob(10) && !(l:glasses && istype(l:glasses, /obj/item/clothing/glasses/meson)))
+				l.hallucination = 50
+		else
 			l.hallucination = 50
 
 	for(var/mob/living/l in view(src,3))
 		l.bruteloss += 50
-		l.updatehealth()*/
+		l.updatehealth()
 	return 1
