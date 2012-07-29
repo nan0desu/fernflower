@@ -49,8 +49,9 @@
 
 /obj/item/clothing/under/internalsecurity
 	name = "internal security jumpsuit"
-	icon_state = "secelite"
-	item_state = "secelite"
+	icon = 'uniform.dmi'
+	icon_state = "secelite_s"
+	item_state = "secelite_s"
 	color = "internalsecurity"
 
 /obj/item/clothing/under/color/blackf
