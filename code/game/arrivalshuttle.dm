@@ -44,16 +44,16 @@ proc/move_arrival_shuttle()
 	var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 	if (arrival_shuttle_location == 1)
 		fromArea = locate(/area/shuttle/arrival/pre_game)
-		a.autosay("\"\"Ashenvale\" transport shuttle has started from the CentComm [(flying_time_from_station == 0) ? "now" : "in [flying_time_from_station] seconds."]\"", "Shuttle Autopilot")
+		a.autosay("\"Arrival shuttle will leave the CentComm's anabiosis center [(flying_time_from_station == 0) ? "now" : "in [flying_time_from_station] seconds."]\"", "Shuttle Autopilot")
 	else
 		fromArea = locate(/area/shuttle/arrival/station)
-		a.autosay("\"\"Ashenvale\" transport shuttle has started from the [station_name()] [(flying_time_from_station == 0) ? "now" : "in [flying_time_from_station] seconds."]\"", "Shuttle Autopilot")
+		a.autosay("\"Arrival shuttle will leave the [station_name()] [(flying_time_from_station == 0) ? "now" : "in [flying_time_from_station] seconds."]\"", "Shuttle Autopilot")
 	toArea = locate(/area/shuttle/arrival/spess)
 	start_arrival_shuttle_location = arrival_shuttle_location
 	sleep(arrival_shuttle_tickstomove*flying_time_from_station)
 //	if(arrival_shuttle_location == 2)
 //		if(check_people())
-//			a.autosay("Please, leave \"Ashenvale\" before it can return to CentComm.", "Shuttle Autopilot")
+//			a.autosay("Please, leave arrival shuttle before it can return to CentComm.", "Shuttle Autopilot")
 //			del(a)
 //			return
 	fromArea.move_contents_to(toArea)
@@ -73,10 +73,10 @@ proc/move_arrival_shuttle()
 	arrival_shuttle_location = 0
 	if (start_arrival_shuttle_location == 1)
 		toArea = locate(/area/shuttle/arrival/station)
-		a.autosay("\"\"Ashenvale\" transport shuttle has escape from the CentComm. [(flying_time_to_station != 0) ? "ETA: [flying_time_to_station] sec." : ""]\"", "Shuttle Autopilot")
+		a.autosay("\"Arrival shuttle left the CentComm's anabiosis center. [(flying_time_to_station != 0) ? "ETA: [flying_time_to_station] sec." : ""]\"", "Shuttle Autopilot")
 	else
 		toArea = locate(/area/shuttle/arrival/pre_game)
-		a.autosay("\"\"Ashenvale\" transport shuttle has escape from the [station_name()]. [(flying_time_to_station != 0) ? "ETA: [flying_time_to_station] sec." : ""]\"", "Shuttle Autopilot")
+		a.autosay("\"Arrival shuttle left the [station_name()]. [(flying_time_to_station != 0) ? "ETA: [flying_time_to_station] sec." : ""]\"", "Shuttle Autopilot")
 	fromArea = locate(/area/shuttle/arrival/spess)
 	arrival_shuttle_location = 0
 	sleep(arrival_shuttle_tickstomove*flying_time_to_station)
@@ -96,10 +96,10 @@ proc/move_arrival_shuttle()
 				D.close()
 	if(start_arrival_shuttle_location == 1)
 		arrival_shuttle_location = 2
-		a.autosay("\"\"Ashenvale\" transport shuttle has arrived to the [station_name()].\"", "Shuttle Autopilot")
+		a.autosay("\"Arrival shuttle docked with the [station_name()].\"", "Shuttle Autopilot")
 	else
 		arrival_shuttle_location = 1
-		a.autosay("\"\"Ashenvale\" transport shuttle has arrived to the CentComm.\"", "Shuttle Autopilot")
+		a.autosay("\"Arrival shuttle docked with the the CentComm's anabiosis center.\"", "Shuttle Autopilot")
 	arrival_shuttle_moving = 0
 	del(a)
 //	move_back_arrival_shuttle(1)
@@ -112,7 +112,7 @@ proc/move_back_arrival_shuttle(var/auto = 0)
 	while(src)
 		if(check_people())
 			sleep(100)
-			a.autosay("Please, leave \"Ashenvale\" before it can return to CentComm.", "Shuttle Autopilot")
+			a.autosay("Please, leave Arrival shuttle before it can return to CentComm.", "Shuttle Autopilot")
 			sleep(200)
 			continue
 		else
