@@ -1212,7 +1212,7 @@
 				var/t1 = w_uniform.color
 				if (!t1)
 					t1 = icon_state
-				clothing_overlays += image("icon" = 'uniform.dmi', "icon_state" = "[t1] _l", "layer" = UNIFORM_LAYER)
+				clothing_overlays += image("icon" = 'uniform.dmi', "icon_state" = "[t1]_l", "layer" = UNIFORM_LAYER)
 				if (w_uniform.blood_DNA)
 					var/icon/stain_icon = icon('blood.dmi', "uniformblood2")
 					clothing_overlays += image("icon" = stain_icon, "layer" = B_UNIFORM_LAYER)
