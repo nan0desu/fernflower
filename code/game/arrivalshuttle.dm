@@ -87,7 +87,6 @@ proc/move_arrival_shuttle()
 					shake_camera(M, 4, 1)
 				else
 					shake_camera(M, 10, 2)
-					M.Stun (10)
 					M.Weaken (10)
 	for(var/obj/machinery/door/unpowered/D in world)
 		if( get_area(D) == toArea )
