@@ -80,6 +80,11 @@
 						if (D.density)
 							spawn( 0 )
 								D.open()
+								switch(src.id)
+									if("Core_Shutters")
+										radioalert("CORE EMERGENCY SHUTTERS ARE UP.","Core control computer")
+									if("supermatter_vent")
+										radioalert("EMERGENCY CORE VENT FINISHED.","Core control computer")
 								return
 					if(specialfunctions & IDSCAN)
 						D.aiDisabledIdScanner = 1
@@ -94,6 +99,11 @@
 						if (!D.density)
 							spawn( 0 )
 								D.close()
+								switch(src.id)
+									if("Core_Shutters")
+										radioalert("CORE EMERGENCY SHUTTERS ARE DOWN.","Core control computer")
+									if("supermatter_vent")
+										radioalert("EMERGENCY CORE VENT INITIATED.","Core control computer")
 								return
 					if(specialfunctions & IDSCAN)
 						D.aiDisabledIdScanner = 0
