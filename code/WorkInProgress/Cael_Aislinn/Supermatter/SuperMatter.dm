@@ -3,10 +3,10 @@
 //frequency is 1-1e9
 
 #define NITROGEN_RETARDATION_FACTOR 10	//Higher == N2 slows reaction more
-#define THERMAL_RELEASE_MODIFIER 300		//Higher == less heat released during reaction
-#define PLASMA_RELEASE_MODIFIER 5		//Higher == less plasma released by reaction
-#define OXYGEN_RELEASE_MODIFIER 150		//Higher == less oxygen released at high temperature/power
-#define REACTION_POWER_MODIFIER 0.2		//Higher == more overall power
+#define THERMAL_RELEASE_MODIFIER 30		//Higher == less heat released during reaction
+#define PLASMA_RELEASE_MODIFIER 400		//Higher == less plasma released by reaction
+#define OXYGEN_RELEASE_MODIFIER 1500	//Higher == less oxygen released at high temperature/power
+#define REACTION_POWER_MODIFIER 0.4		//Higher == more overall power
 
 /obj/machinery/power/supermatter
 	name = "Supermatter"
