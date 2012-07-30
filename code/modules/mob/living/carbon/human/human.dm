@@ -1682,10 +1682,10 @@
 			&& !istype(part, /datum/organ/external/chest) \
 			&& !istype(part, /datum/organ/external/head) \
 			&& !(part.status & DESTROYED))
-			var/icon/temp = new /icon('human.dmi', "[part.icon_name]_s")
+			var/icon/temp = new /icon('human.dmi', "[part.icon_name]_[g]_s")
 			if(part.status & ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			stand_icon.Blend(temp, ICON_OVERLAY)
-			temp = new /icon('human.dmi', "[part.icon_name]_l")
+			temp = new /icon('human.dmi', "[part.icon_name]_[g]_l")
 			if(part.status & ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			lying_icon.Blend(temp , ICON_OVERLAY)
 
@@ -1718,8 +1718,8 @@
 			update_body()
 
 	if (husk)
-		var/icon/husk_s = new /icon('human.dmi', "husk_s")
-		var/icon/husk_l = new /icon('human.dmi', "husk_l")
+		var/icon/husk_s = new /icon('human.dmi', "husk_[g]_s")
+		var/icon/husk_l = new /icon('human.dmi', "husk_[g]_l")
 
 		for(var/name in organs)
 			var/datum/organ/external/part = organs[name]
