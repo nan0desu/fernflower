@@ -541,12 +541,12 @@
 	item_state = "karlson"
 	color = "karlson"
 
-/obj/item/clothing/under/secelite
+/obj/item/clothing/under/internalsecurity
 	name = "Security elite jumpsuit"
 	desc = "Best of the best."
-	icon_state = "secelite"
-	item_state = "secelite"
-	color = "secelite"
+	icon_state = "internalsecurity"
+	item_state = "internalsecurity"
+	color = "internalsecurity"
 
 /obj/item/clothing/under/secelite2
 	name = "Security elite jumpsuit"
