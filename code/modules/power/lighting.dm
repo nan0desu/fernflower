@@ -539,7 +539,7 @@
 		if(S.reagents.has_reagent("plasma", 5))
 			log_attack("<font color='red'>[user.name] ([user.ckey]) injected a light with plasma.</font>")
 			log_admin("ATTACK: [user] ([user.ckey]) injected a light with plasma.")
-			message_admins("ATTACK: [user] ([user.ckey])(<A HREF='?src=\ref[src];adminplayerobservejump=\ref[user]'>JMP</A>) injected a light with plasma.")
+			message_admins("ATTACK: [user] ([user.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) injected a light with plasma.")
 
 			rigged = 1
 
