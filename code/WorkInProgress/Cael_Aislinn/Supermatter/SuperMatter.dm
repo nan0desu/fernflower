@@ -83,7 +83,10 @@
 	if(det > explosiondet)
 		roundinfo.core = 1
 		//proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, force = 0)
-		explosion(src.loc,15,25,40,70,1)
+		explosion(src.loc,10,15,30,70,1)
+		for(var/turf/simulated/T)
+			if(prob(0.1) && T.z == 1)
+				explosion (T.loc,1,3,6,20,1)
 		det = 0
 
 	if (!removed)
@@ -104,7 +107,7 @@
 #define THERMAL_RELEASE_MODIFIER 50		//Higher == less heat released during reaction
 #define PLASMA_RELEASE_MODIFIER 750		//Higher == less plasma released by reaction
 #define OXYGEN_RELEASE_MODIFIER 1500	//Higher == less oxygen released at high temperature/power
-#define REACTION_POWER_MODIFIER 0.5	//Higher == more overall power
+#define REACTION_POWER_MODIFIER 0.5		//Higher == more overall power
 */
 
 	if(env.total_moles)

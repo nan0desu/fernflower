@@ -130,7 +130,7 @@
 
 			log_attack("<font color='red'>[hit_atom] ([M.ckey]) was hit by [src] thrown by ([src.fingerprintslast])</font>")
 			log_admin("ATTACK: [hit_atom] ([M.ckey]) was hit by [src] thrown by ([src.fingerprintslast])")
-			message_admins("ATTACK: [hit_atom] ([M.ckey])(<A HREF='?src=\ref[usr.client.holder];adminplayerobservejump=\ref[M]'>JMP</A>)) was hit by [src] thrown by ([src.fingerprintslast])")
+			message_admins("ATTACK: [hit_atom] ([M.ckey])(<A HREF='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</A>) was hit by [src] thrown by ([src.fingerprintslast])")
 
 	else if(isobj(hit_atom))
 		var/obj/O = hit_atom

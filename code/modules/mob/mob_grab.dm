@@ -204,7 +204,7 @@
 							affecting.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been strangled (kill intent) by [assailant.name] ([assailant.ckey])</font>")
 							assailant.attack_log += text("\[[time_stamp()]\] <font color='red'>Strangled (kill intent) [affecting.name] ([affecting.ckey])</font>")
 							log_admin("ATTACK: [assailant] ([assailant.ckey]) strangled [affecting] ([affecting.ckey]).")
-							message_admins("ATTACK: [assailant] ([assailant.ckey])(<A HREF='?src=\ref[usr.client.holder];adminplayerobservejump=\ref[assailant]'>JMP</A>) strangled [affecting] ([affecting.ckey]).")
+							message_admins("ATTACK: [assailant] ([assailant.ckey])(<A HREF='?src=\ref[src];adminplayerobservejump=\ref[assailant]'>JMP</A>) strangled [affecting] ([affecting.ckey]).")
 							log_attack("<font color='red'>[assailant.name] ([assailant.ckey]) Strangled (kill intent) [affecting.name] ([affecting.ckey])</font>")
 
 							assailant.next_move = world.time + 10

@@ -164,7 +164,7 @@
 
 				log_attack("<font color='red'>[user] ([user.ckey]) climbed into a disposals unit.</font>")
 				log_admin("ATTACK: [user] ([user.ckey]) climbed into in a disposals unit.")
-				message_admins("ATTACK: [user] ([user.ckey])(<A HREF='?src=\ref[usr.client.holder];adminplayerobservejump=\ref[user]'>JMP</A>) climbed into in a disposals unit.")
+				message_admins("ATTACK: [user] ([user.ckey])(<A HREF='?src=\ref[src];adminplayerobservejump=\ref[user]'>JMP</A>) climbed into in a disposals unit.")
 
 				msg = "[user.name] climbs into the [src]."
 				user << "You climb into the [src]."
@@ -172,7 +172,7 @@
 
 				log_attack("<font color='red'>[user] ([user.ckey]) placed [target] ([target.ckey]) in a disposals unit.</font>")
 				log_admin("ATTACK: [user] ([user.ckey]) placed [target] ([target.ckey]) in a disposals unit.")
-				message_admins("ATTACK: [user] ([user.ckey])(<A HREF='?src=\ref[usr.client.holder];adminplayerobservejump=\ref[user]'>JMP</A>) placed [target] ([target.ckey]) in a disposals unit.")
+				message_admins("ATTACK: [user] ([user.ckey])(<A HREF='?src=\ref[src];adminplayerobservejump=\ref[user]'>JMP</A>) placed [target] ([target.ckey]) in a disposals unit.")
 
 				msg = "[user.name] stuffs [target.name] into the [src]!"
 				user << "You stuff [target.name] into the [src]!"
