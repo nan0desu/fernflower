@@ -256,3 +256,93 @@
 						return
 		else //Alright, he's not a human. Can monkeys or aliens even wear gloves?
 			src.health -= W.force *0.1*/ //10% damage only for non-glorious human master race members
+
+/obj/structure/grille/vitrage1
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille5_g"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+/obj/structure/grille/vitrage2
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille1"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+/obj/structure/grille/vitrage3
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille2"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+/obj/structure/grille/vitrage4
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille3"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+/obj/structure/grille/vitrage5
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille3_g"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+/obj/structure/grille/vitrage6
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille4"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+/obj/structure/grille/vitrage7
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille4_g"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+/obj/structure/grille/vitrage8
+	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through. Strangely enough these grilles also lets meteors pass through them, whether they be small or huge station breaking death stones."
+	name = "grille"
+	icon = 'structures.dmi'
+	icon_state = "grille5"
+	density = 1
+	anchored = 1.0
+	flags = FPRINT | CONDUCT
+	pressure_resistance = 5*ONE_ATMOSPHERE
+	layer = 2.9
+
+
