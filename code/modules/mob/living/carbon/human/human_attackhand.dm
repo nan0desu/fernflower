@@ -117,7 +117,7 @@
 				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been shocked by [M.name] with the Electric Hands nanoaug ([M.ckey])</font>")
 
 				log_admin("ATTACK: [M.name] ([M.ckey]) used Electric Hands nanoaug on [src.name] ([src.ckey]), shocking them .")
-				message_admins("ATTACK: [M.name] ([M.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) used Electric Hands nanoaug on [src.name] ([src.ckey]), shocking them .")
+				message_admins("ATTACK: [M.name] ([M.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[M]\">Jump</a>) used Electric Hands nanoaug on [src.name] ([src.ckey]), shocking them .")
 				log_attack("<font color='red'>[M.name] ([M.ckey]) used Electric Hands nanoaug on [src.name] ([src.ckey]), shocking them </font>")
 
 
