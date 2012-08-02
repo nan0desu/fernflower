@@ -1777,6 +1777,22 @@ eternal248: Found broken and buggy Z-levels 7-12, ended up leading to my discove
 	g_amt = 10000
 	origin_tech = "materials=1;biotech=1"
 
+/obj/item/weapon/chainsaw
+	name = "chainsaw"
+	desc = "Its chainsaw."
+	icon = 'surgery.dmi'
+	icon_state = "chainsaw"
+	hitsound = 'circsawhit.ogg'
+	flags = FPRINT | TABLEPASS | CONDUCT
+	force = 20.0
+	w_class = 1.0
+	throwforce = 5.0
+	throw_speed = 2
+	throw_range = 2
+	m_amt = 20000
+	g_amt = 15000
+	origin_tech = "materials=1;biotech=1"
+
 /obj/item/weapon/autopsy_scanner
 	name = "autopsy scanner"
 	desc = "Extracts information on wounds."
@@ -1803,9 +1819,9 @@ eternal248: Found broken and buggy Z-levels 7-12, ended up leading to my discove
 	flags = FPRINT | TABLEPASS | CONDUCT
 	force = 12.0
 	w_class = 1.0
-	throwforce = 15.0
-	throw_speed = 4
-	throw_range = 4
+	throwforce = 20.0
+	throw_speed = 5
+	throw_range = 5
 	m_amt = 15000
 	origin_tech = "materials=2;combat=1"
 
