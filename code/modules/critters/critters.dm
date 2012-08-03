@@ -281,6 +281,29 @@
 	chasestate = "viscerator_attack"
 	deathtext = "is smashed into pieces!"
 
+/obj/effect/critter/bear
+	name = "bear"
+	desc = "Space bear."
+	icon_state = "bear"
+	pass_flags = PASSTABLE
+	health = 100
+	max_health = 100
+	aggressive = 0
+	opensdoors = 1
+	defensive = 1
+	wanderer = 1
+	atkcarbon = 1
+	atksilicon = 1
+	atkmech = 1
+	firevuln = 0 // immune to fire
+	brutevuln = 1
+	ventcrawl = 1
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+	attacktext = "tear"
+	attack_sound = 'bladeslice.ogg'
+	deathtext = "bear is dead."
+
 	Die()
 		..()
 		for(var/mob/O in viewers(src, null))
