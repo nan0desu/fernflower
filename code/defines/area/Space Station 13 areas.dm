@@ -600,6 +600,10 @@ proc/process_ghost_teleport_locs()
  	name = "Atmospherics"
  	icon_state = "atmos"
 
+/area/bioresearching
+	name = "Destroyed Lab"
+	icon_state = "fpmaint"
+
 /area/atmos/refilling
  	name = "\improper Refilling Station"
  	icon_state = "atmos"
