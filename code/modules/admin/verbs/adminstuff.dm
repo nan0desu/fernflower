@@ -9,7 +9,7 @@
 
 
 /client/proc/toggle_singulo_possession()
-	set name = "Toggel singulo possession"
+	set name = "Toggle singulo possession"
 	set category = "Server"
 	set desc = "Toggle possession of gravitational singularities"
 

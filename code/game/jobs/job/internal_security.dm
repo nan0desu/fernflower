@@ -34,10 +34,11 @@
 //COMMISSAR WHITELIST
 var/list/whitelist_internal_security
 
+#define SECURITYFILE "data/whitelist_internal_security.txt"
 /proc/load_whitelist_internal_security()
-	var/text = file2text("data/whitelist_internal_security.txt")
+	var/text = file2text(SECURITYFILE)
 	if (!text)
-		diary << "Failed to load whitelist_internal_security.txt\n"
+		diary << "Failed to [SECURITYFILE]\n"
 	else
 		whitelist_internal_security = dd_text2list(text, "\n")
 
@@ -45,3 +46,5 @@ var/list/whitelist_internal_security
 	if(!whitelist_internal_security)
 		return 0
 	return ("[M.ckey]" in whitelist_internal_security)
+
+#undef SECURITYFILE

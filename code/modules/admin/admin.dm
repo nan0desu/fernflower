@@ -2110,7 +2110,7 @@ var/global/BSACooldown = 0
 					for(var/mob/M in world)
 						if(M.client && M.stat != 2)
 							M.show_message(text("\blue The chilling wind suddenly stops..."), 1)
-	/*				if("shockwave")
+				if("shockwave")
 					ok = 1
 					world << "\red <B><big>ALERT: STATION STRESS CRITICAL</big></B>"
 					sleep(60)
@@ -2132,26 +2132,7 @@ var/global/BSACooldown = 0
 						spawn(0)
 							sleep(rand(20,400))
 							D.ex_act(rand(2,1))
-					for(var/turf/station/floor/Floor in world)
-						spawn(0)
-							sleep(rand(30,400))
-							Floor.ex_act(rand(2,1))
-					for(var/obj/structure/cable/Cable in world)
-						spawn(0)
-							sleep(rand(30,400))
-							Cable.ex_act(rand(2,1))
-					for(var/obj/structure/closet/Closet in world)
-						spawn(0)
-							sleep(rand(30,400))
-							Closet.ex_act(rand(2,1))
-					for(var/obj/machinery/Machinery in world)
-						spawn(0)
-							sleep(rand(30,400))
-							Machinery.ex_act(rand(1,3))
-					for(var/turf/station/wall/Wall in world)
-						spawn(0)
-							sleep(rand(30,400))
-							Wall.ex_act(rand(2,1)) */
+
 				if("wave")
 					//feedback_inc("admin_secrets_fun_used",1)
 					//feedback_add_details("admin_secrets_fun_used","MW")
@@ -2868,8 +2849,8 @@ var/global/BSACooldown = 0
 <A href='?src=\ref[src];secretsfun=movealienship'>Move Alien Dinghy</A><BR>
 <A href='?src=\ref[src];secretsfun=moveminingshuttle'>Move Mining Shuttle</A><BR>
 <A href='?src=\ref[src];secretsfun=blackout'>Break all lights</A><BR>
+<A href='?src=\ref[src];secretsfun=shockwave'>Station Shockwave</A><BR>
 <A href='?src=\ref[src];secretsfun=electric'>Trigger Electrical Storm</A><BR>"}
-//<A href='?src=\ref[src];secretsfun=shockwave'>Station Shockwave</A><BR>
 
 	if(lvl >= 6)
 		dat += {"
