@@ -127,6 +127,9 @@
 
 	clamp_values()
 
+	if(stat == 2)
+		stench()
+
 	// Grabbing
 	for(var/obj/item/weapon/grab/G in src)
 		G.process()
@@ -1529,7 +1532,7 @@
 						changeling.geneticdamage = changeling.geneticdamage-1
 
 		stench()
-			for(var/mob/living/carbon/human/H in viewers(usr, null))
+			for(var/mob/living/carbon/human/H in viewers(usr))
 				if (internal || istype(src, /mob/living) && !istype(H.wear_mask, /obj/item/clothing/mask/gas) && prob(50))
 					if(get_step_to(usr,H))
 						H.show_message("<b>You</b> feel a bad smell, coming from [src]")
