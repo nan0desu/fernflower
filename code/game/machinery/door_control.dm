@@ -75,16 +75,16 @@
 	if(normaldoorcontrol)
 		for(var/obj/machinery/door/airlock/D in range(range))
 			if(D.id_tag == src.id)
+				var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 				if(desiredstate == 1)
 					if(specialfunctions & OPEN)
 						if (D.density)
 							spawn( 0 )
 								D.open()
-								switch(src.id)
-									if("Core_Shutters")
-										radioalert("CORE EMERGENCY SHUTTERS ARE UP.","Core control computer")
-									if("supermatter_vent")
-										radioalert("EMERGENCY CORE VENT FINISHED.","Core control computer")
+								if(id == "Core_Shutters")
+									a.autosay("\"CORE EMERGENCY SHUTTERS ARE UP.\"","Core control computer")
+								if(id == "supermatter_vent")
+									a.autosay("\"EMERGENCY CORE VENT FINISHED.\"","Core control computer")
 								return
 					if(specialfunctions & IDSCAN)
 						D.aiDisabledIdScanner = 1
@@ -99,11 +99,10 @@
 						if (!D.density)
 							spawn( 0 )
 								D.close()
-								switch(src.id)
-									if("Core_Shutters")
-										radioalert("CORE EMERGENCY SHUTTERS ARE DOWN.","Core control computer")
-									if("supermatter_vent")
-										radioalert("EMERGENCY CORE VENT INITIATED.","Core control computer")
+								if(id == "Core_Shutters")
+									a.autosay("\"CORE EMERGENCY SHUTTERS ARE DOWN.\"","Core control computer")
+								if(id == "supermatter_vent")
+									a.autosay("\"EMERGENCY CORE VENT INITIATED.\"","Core control computer")
 								return
 					if(specialfunctions & IDSCAN)
 						D.aiDisabledIdScanner = 0
@@ -112,6 +111,7 @@
 						D.update_icon()
 					if(specialfunctions & SHOCK)
 						D.secondsElectrified = 0
+				del(a)
 
 
 
