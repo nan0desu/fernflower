@@ -66,7 +66,7 @@
 /turf/simulated/floor/clubfloor
 	icon_state = "bcircuitoff"
 
-/obj/machinery/club/player
+/*obj/machinery/club/player
 	name = "Player"
 	desc = "."
 	icon = 'device.dmi'
@@ -91,3 +91,4 @@
 
 /obj/machinery/club/player/attack_hand()
 	playing_track = "Space Assgole.wma"
+*/
