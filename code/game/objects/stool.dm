@@ -132,7 +132,7 @@
 	set category = "Object"
 	set src in oview(1)
 	if(istype (src , /obj/structure/stool/bed/chair/schair))
-		ãusr << "\blue This chair is immovable."
+		usr << "\blue This chair is immovable."
 		return
 	src.dir = turn(src.dir, 90)
 	if(src.dir == NORTH)
