@@ -873,7 +873,7 @@
 	icon_state = "chair"
 	anchored = 0
 
-/obj/structure/stool/bed/schair
+/obj/structure/stool/bed/chair/schair
 	name = "shuttle chair"
 	desc = "It shuttle chair."
 	icon_state = "schair"

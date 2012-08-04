@@ -140,6 +140,10 @@
 		buckled_mob.dir = dir
 	return
 
+/obj/structure/stool/bed/chair/schair/verb/rotate()
+	set hidden = 1
+	return
+
 /obj/structure/stool/bed/chair/MouseDrop_T(mob/M as mob, mob/user as mob)
 	if(!istype(M)) return
 	buckle_mob(M, user)
