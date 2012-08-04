@@ -129,7 +129,8 @@
 	set name = "Rotate Chair"
 	set category = "Object"
 	set src in oview(1)
-
+	if(istype (src , /obj/structure/stool/bed/chair/schair)
+		return
 	src.dir = turn(src.dir, 90)
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER
@@ -138,10 +139,6 @@
 
 	if(buckled_mob)
 		buckled_mob.dir = dir
-	return
-
-/obj/structure/stool/bed/chair/schair/verb/rotate()
-	set hidden = 1
 	return
 
 /obj/structure/stool/bed/chair/MouseDrop_T(mob/M as mob, mob/user as mob)
