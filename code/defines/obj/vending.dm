@@ -439,6 +439,7 @@
 /obj/machinery/vending/liquid
 	name = "LiquidRation Dispenser"
 	desc = "All the food you'll ever need to survive!"
+	density = 0
 	icon_state = "liquidfood"
 	product_paths = "/obj/item/weapon/reagent_containers/food/snacks/liquidfood;/obj/item/weapon/flavor/red;/obj/item/weapon/flavor/blue"
 //	product_amounts = "6;6;6;6;6;6;6"

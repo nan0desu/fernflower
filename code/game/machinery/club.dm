@@ -70,7 +70,7 @@
 /turf/simulated/floor/clubfloor
 	icon_state = "bcircuitoff"
 	New()
-		if(prob(10)
+		if(prob(10))
 			overlays << image (icon = 'structures.dmi', icon_state = "latticefull")
 /*
 /obj/machinery/club/player

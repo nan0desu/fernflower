@@ -3367,6 +3367,11 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 10
 	volume = 50
+	var/fired = 0
+	var/list/drinkcanfire = list("b52")
+	attackby(var/obj/item/I, var/mob/living/M)
+		if(istype(I, /obj/item/weapon/lighter) && I:lit && (reagents.get_master_reagent_id() == drinkcanfire))
+			fired = 1
 
 	on_reagent_change()
 		/*if(reagents.reagent_list.len > 1 )
@@ -3788,10 +3793,15 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 					name = "Glass of Dead Rum"
 					desc = "Dangerously sweet rum. You won't be getting scurvy any time soon!"
 				else
+					fired = 0
 					icon_state ="glass_brown"
 					name = "Glass of ..what?"
 					desc = "You can't really tell what this is."
+			if(fired)
+				icon_state = "[icon_state]_f"
+				desc = "\red [desc] It's fired!"
 		else
+			fired = 0
 			icon_state = "glass_empty"
 			name = "drinking glass"
 			desc = "Your standard drinking glass"
