@@ -866,6 +866,11 @@
 	desc = "This looks similar to contraptions from earth. Could aliens be stealing our technology?"
 	icon_state = "abed"
 
+/obj/structure/stool/bed/woodbed
+	name = "wooden bed"
+	desc = "This is used to lie in, sleep in or strap on"
+	icon_state = "woodbed"
+
 
 /obj/structure/stool/bed/chair	//YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
 	name = "chair"
@@ -878,6 +883,18 @@
 	desc = "It shuttle chair."
 	icon_state = "schair"
 	anchored = 1
+
+/obj/structure/stool/bed/chair/wooden_chair
+	name = "wooden chair"
+	desc = "It wooden chair."
+	icon_state = "wooden_chair"
+	anchored = 0
+
+/obj/structure/stool/bed/chair/wooden_chair_wings
+	name = "wooden chair with wings"
+	desc = "It wooden chair with wings."
+	icon_state = "wooden_chair_wings"
+	anchored = 0
 
 /obj/structure/stool/bed/chair/capchair
 	name = "chapell chair"

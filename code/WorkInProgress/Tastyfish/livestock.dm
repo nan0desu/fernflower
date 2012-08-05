@@ -135,6 +135,34 @@
 	name = "Beef"
 	desc = "It's what's for dinner!"
 
+// Bear
+/mob/living/simple_animal/livestock/bear
+	name = "\improper Bear"
+	icon_state = "bear"
+	icon_living = "bear"
+	icon_dead = "bear_d"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/bearmeat
+	meat_amount = 10
+	max_nutrition = 1000
+	speak = list("Growls.","Growls!","Snort.")
+	speak_emote = list("moos")
+	emote_hear = list("moos", "snorts")
+
+	attack_hand(var/mob/user as mob)
+		..()
+		if(user.a_intent == "hurt")
+			rage_at(user)
+
+/obj/item/weapon/reagent_containers/food/snacks/bearmeat
+	name = "bear meat"
+	desc = "A very manly slab of meat."
+	icon_state = "bearmeat"
+	New()
+		..()
+		reagents.add_reagent("nutriment", 12)
+		reagents.add_reagent("hyperzine", 5)
+		src.bitesize = 3
+
 // Chicken
 /mob/living/simple_animal/livestock/chicken
 	name = "\improper Chicken"

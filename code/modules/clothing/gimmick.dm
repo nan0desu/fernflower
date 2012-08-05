@@ -548,6 +548,13 @@
 	item_state = "internalsecurity"
 	color = "internalsecurity"
 
+/obj/item/clothing/under/commissar
+	name = "Security elite commissar jumpsuit"
+	desc = "Best of the best."
+	icon_state = "commissar"
+	item_state = "commissar"
+	color = "commissar"
+
 /obj/item/clothing/under/secelite2
 	name = "Security elite jumpsuit"
 	desc = "Best of the best."

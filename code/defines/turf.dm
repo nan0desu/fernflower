@@ -215,6 +215,11 @@
 			desc = "A wall with sandstone plating."
 			icon_state = "sandstone0"
 			walltype = "sandstone"
+		if("wood")
+			name = "wood wall"
+			desc = "A wall with wood plating."
+			icon_state = "wood_wall_full_center"
+			walltype = "wood"
 	..()
 
 /turf/simulated/wall/mineral/proc/radiate()

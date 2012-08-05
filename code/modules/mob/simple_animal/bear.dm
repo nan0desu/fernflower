@@ -8,6 +8,7 @@
 /mob/living/simple_animal/bear
 	name = "space bear"
 	desc = "RawrRawr!!"
+	icon = 'mob.dmi'
 	icon_state = "bear"
 	icon_living = "bear"
 	icon_dead = "bear_dead"

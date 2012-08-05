@@ -75,6 +75,17 @@
 	heat_transfer_coefficient = 0.10
 	flags_inv = HIDEEARS
 
+/obj/item/clothing/head/comcap
+	name = "commissar cap"
+	desc = "Better you do not meet the person who wears it."
+	icon_state = "comcap"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	item_state = "comcap"
+	armor = list(melee = 50, bullet = 15, laser = 50,energy = 10, bomb = 25, bio = 0, rad = 0)
+	protective_temperature = 500
+	heat_transfer_coefficient = 0.10
+	flags_inv = HIDEEARS
+
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks."

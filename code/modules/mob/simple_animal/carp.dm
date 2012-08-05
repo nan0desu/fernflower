@@ -5,6 +5,7 @@
 /mob/living/simple_animal/carp
 	name = "space carp"
 	desc = "A ferocious, fang-bearing creature that resembles a fish."
+	icon = 'critter.dmi'
 	icon_state = "spesscarp"
 	icon_living = "spesscarp"
 	icon_dead = "spesscarp_dead"
