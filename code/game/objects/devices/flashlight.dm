@@ -13,6 +13,9 @@
 	var/icon_on = "flight1"
 	var/icon_off = "flight0"
 	var/cell
+	New()
+		var/obj/item/weapon/battery/B = new /obj/item/weapon/battery(src)
+		cell = B
 
 	proc/Lighting()
 		update_brightness(src.loc)
@@ -32,14 +35,17 @@
 					return
 				sleep(50)
 
-/obj/item/device/flashlight/attackby(var/obj/item/weapon/battery/B, var/mob/user)
-	if(cell)
-		user << "Battery already inserted"
-	else
-		src.cell =  B
-		user.drop_item()
-		B.loc = src
-		user << "You insert battery"
+/obj/item/device/flashlight/attackby(var/obj/B, var/mob/user)
+	if(istype(B ,/obj/item/weapon/battery))
+		if(cell)
+			user << "Battery already inserted"
+		else
+			src.cell =  B
+			user.drop_item()
+			B.loc = src
+			user << "You insert battery"
+	else if (istype(B, /obj/item/weapon/storage/toolbox))
+		user << "You are silly? I can't insert this massive toolbox into flashlight."
 	return
 
 /obj/item/device/flashlight/verb/remove_battery()

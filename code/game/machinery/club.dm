@@ -69,7 +69,10 @@
 
 /turf/simulated/floor/clubfloor
 	icon_state = "bcircuitoff"
-
+	New()
+		if(prob(10)
+			overlays << image (icon = 'structures.dmi', icon_state = "latticefull")
+/*
 /obj/machinery/club/player
 	name = "Player"
 	desc = "."
@@ -78,8 +81,8 @@
 	var
 		playing_track = "Space Assgole.wma"
 		list
-			hearer = new
-			new_hearer = new
+			hearer = list()
+			new_hearer = list()
 //			playing = new
 
 
@@ -90,11 +93,11 @@
 			while(src)
 				world << "Now."
 				sleep(50)
-				for(var/mob/M in hearers())
+				for(var/mob/M in oviewers())
 					world << "First cycle."
 					if(M.hear_music != 1)
 						world << "Find."
-						M << playsound(playing_track)
+						M << sound(playing_track)
 						hearer += M
 				for(var/mob/M in hearer)
 					world << "Second cycle."
@@ -108,8 +111,9 @@
 					M << playsound (null)
 				new_hearer = hearer
 
-
-
+/obj/machinery/club/player/attack_hand()
+	usr << sound("Space Assgole.wma")
+*/
 /*	New()
 		spawn()
 			while(src)
@@ -171,8 +175,7 @@
 						C << playsound(null)
 				hearers = new_hearers
 */
-/obj/machinery/club/player/attack_hand()
-	playing_track = "Space Assgole.wma"
+
 
 /obj/effect/overlay/bluelight
 	icon = 'alert.dmi'
