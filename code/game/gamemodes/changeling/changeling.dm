@@ -7,7 +7,7 @@
 /datum/game_mode/changeling
 	name = "changeling"
 	config_tag = "changeling"
-	restricted_jobs = list("AI", "Cyborg")
+	restricted_jobs = list("AI", "Cyborg", "Internal Security")
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4
