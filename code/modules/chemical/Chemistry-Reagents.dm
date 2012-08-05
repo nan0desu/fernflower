@@ -3708,7 +3708,6 @@ datum
 				..()
 				return
 
-
 		metabolic
 			name = "Metabolic"
 			id = "metabolic"

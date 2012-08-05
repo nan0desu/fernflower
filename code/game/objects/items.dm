@@ -1,3 +1,9 @@
+/obj/item/Del()
+	if (src.loc && istype(src.loc, /mob/living/carbon/human))
+		//world << "\blue **Beep! Deleted [src] from [src.loc]**"
+		var/mob/living/carbon/human/H = src.loc
+		H.u_equip(src)
+	..()
 
 /obj/item/weapon/bedsheet/ex_act(severity)
 	if (severity <= 2)
@@ -53,7 +59,7 @@
 				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been handcuffed (attempt) by [user.name] ([user.ckey])</font>")
 				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to handcuff [M.name] ([M.ckey])</font>")
 
-				log_admin("ATTACK: [user] ([user.ckey])(<A HREF='?src=\ref[src];adminplayerobservejump=\ref[user]'>JMP</A>) handcuffed [M] ([M.ckey]).")
+				log_admin("ATTACK: [user] ([user.ckey]) handcuffed [M] ([M.ckey]).")
 				log_attack("<font color='red'>[user.name] ([user.ckey]) Attempted to handcuff [M.name] ([M.ckey])</font>")
 
 				var/obj/effect/equip_e/human/O = new /obj/effect/equip_e/human(  )
@@ -139,7 +145,7 @@
 
 		var/direction = get_dir(src,target)
 
-		if(usr.buckled && isobj(usr.buckled) && !usr.buckled.anchored )
+		if(usr.buckled && istype(usr.buckled, /obj/structure/stool/bed/chair/office) && !usr.buckled.anchored ) //Making only office chairs fire-extinguishable. Because NO FUN ALLOWED
 			spawn(0)
 				var/obj/B = usr.buckled
 				var/movementdirection = turn(direction,180)
@@ -235,7 +241,7 @@
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to stab [M.name] ([M.ckey])</font>")
 
 	log_admin("ATTACK: [user] ([user.ckey]) used [src] on [M] ([M.ckey]).")
-	message_admins("ATTACK: [user] ([user.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) used [src] on [M] ([M.ckey]).")
+	message_admins("ATTACK: [user] ([user.ckey]) used [src] on [M] ([M.ckey]).")
 	log_attack("<font color='red'>[user.name] ([user.ckey]) Used the [src.name] to stab [M.name] ([M.ckey])</font>")
 
 
@@ -398,7 +404,7 @@
 		return
 
 	var/datum/organ/external/head = H.organs["head"]
-	if(head.status & DESTROYED)
+	if(head.status & ORGAN_DESTROYED)
 		user << "\blue Put it where? There's no head."
 
 //since these people will be dead M != usr

@@ -292,7 +292,6 @@
 	return
 */
 
-
 /mob/proc/update_flavor_text()
 	set src in usr
 	if(usr != src)
@@ -326,6 +325,57 @@
 	return
 */
 
+/mob/Topic(href, href_list)
+	if(href_list["mach_close"])
+		var/t1 = text("window=[href_list["mach_close"]]")
+		machine = null
+		src << browse(null, t1)
+
+	if(href_list["teleto"])
+		client.jumptoturf(locate(href_list["teleto"]))
+
+	if(href_list["priv_msg"])
+		var/mob/M = locate(href_list["priv_msg"])
+		if(M)
+			//if(src.client && client.muted_complete)
+			//	src << "You are muted have a nice day"
+			//	return
+			if (!ismob(M))
+				return
+
+			var/recipient_name = M.key
+			if(M.client && M.client.holder && M.client.stealth)
+				recipient_name = "Administrator"
+
+			//This should have a check to prevent the player to player chat but I am too tired atm to add it.
+			var/t = input("Message:", text("Private message to [recipient_name]"))  as text|null
+			if (!t || !usr || !usr.client)
+				return
+			if (usr.client && usr.client.holder)
+				M << "\red Admin PM from-<b>[key_name(usr, M, 0)]</b>: [t]"
+				usr << "\blue Admin PM to-<b>[key_name(M, usr, 1)]</b>: [t]"
+			else
+				if (M)
+					if (M.client && M.client.holder)
+						M << "\blue Reply PM from-<b>[key_name(usr, M, 1)]</b>: [t]"
+					else
+						M << "\red Reply PM from-<b>[key_name(usr, M, 0)]</b>: [t]"
+					usr << "\blue Reply PM to-<b>[key_name(M, usr, 0)]</b>: [t]"
+
+			log_admin("PM: [key_name(usr)]->[key_name(M)] : [t]")
+
+			//we don't use message_admins here because the sender/receiver might get it too
+			for (var/mob/K in world)
+				if(K && usr)
+					if(K.client && K.client.holder && K.key != usr.key && K.key != M.key)
+						K << "<b><font color='blue'>PM: [key_name(usr, K)]->[key_name(M, K)]:</b> \blue [t]</font>"
+	if(href_list["flavor_more"])
+		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, dd_replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
+		onclose(usr, "[name]")
+	if(href_list["flavor_change"])
+		update_flavor_text()
+//	..()
+	return
 
 /mob/proc/get_damage()
 	return health
@@ -340,7 +390,7 @@
 		if(H.health - H.halloss <= config.health_threshold_crit)
 			for(var/name in H.organs)
 				var/datum/organ/external/e = H.organs[name]
-				if((H.lying) && ((e.status & BROKEN && !e.status & SPLINTED) || e.status & BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
+				if((H.lying) && ((e.status & ORGAN_BROKEN && !(e.status & ORGAN_SPLINTED)) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 					return 1
 					break
 		return 0
@@ -354,6 +404,41 @@
 	if(istype(M,/mob/living/silicon/ai)) return
 	if(LinkBlocked(usr.loc,loc)) return
 	show_inv(usr)
+
+/atom/movable/verb/pull()
+	set name = "Pull"
+	set category = "IC"
+	set src in oview(1)
+
+	if ( !usr || usr==src || !istype(src.loc,/turf) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+		return
+
+	if(ishuman(usr))
+		if(usr.hand) // if he's using his left hand.
+			var/datum/organ/external/temp = usr:get_organ("l_hand")
+			if(temp.status & ORGAN_DESTROYED)
+				usr << "\blue You look at your stump."
+				return
+		else
+			var/datum/organ/external/temp = usr:get_organ("r_hand")
+			if(temp.status & ORGAN_DESTROYED)
+				usr << "\blue You look at your stump."
+				return
+
+	if (!( anchored ))
+		usr.pulling = src
+		if(ismob(src))
+			var/mob/M = src
+			if(!istype(usr, /mob/living/carbon))
+				M.LAssailant = null
+			else
+				M.LAssailant = usr
+			if(M.pull_damage())
+				usr << "\red <B>Pulling \the [M] in their current condition would probably be a bad idea.</B>"
+	if(istype(src, /obj/machinery/artifact))
+		var/obj/machinery/artifact/A = src
+		A.attack_hand(usr)
+	return
 
 /mob/proc/can_use_hands()
 	if(handcuffed)
@@ -735,4 +820,3 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/get_visible_gender()
 	return gender
-

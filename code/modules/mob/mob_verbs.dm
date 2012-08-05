@@ -31,41 +31,6 @@
 		W.attack_self(src)
 	return
 
-/atom/movable/verb/pull()
-	set name = "Pull"
-	set category = "IC"
-	set src in oview(1)
-
-	if ( !usr || usr==src || !istype(src.loc,/turf) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
-		return
-
-	if(ishuman(usr))
-		if(usr.hand) // if he's using his left hand.
-			var/datum/organ/external/temp = usr:get_organ("l_hand")
-			if(temp.status & DESTROYED)
-				usr << "\blue You look at your stump."
-				return
-		else
-			var/datum/organ/external/temp = usr:get_organ("r_hand")
-			if(temp.status & DESTROYED)
-				usr << "\blue You look at your stump."
-				return
-
-	if (!( anchored ))
-		usr.pulling = src
-		if(ismob(src))
-			var/mob/M = src
-			if(!istype(usr, /mob/living/carbon))
-				M.LAssailant = null
-			else
-				M.LAssailant = usr
-			if(M.pull_damage())
-				usr << "\red <B>Pulling \the [M] in their current condition would probably be a bad idea.</B>"
-	if(istype(src, /obj/machinery/artifact))
-		var/obj/machinery/artifact/A = src
-		A.attack_hand(usr)
-	return
-
 /atom/verb/examine()
 	set name = "Examine"
 	set category = "IC"

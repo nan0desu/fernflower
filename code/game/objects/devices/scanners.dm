@@ -114,18 +114,18 @@ MASS SPECTROMETER
 	else if (M.getBrainLoss() >= 10)
 		user.show_message(text("\red Significant brain damage detected. Subject may have had a concussion."), 1)
 	if (M.virus2 || M.reagents.reagent_list.len > 0)
-		user.show_message(text("\red Unknown substance detected in blood."), 1)
+		user.show_message(text("\red Foreign substances detected in bloodstream."), 1)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/name in H.organs)
 			var/datum/organ/external/e = H.organs[name]
 			var/limb = e.getDisplayName()
-			if(e.status & BROKEN)
-				if(((e.name == "l_arm") || (e.name == "r_arm") || (e.name == "l_leg") || (e.name == "r_leg")) && (!e.status & SPLINTED))
+			if(e.status & ORGAN_BROKEN)
+				if(((e.name == "l_arm") || (e.name == "r_arm") || (e.name == "l_leg") || (e.name == "r_leg")) && (!(e.status & ORGAN_SPLINTED)))
 					user << "\red Unsecured fracture in subject [limb]. Splinting recommended for transport."
 		for(var/name in H.organs)
 			var/datum/organ/external/e = H.organs[name]
-			if(e.status & BROKEN)
+			if(e.status & ORGAN_BROKEN)
 				user.show_message(text("\red Bone fractures detected. Advanced scanner required for location."), 1)
 				break
 	if(ishuman(M))

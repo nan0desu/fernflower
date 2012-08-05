@@ -262,9 +262,11 @@ SHARDS
 		playsound(src.loc, 'glass_step.ogg', 50, 1)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
+			if(H.mutantrace == "lizard") //Soghun have... Scales? Yeah that works
+				return
 			if(!((H.shoes) || (H.wear_suit && H.wear_suit.body_parts_covered & FEET)))
 				var/datum/organ/external/affecting = H.get_organ(pick("l_foot", "r_foot"))
-				if(affecting.status & ROBOT)
+				if(affecting.status & ORGAN_ROBOT)
 					return
 				H.Weaken(3)
 				affecting.take_damage(5, 0)

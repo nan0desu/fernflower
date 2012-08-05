@@ -31,7 +31,7 @@
 			return
 		if(hasorgans(M))
 			var/datum/organ/external/target = M:get_organ(check_zone(user.zone_sel.selecting))
-			if(target.status & DESTROYED)
+			if(target.status & ORGAN_DESTROYED)
 				user << "What [target.display_name]?"
 				return
 			if(!target.implant)
@@ -45,7 +45,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'> Implanted with [src] ([imp])  by [user] ([user.ckey])</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src] ([imp]) to implant [M] ([M.ckey])</font>")
 		log_admin("ATTACK: [user] ([user.ckey]) implanted [M] ([M.ckey]) with [src].")
-		message_admins("ATTACK: [user] ([user.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) implanted [M] ([M.ckey]) with [src].")
+		message_admins("ATTACK: [user] ([user.ckey]) implanted [M] ([M.ckey]) with [src].")
 		log_attack("<font color='red'>[user.name] ([user.ckey]) implanted [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
 		imp.imp_in = M
 		imp.implanted = 1
@@ -114,8 +114,7 @@
 	..()
 
 /obj/item/weapon/implanter/compressed/afterattack(atom/A, mob/user as mob)
-	if(istype(A,/obj/item))
-		var/obj/item/weapon/implant/compressed/c = imp
-		c.scanned = A
+	if(istype(A,/obj/item) && imp)
+		imp:scanned = A
 		A.loc.contents.Remove(A)
 		update()

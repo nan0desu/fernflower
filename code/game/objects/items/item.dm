@@ -97,13 +97,13 @@
 	if (user.hand)
 		if(ishuman(user))
 			var/datum/organ/external/temp = user:organs["l_hand"]
-			if(temp.status & DESTROYED)
+			if(temp.status & ORGAN_DESTROYED)
 				user << "\blue Yo- wait a minute."
 				return
 	else
 		if(ishuman(user))
 			var/datum/organ/external/temp = user:organs["r_hand"]
-			if(temp.status & DESTROYED)
+			if(temp.status & ORGAN_DESTROYED)
 				user << "\blue Yo- wait a minute."
 
 	if (istype(src.loc, /obj/item/weapon/storage))
@@ -136,7 +136,7 @@
 	if (user.hand)
 		if(ishuman(user))
 			var/datum/organ/external/temp = user:organs["l_hand"]
-			if(!(temp.status & DESTROYED))
+			if(!(temp.status & ORGAN_DESTROYED))
 				user.l_hand = src
 			else
 				user << "\blue You pick \the [src] up with your ha- wait a minute."
@@ -148,7 +148,7 @@
 	else
 		if(ishuman(user))
 			var/datum/organ/external/temp = user:organs["r_hand"]
-			if(!(temp.status & DESTROYED))
+			if(!(temp.status & ORGAN_DESTROYED))
 				user.r_hand = src
 			else
 				user << "\blue You pick \the [src] up with your ha- wait a minute."
@@ -176,13 +176,13 @@
 	if (user.hand)
 		if(ismonkey(user))
 			var/datum/organ/external/temp = user:organs["l_hand"]
-			if(temp.status & DESTROYED)
+			if(temp.status & ORGAN_DESTROYED)
 				user << "\blue Yo- wait a minute."
 				return
 	else
 		if(ismonkey(user))
 			var/datum/organ/external/temp = user:organs["r_hand"]
-			if(temp.status & DESTROYED)
+			if(temp.status & ORGAN_DESTROYED)
 				user << "\blue Yo- wait a minute."
 
 	if (istype(src.loc, /obj/item/weapon/storage))
@@ -260,7 +260,7 @@ mob/proc/flash_weak_pain()
 	user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(src.damtype)])</font>"
 	M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [user.name] ([user.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(src.damtype)])</font>"
 	log_admin("ATTACK: [user] ([user.ckey]) attacked [M] ([M.ckey]) with [src].")
-	message_admins("ATTACK: [user] ([user.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) attacked [M] ([M.ckey]) with [src].")
+	message_admins("ATTACK: [user] ([user.ckey]) attacked [M] ([M.ckey]) with [src].")
 	log_attack("<font color='red'>[user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(src.damtype)])</font>" )
 
 	//spawn(1800)            // this wont work right
@@ -418,7 +418,7 @@ mob/proc/flash_weak_pain()
 	M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [user.name] ([user.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>"
 
 	log_admin("ATTACK: [user] ([user.ckey]) attacked [M] ([M.ckey]) with [src].")
-	message_admins("ATTACK: [user] ([user.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) attacked [M] ([M.ckey]) with [src].")
+	message_admins("ATTACK: [user] ([user.ckey]) attacked [M] ([M.ckey]) with [src].")
 	log_attack("<font color='red'> [user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
 
 	src.add_fingerprint(user)

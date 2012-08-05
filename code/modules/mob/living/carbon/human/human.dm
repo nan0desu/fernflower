@@ -56,8 +56,9 @@
 	var/image/damageicon_lying
 
 	var/mutantrace = null
-	var/slowed_metabolism = 0
+
 	var/datum/reagents/vessel
+	var/slowed_metabolism = 0
 	var/pale = 0
 	var/examine_text = ""
 
@@ -284,8 +285,8 @@
 
 	for(var/organ in list("l_leg","l_foot","r_leg","r_foot"))
 		var/datum/organ/external/o = organs["[organ]"]
-		if((o.status & BROKEN) || (o.status & DESTROYED))
-			if(o.status & SPLINTED)
+		if((o.status & ORGAN_BROKEN) || (o.status & ORGAN_DESTROYED))
+			if(o.status & ORGAN_SPLINTED)
 				tally += 3
 			else
 				tally += 6
@@ -780,7 +781,7 @@
 			M.show_message(text("\red [] has been hit by []", src, O), 1)
 	if (health > 0)
 		var/datum/organ/external/affecting = get_organ(pick("chest", "chest", "chest", "head"))
-		if(!affecting || affecting.status & DESTROYED)	return
+		if(!affecting || affecting.status & ORGAN_DESTROYED)	return
 		if (istype(O, /obj/effect/immovablerod))
 			affecting.take_damage(101, 0)
 		else
@@ -944,518 +945,265 @@
 
 	// Delete all items from the overlay lists
 	clothing_overlays.Cut()
-//////////////////
-////////STANDING//
-//////////////////
+
 	// Uniform
-	if(!lying)
-		if(w_uniform)
-			if(w_uniform)//I should really not need these
-				w_uniform.screen_loc = ui_iclothing
-			if(istype(w_uniform, /obj/item/clothing/under))
-				var/t1 = w_uniform.color
-				if (!t1)
-					t1 = icon_state
-				clothing_overlays += image("icon" = 'uniform.dmi', "icon_state" = "[t1]_s", "layer" = UNIFORM_LAYER)
-				if (w_uniform.blood_DNA)
-					var/icon/stain_icon = icon('blood.dmi', "uniformblood")
-					clothing_overlays += image("icon" = stain_icon, "layer" = B_UNIFORM_LAYER)
+	if(w_uniform)
+		if(w_uniform)//I should really not need these
+			w_uniform.screen_loc = ui_iclothing
+		if(istype(w_uniform, /obj/item/clothing/under))
+			var/t1 = w_uniform.color
+			if (!t1)
+				t1 = icon_state
+			clothing_overlays += image("icon" = 'uniform.dmi', "icon_state" = text("[][]",t1, (!(lying) ? "_s" : "_l")), "layer" = UNIFORM_LAYER)
+			if (w_uniform.blood_DNA)
+				var/icon/stain_icon = icon('blood.dmi', "uniformblood[!lying ? "" : "2"]")
+				clothing_overlays += image("icon" = stain_icon, "layer" = B_UNIFORM_LAYER)
 
-		if (wear_id)
-			if(wear_id.over_jumpsuit)
-				clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "id", "layer" = ID_LAYER)
+	if (wear_id)
+		if(wear_id.over_jumpsuit)
+			clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "id[!lying ? null : "2"]", "layer" = ID_LAYER)
 
-		if (client)
-			client.screen -= hud_used.intents
-			client.screen -= hud_used.mov_int
+	if (client)
+		client.screen -= hud_used.intents
+		client.screen -= hud_used.mov_int
 
-		// Gloves
-		var/datum/organ/external/lo = organs["l_hand"]
-		var/datum/organ/external/ro = organs["r_hand"]
-		if (lo && ro && !(lo.status & DESTROYED && ro.status & DESTROYED))
-			if (gloves)
-				var/t1 = gloves.item_state
-				if (!t1)
-					t1 = gloves.icon_state
-				var/icon/gloves_icon = new /icon("icon" = 'hands.dmi', "icon_state" = t1)
-				if(lo.status & DESTROYED)
-					gloves_icon.Blend(new /icon('limb_mask.dmi', "right_s"), ICON_MULTIPLY)
-				if(ro.status & DESTROYED)
-					gloves_icon.Blend(new /icon('limb_mask.dmi', "left_s"), ICON_MULTIPLY)
-				clothing_overlays += image(gloves_icon, "layer" = GLOVES_LAYER)
-				if (gloves.blood_DNA)
-					var/icon/stain_icon = icon('blood.dmi', "bloodyhands")
-					if(lo.status & DESTROYED)
-						stain_icon.Blend(new /icon('limb_mask.dmi', "right_s"), ICON_MULTIPLY)
-					else if(ro.status & DESTROYED)
-						stain_icon.Blend(new /icon('limb_mask.dmi', "left_s"), ICON_MULTIPLY)
-					clothing_overlays += image("icon" = stain_icon, "layer" = B_GLOVES_LAYER)
-			else if (blood_DNA)
-				var/icon/stain_icon = icon('blood.dmi', "bloodyhands")
-				if(lo.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "right_s"), ICON_MULTIPLY)
-				else if(ro.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "left_s"), ICON_MULTIPLY)
+	// Gloves
+	var/datum/organ/external/lo = organs["l_hand"]
+	var/datum/organ/external/ro = organs["r_hand"]
+	if (lo && ro && !(lo.status & ORGAN_DESTROYED && ro.status & ORGAN_DESTROYED))
+		if (gloves)
+			var/t1 = gloves.item_state
+			if (!t1)
+				t1 = gloves.icon_state
+			var/icon/gloves_icon = new /icon("icon" = 'hands.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
+			if(lo.status & ORGAN_DESTROYED)
+				gloves_icon.Blend(new /icon('limb_mask.dmi', "right_[lying?"l":"s"]"), ICON_MULTIPLY)
+			if(ro.status & ORGAN_DESTROYED)
+				gloves_icon.Blend(new /icon('limb_mask.dmi', "left_[lying?"l":"s"]"), ICON_MULTIPLY)
+			clothing_overlays += image(gloves_icon, "layer" = GLOVES_LAYER)
+			if (gloves.blood_DNA)
+				var/icon/stain_icon = icon('blood.dmi', "bloodyhands[!lying ? "" : "2"]")
+				if(lo.status & ORGAN_DESTROYED)
+					stain_icon.Blend(new /icon('limb_mask.dmi', "right_[lying?"l":"s"]"), ICON_MULTIPLY)
+				else if(ro.status & ORGAN_DESTROYED)
+					stain_icon.Blend(new /icon('limb_mask.dmi', "left_[lying?"l":"s"]"), ICON_MULTIPLY)
 				clothing_overlays += image("icon" = stain_icon, "layer" = B_GLOVES_LAYER)
+		else if (blood_DNA)
+			var/icon/stain_icon = icon('blood.dmi', "bloodyhands[!lying ? "" : "2"]")
+			if(lo.status & ORGAN_DESTROYED)
+				stain_icon.Blend(new /icon('limb_mask.dmi', "right_[lying?"l":"s"]"), ICON_MULTIPLY)
+			else if(ro.status & ORGAN_DESTROYED)
+				stain_icon.Blend(new /icon('limb_mask.dmi', "left_[lying?"l":"s"]"), ICON_MULTIPLY)
+			clothing_overlays += image("icon" = stain_icon, "layer" = B_GLOVES_LAYER)
 
-		// Glasses
-		if (glasses)
-			var/t1 = glasses.icon_state
-			clothing_overlays += image("icon" = 'eyes.dmi', "icon_state" = t1, "layer" = GLASSES_LAYER)
+	// Glasses
+	if (glasses)
+		var/t1 = glasses.icon_state
+		clothing_overlays += image("icon" = 'eyes.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = GLASSES_LAYER)
 
-		// Ears
-		if (l_ear)
-			var/t1 = l_ear.icon_state
-			clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = t1, "layer" = EARS_LAYER)
-		if (r_ear)
-			var/t1 = r_ear.icon_state
-			clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = t1, "layer" = EARS_LAYER)
+	// Ears
+	if (l_ear)
+		var/t1 = l_ear.icon_state
+		clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = EARS_LAYER)
+	if (r_ear)
+		var/t1 = r_ear.icon_state
+		clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = EARS_LAYER)
 
-		// Shoes
-		lo = organs["l_foot"]
-		ro = organs["r_foot"]
-		if (!(lo.status & DESTROYED && ro.status & DESTROYED) && shoes)
-			var/t1 = shoes.icon_state
-			var/icon/shoes_icon = new /icon("icon" = 'feet.dmi', "icon_state" = t1)
-			if(lo.status & DESTROYED && !lying)
-				shoes_icon.Blend(new /icon('limb_mask.dmi', "right"), ICON_MULTIPLY)
-			else if(ro.status & DESTROYED && !lying)
-				shoes_icon.Blend(new /icon('limb_mask.dmi', "left"), ICON_MULTIPLY)
-			clothing_overlays += image(shoes_icon, "layer" = SHOES_LAYER)
-			if (shoes.blood_DNA)
-				var/icon/stain_icon = icon('blood.dmi', "shoeblood")
-				if(lo.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "right_s"), ICON_MULTIPLY)
-				else if(ro.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "left_s"), ICON_MULTIPLY)
-				clothing_overlays += image("icon" = stain_icon, "layer" = B_SHOES_LAYER)	// Radio
+	// Shoes
+	lo = organs["l_foot"]
+	ro = organs["r_foot"]
+	if (!(lo.status & ORGAN_DESTROYED && ro.status & ORGAN_DESTROYED) && shoes)
+		var/t1 = shoes.icon_state
+		var/icon/shoes_icon = new /icon("icon" = 'feet.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")))
+		if(lo.status & ORGAN_DESTROYED && !lying)
+			shoes_icon.Blend(new /icon('limb_mask.dmi', "right[lying?"_l":""]"), ICON_MULTIPLY)
+		else if(ro.status & ORGAN_DESTROYED && !lying)
+			shoes_icon.Blend(new /icon('limb_mask.dmi', "left[lying?"_l":""]"), ICON_MULTIPLY)
+		clothing_overlays += image(shoes_icon, "layer" = SHOES_LAYER)
+		if (shoes.blood_DNA)
+			var/icon/stain_icon = icon('blood.dmi', "shoeblood[!lying ? "" : "2"]")
+			if(lo.status & ORGAN_DESTROYED)
+				stain_icon.Blend(new /icon('limb_mask.dmi', "right_[lying?"l":"s"]"), ICON_MULTIPLY)
+			else if(ro.status & ORGAN_DESTROYED)
+				stain_icon.Blend(new /icon('limb_mask.dmi', "left_[lying?"l":"s"]"), ICON_MULTIPLY)
+			clothing_overlays += image("icon" = stain_icon, "layer" = B_SHOES_LAYER)	// Radio
 
-		if (s_store)
-			var/t1 = s_store.item_state
-			if (!t1)
-				t1 = s_store.icon_state
-			if(!istype(wear_suit, /obj/item/clothing/suit/storage/armoredundersuit))
-				clothing_overlays += image("icon" = 'belt_mirror.dmi', "icon_state" = t1, "layer" = SUIT_STORE_LAYER)
-			s_store.screen_loc = ui_sstore1
-
-
-
-
-		if (wear_mask)
-			if (istype(wear_mask, /obj/item/clothing/mask))
-				var/t1 = wear_mask.icon_state
-				clothing_overlays += image("icon" = 'mask.dmi', "icon_state" = t1, "layer" = FACEMASK_LAYER)
-				if (!istype(wear_mask, /obj/item/clothing/mask/cigarette))
-					if (wear_mask.blood_DNA)
-						var/icon/stain_icon = icon('blood.dmi', "maskblood")
-						clothing_overlays += image("icon" = stain_icon, "layer" = B_FACEMASK_LAYER)
-				wear_mask.screen_loc = ui_mask
-
-		// Head
-		if (head)
-			var/t1 = head.icon_state
-			var/icon/head_icon = icon('head.dmi', text("[][]", t1, (!( lying ) ? null : "2")))
-			if(istype(head,/obj/item/clothing/head/kitty))
-				head_icon = (( lying ) ? head:mob2 : head:mob)
-			clothing_overlays += image("icon" = head_icon, "layer" = HEAD_LAYER)
-			if(gimmick_hat)
-				clothing_overlays += image("icon" = icon('gimmick_head.dmi', "[gimmick_hat]"), "layer" = HEAD_LAYER)
-			if (head.blood_DNA)
-				var/icon/stain_icon = icon('blood.dmi', "helmetblood[!lying ? "" : "2"]")
-				clothing_overlays += image("icon" = stain_icon, "layer" = B_HEAD_LAYER)
-			head.screen_loc = ui_head
-
-		// Belt
-		if (belt)
-			var/t1 = belt.item_state
-			if (!t1)
-				t1 = belt.icon_state
-			clothing_overlays += image("icon" = 'belt.dmi', "icon_state" = t1, "layer" = BELT_LAYER)
-			belt.screen_loc = ui_belt
+	if (s_store)
+		var/t1 = s_store.item_state
+		if (!t1)
+			t1 = s_store.icon_state
+		if(!istype(wear_suit, /obj/item/clothing/suit/storage/armoredundersuit))
+			clothing_overlays += image("icon" = 'belt_mirror.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = SUIT_STORE_LAYER)
+		s_store.screen_loc = ui_sstore1
 
 
-		name = get_visible_name()
 
-		if (wear_id)
-			wear_id.screen_loc = ui_id
 
-		if (l_store)
-			l_store.screen_loc = ui_storage1
+	if (wear_mask)
+		if (istype(wear_mask, /obj/item/clothing/mask))
+			var/t1 = wear_mask.icon_state
+			clothing_overlays += image("icon" = 'mask.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = FACEMASK_LAYER)
+			if (!istype(wear_mask, /obj/item/clothing/mask/cigarette))
+				if (wear_mask.blood_DNA)
+					var/icon/stain_icon = icon('blood.dmi', "maskblood[!lying ? "" : "2"]")
+					clothing_overlays += image("icon" = stain_icon, "layer" = B_FACEMASK_LAYER)
+			wear_mask.screen_loc = ui_mask
 
-		if (r_store)
-			r_store.screen_loc = ui_storage2
+	// Head
+	if (head)
+		var/t1 = head.icon_state
+		var/icon/head_icon = icon('head.dmi', text("[][]", t1, (!( lying ) ? null : "2")))
+		if(istype(head,/obj/item/clothing/head/kitty))
+			head_icon = (( lying ) ? head:mob2 : head:mob)
+		clothing_overlays += image("icon" = head_icon, "layer" = HEAD_LAYER)
+		if(gimmick_hat)
+			clothing_overlays += image("icon" = icon('gimmick_head.dmi', "[gimmick_hat][!lying ? "" : "2"]"), "layer" = HEAD_LAYER)
+		if (head.blood_DNA)
+			var/icon/stain_icon = icon('blood.dmi', "helmetblood[!lying ? "" : "2"]")
+			clothing_overlays += image("icon" = stain_icon, "layer" = B_HEAD_LAYER)
+		head.screen_loc = ui_head
 
-		if (back)
-			var/t1 = back.icon_state
-			clothing_overlays += image("icon" = 'back.dmi', "icon_state" = t1, "layer" = BACK_LAYER)
-			back.screen_loc = ui_back
+	// Belt
+	if (belt)
+		var/t1 = belt.item_state
+		if (!t1)
+			t1 = belt.icon_state
+		clothing_overlays += image("icon" = 'belt.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = BELT_LAYER)
+		belt.screen_loc = ui_belt
 
-		if(client)
-			client.screen -= contents
-			client.screen += contents
-												   //to hide / show them.
-		if (handcuffed)
-			pulling = null
-			var/h1 = handcuffed.icon_state
+
+	name = get_visible_name()
+
+	if (wear_id)
+		wear_id.screen_loc = ui_id
+
+	if (l_store)
+		l_store.screen_loc = ui_storage1
+
+	if (r_store)
+		r_store.screen_loc = ui_storage2
+
+	if (back)
+		var/t1 = back.icon_state
+		clothing_overlays += image("icon" = 'back.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = BACK_LAYER)
+		back.screen_loc = ui_back
+
+	if(client)
+		client.screen -= contents
+		client.screen += contents
+											   //to hide / show them.
+	if (handcuffed)
+		pulling = null
+		var/h1 = handcuffed.icon_state
+		if (!lying)
 			clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[h1]1", "layer" = CUFFED_LAYER)
-
-		// Splints
-		for(var/organ in list("l_leg","r_leg","l_arm","r_arm"))
-			var/datum/organ/external/o = organs["[organ]"]
-			if (o.status & SPLINTED)
-				clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[o]_splint", "layer" = CUFFED_LAYER)
-
-		if (r_hand)
-			clothing_overlays += image("icon" = 'items_righthand.dmi', "icon_state" = r_hand.item_state ? r_hand.item_state : r_hand.icon_state, "layer" = INHANDS_LAYER)
-			r_hand.screen_loc = ui_rhand
-
-		if (l_hand)
-			clothing_overlays += image("icon" = 'items_lefthand.dmi', "icon_state" = l_hand.item_state ? l_hand.item_state : l_hand.icon_state, "layer" = INHANDS_LAYER)
-			l_hand.screen_loc = ui_lhand
-
-
-		var/shielded = 0
-		for (var/obj/item/weapon/cloaking_device/S in src)
-			if (S.active)
-				shielded = 2
-				break
-
-
-		if (wear_suit)
-
-
-
-			if (wear_suit)
-				if (istype(wear_suit, /obj/item/clothing/suit))
-					var/t1 = wear_suit.icon_state
-					clothing_overlays += image("icon" = 'suit.dmi', "icon_state" = t1, "layer" = SUIT_LAYER)
-					if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-						if (handcuffed)
-							handcuffed.loc = loc
-							handcuffed.layer = initial(handcuffed.layer)
-							handcuffed = null
-						if ((l_hand || r_hand))
-							// I don't know what this does, but it looks horrible
-							var/h = hand
-							hand = 1
-							drop_item()
-							hand = 0
-							drop_item()
-							hand = h
-					else if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)&&wear_suit:s_active)
-						shielded = 3
-				if (wear_suit.blood_DNA)
-					var/icon/stain_icon = null
-					if (istype(wear_suit, /obj/item/clothing/suit/armor/vest || /obj/item/clothing/suit/storage/wcoat))
-						stain_icon = icon('blood.dmi', "armorblood")
-					else if (istype(wear_suit, /obj/item/clothing/suit/storage/det_suit || /obj/item/clothing/suit/storage/labcoat))
-						stain_icon = icon('blood.dmi', "coatblood")
-					else
-						stain_icon = icon('blood.dmi', "suitblood")
-					clothing_overlays += image("icon" = stain_icon, "layer" = B_SUIT_LAYER)
-				wear_suit.screen_loc = ui_oclothing
-
-		//Update_other() MUST be called after all the storage slots get updated. This is because all the storage slots assign their
-		//respective items a screen_loc, which other_update() will then override if needed.
-		if(client)
-			hud_used.other_update() //Update the screenloc of the items on the 'other' inventory bar
-
-		switch(shielded)
-			if(1)
-				overlays += image("icon" = 'effects.dmi', "icon_state" = "shield", "layer" = SHIELD_LAYER)
-			if(2)
-				invisibility = 2
-				//New stealth. Hopefully doesn't lag too much. /N
-				if(istype(loc, /turf))//If they are standing on a turf.
-					AddCamoOverlay(loc)//Overlay camo.
-			if(3)
-				if(istype(loc, /turf))
-				//Ninjas may flick into view once in a while if they are stealthed.
-					if(prob(90))
-						NinjaStealthActive(loc)
-					else
-						NinjaStealthMalf()
-			else
-				invisibility = 0
-
-		if(client && client.admin_invis)
-			invisibility = 100
-		else if (shielded == 2)
-			invisibility = 2
 		else
-	//		invisibility = 0 //This should hopefully be taken care of by the above
-			if(targeted_by && target_locked)
-				clothing_overlays += target_locked
-			else if(targeted_by)
-				target_locked = new /obj/effect/target_locked(src)
-				clothing_overlays += target_locked
-			else if(!targeted_by && target_locked)
-				del(target_locked)
-
-	/*
-		for (var/mob/M in viewers(1, src))//For the love of god DO NOT REFRESH EVERY SECOND - Mport
-			if ((M.client && M.machine == src))
-				spawn (0)
-					show_inv(M)
-					return
-	*/
-		last_b_state = stat
-
-//////////////////
-/////////LYING////
-//////////////////
-	else if(lying)
-		if(w_uniform)
-			if(w_uniform)//I should really not need these
-				w_uniform.screen_loc = ui_iclothing
-			if(istype(w_uniform, /obj/item/clothing/under))
-				var/t1 = w_uniform.color
-				if (!t1)
-					t1 = icon_state
-				clothing_overlays += image("icon" = 'uniform.dmi', "icon_state" = "[t1]_l", "layer" = UNIFORM_LAYER)
-				if (w_uniform.blood_DNA)
-					var/icon/stain_icon = icon('blood.dmi', "uniformblood2")
-					clothing_overlays += image("icon" = stain_icon, "layer" = B_UNIFORM_LAYER)
-
-		if (wear_id)
-			if(wear_id.over_jumpsuit)
-				clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "id2", "layer" = ID_LAYER)
-
-		if (client)
-			client.screen -= hud_used.intents
-			client.screen -= hud_used.mov_int
-
-		// Gloves
-		var/datum/organ/external/lo = organs["l_hand"]
-		var/datum/organ/external/ro = organs["r_hand"]
-		if (lo && ro && !(lo.status & DESTROYED && ro.status & DESTROYED))
-			if (gloves)
-				var/t1 = gloves.item_state
-				if (!t1)
-					t1 = gloves.icon_state
-				var/icon/gloves_icon = new /icon("icon" = 'hands.dmi', "icon_state" = "[t1]2")
-				if(lo.status & DESTROYED)
-					gloves_icon.Blend(new /icon('limb_mask.dmi', "right_l"), ICON_MULTIPLY)
-				if(ro.status & DESTROYED)
-					gloves_icon.Blend(new /icon('limb_mask.dmi', "left_l"), ICON_MULTIPLY)
-				clothing_overlays += image(gloves_icon, "layer" = GLOVES_LAYER)
-				if (gloves.blood_DNA)
-					var/icon/stain_icon = icon('blood.dmi', "bloodyhands2")
-					if(lo.status & DESTROYED)
-						stain_icon.Blend(new /icon('limb_mask.dmi', "right_l"), ICON_MULTIPLY)
-					else if(ro.status & DESTROYED)
-						stain_icon.Blend(new /icon('limb_mask.dmi', "left_l"), ICON_MULTIPLY)
-					clothing_overlays += image("icon" = stain_icon, "layer" = B_GLOVES_LAYER)
-			else if (blood_DNA)
-				var/icon/stain_icon = icon('blood.dmi', "bloodyhands2")
-				if(lo.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "right_l"), ICON_MULTIPLY)
-				else if(ro.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "left_l"), ICON_MULTIPLY)
-				clothing_overlays += image("icon" = stain_icon, "layer" = B_GLOVES_LAYER)
-
-		// Glasses
-		if (glasses)
-			var/t1 = glasses.icon_state
-			clothing_overlays += image("icon" = 'eyes.dmi', "icon_state" = "[t1]2", "layer" = GLASSES_LAYER)
-
-		// Ears
-		if (l_ear)
-			var/t1 = l_ear.icon_state
-			clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = "[t1]2", "layer" = EARS_LAYER)
-		if (r_ear)
-			var/t1 = r_ear.icon_state
-			clothing_overlays += image("icon" = 'ears.dmi', "icon_state" = "[t1]2", "layer" = EARS_LAYER)
-
-		// Shoes
-		lo = organs["l_foot"]
-		ro = organs["r_foot"]
-		if (!(lo.status & DESTROYED && ro.status & DESTROYED) && shoes)
-			var/t1 = shoes.icon_state
-			var/icon/shoes_icon = new /icon("icon" = 'feet.dmi', "icon_state" = "[t1]2")
-			if(lo.status & DESTROYED && !lying)
-				shoes_icon.Blend(new /icon('limb_mask.dmi', "right_l"), ICON_MULTIPLY)
-			else if(ro.status & DESTROYED && !lying)
-				shoes_icon.Blend(new /icon('limb_mask.dmi', "left_l"), ICON_MULTIPLY)
-			clothing_overlays += image(shoes_icon, "layer" = SHOES_LAYER)
-			if (shoes.blood_DNA)
-				var/icon/stain_icon = icon('blood.dmi', "shoeblood2")
-				if(lo.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "right_l"), ICON_MULTIPLY)
-				else if(ro.status & DESTROYED)
-					stain_icon.Blend(new /icon('limb_mask.dmi', "left_l"), ICON_MULTIPLY)
-				clothing_overlays += image("icon" = stain_icon, "layer" = B_SHOES_LAYER)	// Radio
-
-		if (s_store)
-			var/t1 = s_store.item_state
-			if (!t1)
-				t1 = s_store.icon_state
-			if(!istype(wear_suit, /obj/item/clothing/suit/storage/armoredundersuit))
-				clothing_overlays += image("icon" = 'belt_mirror.dmi', "icon_state" = "[t1]2", "layer" = SUIT_STORE_LAYER)
-			s_store.screen_loc = ui_sstore1
-
-
-
-
-		if (wear_mask)
-			if (istype(wear_mask, /obj/item/clothing/mask))
-				var/t1 = wear_mask.icon_state
-				clothing_overlays += image("icon" = 'mask.dmi', "icon_state" = "[t1]2", "layer" = FACEMASK_LAYER)
-				if (!istype(wear_mask, /obj/item/clothing/mask/cigarette))
-					if (wear_mask.blood_DNA)
-						var/icon/stain_icon = icon('blood.dmi', "maskblood2")
-						clothing_overlays += image("icon" = stain_icon, "layer" = B_FACEMASK_LAYER)
-				wear_mask.screen_loc = ui_mask
-
-		// Head
-		if (head)
-			var/t1 = head.icon_state
-			var/icon/head_icon = icon('head.dmi', "[t1]2")
-			if(istype(head,/obj/item/clothing/head/kitty))
-				head_icon = (( lying ) ? head:mob2 : head:mob)
-			clothing_overlays += image("icon" = head_icon, "layer" = HEAD_LAYER)
-			if(gimmick_hat)
-				clothing_overlays += image("icon" = icon('gimmick_head.dmi', "[gimmick_hat]2"), "layer" = HEAD_LAYER)
-			if (head.blood_DNA)
-				var/icon/stain_icon = icon('blood.dmi', "helmetblood2")
-				clothing_overlays += image("icon" = stain_icon, "layer" = B_HEAD_LAYER)
-			head.screen_loc = ui_head
-
-		// Belt
-		if (belt)
-			var/t1 = belt.item_state
-			if (!t1)
-				t1 = belt.icon_state
-			clothing_overlays += image("icon" = 'belt.dmi', "icon_state" = "[t1]2", "layer" = BELT_LAYER)
-			belt.screen_loc = ui_belt
-
-
-		name = get_visible_name()
-
-		if (wear_id)
-			wear_id.screen_loc = ui_id
-
-		if (l_store)
-			l_store.screen_loc = ui_storage1
-
-		if (r_store)
-			r_store.screen_loc = ui_storage2
-
-		if (back)
-			var/t1 = back.icon_state
-			clothing_overlays += image("icon" = 'back.dmi', "icon_state" = "[t1]2", "layer" = BACK_LAYER)
-			back.screen_loc = ui_back
-
-		if(client)
-			client.screen -= contents
-			client.screen += contents
-												   //to hide / show them.
-		if (handcuffed)
-			pulling = null
-			var/h1 = handcuffed.icon_state
 			clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[h1]2", "layer" = CUFFED_LAYER)
 
-		// Splints
-		for(var/organ in list("l_leg","r_leg","l_arm","r_arm"))
-			var/datum/organ/external/o = organs["[organ]"]
-			if (o.status & SPLINTED)
+	// Splints
+	for(var/organ in list("l_leg","r_leg","l_arm","r_arm"))
+		var/datum/organ/external/o = organs["[organ]"]
+		if (o.status & ORGAN_SPLINTED)
+			if (!lying)
+				clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[o]_splint", "layer" = CUFFED_LAYER)
+			else
 				clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[o]_splint2", "layer" = CUFFED_LAYER)
 
-		if (r_hand)
-			clothing_overlays += image("icon" = 'items_righthand.dmi', "icon_state" = r_hand.item_state ? r_hand.item_state : r_hand.icon_state, "layer" = INHANDS_LAYER)
-			r_hand.screen_loc = ui_rhand
+	if (r_hand)
+		clothing_overlays += image("icon" = 'items_righthand.dmi', "icon_state" = r_hand.item_state ? r_hand.item_state : r_hand.icon_state, "layer" = INHANDS_LAYER)
+		r_hand.screen_loc = ui_rhand
 
-		if (l_hand)
-			clothing_overlays += image("icon" = 'items_lefthand.dmi', "icon_state" = l_hand.item_state ? l_hand.item_state : l_hand.icon_state, "layer" = INHANDS_LAYER)
-			l_hand.screen_loc = ui_lhand
+	if (l_hand)
+		clothing_overlays += image("icon" = 'items_lefthand.dmi', "icon_state" = l_hand.item_state ? l_hand.item_state : l_hand.icon_state, "layer" = INHANDS_LAYER)
+		l_hand.screen_loc = ui_lhand
 
 
-		var/shielded = 0
-		for (var/obj/item/weapon/cloaking_device/S in src)
-			if (S.active)
-				shielded = 2
-				break
+	var/shielded = 0
+	for (var/obj/item/weapon/cloaking_device/S in src)
+		if (S.active)
+			shielded = 2
+			break
+
+
+	if (wear_suit)
+
 
 
 		if (wear_suit)
+			if (istype(wear_suit, /obj/item/clothing/suit))
+				var/t1 = wear_suit.icon_state
+				clothing_overlays += image("icon" = 'suit.dmi', "icon_state" = text("[][]", t1, (!( lying ) ? null : "2")), "layer" = SUIT_LAYER)
+				if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
+					if (handcuffed)
+						handcuffed.loc = loc
+						handcuffed.layer = initial(handcuffed.layer)
+						handcuffed = null
+					if ((l_hand || r_hand))
+						// I don't know what this does, but it looks horrible
+						var/h = hand
+						hand = 1
+						drop_item()
+						hand = 0
+						drop_item()
+						hand = h
+				else if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)&&wear_suit:s_active)
+					shielded = 3
+			if (wear_suit.blood_DNA)
+				var/icon/stain_icon = null
+				if (istype(wear_suit, /obj/item/clothing/suit/armor/vest || /obj/item/clothing/suit/storage/wcoat))
+					stain_icon = icon('blood.dmi', "armorblood[!lying ? "" : "2"]")
+				else if (istype(wear_suit, /obj/item/clothing/suit/storage/det_suit || /obj/item/clothing/suit/storage/labcoat))
+					stain_icon = icon('blood.dmi', "coatblood[!lying ? "" : "2"]")
+				else
+					stain_icon = icon('blood.dmi', "suitblood[!lying ? "" : "2"]")
+				clothing_overlays += image("icon" = stain_icon, "layer" = B_SUIT_LAYER)
+			wear_suit.screen_loc = ui_oclothing
 
+	//Update_other() MUST be called after all the storage slots get updated. This is because all the storage slots assign their
+	//respective items a screen_loc, which other_update() will then override if needed.
+	if(client)
+		hud_used.other_update() //Update the screenloc of the items on the 'other' inventory bar
 
-
-			if (wear_suit)
-				if (istype(wear_suit, /obj/item/clothing/suit))
-					var/t1 = wear_suit.icon_state
-					clothing_overlays += image("icon" = 'suit.dmi', "icon_state" = "[t1]2", "layer" = SUIT_LAYER)
-					if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-						if (handcuffed)
-							handcuffed.loc = loc
-							handcuffed.layer = initial(handcuffed.layer)
-							handcuffed = null
-						if ((l_hand || r_hand))
-							// I don't know what this does, but it looks horrible
-							var/h = hand
-							hand = 1
-							drop_item()
-							hand = 0
-							drop_item()
-							hand = h
-					else if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)&&wear_suit:s_active)
-						shielded = 3
-				if (wear_suit.blood_DNA)
-					var/icon/stain_icon = null
-					if (istype(wear_suit, /obj/item/clothing/suit/armor/vest || /obj/item/clothing/suit/storage/wcoat))
-						stain_icon = icon('blood.dmi', "armorblood2")
-					else if (istype(wear_suit, /obj/item/clothing/suit/storage/det_suit || /obj/item/clothing/suit/storage/labcoat))
-						stain_icon = icon('blood.dmi', "coatblood2")
-					else
-						stain_icon = icon('blood.dmi', "suitblood2")
-					clothing_overlays += image("icon" = stain_icon, "layer" = B_SUIT_LAYER)
-				wear_suit.screen_loc = ui_oclothing
-
-		//Update_other() MUST be called after all the storage slots get updated. This is because all the storage slots assign their
-		//respective items a screen_loc, which other_update() will then override if needed.
-		if(client)
-			hud_used.other_update() //Update the screenloc of the items on the 'other' inventory bar
-
-		switch(shielded)
-			if(1)
-				overlays += image("icon" = 'effects.dmi', "icon_state" = "shield", "layer" = SHIELD_LAYER)
-			if(2)
-				invisibility = 2
-				//New stealth. Hopefully doesn't lag too much. /N
-				if(istype(loc, /turf))//If they are standing on a turf.
-					AddCamoOverlay(loc)//Overlay camo.
-			if(3)
-				if(istype(loc, /turf))
-				//Ninjas may flick into view once in a while if they are stealthed.
-					if(prob(90))
-						NinjaStealthActive(loc)
-					else
-						NinjaStealthMalf()
-			else
-				invisibility = 0
-
-		if(client && client.admin_invis)
-			invisibility = 100
-		else if (shielded == 2)
+	switch(shielded)
+		if(1)
+			overlays += image("icon" = 'effects.dmi', "icon_state" = "shield", "layer" = SHIELD_LAYER)
+		if(2)
 			invisibility = 2
+			//New stealth. Hopefully doesn't lag too much. /N
+			if(istype(loc, /turf))//If they are standing on a turf.
+				AddCamoOverlay(loc)//Overlay camo.
+		if(3)
+			if(istype(loc, /turf))
+			//Ninjas may flick into view once in a while if they are stealthed.
+				if(prob(90))
+					NinjaStealthActive(loc)
+				else
+					NinjaStealthMalf()
 		else
-	//		invisibility = 0 //This should hopefully be taken care of by the above
-			if(targeted_by && target_locked)
-				clothing_overlays += target_locked
-			else if(targeted_by)
-				target_locked = new /obj/effect/target_locked(src)
-				clothing_overlays += target_locked
-			else if(!targeted_by && target_locked)
-				del(target_locked)
+			invisibility = 0
 
-	/*
-		for (var/mob/M in viewers(1, src))//For the love of god DO NOT REFRESH EVERY SECOND - Mport
-			if ((M.client && M.machine == src))
-				spawn (0)
-					show_inv(M)
-					return
-	*/
-		last_b_state = stat
+	if(client && client.admin_invis)
+		invisibility = 100
+	else if (shielded == 2)
+		invisibility = 2
+	else
+//		invisibility = 0 //This should hopefully be taken care of by the above
+		if(targeted_by && target_locked)
+			clothing_overlays += target_locked
+		else if(targeted_by)
+			target_locked = new /obj/effect/target_locked(src)
+			clothing_overlays += target_locked
+		else if(!targeted_by && target_locked)
+			del(target_locked)
+
+/*
+	for (var/mob/M in viewers(1, src))//For the love of god DO NOT REFRESH EVERY SECOND - Mport
+		if ((M.client && M.machine == src))
+			spawn (0)
+				show_inv(M)
+				return
+*/
+	last_b_state = stat
 
 /mob/living/carbon/human/proc/misc_clothing_updates()
 	// Temporary proc to shove stuff in that was put into update_clothing()
@@ -1672,7 +1420,7 @@
 	lying_icon.Blend(new /icon('human.dmi', "chest_[g]_l"), ICON_OVERLAY)
 
 	var/datum/organ/external/head = organs["head"]
-	if(head && !(head.status & DESTROYED))
+	if(head && !(head.status & ORGAN_DESTROYED))
 		stand_icon.Blend(new /icon('human.dmi', "head_[g]_s"), ICON_OVERLAY)
 		lying_icon.Blend(new /icon('human.dmi', "head_[g]_l"), ICON_OVERLAY)
 
@@ -1681,12 +1429,12 @@
 		if(!istype(part, /datum/organ/external/groin) \
 			&& !istype(part, /datum/organ/external/chest) \
 			&& !istype(part, /datum/organ/external/head) \
-			&& !(part.status & DESTROYED))
-			var/icon/temp = new /icon('human.dmi', "[part.icon_name]_[g]_s")
-			if(part.status & ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
+			&& !(part.status & ORGAN_DESTROYED))
+			var/icon/temp = new /icon('human.dmi', "[part.icon_name]_s")
+			if(part.status & ORGAN_ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			stand_icon.Blend(temp, ICON_OVERLAY)
-			temp = new /icon('human.dmi', "[part.icon_name]_[g]_l")
-			if(part.status & ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
+			temp = new /icon('human.dmi', "[part.icon_name]_l")
+			if(part.status & ORGAN_ROBOT) temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			lying_icon.Blend(temp , ICON_OVERLAY)
 
 	stand_icon.Blend(new /icon('human.dmi', "groin_[g]_s"), ICON_OVERLAY)
@@ -1718,15 +1466,15 @@
 			update_body()
 
 	if (husk)
-		var/icon/husk_s = new /icon('human.dmi', "husk_[g]_s")
-		var/icon/husk_l = new /icon('human.dmi', "husk_[g]_l")
+		var/icon/husk_s = new /icon('human.dmi', "husk_s")
+		var/icon/husk_l = new /icon('human.dmi', "husk_l")
 
 		for(var/name in organs)
 			var/datum/organ/external/part = organs[name]
 			if(!istype(part, /datum/organ/external/groin) \
 				&& !istype(part, /datum/organ/external/chest) \
 				&& !istype(part, /datum/organ/external/head) \
-				&& (part.status & DESTROYED))
+				&& (part.status & ORGAN_DESTROYED))
 				husk_s.Blend(new /icon('dam_mask.dmi', "[part.icon_name]"), ICON_SUBTRACT)
 				husk_l.Blend(new /icon('dam_mask.dmi', "[part.icon_name]2"), ICON_SUBTRACT)
 
@@ -1756,7 +1504,7 @@
 	if(organs)
 		var/datum/organ/external/head = organs["head"]
 		if(head)
-			if(head.status & DESTROYED)
+			if(head.status & ORGAN_DESTROYED)
 				del(face_standing)
 				del(face_lying)
 				return
@@ -1880,7 +1628,7 @@
 				var/count = 0
 				for(var/organ in list("l_leg","r_leg","l_arm","r_arm"))
 					var/datum/organ/external/o = target.organs["[organ]"]
-					if(o.status & SPLINTED)
+					if(o.status & ORGAN_SPLINTED)
 						count = 1
 						break
 				if(count == 0)
@@ -2483,9 +2231,9 @@ It can still be worn/put on as normal.
 		if("splints")
 			for(var/organ in list("l_leg","r_leg","l_arm","r_arm"))
 				var/datum/organ/external/o = target.organs["[organ]"]
-				if (o.status & SPLINTED)
+				if (o.status & ORGAN_SPLINTED)
 					var/obj/item/W = new /obj/item/stack/medical/splint/single()
-					o.status &= ~SPLINTED
+					o.status &= ~ORGAN_SPLINTED
 					if (W)
 						W.loc = target.loc
 						W.layer = initial(W.layer)
@@ -2904,7 +2652,7 @@ It can still be worn/put on as normal.
 	var/amount = 0.0
 	for(var/name in organs)
 		var/datum/organ/external/O = organs[name]
-		if(!(O.status & ROBOT)) amount+= O.brute_dam
+		if(!(O.status & ORGAN_ROBOT)) amount+= O.brute_dam
 	return amount
 
 /mob/living/carbon/human/adjustBruteLoss(var/amount, var/used_weapon = null)
@@ -2917,7 +2665,7 @@ It can still be worn/put on as normal.
 	var/amount = 0.0
 	for(var/name in organs)
 		var/datum/organ/external/O = organs[name]
-		if(!(O.status & ROBOT)) amount+= O.burn_dam
+		if(!(O.status & ORGAN_ROBOT)) amount+= O.burn_dam
 	return amount
 
 /mob/living/carbon/human/adjustFireLoss(var/amount,var/used_weapon = null)

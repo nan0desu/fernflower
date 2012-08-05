@@ -28,8 +28,6 @@ TILES
 /obj/item/weapon/wire/attack(mob/M as mob, mob/user as mob)
 	if(hasorgans(M))
 		var/datum/organ/external/S = M:organs[user.zone_sel.selecting]
-		if(!(S.status & ROBOT) || user.a_intent != "help")
-			return ..()
 		if(S.brute_dam)
 			S.heal_damage(0,15,0,1)
 			if(user != M)
