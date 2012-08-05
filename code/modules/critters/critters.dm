@@ -281,11 +281,11 @@
 	chasestate = "viscerator_attack"
 	deathtext = "is smashed into pieces!"
 
+
 /obj/effect/critter/bear
 	name = "bear"
 	desc = "Space bear."
 	icon_state = "bear"
-	pass_flags = PASSTABLE
 	health = 100
 	max_health = 100
 	aggressive = 0
@@ -297,12 +297,44 @@
 	atkmech = 1
 	firevuln = 0 // immune to fire
 	brutevuln = 1
-	ventcrawl = 1
+	ventcrawl = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 	attacktext = "tear"
-	attack_sound = 'bladeslice.ogg'
+	attack_sound = 'bite.ogg'
+	attack_speed = 10
+	speed = 8
+	chasespeed = 8
+	var/stunchance = 10 // chance to tackle things down
 	deathtext = "bear is dead."
+
+
+	Harvest(var/obj/item/weapon/W, var/mob/living/user)
+		if(..())
+			var/success = 0
+			if(istype(W, /obj/item/weapon/butch))
+				new/obj/item/weapon/reagent_containers/food/snacks/bearmeat(src.loc)
+				new/obj/item/weapon/reagent_containers/food/snacks/bearmeat(src.loc)
+				success = 1
+			if(istype(W, /obj/item/weapon/kitchenknife))
+				new/obj/item/weapon/reagent_containers/food/snacks/bearmeat(src.loc)
+				success = 1
+			if(success)
+				for(var/mob/O in viewers(src, null))
+					O.show_message("\red [user.name] cuts apart the [src.name]!", 1)
+				del(src)
+				return 1
+			return 0
+
+
+	AfterAttack(var/mob/living/target)
+		if(prob(stunchance))
+			if(target.weakened <= 0)
+				target.Weaken(rand(10, 15))
+				for(var/mob/O in viewers(src, null))
+					O.show_message("\red <B>[src]</B> knocks down [target]!", 1)
+				playsound(loc, 'pierce.ogg', 25, 1, -1)
+
 
 	Die()
 		..()
