@@ -1167,14 +1167,9 @@ proc/process_ghost_teleport_locs()
 /area/security/detectives_office
 	name = "\improper Detective's Office"
 	icon_state = "detective"
-	var/time_of_playing = 0
 	Entered()
-		if(time_of_playing)
-			time_of_playing -= 1
-			return
-		else
+		if(prob(1))
 			usr << sound('Intro.wma', volume=5)
-			time_of_playing = 50
 //		if(prob(0.5))
 //			T << sound('Intro.wma', volume=10)
 /area/security/range

@@ -40,6 +40,28 @@
 			mega_energy += energy_delta - energy_delta * energy_loss_ratio
 		return 0
 
+	proc/explosion_supa()
+		var/obj/effect/landmark/L = new /obj/effect/landmark(src.loc)
+		explosion(L.loc,2,4,8,32,1)
+		sleep(50)
+		radioalert("CORE EXPLOSION SHOCKWAVE DETECTED","Core control computer")
+		sleep(200)
+		explosion(L.loc,4,8,16,32,1)
+		sleep(50)
+		radioalert("CORE EXPLOSION SHOCKWAVE DETECTED","Core control computer")
+		sleep(400)
+		explosion(L.loc,6,12,24,48,1)
+		sleep(50)
+		radioalert("CORE EXPLOSION SHOCKWAVE DETECTED","Core control computer")
+		sleep(600)
+		explosion(L.loc,8,16,48,100,1)
+		del(L)
+		for(var/obj/effect/landmark/LM in world)
+			if(LM.name == "Supa-Explosion")
+				if(prob(20))
+					sleep(200)
+					explosion(LM.loc,1,2,3,16,1)
+
 /*
 /obj/machinery/engine/klaxon
 	name = "Emergency Klaxon"
@@ -82,11 +104,9 @@
 	if(det > explosiondet)
 		roundinfo.core = 1
 		//proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, force = 0)
-		explosion(src.loc,10,15,30,70,1)
-		for(var/turf/simulated/T)
-			if(prob(0.1) && T.z == 1)
-				explosion (T.loc,1,3,6,20,1)
 		det = 0
+		explosion_supa()
+
 
 	if (!removed)
 		return 1
@@ -165,3 +185,4 @@
 		l.bruteloss += 50
 		l.updatehealth()
 	return 1
+
