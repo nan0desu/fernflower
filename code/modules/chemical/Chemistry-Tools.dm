@@ -4054,4 +4054,94 @@ obj/item/weapon/reagent_containers/glass/bottle/cyanide
 		..()
 		reagents.add_reagent("ethanol", 30)
 
+var/blood_type = "A"
+
+/obj/item/weapon/reagent_containers/glass/bottle/blooda
+	name = "Blood A type bottle"
+	desc = "A small bottle of A blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="A"
+
+/obj/item/weapon/reagent_containers/glass/bottle/bloodaminus
+	name = "Blood A_ type bottle"
+	desc = "A small bottle of A_ blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="A-"
+
+/obj/item/weapon/reagent_containers/glass/bottle/bloodb
+	name = "Blood B type bottle"
+	desc = "A small bottle of B blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="B"
+
+/obj/item/weapon/reagent_containers/glass/bottle/bloodbminus
+	name = "Blood B_ type bottle"
+	desc = "A small bottle of B_ blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="B-"
+
+/obj/item/weapon/reagent_containers/glass/bottle/bloodab
+	name = "Blood AB type bottle"
+	desc = "A small bottle of AB blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="AB"
+
+/obj/item/weapon/reagent_containers/glass/bottle/bloodabminus
+	name = "Blood AB_ type bottle"
+	desc = "A small bottle of AB_ blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="AB-"
+
+/obj/item/weapon/reagent_containers/glass/bottle/bloodo
+	name = "Blood O type bottle"
+	desc = "A small bottle of O blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="O"
+
+/obj/item/weapon/reagent_containers/glass/bottle/bloodominus
+	name = "Blood O_ type bottle"
+	desc = "A small bottle of O_ blood."
+	icon = 'chemical.dmi'
+	icon_state = "bottle19"
+
+	New()
+		..()
+		reagents.add_reagent("blood", 30)
+		blood_type="O-"
+
 

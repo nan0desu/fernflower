@@ -180,7 +180,22 @@
 //	product_hideamt = "3;4;6"
 	hidden_prices = "3;3;2"
 	points = 25
-//	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
+	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
+	charge_type = "medical"
+
+/obj/machinery/vending/blood
+	name = "Blood'O'Matic"
+	desc = "Free blood dispencer."
+	icon_state = "blood2"
+	icon_deny = "blood2deny"
+	product_paths = "/obj/item/weapon/reagent_containers/glass/bottle/blooda;/obj/item/weapon/reagent_containers/glass/bottle/bloodaminus;/obj/item/weapon/reagent_containers/glass/bottle/bloodb;/obj/item/weapon/reagent_containers/glass/bottle/bloodbminus;/obj/item/weapon/reagent_containers/glass/bottle/bloodab;/obj/item/weapon/reagent_containers/glass/bottle/bloodabminus;/obj/item/weapon/reagent_containers/glass/bottle/bloodo;/obj/item/weapon/reagent_containers/glass/bottle/bloodominus;/obj/item/weapon/reagent_containers/syringe"
+//	product_amounts = "4;4;4;4;4;12;5;4;2"
+	product_prices = "1;1;2;2;2;2;1;1;2"
+	product_hidden = "/obj/item/weapon/reagent_containers/hypospray/autoinjector"
+//	product_hideamt = "3;4;6"
+	hidden_prices = "4"
+	points = 25
+	product_ads = "Go and grab some blood!;I'm hope you are not bloody vampire.;Only from nice virgins!;Natural liquids!;This stuff saves lives."
 	charge_type = "medical"
 
 /obj/machinery/vending/wallmed1
@@ -432,6 +447,7 @@
 	product_hidden = ""
 //	product_hideamt = "10"
 	hidden_prices = ""
+	points = 40
 	product_ads = "Think of it as free survival!;It's even healthy!;Take a quick break, enjoy your ration!"
 	charge_type = "liquid"
 
