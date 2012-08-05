@@ -809,10 +809,6 @@ proc/process_ghost_teleport_locs()
 /area/crew_quarters/bar
 	name = "\improper Bar"
 	icon_state = "bar"
-//	Entered(D)
-//		new_hearers += D
-//	Exited(T)
-//		new_hearers -= T
 
 /area/crew_quarters/theatre
 	name = "\improper Theatre"
@@ -1171,9 +1167,16 @@ proc/process_ghost_teleport_locs()
 /area/security/detectives_office
 	name = "\improper Detective's Office"
 	icon_state = "detective"
-//	Entered()
-//		usr << sound('Intro.wma', volume=10)
-
+	var/time_of_playing = 0
+	Entered()
+		if(time_of_playing)
+			time_of_playing -= 1
+			return
+		else
+			usr << sound('Intro.wma', volume=5)
+			time_of_playing = 50
+//		if(prob(0.5))
+//			T << sound('Intro.wma', volume=10)
 /area/security/range
 	name = "\improper Firing Range"
 	icon_state = "firingrange"

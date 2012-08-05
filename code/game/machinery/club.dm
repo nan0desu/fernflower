@@ -1,6 +1,3 @@
-//var/global/list/hearers
-//var/global/list/new_hearers
-
 /obj/machinery/club/lightmusic
 	name = "Light music"
 	desc = "."
@@ -40,10 +37,17 @@
 		sleep(10)
 		for(var/obj/effect/overlay/bluelight/T in world)
 			T.icon_state = "invi"
-			speed = 0
-			return
+		sleep(3)
+		for(var/obj/effect/overlay/bluelight/T in world)
+			if(T.icon_state == "blinkblue")
+				T.icon_state = "invi"
+				if(error != 2)
+					message_admins("ERROR: Bluelight overlays have bug, please, report to coders.")
+					error = 2
+		speed = 0
+		return
 	else if(href_list["speed_1"])
-		usr << "Function is not alliwed for now."
+		usr << "Function is not allowed for now."
 		return
 	else if(href_list["speed_2"])
 		sleep(10)
@@ -66,29 +70,116 @@
 /turf/simulated/floor/clubfloor
 	icon_state = "bcircuitoff"
 
-/*obj/machinery/club/player
+/obj/machinery/club/player
 	name = "Player"
 	desc = "."
 	icon = 'device.dmi'
 	icon_state = "locator"
-	var/on = 0
-	var/playing_track = null
-	var/list/playing = null
-	process()
-		playing = hearers - new_hearers
+	var
+		playing_track = "Space Assgole.wma"
+		list
+			hearer = new
+			new_hearer = new
+//			playing = new
+
+
+	New()
+		world << "New."
+		spawn()
+			world << "Start."
+			while(src)
+				world << "Now."
+				sleep(50)
+				for(var/mob/M in hearers())
+					world << "First cycle."
+					if(M.hear_music != 1)
+						world << "Find."
+						M << playsound(playing_track)
+						hearer += M
+				for(var/mob/M in hearer)
+					world << "Second cycle."
+					for(M in hearers())
+						world << "Check."
+						new_hearer += M
+						hearer -= M
+						world << "Exclude."
+				for(var/mob/M in hearer)
+					world << "Third cycle."
+					M << playsound (null)
+				new_hearer = hearer
+
+
+
+/*	New()
+		spawn()
+			while(src)
+				sleep(50)
+				include_mob()
+				exclude_mob()
+				play_sound()
+
+	proc/include_mob()
+		for(var/mob/M in hearers())
+			for(M in new_hearer)
+				world << "Include."
+				return
+			new_hearer += M
+
+	proc/exclude_mob()
+		for(var/mob/M in hearer)
+			for(M in new_hearer)
+				world << "Exclude."
+				return
+			new_hearer -= M
+
+	proc/play_sound()
+		playing = new_hearer - hearer
 		for(var/mob/M in playing)
+			world << "Playing."
+			M << playsound(playing_track)
+		playing = hearer - new_hearer
+		for(var/mob/M in playing)
+			world << "Stop playing."
 			M << playsound(null)
-		if(playing_track)
-			playing = new_hearers - hearers
-			for(var/mob/M in playing)
-				M << playsound(playing_track)
-		else
-			for(var/mob/C in new_hearers)
-				C << playsound(null)
-		hearers = new_hearers
 
-
-
+	proc/switch_music()
+		hearer = null
+		new_hearer = null
+*/
+/*	New()
+		Play()
+	proc/Play()
+		spawn()
+			while(src)
+				sleep(50)
+				while(!playing_track)
+					sleep(50)
+				for(var/obj/effect/overlay/bluelight/BL)
+					for(var/mob/M in BL.contents)
+						for(M in new_hearers)
+							return
+						new_hearers += M
+				playing = hearers - new_hearers
+				for(var/mob/M in playing)
+					M << playsound(null)
+				if(playing_track)
+					playing = new_hearers - hearers
+					for(var/mob/M in playing)
+						M << playsound(playing_track)
+				else
+					for(var/mob/C in new_hearers)
+						C << playsound(null)
+				hearers = new_hearers
+*/
 /obj/machinery/club/player/attack_hand()
 	playing_track = "Space Assgole.wma"
-*/
+
+/obj/effect/overlay/bluelight
+	icon = 'alert.dmi'
+	icon_state = "lightblue"
+	mouse_opacity = 0
+	layer = 10
+	anchored = 1
+	var/turf
+	New()
+		turf = src.loc

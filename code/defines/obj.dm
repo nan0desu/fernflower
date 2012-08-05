@@ -800,13 +800,6 @@
 	unacidable = 1
 	var/i_attached//Added for possible image attachments to objects. For hallucinations and the like.
 
-/obj/effect/overlay/bluelight
-	icon = 'alert.dmi'
-	icon_state = "lightblue"
-	mouse_opacity = 0
-	layer = 10
-	anchored = 1
-
 /obj/effect/overlay/beam//Not actually a projectile, just an effect.
 	name="beam"
 	icon='beam.dmi'

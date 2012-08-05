@@ -14,6 +14,8 @@
 	..()
 	if (amount)
 		src.amount=amount
+	src.pixel_x = rand(-15, 15)
+	src.pixel_y = rand(-10, 10)
 
 	return
 
