@@ -2,9 +2,9 @@
 //some modifications so that it's more stable, and it's primary purpose is producing plasma instead of power
 //frequency is 1-1e9
 
-#define NITROGEN_RETARDATION_FACTOR 4	//Higher == N2 slows reaction more
-#define THERMAL_RELEASE_MODIFIER 75		//Higher == less heat released during reaction
-#define PLASMA_RELEASE_MODIFIER 850		//Higher == less plasma released by reaction
+#define NITROGEN_RETARDATION_FACTOR 10	//Higher == N2 slows reaction more
+#define THERMAL_RELEASE_MODIFIER 30		//Higher == less heat released during reaction
+#define PLASMA_RELEASE_MODIFIER 200		//Higher == less plasma released by reaction
 #define OXYGEN_RELEASE_MODIFIER 1500	//Higher == less oxygen released at high temperature/power
 #define REACTION_POWER_MODIFIER 1.1		//Higher == more overall power
 
