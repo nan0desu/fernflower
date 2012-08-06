@@ -17,7 +17,7 @@
 		H.equip_if_possible(new /obj/item/device/pda/heads/hos(H), H.slot_belt)
 		H.equip_if_possible(new /obj/item/clothing/suit/armor/commissarcoat(H), H.slot_wear_suit)
 		H.equip_if_possible(new /obj/item/clothing/gloves/black(H), H.slot_gloves)
-		H.equip_if_possible(new /obj/item/clothing/head/comcap(H), H.slot_head)
+		H.equip_if_possible(new /obj/item/clothing/head/internalsecurity(H), H.slot_head)
 		H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses/sechud(H), H.slot_glasses)
 		H.equip_if_possible(new /obj/item/weapon/handcuffs(H), H.slot_in_backpack)
 		H.equip_if_possible(new /obj/item/weapon/chem_grenade/sleepsmoke(H), H.slot_in_backpack)
