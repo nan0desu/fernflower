@@ -395,12 +395,10 @@
 
 			if(attached_device.secured != 1)
 				attached_device.toggle_secure()
-			B1.reagents.add_reagent("sugar", 25)
-			B1.reagents.add_reagent("chloralhydrate", 25)
-			B1.reagents.add_reagent("sulfur", 25)
-			B1.reagents.add_reagent("aluminum", 25)
+			B1.reagents.add_reagent("sugar", 100)
+			B1.reagents.add_reagent("chloralhydrate", 100)
 			B2.reagents.add_reagent("potassium", 100)
-			B2.reagents.add_reagent("phosphorus", 25)
+			B2.reagents.add_reagent("phosphorus", 100)
 
 			beaker_two = B1
 			beaker_one = B2

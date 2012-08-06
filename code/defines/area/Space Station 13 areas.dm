@@ -249,6 +249,14 @@ proc/process_ghost_teleport_locs()
 	luminosity = 1
 	ul_Lighting = 0
 
+/area/shuttle/deportationsputnik
+	icon_state = "shuttle2"
+	name = "\improper Sathelitte Deportation Shuttle"
+
+/area/shuttle/deportationcosmoc
+	icon_state = "shuttle"
+	name = "\improper Space Deportation Shuttle"
+
 /area/shuttle/alien/mine
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Mine"
