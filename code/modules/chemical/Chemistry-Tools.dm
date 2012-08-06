@@ -397,7 +397,9 @@
 				attached_device.toggle_secure()
 			B1.reagents.add_reagent("sugar", 25)
 			B1.reagents.add_reagent("chloralhydrate", 25)
-			B2.reagents.add_reagent("potassium", 25)
+			B1.reagents.add_reagent("sulfur", 25)
+			B1.reagents.add_reagent("aluminum", 25)
+			B2.reagents.add_reagent("potassium", 100)
 			B2.reagents.add_reagent("phosphorus", 25)
 
 			beaker_two = B1

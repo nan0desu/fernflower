@@ -230,3 +230,29 @@
 		new /obj/item/clothing/head/powdered_wig (src)
 		new /obj/item/weapon/storage/briefcase(src)
 		return
+
+/obj/structure/closet/secure_closet/internalsecurity
+	name = "Internal Security's Locker"
+	req_access = list(ACCESS_CAPTAIN)
+	icon_state = "capsecure1"
+	icon_closed = "capsecure"
+	icon_locked = "capsecure1"
+	icon_opened = "capsecureopen"
+	icon_broken = "capsecurebroken"
+	icon_off = "capsecureoff"
+
+	New()
+		..()
+		sleep(2)
+		new /obj/item/wardrobe/internalsecurity(src)
+		new /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe(src)
+		new /obj/item/weapon/storage/id_kit(src)
+		new /obj/item/clothing/suit/armor/internalsecurity(src)
+		new /obj/item/clothing/suit/armor/commissarcoat(src)
+		new /obj/item/clothing/glasses/sunglasses(src)
+		new /obj/item/clothing/gloves/black(src)
+		new /obj/item/clothing/gloves/white(src)
+		new /obj/item/device/radio/headset/heads/captain(src)
+		new /obj/item/weapon/reagent_containers/food/drinks/flask(src)
+		new /obj/item/weapon/gun/energy/elitetaser(src)
+		return

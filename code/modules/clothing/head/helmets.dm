@@ -75,6 +75,39 @@
 	heat_transfer_coefficient = 0.10
 	flags_inv = HIDEEARS
 
+/obj/item/clothing/head/internalsecurity4
+	name = "blue tophat"
+	desc = "Standard Internal Security gear. Protects the head from impacts with style."
+	icon_state = "beaver_hat"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	item_state = "beaver_hat"
+	armor = list(melee = 50, bullet = 15, laser = 50,energy = 10, bomb = 25, bio = 0, rad = 0)
+	protective_temperature = 500
+	heat_transfer_coefficient = 0.10
+	flags_inv = HIDEEARS
+
+/obj/item/clothing/head/internalsecurity2
+	name = "red velvet cap"
+	desc = "Standard Internal Security gear. Protects the head from impacts with style."
+	icon_state = "secelitecap"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	item_state = "secelitecap"
+	armor = list(melee = 50, bullet = 15, laser = 50,energy = 10, bomb = 25, bio = 0, rad = 0)
+	protective_temperature = 500
+	heat_transfer_coefficient = 0.10
+	flags_inv = HIDEEARS
+
+/obj/item/clothing/head/internalsecurity3
+	name = "white velvet cap"
+	desc = "Standard Internal Security gear. Protects the head from impacts with style."
+	icon_state = "secelitecap1"
+	flags = FPRINT | TABLEPASS | SUITSPACE | HEADCOVERSEYES
+	item_state = "secelitecap1"
+	armor = list(melee = 50, bullet = 15, laser = 50,energy = 10, bomb = 25, bio = 0, rad = 0)
+	protective_temperature = 500
+	heat_transfer_coefficient = 0.10
+	flags_inv = HIDEEARS
+
 /obj/item/clothing/head/comcap
 	name = "commissar cap"
 	desc = "Better you do not meet the person who wears it."

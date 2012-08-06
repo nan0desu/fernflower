@@ -12,7 +12,7 @@
 		if(!H)	return 0
 		H.equip_if_possible(new /obj/item/weapon/storage/backpack/satchel (H), H.slot_back)
 		H.equip_if_possible(new /obj/item/device/radio/headset/heads/captain(H), H.slot_ears)
-		H.equip_if_possible(new /obj/item/clothing/under/commissar(H), H.slot_w_uniform)
+		H.equip_if_possible(new /obj/item/clothing/under/internalsecurity(H), H.slot_w_uniform)
 		H.equip_if_possible(new /obj/item/clothing/shoes/brown(H), H.slot_shoes)
 		H.equip_if_possible(new /obj/item/device/pda/heads/hos(H), H.slot_belt)
 		H.equip_if_possible(new /obj/item/clothing/suit/armor/commissarcoat(H), H.slot_wear_suit)
