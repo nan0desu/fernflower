@@ -74,7 +74,35 @@
 			M.Weaken(20)
 			M.Stun(20)
 			flick("e_flash", M.flash)
-
+/////////TOTALLY COPIED FROM WIELDING TOOL/////////////////////////
+		switch(safety)
+			if(1)
+				M << "\red Your eyes sting a little."
+				user.eye_stat += rand(1, 2)
+				if(M.eye_stat > 12)
+					M.eye_blurry += rand(3,6)
+			if(0)
+				M << "\red Your eyes burn."
+				M.eye_stat += rand(2, 3)
+				if(M.eye_stat > 10)
+					M.eye_blurry += rand(4,10)
+			if(-1)
+				M << "\red Your thermals intensify the flash's glow. Your eyes itch and burn severely."
+				M.eye_blurry += rand(12,20)
+				M.eye_stat += rand(12, 16)
+				M.Weaken(30)
+				M.Stun(30)
+		if(M.eye_stat > 10 && safety < 2)
+			M << "\red Your eyes are really starting to hurt. This can't be good for you!"
+		if (prob(M.eye_stat - 25 + 1))
+			M << "\red You go blind!"
+			M.disabilities |= 128
+		else if (prob(M.eye_stat - 15 + 1))
+			M << "\red You go blind!"
+			M.eye_blind = 5
+			M.eye_blurry = 5
+			M.disabilities |= 1
+/////////////////////////////////////////////////////////////////////
 			if(ishuman(M) && ishuman(user) && M.stat!=DEAD)
 				// kill all memes
 				for(var/mob/living/parasite/meme/P in M:parasites)
