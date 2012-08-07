@@ -6,6 +6,7 @@
 	icon_state = "battery"
 	var/maxcharge = 10000
 	var/charge = 10000
+	w_class = 1.0
 
 /obj/item/battery_box
 	var/amount = 7

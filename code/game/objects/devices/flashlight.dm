@@ -1,6 +1,6 @@
 /obj/item/device/flashlight
 	name = "flashlight"
-	desc = "A hand-held emergency light. [cell ? "[cell:charge]/[cell:maxcharge] : "Without cell."]"
+	desc = "A hand-held emergency light."
 	icon_state = "flight0"
 	w_class = 2
 	item_state = "flight"
@@ -26,6 +26,7 @@
 			return
 		spawn()
 			while(src)
+				UpdateDesc()
 				cell:charge -= 50
 				if(cell:charge <= 0)
 					on = !on
@@ -66,6 +67,11 @@
 	else
 		icon_state = icon_off
 		src.ul_SetLuminosity(0)
+
+/obj/item/device/flashlight/proc/examine()
+	set src in usr
+	usr << text("\icon[src] A hand-held emergency light. [cell ? "[cell:charge]/[cell:maxcharge] : "Without cell."]")
+	return
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
 	if (isturf(src.loc))
