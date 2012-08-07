@@ -9,9 +9,9 @@
 	name = "space bear"
 	desc = "RawrRawr!!"
 	icon = 'mob.dmi'
-	icon_state = "bear"
-	icon_living = "bear"
-	icon_dead = "bear_dead"
+	icon_state = "space_bear"
+	icon_living = "space_bear"
+	icon_dead = "space_bear_dead"
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
 	speak_emote = list("growls", "roars")
 	emote_hear = list("rawrs","grumbles","grawls")

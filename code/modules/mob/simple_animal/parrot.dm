@@ -2,9 +2,9 @@
 	name = "\improper Parrot"
 	desc = "It's a parrot!  No dirty words!"
 	icon = 'mob.dmi'
-	icon_state = "cat"
-	icon_living = "cat"
-	icon_dead = "cat_dead"
+	icon_state = "parrot"
+	icon_living = "parrot"
+	icon_dead = "parrot_dead"
 	speak = list("Hi","Hello!","Cracker?","BAWWWWK george mellons griffing me")
 	speak_emote = list("squawks","says","yells")
 	emote_hear = list("squawks","bawks")

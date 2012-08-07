@@ -20,6 +20,17 @@
 	response_harm   = "kicks the"
 	see_in_dark = 6
 
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0		//so they don't freeze in space
+	maxbodytemp = 295	//if it's just 25 degrees, they start to burn up
+
 //r2d3
 /mob/living/simple_animal/r2d3
 	name = "r2d3"

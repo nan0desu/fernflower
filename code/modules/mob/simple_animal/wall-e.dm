@@ -17,3 +17,14 @@
 	response_help  = "knock the"
 	response_disarm = "gently pushes aside the"
 	response_harm   = "kicks the"
+
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0		//so they don't freeze in space
+	maxbodytemp = 295	//if it's just 25 degrees, they start to burn up
