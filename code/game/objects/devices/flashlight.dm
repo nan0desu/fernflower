@@ -1,6 +1,6 @@
 /obj/item/device/flashlight
 	name = "flashlight"
-	desc = "A hand-held emergency light."
+	desc = "A hand-held emergency light. [cell ? "[cell:charge]/[cell:maxcharge] : "Without cell."]"
 	icon_state = "flight0"
 	w_class = 2
 	item_state = "flight"

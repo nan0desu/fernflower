@@ -47,10 +47,9 @@
 			user.r_hand = cell
 
 		cell.add_fingerprint(user)
+		src.cell = null
 		updateicon()
 		cell.updateicon()
-
-		src.cell = null
 		user << "You remove the power cell"
 		return
 
