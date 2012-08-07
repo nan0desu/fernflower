@@ -34,5 +34,6 @@
 			if(3)
 				M.revive()
 			if(4)
-				M.handcuffed()
+				M.handcuffed = new /obj/item/weapon/handcuffs(M)
+				M.update_clothing()
 		return
