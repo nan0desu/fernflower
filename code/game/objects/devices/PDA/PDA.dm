@@ -159,6 +159,7 @@
 	icon_state = "pda-bar"
 
 /obj/item/device/pda/atmos
+	default_cartridge = /obj/item/weapon/cartridge/atmos
 	icon_state = "pda-atmo"
 
 /obj/item/device/pda/chemist
@@ -255,6 +256,11 @@
 						dat += "<h4>Engineering Functions</h4>"
 						dat += "<ul>"
 						dat += "<li><a href='byond://?src=\ref[src];choice=43'><img src=pda_power.png> Power Monitor</a></li>"
+						dat += "</ul>"
+					if (cartridge.access_atmos_alerts)
+						dat += "<h4>Alert Monitoring Functions</h4>"
+						dat += "<ul>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=411'><img src=pda_fire.png> Atmos Alerts Monitor</a></li>"
 						dat += "</ul>"
 					if (cartridge.access_medical)
 						dat += "<h4>Medical Functions</h4>"
@@ -435,7 +441,7 @@
 						mode = 0
 					else
 						mode = round(mode/10)
-						if(mode==4)//Fix for cartridges. Redirects to hub.
+						if(mode==4 || mode == 41)//Fix for cartridges. Redirects to hub.
 							mode = 0
 						else if(mode >= 40 && mode <= 49)//Fix for cartridges. Redirects to refresh the menu.
 							cartridge.mode = mode

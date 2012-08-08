@@ -76,6 +76,7 @@
 		src << browse_rsc('pda_scanner.png')
 		src << browse_rsc('pda_signaler.png')
 		src << browse_rsc('pda_status.png')
+		src << browse_rsc('pda_fire.png')
 		//Loads icons for SpiderOS into client
 		src << browse_rsc('sos_1.png')
 		src << browse_rsc('sos_2.png')

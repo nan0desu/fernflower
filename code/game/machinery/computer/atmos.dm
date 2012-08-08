@@ -44,6 +44,30 @@ Atmos alert computer
 	user << browse(dat, "window=alerts")
 	onclose(user, "alerts")
 
+/obj/machinery/computer/station_alert/proc/getatmosalerts()
+	var/dat = ""
+	for (var/cat in src.alarms)
+		if (cat == "Power")//No, APCs are not your business.
+			continue
+		dat += text("<B>[]</B><BR>\n", cat)
+		var/list/L = src.alarms[cat]
+		if (L.len)
+			for (var/alarm in L)
+				var/list/alm = L[alarm]
+				var/area/A = alm[1]
+				var/list/sources = alm[3]
+				dat += "<NOBR>"
+				dat += "&bull; "
+				dat += "[A.name]"
+				if (sources.len > 1)
+					dat += text(" - [] sources", sources.len)
+				dat += "</NOBR><BR>\n"
+		else
+			dat += "-- All Systems Nominal<BR>\n"
+		dat += "<BR>\n"
+	return dat
+
+
 /obj/machinery/computer/station_alert/Topic(href, href_list)
 	if(..())
 		return

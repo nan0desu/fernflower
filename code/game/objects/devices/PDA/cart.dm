@@ -20,6 +20,7 @@
 	var/access_status_display = 0
 	var/access_quartermaster = 0
 	var/access_hydroponics = 0
+	var/access_atmos_alerts = 0
 	var/mode = null
 	var/menu
 	var/datum/data/record/active1 = null //General
@@ -35,6 +36,11 @@
 		name = "Power-ON Cartridge"
 		icon_state = "cart-e"
 		access_engine = 1
+
+	atmos
+		name = "S.A.A.D. Cartridge"
+		icon_state = "cart-e"
+		access_atmos_alerts = 1
 
 	medical
 		name = "Med-U Cartridge"
@@ -152,6 +158,7 @@
 		icon_state = "cart-ce"
 		access_status_display = 1
 		access_engine = 1
+		access_atmos_alerts = 1
 
 	cmo
 		name = "Med-U DELUXE"
@@ -180,6 +187,7 @@
 		access_medical = 1
 		access_reagent_scanner = 1
 		access_status_display = 1
+		access_atmos_alerts = 1
 
 	syndicate
 		name = "modified signaler cartridge"
@@ -247,7 +255,6 @@ Code:
 [radio:code]
 <a href='byond://?src=\ref[src];choice=Signal Code;scode=1'>+</a>
 <a href='byond://?src=\ref[src];choice=Signal Code;scode=5'>+</a><br>"}
-
 
 			if (42) //status displays
 				menu = "<h4><img src=pda_status.png> Station Status Display Interlink</h4>"
@@ -581,6 +588,13 @@ Code:
 
 				else
 					menu += "ERROR: Unable to determine current location."
+			//Extended slots
+			if (411)//atmos alerts
+				menu = "<h4><img src=pda_fire.png> Station Atmos Alerts Display</h4>"
+				for(var/obj/machinery/computer/station_alert/sMon in world)
+					if(!(sMon.stat & (NOPOWER|BROKEN)) )
+						menu += sMon.getatmosalerts()
+						break
 
 	proc/add_data(atom/A as mob|obj|turf|area)
 		//I love hashtables.
