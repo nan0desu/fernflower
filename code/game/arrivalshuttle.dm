@@ -1,8 +1,8 @@
-var/arrival_shuttle_tickstomove = 10
+var/arrival_shuttle_tickstomove = 30
 var/arrival_shuttle_moving = 0
 var/arrival_shuttle_location = 1 // 0 -spess, 1 - CK, 2 - NSS Exodus
 var/start_arrival_shuttle_location = 0 // for coordinate, frome where flying shuttle
-var/flying_time_from_station = 10  //10 sec
+var/flying_time_from_station = 30  //30 sec
 var/flying_time_to_station = 30  //30 sec
 
 /obj/machinery/computer/arrival_shuttle
