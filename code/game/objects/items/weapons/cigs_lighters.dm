@@ -119,7 +119,7 @@ ZIPPO
 	var/lit = 0
 	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_off = "cigoff"
-	var/icon_butt = "cigbutt"
+	var/type_butt = /obj/item/weapon/cigbutt
 	var/lastHolder = null
 	var/smoketime = 300
 	var/chem_volume = 15
@@ -205,21 +205,20 @@ ZIPPO
 	var/turf/location = get_turf(src)
 	src.smoketime--
 	if(src.smoketime < 1)
+		new type_butt(location)
+		processing_objects.Remove(src)
 		if(ismob(src.loc))
 			var/mob/living/M = src.loc
 			M << "\red Your [src.name] goes out."
-			put_out()
-			M.update_clothing()
-		else
-			put_out()
-		processing_objects.Remove(src)
+			M.u_equip(src)	//un-equip it so the overlays can update
+		del(src)
 		return
 	if(location)
 		location.hotspot_expose(700, 5)
 	if(reagents && reagents.total_volume)	//	check if it has any reagents at all
 		if( iscarbon(src.loc) && (src == loc:wear_mask) ) // if it's in the human/monkey mouth, transfer reagents to the mob
 			var/mob/living/carbon/C = loc
-			if(prob(15)) // so it's not an instarape in case of acid
+			if(prob(85)) // so it's not an instarape in case of acid
 				reagents.reaction(C, INGEST)
 			reagents.trans_to(C, REAGENTS_METABOLISM)
 		else // else just remove some of the reagents
@@ -229,20 +228,12 @@ ZIPPO
 
 /obj/item/clothing/mask/cigarette/dropped(mob/user as mob)
 	if(src.lit == 1)
-		src.visible_message("\red [user] calmly drops and treads on the lit [src], putting it out instantly.")
-		put_out()
+		for(var/mob/O in viewers(user, null))
+			O.show_message(text("\red [] calmly drops and treads on the lit [], putting it out instantly.", user,src.name), 1)
+			new type_butt(loc)
+			processing_objects.Remove(src)
+			del(src)
 	return ..()
-
-/obj/item/clothing/mask/cigarette/proc/put_out()
-	if (src.lit == -1)
-		return
-	src.lit = -1
-	src.damtype = "brute"
-	src.icon_state = icon_butt + "[rand(0,butt_count)]"
-	src.item_state = icon_off
-	src.desc = "A [src.name] butt."
-	src.name = "[src.name] butt"
-
 
 ////////////
 // CIGARS //
@@ -253,7 +244,7 @@ ZIPPO
 	icon_state = "cigaroff"
 	icon_on = "cigaron"
 	icon_off = "cigaroff"
-	icon_butt = "cigarbutt"
+	type_butt = /obj/item/weapon/cigbutt
 	throw_speed = 0.5
 	item_state = "cigaroff"
 	smoketime = 1500
@@ -294,6 +285,20 @@ ZIPPO
 //SMOKING PIPES//
 /////////////////
 
+/obj/item/weapon/tobacco
+	name = "bag of tobacco powder"
+	desc = "A rare and expensive thing in 26 century."
+	icon = '1.dmi'
+	icon_state = "tabakko_close"
+	item_state = "tabakko_close"
+	var/icon_on = "tabakko_open"
+	var/icon_off = "tabakko_close"
+	w_class = 1
+	throwforce = 4
+	flags = TABLEPASS | CONDUCT
+	slot_flags = SLOT_BELT
+	var/lit = 0
+
 /obj/item/clothing/mask/pipe
 	name = "smoking pipe"
 	desc = "A pipe, for smoking. Probably made of meershaum or something."
@@ -333,6 +338,7 @@ ZIPPO
 			if(M.lit > 0)
 				light("\red [user] lights their [name] with their [W].")
 
+
 	light(var/flavor_text = "[usr] lights the [name].")
 		if(!src.lit)
 			src.lit = 1
@@ -342,6 +348,9 @@ ZIPPO
 			for(var/mob/O in viewers(usr, null))
 				O.show_message(flavor_text, 1)
 			processing_objects.Add(src)
+
+	/obj/item/clothing/mask/pipe/proc/refillta(var/flavor_text = "[usr] refills the [name].")
+		smoketime = maxsmoketime
 
 	process()
 		var/turf/location = get_turf(src)
@@ -370,11 +379,14 @@ ZIPPO
 			processing_objects.Remove(src)
 		return ..()
 
-/obj/item/clothing/mask/pipe/attack_self(mob/user as mob) //Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
-	if(src.smoketime <= 0)
-		user << "\blue You refill the pipe with tobacco."
-		smoketime = maxsmoketime
-	return
+	attackby(obj/item/weapon/W as obj, mob/user as mob)
+ 	..()
+		if(istype(W, /obj/item/weapon/tobacco)) //Refills the pipe.
+			var/obj/item/weapon/tobacco/Z = W
+			if(Z.lit > 0)
+				user << "\blue You refill the pipe with tobacco."
+				smoketime = maxsmoketime
+				return
 /*
 /obj/item/clothing/mask/pipe/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/match))
@@ -390,7 +402,7 @@ ZIPPO
 	smoketime = 400
 	maxsmoketime = 400
 
-/obj/item/clothing/mask/elitepipe/
+/obj/item/clothing/mask/pipe/elitepipe/
 	name = "elite smoking pipe"
 	desc = "A pipe, for smoking. Probably used by honorfull nobles in comfy chairs."
 	icon_state = "trubkaoff"
@@ -398,79 +410,10 @@ ZIPPO
 	item_state = "trubkaoff"
 	w_class = 1
 	body_parts_covered = null
-	var/lit = 0
-	var/icon_on = "trubkaon"  //Note - these are in masks.dmi
-	var/icon_off = "trubkaoff"
-	var/lastHolder = null
-	var/smoketime = 700
-	var/maxsmoketime = 700 //make sure this is equal to your smoketime
-	proc
-		light(var/flavor_text = "[usr] lights the [name].")
-
-	attackby(obj/item/weapon/W as obj, mob/user as mob)
-		..()
-		if(istype(W, /obj/item/weapon/weldingtool))
-			var/obj/item/weapon/weldingtool/WT = W
-			if(WT.isOn())
-				light("\red [user] casually lights the [name] with [W], what a badass.")
-
-		else if(istype(W, /obj/item/weapon/lighter/zippo))
-			var/obj/item/weapon/lighter/zippo/Z = W
-			if(Z.lit > 0)
-				light("\red With a single flick of their wrist, [user] smoothly lights their [name] with their [W]. Damn they're cool.")
-
-		else if(istype(W, /obj/item/weapon/lighter))
-			var/obj/item/weapon/lighter/L = W
-			if(L.lit > 0)
-				light("\red After some fiddling, [user] manages to light their [name] with [W].")
-
-		else if(istype(W, /obj/item/weapon/match))
-			var/obj/item/weapon/match/M = W
-			if(M.lit > 0)
-				light("\red [user] lights their [name] with their [W].")
-
-	light(var/flavor_text = "[usr] lights the [name].")
-		if(!src.lit)
-			src.lit = 1
-			src.damtype = "fire"
-			src.icon_state = icon_on
-			src.item_state = icon_on
-			for(var/mob/O in viewers(usr, null))
-				O.show_message(flavor_text, 1)
-			processing_objects.Add(src)
-
-	process()
-		var/turf/location = get_turf(src)
-		src.smoketime--
-		if(src.smoketime < 1)
-			new /obj/effect/decal/ash(location)
-			if(ismob(src.loc))
-				var/mob/living/M = src.loc
-				M << "\red Your [src.name] goes out, and you empty the ash."
-				src.lit = 0
-				src.icon_state = icon_off
-				src.item_state = icon_off
-			processing_objects.Remove(src)
-			return
-		if(location)
-			location.hotspot_expose(700, 5)
-		return
-
-	dropped(mob/user as mob)
-		if(src.lit == 1)
-			for(var/mob/O in viewers(user, null))
-				O.show_message(text("\red [] puts out the [].", user,src.name), 1)
-				src.lit = 0
-				src.icon_state = icon_off
-				src.item_state = icon_off
-			processing_objects.Remove(src)
-		return ..()
-
-/obj/item/clothing/mask/pipe/attack_self(mob/user as mob) //Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
-	if(src.smoketime <= 0)
-		user << "\blue You refill the pipe with tobacco."
-		smoketime = maxsmoketime
-	return
+	icon_on = "trubkaon"  //Note - these are in masks.dmi
+	icon_off = "trubkaoff"
+	smoketime = 700
+	maxsmoketime = 700 //make sure this is equal to your smoketime
 
 ////////////
 //CIG PACK//
@@ -629,5 +572,60 @@ ZIPPO
 			user.ul_SetLuminosity(user.LuminosityRed - 2, user.LuminosityGreen - 1, user.LuminosityBlue)
 			ul_SetLuminosity(2,1,0)
 		return
+
+/obj/item/weapon/tobacco
+
+	attack_self(mob/user)
+		if(user.r_hand == src || user.l_hand == src)
+			if(!src.lit)
+				src.lit = 1
+				src.icon_state = icon_on
+				src.item_state = icon_on
+				if( istype(src,/obj/item/weapon/tobacco) )
+					for(var/mob/O in viewers(user, null))
+						O.show_message(text("\red With some squeaking, \the [name] opens with a cloud of tobacco-powder."), 1)
+
+				user.ul_SetLuminosity(user.LuminosityRed, user.LuminosityGreen, user.LuminosityBlue)
+				processing_objects.Add(src)
+			else
+				src.lit = 0
+				src.icon_state = icon_off
+				src.item_state = icon_off
+				if( istype(src,/obj/item/weapon/tobacco) )
+					for(var/mob/O in viewers(user, null))
+						O.show_message(text("\red You hear some squeaking, as [user] closes the [name] and sneezes. Wow."), 1)
+
+				user.ul_SetLuminosity(user.LuminosityRed, user.LuminosityGreen, user.LuminosityBlue)
+				processing_objects.Remove(src)
+		else
+			return ..()
+		return
+
+
+	attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+		if(!istype(M, /mob))
+			return
+
+		if(istype(M.wear_mask,/obj/item/clothing/mask/pipe || /obj/item/clothing/mask/pipe/elitepipe) && user.zone_sel.selecting == "mouth" && src.lit)
+			if(M == user)
+				M.wear_mask:refillta("\red After a litter ligering, [user] refills their [M.wear_mask.name] with their [src.name]. Damn they're noble.")
+			else
+				M.wear_mask:refillta("\red [user] lack the [src.name] out and refills pipe of [M]. Their look is as noble as the old-good tobacco they refills the [M.wear_mask.name] with.")
+		else
+			..()
+
+	pickup(mob/user)
+		if(lit)
+			ul_SetLuminosity(0)
+			user.ul_SetLuminosity(user.LuminosityRed, user.LuminosityGreen, user.LuminosityBlue)
+		return
+
+
+	dropped(mob/user)
+		if(lit)
+			user.ul_SetLuminosity(user.LuminosityRed, user.LuminosityGreen, user.LuminosityBlue)
+			ul_SetLuminosity()
+		return
+
 
 

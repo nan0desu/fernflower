@@ -29,7 +29,6 @@
 			var/obj/item/clothing/mask/cigarette/cig = W
 			if (cig.lit == 1)
 				src.visible_message("[user] crushes a [cig] in the [src], putting it out.")
-				cig.put_out()
 			else if (cig.lit == 0)
 				user << "You place a [cig] in [src] without even smoking it. Why would you do that?"
 			else if (cig.lit == -1)
