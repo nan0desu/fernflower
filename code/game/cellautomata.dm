@@ -99,6 +99,8 @@
 	src.load_motd()
 	src.load_admins()
 	investigate_reset()
+	if (config.enter_whitelist)
+		load_enter_whitelist()
 	if (config.usealienwhitelist)
 		load_alienwhitelist()
 	if (config.usewhitelist)

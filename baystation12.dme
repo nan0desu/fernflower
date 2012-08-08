@@ -944,6 +944,7 @@
 #include "code\modules\mining\Animus\donators.dm"
 #include "code\modules\mining\Animus\personal_item.dm"
 #include "code\modules\mining\Animus\statistics.dm"
+#include "code\modules\mining\Animus\whitelist.dm"
 #include "code\modules\mob\death.dm"
 #include "code\modules\mob\login.dm"
 #include "code\modules\mob\logout.dm"

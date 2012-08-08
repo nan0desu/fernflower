@@ -8,6 +8,10 @@
 	if (address in blockedip)
 		del(src)
 
+	if (config.enter_whitelist && !(ckey in enter_whitelist))
+		alert(src, "You are not in whitelist!",null)
+		del(src)
+
 	var/isbanned = CheckBan(src)
 	if (isbanned)
 		log_access("Failed Login: [src] - Banned")

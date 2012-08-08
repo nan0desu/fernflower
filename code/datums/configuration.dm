@@ -51,6 +51,7 @@
 	var/respawn = 1
 	var/guest_jobban = 1
 	var/usewhitelist = 0
+	var/enter_whitelist = 0
 	var/kick_inactive = 0				//force disconnect for inactive players
 	var/load_jobs_from_txt = 0
 	var/usealienwhitelist = 0
@@ -309,6 +310,9 @@
 
 				if("alert_green")
 					config.alert_desc_green = value
+
+				if("enterwhitelist")
+					config.enter_whitelist = 1
 
 				if("alert_delta")
 					config.alert_desc_delta = value
