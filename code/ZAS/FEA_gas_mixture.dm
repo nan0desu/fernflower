@@ -143,10 +143,24 @@ datum
 			//Inputs: None
 			//Outputs: None
 
+			if (oxygen < 0)
+				oxygen = 0
+
+			if (carbon_dioxide < 0)
+				carbon_dioxide = 0
+
+			if (nitrogen < 0)
+				nitrogen = 0
+
+			if (toxins < 0)
+				toxins = 0
+
 			total_moles = oxygen + carbon_dioxide + nitrogen + toxins
 
 			if(trace_gases.len)
 				for(var/datum/gas/trace_gas in trace_gases)
+					if (trace_gas.moles < 0)
+						trace_gas.moles = 0
 					total_moles += trace_gas.moles
 
 			return
