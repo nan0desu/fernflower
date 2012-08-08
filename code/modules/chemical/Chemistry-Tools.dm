@@ -382,7 +382,7 @@
 
 	sleepsmoke
 		name = "Special Smoke Grenade"
-		desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+		desc = "Special Smoke Greande. Usefull to knock out wide areas, full of living power."
 		active = 2
 		path = 1
 
@@ -390,15 +390,15 @@
 			..()
 			attached_device = new /obj/item/device/assembly/timer(src)
 			attached_device.master = src
-			var/obj/item/weapon/reagent_containers/glass/beaker/B1 = new(src)
-			var/obj/item/weapon/reagent_containers/glass/beaker/B2 = new(src)
+			var/obj/item/weapon/reagent_containers/glass/large/B1 = new(src)
+			var/obj/item/weapon/reagent_containers/glass/large/B2 = new(src)
 
 			if(attached_device.secured != 1)
 				attached_device.toggle_secure()
-			B1.reagents.add_reagent("sugar", 100)
-			B1.reagents.add_reagent("chloralhydrate", 100)
-			B2.reagents.add_reagent("potassium", 100)
-			B2.reagents.add_reagent("phosphorus", 100)
+			B1.reagents.add_reagent("sugar", 50)
+			B1.reagents.add_reagent("chloralhydrate", 50)
+			B2.reagents.add_reagent("potassium", 50)
+			B2.reagents.add_reagent("phosphorus", 50)
 
 			beaker_two = B1
 			beaker_one = B2
