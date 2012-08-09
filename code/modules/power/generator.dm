@@ -1,6 +1,6 @@
 // thermo electric generator powered by twinned gas turbines
 // more realistic than type 2, and also cooler
-#define ENERGY_TRANSFER_FACTOR 10
+#define ENERGY_TRANSFER_FACTOR 1.5
 #define POWER_PRODUCTION_FACTOR 1.25
 
 /*/obj/machinery/power/generator/verb/set_amount(var/g as num)
