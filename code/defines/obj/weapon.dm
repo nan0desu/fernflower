@@ -554,6 +554,10 @@
 	icon_state = "sheetbrown"
 	color = "brown"
 
+/obj/item/weapon/bedsheet/prisoner
+	icon_state = "prisonsheet"
+	color = "prisonsheet"
+
 /obj/item/weapon/bikehorn
 	name = "bike horn"
 	desc = "A horn off of a bicycle."
