@@ -160,6 +160,27 @@ obj/effect/decal/poster/New(var/serial)
 		if(22)
 			name += " - Skrell Twilight"
 			desc += " This poster depicts a mysteriously inscrutable, alien scene. Numerous Skrell can be seen conversing amidst great, crystalline towers rising above crashing waves"
+		if(23)
+			name += " - pic"
+			desc += "pic!"
+		if(24)
+			name += " - pic"
+			desc += "pic!"
+		if(25)
+			name += " - pic"
+			desc += "pic!"
+		if(26)
+			name += " - pic"
+			desc += "pic!"
+		if(27)
+			name += " - picl"
+			desc += "pic!"
+		if(28)
+			name += " - pic"
+			desc += "pic!"
+		if(29)
+			name += " - pic"
+			desc += "pic!"
 		/*if(20)
 			name += " - the Disabled Triptarch: Ironfoot, Seber and Ore"
 			desc += " This poster depicts a genetics researcher, a chemist and a medical doctor in various states of miscommunication."*/
@@ -167,6 +188,13 @@ obj/effect/decal/poster/New(var/serial)
 			name = "This shit just bugged. Report it to Agouri - polyxenitopalidou@gmail.com"
 			desc = "Why are you still here?"
 	..()
+
+obj/effect/decal/poster/rev2
+	desc = "For the greater revolution!"
+	icon = 'contraband.dmi'
+	name = "Revolitioner poster"
+	icon_state = "rev2"
+	anchored = 1
 
 obj/effect/decal/poster/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if( istype(W, /obj/item/weapon/wirecutters) )
