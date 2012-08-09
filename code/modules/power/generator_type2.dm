@@ -55,8 +55,8 @@
 			lastgen = energy_transfer*efficiency
 
 			//ENERGY_TRANSFER_FACTOR to beef up the amount of heat passed over
-			hot_air.temperature = ENERGY_TRANSFER_FACTOR*hot_air.temperature - energy_transfer/hot_air_heat_capacity
-			cold_air.temperature = ENERGY_TRANSFER_FACTOR*cold_air.temperature + heat/cold_air_heat_capacity
+			hot_air.temperature = hot_air.temperature - energy_transfer/hot_air_heat_capacity
+			cold_air.temperature = cold_air.temperature + heat/cold_air_heat_capacity
 
 			if(input1.network)
 				input1.network.update = 1
