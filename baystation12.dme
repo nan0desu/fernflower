@@ -1112,7 +1112,6 @@
 #include "code\modules\mob\simple_animal\mouse.dm"
 #include "code\modules\mob\simple_animal\parrot.dm"
 #include "code\modules\mob\simple_animal\pluto.dm"
-#include "code\modules\mob\simple_animal\proto.dm"
 #include "code\modules\mob\simple_animal\r2d2.dm"
 #include "code\modules\mob\simple_animal\rat.dm"
 #include "code\modules\mob\simple_animal\saturn.dm"
