@@ -2,7 +2,7 @@
 /mob/living/simple_animal/proto
 	name = "proto"
 	real_name = "Proto"
-	desc = "CentCom cyborg."
+	desc = "CentCom protocol cyborg."
 	icon = 'mob.dmi'
 	icon_state = "proto"
 	icon_living = "proto"
