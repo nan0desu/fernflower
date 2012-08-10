@@ -544,6 +544,7 @@
 	throw_range = 15
 	throw_speed = 3
 	desc = "An item of dubious origins, with wires and antennas protruding out of it."
+	origin_tech = "magnets=2;engineering=3;syndicate=2"
 	m_amt = 60
 	g_amt = 20
 

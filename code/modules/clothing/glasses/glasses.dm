@@ -89,9 +89,18 @@
 /obj/item/clothing/glasses/thermal
 	name = "sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes. Has an odd tint."
-	icon_state = "thermal"
+	icon_state = "sun"
 	item_state = "glasses"
 	origin_tech = "magnets=3;syndicate=4"
+	vision_flags = SEE_MOBS
+	invisa_view = 2
+
+/obj/item/clothing/glasses/thermal/normal
+	name = "thermal glasses"
+	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes. Has an odd tint."
+	icon_state = "thermal"
+	item_state = "glasses"
+	origin_tech = "magnets=3"
 	vision_flags = SEE_MOBS
 	invisa_view = 2
 
