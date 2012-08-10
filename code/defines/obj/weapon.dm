@@ -480,8 +480,8 @@
 /obj/item/weapon/bedsheet
 	name = "bedsheet"
 	desc = "Nice, linen bedsheet. Perfect to put on a bed."
-	icon = 'bed.dmi'
-	icon_state = "Bed Sheet: White"
+	icon = 'items.dmi'
+	icon_state = "sheet"
 	layer = 4.0
 	item_state = "bedsheet"
 	throwforce = 1
@@ -491,71 +491,71 @@
 	color = "white"
 
 /obj/item/weapon/bedsheet/blue
-	icon_state = "Bed Sheet: Blue"
+	icon_state = "sheetblue"
 	color = "blue"
 
 /obj/item/weapon/bedsheet/green
-	icon_state = "Bed Sheet: Green"
+	icon_state = "sheetgreen"
 	color = "green"
 
 /obj/item/weapon/bedsheet/orange
-	icon_state = "Bed Sheet: Orange"
+	icon_state = "sheetorange"
 	color = "orange"
 
 /obj/item/weapon/bedsheet/purple
-	icon_state = "Bed Sheet: Purple"
+	icon_state = "sheetpurple"
 	color = "purple"
 
 /obj/item/weapon/bedsheet/rainbow
-	icon_state = "Bed Sheet: Rainbow"
+	icon_state = "sheetrainbow"
 	color = "rainbow"
 
 /obj/item/weapon/bedsheet/red
-	icon_state = "Bed Sheet: Red"
+	icon_state = "sheetred"
 	color = "red"
 
 /obj/item/weapon/bedsheet/yellow
-	icon_state = "Bed Sheet: Yellow"
+	icon_state = "sheetyellow"
 	color = "yellow"
 
 /obj/item/weapon/bedsheet/mime
-	icon_state = "Bed Sheet: Mime"
+	icon_state = "sheetmime"
 	color = "mime"
 
 /obj/item/weapon/bedsheet/clown
-	icon_state = "Bed Sheet: Clown"
+	icon_state = "sheetclown"
 	color = "clown"
 
 /obj/item/weapon/bedsheet/captain
-	icon_state = "Bed Sheet: Captain"
+	icon_state = "sheetcaptain"
 	color = "captain"
 
 /obj/item/weapon/bedsheet/rd
-	icon_state = "Bed Sheet: RD"
+	icon_state = "sheetrd"
 	color = "director"
 
 /obj/item/weapon/bedsheet/medical
-	icon_state = "Bed Sheet: Medical"
+	icon_state = "sheetmedical"
 	color = "medical"
 
 /obj/item/weapon/bedsheet/hos
-	icon_state = "Bed Sheet: HoS"
+	icon_state = "sheethos"
 	color = "hosred"
 
 /obj/item/weapon/bedsheet/hop
-	icon_state = "Bed Sheet: HoP"
+	icon_state = "sheethop"
 	color = "hop"
 
 /obj/item/weapon/bedsheet/ce
-	icon_state = "Bed Sheet: CE"
+	icon_state = "sheetce"
 	color = "chief"
 
 /obj/item/weapon/bedsheet/brown
-	icon_state = "Bed Sheet: Brown"
+	icon_state = "sheetbrown"
 	color = "brown"
 
 /obj/item/weapon/bedsheet/prisoner
-	icon_state = "Bed Sheet: Prisoner V2"
+	icon_state = "prisonsheet"
 	color = "prisonsheet"
 
 /obj/item/weapon/bikehorn
