@@ -1160,6 +1160,21 @@
 	desc = "Do not apply fire to this. Rumour says it burns easily."
 	icon_state = "wood_table"
 
+/obj/structure/table/altar1
+	name = "Church Altar"
+	desc = "Smells the power of god."
+	icon_state = "chapaltar1-1"
+
+/obj/structure/table/altar3
+	name = "Church Altar"
+	desc = "Smells the power of god."
+	icon_state = "chapaltar1-3"
+
+/obj/structure/table/altar2
+	name = "Church Altar"
+	desc = "Smells the power of god."
+	icon_state = "chapaltar1-2"
+
 /obj/structure/mopbucket
 	desc = "Fill it with water, but don't forget a mop!"
 	name = "mop bucket"
