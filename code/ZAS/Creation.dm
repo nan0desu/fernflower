@@ -110,6 +110,10 @@ turf/proc/ZCanPass(turf/T, var/include_space = 0)
 			return 0
 
 		for(var/obj/obstacle in src)
+			if(istype(obstacle,/obj/machinery/door/poddoor))
+				if(!obstacle.CanPass(null, T, 0, 0))
+					return 0
+				continue
 			if(istype(obstacle,/obj/machinery/door) && !istype(obstacle,/obj/machinery/door/window))
 				continue
 			if(!obstacle.CanPass(null, T, 1.5, 1))
@@ -132,6 +136,10 @@ turf/proc/ZAirPass(turf/T)
 		return 0
 
 	for(var/obj/obstacle in src)
+		if(istype(obstacle,/obj/machinery/door/poddoor))
+			if(!obstacle.CanPass(null, T, 0, 0))
+				return 0
+			continue
 		if(istype(obstacle,/obj/machinery/door) && !istype(obstacle,/obj/machinery/door/window))
 			continue
 		if(!obstacle.CanPass(null, T, 0, 0))

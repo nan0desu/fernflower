@@ -290,6 +290,9 @@ turf
 
 				parent.length_space_border += length_space_border
 
+			if (zone)
+				zone.rebuild = 1
+
 			if(air_check_directions)
 				processing = 1
 				if(!parent)
