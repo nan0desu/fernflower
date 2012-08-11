@@ -2,11 +2,13 @@
 //some modifications so that it's more stable, and it's primary purpose is producing plasma instead of power
 //frequency is 1-1e9
 
-#define NITROGEN_RETARDATION_FACTOR 10	//Higher == N2 slows reaction more
-#define THERMAL_RELEASE_MODIFIER 30		//Higher == less heat released during reaction
-#define PLASMA_RELEASE_MODIFIER 200		//Higher == less plasma released by reaction
-#define OXYGEN_RELEASE_MODIFIER 1500	//Higher == less oxygen released at high temperature/power
-#define REACTION_POWER_MODIFIER 1.1		//Higher == more overall power
+//#define NITROGEN_RETARDATION_FACTOR 10	//Higher == N2 slows reaction more
+//#define THERMAL_RELEASE_MODIFIER 5		//Higher == less heat released during reaction
+//#define PLASMA_RELEASE_MODIFIER 200		//Higher == more plasma released by reaction
+//#define OXYGEN_RELEASE_MODIFIER 1500	//Higher == more oxygen released at high temperature/power
+//#define REACTION_POWER_MODIFIER 0.02	//Higher == more overall power
+//#define OVERLOAD_TEMP 1500 + T0C //New constant for tuning
+//#define MINIMAL_TEMP_FACTOR 0.1			//Higher == more energy is produced at 0 K
 
 /obj/machinery/power/supermatter
 	name = "Supermatter"
@@ -15,6 +17,15 @@
 	icon_state = "darkmatter"
 	density = 1
 	anchored = 1
+
+	var/NITROGEN_RETARDATION_FACTOR=10	//Higher == N2 slows reaction more
+	var/THERMAL_RELEASE_MODIFIER=1		//Higher == less heat released during reaction
+	var/PLASMA_RELEASE_MODIFIER=200		//Higher == more plasma released by reaction
+	var/OXYGEN_RELEASE_MODIFIER=1500	//Higher == more oxygen released at high temperature/power
+	var/REACTION_POWER_MODIFIER=300		//Higher == more overall power
+	var/OVERLOAD_TEMP=1500 + T0C 		//New constant for tuning
+	var/MINIMAL_TEMP_FACTOR=0.1			//Higher == more energy is produced at 0 K
+
 	var/mega_energy = 0
 
 	var/gasefficency = 0.25
@@ -35,7 +46,7 @@
 	bullet_act(var/obj/item/projectile/Proj)
 		if(Proj.flag != "bullet")
 			var/obj/item/projectile/beam/laserbeam = Proj
-			var/energy_loss_ratio = abs(laserbeam.frequency - frequency) / 1e9
+			var/energy_loss_ratio = abs(laserbeam.frequency - frequency) / 1000000
 			var/energy_delta = laserbeam.damage / 600
 			mega_energy += energy_delta - energy_delta * energy_loss_ratio
 		return 0
@@ -88,10 +99,10 @@
 	var/datum/gas_mixture/removed = env
 	var/retardation_factor = 0.5
 	previousdet = det
-	det += (removed.temperature - 1000) / 150
+	det += (removed.temperature - OVERLOAD_TEMP) / 150
 	det = max(det, 0)
 
-	if(det > 0 && removed.temperature > 1000) // while the core is still damaged and it's still worth noting its status
+	if(det > 0 && removed.temperature > OVERLOAD_TEMP) // while the core is still damaged and it's still worth noting its status
 		if((world.realtime - lastwarning) / 10 >= warningtime)
 			lastwarning = world.realtime
 			if(explosiondet - det <= 300)
@@ -144,7 +155,7 @@
 			retardation_factor -= 0.25
 
 	var/device_energy = mega_energy * REACTION_POWER_MODIFIER			//device energy is provided by the zero point lasers
-	device_energy *= removed.temperature / T0C							//environmental heat directly affects device energy
+	device_energy *= sqrt(removed.temperature / T0C)*(1-MINIMAL_TEMP_FACTOR)+MINIMAL_TEMP_FACTOR//environmental heat directly affects device energy
 	device_energy = max(device_energy,0)
 
 	//To figure out how much temperature to add each tick, consider that at one atmosphere's worth
@@ -160,7 +171,7 @@
 	var/produced = device_energy * PLASMA_RELEASE_MODIFIER * retardation_factor
 	removed.toxins += produced
 	//
-	produced = device_energy * OXYGEN_RELEASE_MODIFIER * retardation_factor
+	produced = device_energy * OXYGEN_RELEASE_MODIFIER * (1 - retardation_factor)
 	removed.oxygen += produced
 	removed.update_values()
 	//

@@ -8,6 +8,12 @@
 
 	var/update_cycle
 
+	New()
+		..()
+		air_contents.volume = 1000
+
+
+
 	update_icon()
 		if(node)
 			icon_state = "intact"
