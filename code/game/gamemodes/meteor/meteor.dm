@@ -3,7 +3,8 @@
 	config_tag = "meteor"
 	var/const/waittime_l = 600 //lower bound on time before intercept arrives (in tenths of seconds)
 	var/const/waittime_h = 1800 //upper bound on time before intercept arrives (in tenths of seconds)
-	var/const/meteordelay = 2000
+	var/meteordelay = 2000
+	var/const/delayincstep = 1000
 	var/nometeors = 1
 
 	uplink_welcome = "EVIL METEOR Uplink Console:"
@@ -32,7 +33,12 @@
 	else
 		spawn()
 			dust_swarm("strong")*/
-	spawn() spawn_meteors(6)
+	spawn()
+		spawn_meteors(3)
+		nometeors = 1
+		meteordelay = meteordelay + delayincstep
+	spawn(meteordelay)
+		nometeors = 0
 
 
 /datum/game_mode/meteor/declare_completion()

@@ -350,7 +350,7 @@ datum
 					corresponding.moles += trace_gas.moles*giver.group_multiplier/group_multiplier
 			update_values()
 
-			del(giver)
+			//del(giver) this should significantly decrease lags when rebuilding pipe networks. Copied from TG patch r4205
 			return 1
 
 		proc/remove(amount)

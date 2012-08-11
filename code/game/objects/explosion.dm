@@ -5,6 +5,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 	var/log_file = file("[time2text(world.timeofday, "statistics/DD-MM-YYYY.txt")]")
 	log_file << "Explosion | \The [get_area(epicenter)] | [devastation_range], [heavy_impact_range], [light_impact_range], [flash_range]"
 	spawn(0)
+		set background = 1
 		if(defer_powernet_rebuild != 2)
 			defer_powernet_rebuild = 1
 		if (!istype(epicenter, /turf))

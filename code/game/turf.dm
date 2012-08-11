@@ -367,7 +367,6 @@
 	var/old_icon = icon_state
 	if(zone)
 		zone.RemoveTurf(src)
-		zone.rebuild = 1
 	var/turf/simulated/wall/r_wall/S = new /turf/simulated/wall/r_wall( locate(src.x, src.y, src.z) )
 	S.icon_old = old_icon
 	S.opacity = 0

@@ -168,6 +168,10 @@ turf
 				return ..()
 
 		update_air_properties()//OPTIMIZE
+
+			if (zone)
+				zone.rebuild = 1
+
 			air_check_directions = 0
 
 			for(var/direction in cardinal)

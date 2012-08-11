@@ -108,7 +108,7 @@ obj/item/check_airflow_movable(n)
 //Zones A and B are air zones. n represents the amount of air moved.
 
 proc/Airflow(zone/A,zone/B)
-
+	set background = 1
 	var/n = B.air.return_pressure() - A.air.return_pressure()
 
 	 //Don't go any further if n is lower than the lowest value needed for airflow.
