@@ -304,6 +304,8 @@
 			verbs += /client/proc/animuspanel
 			verbs += /client/proc/reload_admins
 			verbs += /client/proc/set_max_players
+			verbs += /client/proc/cmd_admin_grantfullaccess
+			verbs += /client/proc/cmd_assume_direct_control
 			verbs += /client/proc/toggle_singulo_possession
 			verbs += /client/proc/controlpanel
 			verbs += /client/proc/cmd_debug_make_powernets

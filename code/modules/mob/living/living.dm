@@ -240,6 +240,74 @@
 	..()
 	return
 
+/mob/living/proc/reveve()
+	if(istype(src, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = src
+		for(var/A in H.organs)
+			var/datum/organ/external/affecting = null
+			if(!H.organs[A])    continue
+			affecting = H.organs[A]
+			if(!istype(affecting, /datum/organ/external))    continue
+			affecting.heal_damage(1000, 1000)    //fixes getting hit after ingestion, killing you when game updates organ health
+			affecting.status &= ~ORGAN_BROKEN
+			affecting.status &= ~ORGAN_SPLINTED
+			affecting.status &= ~ORGAN_DESTROYED
+			affecting.wound_descs.Cut()
+		H.UpdateDamageIcon()
+		H.update_body()
+	//src.fireloss = 0
+	src.setToxLoss(0)
+	//src.bruteloss = 0
+	src.setOxyLoss(0)
+	SetParalysis(0)
+	SetStunned(0)
+	SetWeakened(0)
+	src.radiation = 0
+	src.nutrition = 400
+	src.bodytemperature = initial(src.bodytemperature)
+	//src.health = 100
+	if(ishuman(src))
+		src.heal_overall_damage(1000, 1000)
+		//M.updatehealth()
+		src.buckled = initial(src.buckled)
+		src.handcuffed = initial(src.handcuffed)
+		if(istype(src,/mob/living/carbon/human))
+			var/mob/living/carbon/human/H = src
+			for(var/name in H.organs)
+				var/datum/organ/external/e = H.organs[name]
+				e.brute_dam = 0.0
+				e.burn_dam = 0.0
+				e.status &= ~ORGAN_BANDAGED
+				e.max_damage = initial(e.max_damage)
+				e.status &= ~ORGAN_BLEEDING
+				e.open = 0
+				e.status &= ~ORGAN_BROKEN
+				e.status &= ~ORGAN_SPLINTED
+				e.status &= ~ORGAN_DESTROYED
+				e.perma_injury = 0
+				e.update_icon()
+				e.wound_descs.Cut()
+			del(H.vessel)
+			H.vessel = new/datum/reagents(560)
+			H.vessel.my_atom = H
+			H.vessel.add_reagent("blood",560)
+			spawn(1)
+				H.fixblood()
+			H.pale = 0
+			H.update_body()
+			H.update_face()
+			H.UpdateDamageIcon()
+		if (src.stat > 1)
+			src.stat=0
+		..()
+	src.heal_overall_damage(1000, 1000)
+	src.buckled = initial(src.buckled)
+	src.handcuffed = initial(src.handcuffed)
+	if(src.stat > 1)
+		src.stat = CONSCIOUS
+	..()
+	return
+
 /mob/living/proc/UpdateDamageIcon()
 		return
 

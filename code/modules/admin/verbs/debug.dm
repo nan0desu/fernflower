@@ -964,7 +964,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M.equip_if_possible(new /obj/item/clothing/mask/gas/swat(M), M.slot_wear_mask)
 			M.equip_if_possible(new /obj/item/clothing/head/helmet/space/bodyguard(M), M.slot_head)
 			M.equip_if_possible(new /obj/item/weapon/storage/belt/security/fvll(M), M.slot_belt)
-			M.equip_if_possible(new /obj/item/weapon/pepperspray/elited(M), M.slot_r_store)
+			M.equip_if_possible(new /obj/item/weapon/melee/gibstick(M), M.slot_r_store)
 			M.equip_if_possible(new /obj/item/weapon/flashbang/clusterbang(M), M.slot_l_store)
 			M.equip_if_possible(new /obj/item/weapon/storage/backpack/holding/agent2(M), M.slot_back)
 
