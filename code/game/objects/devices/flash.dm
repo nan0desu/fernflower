@@ -10,9 +10,11 @@
 	item_state = "electronic"
 	origin_tech = "magnets=2;combat=1"
 
+
 	var/times_used = 0 //Number of times it's been used.
 	var/broken = 0     //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
+
 
 /obj/item/device/flash/proc/clown_check(var/mob/user)
 	if(user && (CLUMSY in user.mutations) && prob(50))
@@ -20,6 +22,7 @@
 		user.drop_item()
 		return 0
 	return 1
+
 
 /obj/item/device/flash/proc/flash_recharge()
 	//capacitor recharges over time
@@ -32,14 +35,19 @@
 	times_used = max(0,round(times_used)) //sanity
 
 
+
+
 /obj/item/device/flash/attack(mob/living/M as mob, mob/user as mob)
 	if(!user || !M)	return	//sanity
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name]  by [user.name] ([user.ckey])</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [M.name] ([M.ckey])</font>")
 
+
 	log_admin("ATTACK: [user] ([user.ckey]) flashed [M] ([M.ckey]) with [src].")
-	message_admins("ATTACK: [user] ([user.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) flashed [M] ([M.ckey]) with [src].")
+	message_admins("ATTACK: [user] ([user.ckey]) flashed [M] ([M.ckey]) with [src].")
 	log_attack("<font color='red'>[user.name] ([user.ckey]) Used the [src.name] to flash [M.name] ([M.ckey])</font>")
+
+
 
 
 	if(!clown_check(user))	return
@@ -47,7 +55,9 @@
 		user.show_message("<span class='warning'>The [src.name] is broken.</span>", 2)
 		return
 
+
 	flash_recharge()
+
 
 	//spamming the flash before it's fully charged (60seconds) increases the chance of it  breaking
 	//It will never break on the first use.
@@ -68,46 +78,21 @@
 	playsound(src.loc, 'flash.ogg', 100, 1)
 	var/flashfail = 0
 
+
 	if(iscarbon(M))
 		var/safety = M:eyecheck()
 		if(safety <= 0)
 			M.Weaken(20)
 			M.Stun(20)
 			flick("e_flash", M.flash)
-/////////TOTALLY COPIED FROM WIELDING TOOL/////////////////////////
-		switch(safety)
-			if(1)
-				M << "\red Your eyes sting a little."
-				user.eye_stat += rand(1, 2)
-				if(M.eye_stat > 12)
-					M.eye_blurry += rand(3,6)
-			if(0)
-				M << "\red Your eyes burn."
-				M.eye_stat += rand(2, 3)
-				if(M.eye_stat > 10)
-					M.eye_blurry += rand(4,10)
-			if(-1)
-				M << "\red Your thermals intensify the flash's glow. Your eyes itch and burn severely."
-				M.eye_blurry += rand(12,20)
-				M.eye_stat += rand(12, 16)
-				M.Weaken(30)
-				M.Stun(30)
-		if(M.eye_stat > 10 && safety < 2)
-			M << "\red Your eyes are really starting to hurt. This can't be good for you!"
-		if (prob(M.eye_stat - 25 + 1))
-			M << "\red You go blind!"
-			M.disabilities |= 128
-		else if (prob(M.eye_stat - 15 + 1))
-			M << "\red You go blind!"
-			M.eye_blind = 5
-			M.eye_blurry = 5
-			M.disabilities |= 1
-/////////////////////////////////////////////////////////////////////
+
+
 			if(ishuman(M) && ishuman(user) && M.stat!=DEAD)
 				// kill all memes
 				for(var/mob/living/parasite/meme/P in M:parasites)
 					P << "\red <b>The bright flash is unbearable.. You lose consciousness and fade away..</b>"
 					P.death()
+
 
 				if(user.mind && user.mind in ticker.mode.head_revolutionaries)
 					var/revsafe = 0
@@ -130,11 +115,13 @@
 		else
 			flashfail = 1
 
+
 	else if(issilicon(M))
 		if(!M:flashproof())
 			M.Weaken(rand(5,10))
 		else
 			flashfail++
+
 
 	if(isrobot(user))
 		spawn(0)
@@ -146,6 +133,7 @@
 			flick("blspell", animation)
 			sleep(5)
 			del(animation)
+
 
 	if(!flashfail)
 		flick("flash2", src)
@@ -159,13 +147,19 @@
 
 
 
+
+
+
+
 /obj/item/device/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	if(!user || !clown_check(user)) 	return
 	if(broken)
 		user.show_message("<span class='warning'>The [src.name] is broken</span>", 2)
 		return
 
+
 	flash_recharge()
+
 
 	//spamming the flash before it's fully charged (60seconds) increases the chance of it  breaking
 	//It will never break on the first use.
@@ -195,6 +189,7 @@
 			sleep(5)
 			del(animation)
 
+
 	for(var/mob/living/carbon/M in oviewers(3, null))
 		if(prob(50))
 			if (locate(/obj/item/weapon/cloaking_device, M))
@@ -205,7 +200,9 @@
 		if(!safety)
 			flick("flash", M.flash)
 
+
 	return
+
 
 /obj/item/device/flash/emp_act(severity)
 	if(broken)	return
@@ -227,6 +224,7 @@
 						O.show_message("<span class='disarm'>[M] is blinded by the flash!</span>")
 	..()
 
+
 /obj/item/device/flash/synthetic
 	name = "synthetic flash"
 	desc = "When a problem arises, SCIENCE is the solution."
@@ -235,12 +233,14 @@
 	var/construction_cost = list("metal"=750,"glass"=750)
 	var/construction_time=100
 
+
 /obj/item/device/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
 	..()
 	if(!broken)
 		broken = 1
 		user << "\red The bulb has burnt out!"
 		icon_state = "flashburnt"
+
 
 /obj/item/device/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	..()

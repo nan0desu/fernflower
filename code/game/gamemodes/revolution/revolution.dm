@@ -20,7 +20,7 @@
 /datum/game_mode/revolution
 	name = "revolution"
 	config_tag = "revolution"
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Internal Security")
+	restricted_jobs = list("Internal Security", "Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Internal Security")
 	required_players = 3
 	required_enemies = 3
 	recommended_enemies = 3
@@ -462,8 +462,7 @@
 /////////////////////////////
 /datum/game_mode/revolution/proc/check_heads_victory()
 	for(var/datum/mind/rev_mind in head_revolutionaries)
-		var/turf/T = get_turf(rev_mind.current)
-		if((rev_mind) && (rev_mind.current) && (rev_mind.current.stat != 2) && T && (T.z == 1))
+		if((rev_mind) && (rev_mind.current) && (rev_mind.current.stat != 2))
 			if(ishuman(rev_mind.current))
 				return 0
 	return 1
