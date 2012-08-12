@@ -93,23 +93,6 @@
 	if (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic")
 		usr << "\blue Respawn is disabled."
 		return
-	else
-		var/deathtime = world.time - src.timeofdeath
-		var/deathtimeminutes = round(deathtime / 600)
-		var/pluralcheck = "minute"
-		if(deathtimeminutes == 0)
-			pluralcheck = ""
-		else if(deathtimeminutes == 1)
-			pluralcheck = " [deathtimeminutes] minute and"
-		else if(deathtimeminutes > 1)
-			pluralcheck = " [deathtimeminutes] minutes and"
-		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
-		if (deathtime < 18000)
-			usr << "You must wait 30 minutes to respawn!"
-			return
-		else
-			usr << "You can respawn now, enjoy your new life!"
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
@@ -132,13 +115,12 @@
 		del(M)
 		return
 
-
-
 	if(client && client.holder && (client.holder.state == 2))
 		client.admin_play()
 		return
 
 	M.key = client.key
+	M.respawndelaystart = world.time
 	M.Login()
 	return
 

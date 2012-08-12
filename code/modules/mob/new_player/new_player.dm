@@ -6,6 +6,7 @@
 	var/spawning = 0//Referenced when you want to delete the new_player later on in the code.
 	var/totalPlayers = 0		 //Player counts for the Lobby tab
 	var/totalPlayersReady = 0
+	var/respawndelaystart = 0    //Players that leave their bodies should wait at login screen some time before respawn
 
 	invisibility = 101
 
@@ -325,6 +326,30 @@
 		//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
 		var/mins = (mills % 36000) / 600
 		var/hours = mills / 36000
+
+		if (!( abandon_allowed ))
+			usr << "\blue Respawn is disabled."
+			return
+		if (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic")
+			usr << "\blue Respawn is disabled."
+			return
+		if (respawndelaystart > 0)
+			var/deathtime = world.time - respawndelaystart
+			var/deathtimeminutes = round(deathtime / 600)
+			var/pluralcheck = "minute"
+			if(deathtimeminutes == 0)
+				pluralcheck = ""
+			else if(deathtimeminutes == 1)
+				pluralcheck = " [deathtimeminutes] minute and"
+			else if(deathtimeminutes > 1)
+				pluralcheck = " [deathtimeminutes] minutes and"
+			var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
+			usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
+			if (deathtime < 18000)
+				usr << "You must wait 30 minutes to respawn!"
+				return
+			else
+				usr << "You can respawn now, enjoy your new life!"
 
 		var/dat = "<html><body><center>"
 		dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
