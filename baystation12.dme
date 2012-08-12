@@ -605,6 +605,7 @@
 #include "code\game\machinery\telecomms\telemonitor.dm"
 #include "code\game\machinery\telecomms\traffic_control.dm"
 #include "code\game\magic\archived_book.dm"
+#include "code\game\magic\decorate.dm"
 #include "code\game\magic\library.dm"
 #include "code\game\magic\musician.dm"
 #include "code\game\magic\Uristrunes.dm"

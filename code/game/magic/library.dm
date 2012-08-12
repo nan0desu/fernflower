@@ -59,13 +59,6 @@
 	return sanitized_text
 
 
-/obj/structure/clock
-	name = "clock"
-	icon = 'library.dmi'
-	icon_state = "clock"
-	anchored = 1
-	density = 1
-	opacity = 1
 
 /obj/structure/bookcase
 	name = "bookcase"
