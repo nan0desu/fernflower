@@ -327,13 +327,15 @@
 		var/mins = (mills % 36000) / 600
 		var/hours = mills / 36000
 
-		if (!( abandon_allowed ))
-			usr << "\blue Respawn is disabled."
-			return
-		if (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic")
-			usr << "\blue Respawn is disabled."
-			return
+
 		if (respawndelaystart > 0)
+			if (!( abandon_allowed ))
+				usr << "\blue Respawn is disabled."
+				return
+			if (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic")
+				usr << "\blue Respawn is disabled."
+				return
+
 			var/deathtime = world.time - respawndelaystart
 			var/deathtimeminutes = round(deathtime / 600)
 			var/pluralcheck = "minute"
