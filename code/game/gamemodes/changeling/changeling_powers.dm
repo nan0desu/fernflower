@@ -495,7 +495,7 @@
 			new_objective.owner = O.mind
 			O.mind.objectives += new_objective
 
-/*			spawn(0)
+			spawn(0)
 				while(emergency_shuttle.online == 0)
 					sleep(10)
 				command_alert("Authorization codes recieved, confirming hostile entity terminated.  The emergancy shuttle is now departing.")
@@ -508,11 +508,10 @@
 						M.gib()
 					for(var/mob/M in locate(/area/shuttle/escape_pod5/transit))
 						M.gib()
-				while(emergency_shuttle.online == 1)
-					sleep(10)
-					if((locate(/mob/living/carbon/human/tajaran/Emissary) in locate(/area/shuttle/escape/centcom))   ||  (locate(/mob/living/carbon/human/tajaran/Emissary) in locate(/area/centcom/evac)) || (locate(/mob/living/carbon/human/tajaran/Emissary) in locate(/area/centcom/control)  )     )
-						command_alert("What the fu- Shoot it!  SHOOT IT!  CENTRAL COMMAND TRANSMITTING DIST- *static*  Nevermind previous transmission, Nanotrasen.  We're all good here.  Subject contained. Standing down alert status.")
-Tarjan shit, not recoding this -Sieve{R}*/
+		//		while(emergency_shuttle.online == 1)
+		//			sleep(10)
+		//			if((locate(/mob/living/carbon/human/tajaran/Emissary) in locate(/area/shuttle/escape/centcom))   ||  (locate(/mob/living/carbon/human/tajaran/Emissary) in locate(/area/centcom/evac)) || (locate(/mob/living/carbon/human/tajaran/Emissary) in locate(/area/centcom/control)  )     )
+		//				command_alert("What the fu- Shoot it!  SHOOT IT!  CENTRAL COMMAND TRANSMITTING DIST- *static*  Nevermind previous transmission, Nanotrasen.  We're all good here.  Subject contained. Standing down alert status.")
 
 /client/proc/changeling_fakedeath()
 	set category = "Changeling"
