@@ -40,9 +40,8 @@ datum/shuttle_controller
 			online = 1
 		//turning on the red lights in hallways and siren
 		if(coeff == 1)
-			for(var/area/A in world)
-				if(istype(A, /area/hallway))
-					A.readyalert()
+			for(var/area/hallway/A in world)
+				A.readyalert()
 			//sound_siren = 1
 
 	proc/shuttlealert(var/X)
@@ -53,21 +52,17 @@ datum/shuttle_controller
 		if(direction == 1)
 			var/timeleft = timeleft()
 			if(alert == 0)
-				if(timeleft >= 600)
+				if(timeleft >= SHUTTLEARRIVETIME)
 					return
 				captain_announce("The emergency shuttle has been recalled.")
 				world << sound('shuttlerecalled.ogg')
-				setdirection(-1)
-				online = 1
-				for(var/area/A in world)
-					if(istype(A, /area/hallway))
-						A.readyreset()
-				return
 			else //makes it possible to send shuttle back.
 				captain_announce("The shuttle has been recalled.")
-				setdirection(-1)
-				online = 1
-				return
+			setdirection(-1)
+			online = 1
+			for(var/area/hallway/A in world)
+				A.readyreset()
+			return
 
 	// returns the time (in seconds) before shuttle arrival
 	// note if direction = -1, gives a count-up to SHUTTLEARRIVETIME
