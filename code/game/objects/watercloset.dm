@@ -107,8 +107,6 @@
 			else
 				user << "<span class='notice'>You need a tighter grip.</span>"
 
-
-
 /obj/machinery/shower
 	name = "shower"
 	desc = "The HS-451. Installed in the 2550s by the Nanotrasen Hygiene Division."
@@ -257,9 +255,6 @@
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"	//thanks doohl
 	icon = 'watercloset.dmi'
 	icon_state = "rubberducky"
-	item_state = "rubberducky"
-
-
 
 /obj/structure/sink
 	name = "sink"
