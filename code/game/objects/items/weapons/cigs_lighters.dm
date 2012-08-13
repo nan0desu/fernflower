@@ -460,9 +460,9 @@ ZIPPO
 		update_icon()
 		return
 
-	attack(var/mob/M)
-		if(M != usr)
- 			..()
+	attack(var/mob/M, var/mob/B)
+		if(M != B)
+			..()
 			return
 		if(!istype(M, /mob/living/carbon/human))
 			..()
@@ -471,15 +471,15 @@ ZIPPO
 			..()
 			return
 		if(cigcount == 0)
-  			M << "\red You're out of cigs, shit! How you gonna get through the rest of the day..."
-   			return
+			M << "\red You're out of cigs, shit! How you gonna get through the rest of the day..."
+			return
  		cigcount--
 		var/obj/item/clothing/mask/cigarette/C = new /obj/item/clothing/mask/cigarette(M)
 		M.wear_mask = C
 		update_icon()
 		M.update_clothing()
 		for(var/mob/O in viewers(M, null))
-  		O.show_message(text("\red [] grabs [] from [] without hands, only with teeth.", M, C, src), 1)
+			O.show_message(text("\red [] grabs [] from [] without hands, only with teeth.", M, C, src), 1)
 		M << text("\red You grab [] from [] with your teeth.", C, src)
 		return
 
