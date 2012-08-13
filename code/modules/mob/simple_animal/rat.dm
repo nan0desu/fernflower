@@ -23,12 +23,10 @@
 	melee_damage_lower = 2
 	melee_damage_upper = 7
 	attacktext = "bites"
-	minbodytemp = 50
-	maxbodytemp = 150
 	min_oxy = 0
 	max_co2 = 0
 	max_tox = 0
-	speed = -8
+	speed = -5
 	nopush = 1
 	a_intent = "harm"
 	canstun = 0
