@@ -120,6 +120,7 @@
 							a.autosay("\"WARNING: Attempt to access in armory, but prevented till red alert is not declared.\"","Station Security System")
 							return
 						M.open()
+						del(a)
 						return
 				else
 					spawn( 0 )
@@ -128,13 +129,13 @@
 						if(id == "supermatter_vent")
 							a.autosay("\"EMERGENCY CORE VENT FINISHED.\"","Core control computer")
 						M.close()
+						del(a)
 						return
 
 	desiredstate = !desiredstate
 	spawn(15)
 		if(!(stat & NOPOWER))
 			icon_state = "doorctrl0"
-	del(a)
 	return
 
 /obj/machinery/door_control/power_change()

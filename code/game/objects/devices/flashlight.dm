@@ -76,14 +76,14 @@
 	if (on)
 		icon_state = icon_on
 		if(src.loc == user)
-		user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
+			user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			ul_SetLuminosity(brightness_on, brightness_on, 0)
 
 	else
 		icon_state = icon_off
 		if(src.loc == user)
-		user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
+			user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			ul_SetLuminosity(0)
 
