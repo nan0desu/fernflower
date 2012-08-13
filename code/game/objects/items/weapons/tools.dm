@@ -23,6 +23,16 @@ WELDINGTOOOL
 	m_amt = 150
 	origin_tech = "materials=1;engineering=1"
 
+	attack(mob/M as mob, mob/living/user as mob)
+
+		src.add_fingerprint(user)
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
+		log_attack("<font color='red'>[user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
+		for(var/mob/O in viewers(M))
+			if (O.client)	O.show_message("\red <B>[M] has been bashed with wrench by [user]!</B>", 1, "\red You hear someone screams", 2)
+
 
 
 // SCREWDRIVER
@@ -60,6 +70,8 @@ WELDINGTOOOL
 		return ..()
 	if((CLUMSY in user.mutations) && prob(50))
 		M = user
+	for(var/mob/O in viewers(M))
+		if (O.client)	O.show_message("\red <B>[M] has been stabbed with screwdriver by [user]!</B>", 1, "\red You hear someone screams", 2)
 	return eyestab(M,user)
 
 
@@ -325,6 +337,8 @@ WELDINGTOOOL
 	return
 
 /obj/item/weapon/weldingtool/attack(mob/M as mob, mob/user as mob)
+	for(var/mob/O in viewers(M))
+		if (O.client)	O.show_message("\red <B>[M] has been blazed with weldingtool by [user]!</B>", 1, "\red You hear someone screams", 2)
 	if(hasorgans(M))
 		var/datum/organ/external/S = M:organs[user.zone_sel.selecting]
 		if(!(S.status & ORGAN_ROBOT) || user.a_intent != "help")
@@ -396,6 +410,8 @@ WELDINGTOOOL
 		item_state = "cutters_yellow"
 
 /obj/item/weapon/wirecutters/attack(mob/M as mob, mob/user as mob)
+	for(var/mob/O in viewers(M))
+		if (O.client)	O.show_message("\red <B>[M] has been painfully injured with wirecutters by [user]!</B>", 1, "\red You hear someone screams", 2)
 	if((M.handcuffed) && (istype(M:handcuffed, /obj/item/weapon/handcuffs/cable)))
 		usr.visible_message("\The [usr] cuts \the [M]'s restraints with \the [src]!",\
 		"You cut \the [M]'s restraints with \the [src]!",\

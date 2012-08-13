@@ -26,6 +26,19 @@
 	IsShield()
 		return 1
 
+	attack(mob/M as mob, mob/living/user as mob)
+
+		src.add_fingerprint(user)
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
+
+		log_admin("ATTACK: [user] ([user.ckey]) attacked [M] ([M.ckey]) with [src].")
+		message_admins("ATTACK: [user] ([user.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[user]\">Jump</a>) attacked [M] ([M.ckey]) with [src].")
+		log_attack("<font color='red'>[user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
+		for(var/mob/O in viewers(M))
+			if (O.client)	O.show_message("\red <B>[M] has been bashed with riot shield by [user]!</B>", 1, "\red You hear someone screams", 2)
+
 /obj/item/weapon/shield/energy
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
@@ -130,6 +143,18 @@
 
 	IsShield()
 		return 1
+
+	attack(mob/M as mob, mob/living/user as mob)
+
+		src.add_fingerprint(user)
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
+		for(var/mob/O in viewers(M))
+			if(prob(50))
+				if (O.client)	O.show_message("\red <B>[M] has been stabbed with claymore by [user] with enormous force!</B>", 1, "\red You hear someone screams", 2)
+			else
+				if (O.client)	O.show_message("\red <B>[M] has been slashed with claymore by [user] at incredible speed!</B>", 1, "\red You hear someone screams", 2)
 
 /obj/item/weapon/bodybag
 	name = "body bag"
@@ -409,6 +434,18 @@
 	w_class = 2.0
 	flags = FPRINT | TABLEPASS | NOSHIELD
 	origin_tech = "magnets=3;syndicate=4"
+
+	attack(mob/M as mob, mob/living/user as mob)
+
+		src.add_fingerprint(user)
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
+		for(var/mob/O in viewers(M))
+			if(prob(50))
+				if (O.client)	O.show_message("\red <B>[M] has been stabbed with energy sword by [user] with enormous force!</B>", 1, "\red You hear someone screams", 2)
+			else
+				if (O.client)	O.show_message("\red <B>[M] has been slashed with energy sword by [user] at incredible speed!</B>", 1, "\red You hear someone screams", 2)
 
 /obj/item/weapon/melee/energy/sword/chainsword
 	color = "chain"
@@ -941,6 +978,16 @@
 	force = 15.0
 	item_state = "fire_extinguisher"
 	m_amt = 90
+
+	attack(mob/M as mob, mob/living/user as mob)
+
+		src.add_fingerprint(user)
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
+		log_attack("<font color='red'>[user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
+		for(var/mob/O in viewers(M))
+			if (O.client)	O.show_message("\red <B>[M] has been smashed with fire extinguisher by [user]!</B>", 1, "\red You hear someone screams", 2)
 
 /obj/item/weapon/extinguisher/mini
 	name = "fire extinguisher"
@@ -1636,6 +1683,18 @@ eternal248: Found broken and buggy Z-levels 7-12, ended up leading to my discove
 	throw_range = 6
 	m_amt = 12000
 	origin_tech = "materials=1"
+
+	attack(mob/M as mob, mob/living/user as mob)
+
+		src.add_fingerprint(user)
+
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
+		for(var/mob/O in viewers(M))
+			if(prob(50))
+				if (O.client)	O.show_message("\red <B>[M] has been stabbed with kitchen knife by [user]!</B>", 1, "\red You hear someone screams", 2)
+			else
+				if (O.client)	O.show_message("\red <B>[M] has been slashed with kitchen knife by [user]!</B>", 1, "\red You hear someone screams", 2)
 
 /obj/item/weapon/butch
 	name = "butcher's cleaver"
