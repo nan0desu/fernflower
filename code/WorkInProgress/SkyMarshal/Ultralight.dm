@@ -186,8 +186,8 @@ atom/proc/ul_FalloffAmount(var/atom/ref)
 		return ul_FastRoot[round((x*x + y*y)*ul_LightingResolutionSqrt, 1) + 1]/ul_LightingResolution
 
 		#else
-		if ((x*x + y*y) > ul_FastRoot.len)
-			for(var/i = ul_FastRoot.len, i <= x*x+y*y, i++)
+		if ((x*x + y*y + 1) > ul_FastRoot.len)
+			for(var/i = ul_FastRoot.len, i <= x*x+y*y + 1, i++)
 				ul_FastRoot += round(sqrt(i))
 		return ul_FastRoot[x*x + y*y + 1]
 
