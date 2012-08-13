@@ -45,7 +45,7 @@
 			B.loc = src
 			user << "You insert battery"
 	else if (istype(B, /obj/item/weapon/storage/toolbox))
-		user << "You are silly? I can't insert this massive toolbox into flashlight."
+		user << "You are silly? You can't insert this massive toolbox into flashlight."
 	return
 
 /obj/item/device/flashlight/verb/remove_battery()
@@ -73,23 +73,7 @@
 	return
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user)
-	if (isturf(src.loc))
-		if(on)
-			icon_state = icon_on
-			ul_SetLuminosity(brightness_on, brightness_on, 0)
-		else
-			icon_state = icon_off
-			ul_SetLuminosity(0)
-	else if (user)
-		if(src.loc == user)
-			if(on)
-				icon_state = icon_on
-				user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
-			else
-				icon_state = icon_off
-				user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
-			////////////////////////
-/*	if (on)
+	if (on)
 		icon_state = icon_on
 		if(src.loc == user)
 		user.ul_SetLuminosity(user.LuminosityRed + brightness_on, user.LuminosityGreen + brightness_on, user.LuminosityBlue)
@@ -102,7 +86,7 @@
 		user.ul_SetLuminosity(user.LuminosityRed - brightness_on, user.LuminosityGreen - brightness_on, user.LuminosityBlue)
 		else if (isturf(src.loc))
 			ul_SetLuminosity(0)
-*/
+
 
 /obj/item/device/flashlight/attack_self(mob/user)
 //	if(!isturf(user.loc))

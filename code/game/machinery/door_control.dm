@@ -75,16 +75,11 @@
 	if(normaldoorcontrol)
 		for(var/obj/machinery/door/airlock/D in range(range))
 			if(D.id_tag == src.id)
-				var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 				if(desiredstate == 1)
 					if(specialfunctions & OPEN)
 						if (D.density)
 							spawn( 0 )
 								D.open()
-								if(id == "Core_Shutters")
-									a.autosay("\"CORE EMERGENCY SHUTTERS ARE UP.\"","Core control computer")
-								if(id == "supermatter_vent")
-									a.autosay("\"EMERGENCY CORE VENT FINISHED.\"","Core control computer")
 								return
 					if(specialfunctions & IDSCAN)
 						D.aiDisabledIdScanner = 1
@@ -99,10 +94,6 @@
 						if (!D.density)
 							spawn( 0 )
 								D.close()
-								if(id == "Core_Shutters")
-									a.autosay("\"CORE EMERGENCY SHUTTERS ARE DOWN.\"","Core control computer")
-								if(id == "supermatter_vent")
-									a.autosay("\"EMERGENCY CORE VENT INITIATED.\"","Core control computer")
 								return
 					if(specialfunctions & IDSCAN)
 						D.aiDisabledIdScanner = 0
@@ -111,19 +102,31 @@
 						D.update_icon()
 					if(specialfunctions & SHOCK)
 						D.secondsElectrified = 0
-				del(a)
+
 
 
 
 	else
+		var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 		for(var/obj/machinery/door/poddoor/M in world)
 			if (M.id == src.id)
 				if (M.density)
 					spawn( 0 )
+						if(id == "Core_Shutters")
+							a.autosay("\"CORE EMERGENCY SHUTTERS ARE UP.\"","Core control computer")
+						if(id == "supermatter_vent")
+							a.autosay("\"EMERGENCY CORE VENT INITIATED.\"","Core control computer")
+						if(id == "Secure Gate" && security_level <= 1)
+							a.autosay("\"WARNING: Attempt to access in armory, but prevented till red alert is not declared.\"","Station Security System")
+							return
 						M.open()
 						return
 				else
 					spawn( 0 )
+						if(id == "Core_Shutters")
+							a.autosay("\"CORE EMERGENCY SHUTTERS ARE DOWN.\"","Core control computer")
+						if(id == "supermatter_vent")
+							a.autosay("\"EMERGENCY CORE VENT FINISHED.\"","Core control computer")
 						M.close()
 						return
 
@@ -131,6 +134,8 @@
 	spawn(15)
 		if(!(stat & NOPOWER))
 			icon_state = "doorctrl0"
+	del(a)
+	return
 
 /obj/machinery/door_control/power_change()
 	..()
