@@ -128,7 +128,6 @@
 #define FILE_DIR "code/modules/mob/living/silicon"
 #define FILE_DIR "code/modules/mob/living/silicon/ai"
 #define FILE_DIR "code/modules/mob/living/silicon/decoy"
-#define FILE_DIR "code/modules/mob/living/silicon/droid"
 #define FILE_DIR "code/modules/mob/living/silicon/pai"
 #define FILE_DIR "code/modules/mob/living/silicon/robot"
 #define FILE_DIR "code/modules/mob/new_player"
