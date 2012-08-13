@@ -64,7 +64,7 @@ Pod/Blast Doors computer
 			icon_state = initial(icon_state)
 			stat &= ~NOPOWER
 			if (istype(src,/obj/machinery/computer/aifixer))
-				ul_SetLuminosity(LuminosityRed, LuminosityGreen + 1, LuminosityBlue + 2)
+				ul_SetLuminosity(1, 0, 2)
 				var/obj/machinery/computer/aifixer/O = src
 				if (O.occupant)
 					switch (O.occupant.stat)
@@ -77,7 +77,7 @@ Pod/Blast Doors computer
 		else
 			spawn(rand(0, 15))
 				//icon_state = "c_unpowered"
-				ul_SetLuminosity(LuminosityRed, LuminosityGreen - 1, LuminosityBlue - 2)
+				ul_SetLuminosity(0, 0, 0)
 				icon_state = initial(icon_state)
 				icon_state += "0"
 				stat |= NOPOWER
