@@ -382,8 +382,8 @@
 	desc = "Manufactured by InspectorsInc., used to blind and down an opponent quickly."
 	icon = 'weapons.dmi'
 	name = "pepperspray"
-	icon_state = "pepperspray"
-	item_state = "pepperspray"
+	icon_state = "pepperspray_old"
+	item_state = "pepperspray_old"
 	flags = TABLEPASS | FPRINT | USEDELAY
 	slot_flags = SLOT_BELT
 	throwforce = 3
