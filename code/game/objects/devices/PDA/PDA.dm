@@ -193,7 +193,10 @@
 		return 0
 	var/mob/M = loc
 
-	if(!M.can_use_hands())
+	if(M.handcuffed)
+		return 0
+
+	if(M.buckled && ! istype(M.buckled, /obj/structure/stool/bed/chair)) // buckling does not restrict hands
 		return 0
 
 	if((src in M.contents) || ( istype(loc, /turf) && in_range(src, M) ) )
