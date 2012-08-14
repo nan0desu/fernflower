@@ -23,3 +23,10 @@
 	icon_state = "door1"
 	opacity = 1
 	density = 1
+
+/obj/machinery/door/unpowered/blackshuttle
+	icon = 'shuttle.dmi'
+	name = "door"
+	icon_state = "gdoor1"
+	opacity = 1
+	density = 1
