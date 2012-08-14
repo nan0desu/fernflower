@@ -128,6 +128,7 @@
 #define FILE_DIR "code/modules/mob/living/silicon"
 #define FILE_DIR "code/modules/mob/living/silicon/ai"
 #define FILE_DIR "code/modules/mob/living/silicon/decoy"
+#define FILE_DIR "code/modules/mob/living/silicon/droid"
 #define FILE_DIR "code/modules/mob/living/silicon/pai"
 #define FILE_DIR "code/modules/mob/living/silicon/robot"
 #define FILE_DIR "code/modules/mob/new_player"
@@ -1308,5 +1309,5 @@
 #include "code\ZAS\Variable Settings.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
-#include "maps\tgstation.2.0.8 (test).dmm"
+#include "maps\tgstation.2.0.8 (OKMAP).dmm"
 // END_INCLUDE
