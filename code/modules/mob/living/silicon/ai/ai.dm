@@ -25,7 +25,7 @@
 					"Atmospherics",
 					"Mess Hall",
 					"Arrivals",
-					"Singularity",
+					"Supermatter",
 					"Arrivals",
 					"Mine")
 
