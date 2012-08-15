@@ -102,15 +102,17 @@
 	det += (removed.temperature - OVERLOAD_TEMP) / 150
 	det = max(det, 0)
 
-	if(det > 0 && removed.temperature > OVERLOAD_TEMP) // while the core is still damaged and it's still worth noting its status
+	if(det > 300 && removed.temperature > OVERLOAD_TEMP) // while the core is still damaged and it's still worth noting its status
 		if((world.realtime - lastwarning) / 10 >= warningtime)
 			lastwarning = world.realtime
 			if(explosiondet - det <= 300)
 				radioalert("CORE EXPLOSION IMMINENT","Core control computer")
-			else if(det >= previousdet)   // The damage is still going up
+			else if(det >= previousdet && det >= 300)   // The damage is still going up
 				radioalert("CORE OVERLOAD","Core control computer")
-			else						  // Phew, we're safe
-				radioalert("Core returning to safe operating levels.","Core control computer")
+
+	if (previousdet > 300 && det <= 300 )						  // Phew, we're safe
+		lastwarning = world.realtime
+		radioalert("Core returning to safe operating levels.","Core control computer")
 
 	if(det > explosiondet)
 		roundinfo.core = 1
