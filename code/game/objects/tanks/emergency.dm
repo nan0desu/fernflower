@@ -23,15 +23,6 @@
 			usr << text("\red <B>The meter on the [src.name] indicates you are almost out of air!</B>")
 			usr << sound('alert.ogg')
 
-	attack(mob/M as mob, mob/living/user as mob)
-
-		src.add_fingerprint(user)
-
-		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [user.name] ([user.ckey])</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
-		for(var/mob/O in viewers(M))
-			if (O.client)	O.show_message("\red <B>[M] has been smashed with emergency oxygen tank by [user]!</B>", 1, "\red You hear someone screams", 2)
-
 /obj/item/weapon/tank/emergency_oxygen/engi
 	icon_state = "emergency_engi"
 	name = "extended-capacity emergency oxygen tank"
