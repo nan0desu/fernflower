@@ -126,7 +126,10 @@ emp_act
 		return 0
 
 	if(!(affecting.status & ORGAN_DESTROYED))
-		visible_message("\red <B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>")
+		if(I.attack_verb.len)
+			visible_message("\red <B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>")
+		else
+			visible_message("\red <B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>")
 	else
 		user << "What [affecting]?"
 		return

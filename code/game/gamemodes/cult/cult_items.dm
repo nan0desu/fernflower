@@ -7,6 +7,7 @@
 	slot_flags = SLOT_BELT
 	force = 40
 	throwforce = 10
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 
 

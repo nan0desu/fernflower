@@ -2064,6 +2064,21 @@
 		..()
 		reagents.add_reagent("fluorosurfactant", 20)
 
+/obj/item/weapon/broken_bottle
+
+	name = "Broken Bottle"
+	desc = "A bottle with a sharp broken bottom."
+	icon = 'icons/obj/drinks.dmi'
+	icon_state = "broken_bottle"
+	force = 9.0
+	throwforce = 5.0
+	throw_speed = 3
+	throw_range = 5
+	item_state = "beer"
+	//item_state - Need to find a bottle sprite
+	attack_verb = list("stabbed", "slashed", "attacked")
+	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
+
 /obj/item/weapon/reagent_containers/glass/beaker
 	name = "beaker"
 	desc = "A beaker. Can hold up to 50 units."

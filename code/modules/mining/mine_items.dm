@@ -181,6 +181,7 @@ proc/move_mining_shuttle()
 	m_amt = 3750 //one sheet, but where can you make them?
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
 	origin_tech = "materials=1;engineering=1"
+	attack_verb = list("hit", "pierced", "sliced", "attacked")
 
 	excavationtool
 		name = "Excavation Tool"
@@ -272,6 +273,7 @@ proc/move_mining_shuttle()
 	w_class = 3.0
 	m_amt = 50
 	origin_tech = "materials=1;engineering=1"
+	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 
 
 

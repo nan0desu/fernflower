@@ -22,6 +22,7 @@ WELDINGTOOOL
 	w_class = 2.0
 	m_amt = 150
 	origin_tech = "materials=1;engineering=1"
+	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 
 
 
@@ -389,6 +390,7 @@ WELDINGTOOOL
 	w_class = 2.0
 	m_amt = 80
 	origin_tech = "materials=1;engineering=1"
+	attack_verb = list("pinched", "nipped")
 
 /obj/item/weapon/wirecutters/New()
 	if(prob(50))

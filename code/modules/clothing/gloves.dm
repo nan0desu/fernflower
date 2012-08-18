@@ -13,6 +13,7 @@
 	var/obj/item/weapon/cell/cell = 0
 	body_parts_covered = HANDS
 	slot_flags = SLOT_GLOVES
+	attack_verb = list("challenged")
 
 
 /obj/item/clothing/gloves/boxing

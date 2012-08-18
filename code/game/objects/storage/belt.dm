@@ -8,6 +8,7 @@
 	slot_flags = SLOT_BELT
 	max_w_class = 3
 	max_combined_w_class = 21
+	attack_verb = list("whipped", "lashed", "disciplined")
 
 /obj/item/weapon/storage/belt/proc/can_use()
 	if(!ismob(loc)) return 0

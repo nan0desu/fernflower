@@ -668,6 +668,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //list that will contain r
 	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
 	icon_state = "newspaper"
 	w_class = 2	//Let's make it fit in trashbags!
+	attack_verb = list("bashed", "whacked", "educated")
 	var/screen = 0
 	var/pages = 0
 	var/curr_page = 0

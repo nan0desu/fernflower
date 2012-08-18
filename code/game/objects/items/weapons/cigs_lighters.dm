@@ -23,6 +23,7 @@ ZIPPO
 	var/smoketime = 5
 	w_class = 1.0
 	origin_tech = "materials=1"
+	attack_verb = list("burnt", "singed")
 
 
 	process()
@@ -116,13 +117,14 @@ ZIPPO
 	item_state = "cigoff"
 	w_class = 1
 	body_parts_covered = null
+	attack_verb = list("burnt", "singed")
 	var/lit = 0
 	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_off = "cigoff"
 	var/type_butt = /obj/item/weapon/cigbutt
 	var/lastHolder = null
 	var/smoketime = 300
-	var/chem_volume = 15
+	var/chem_volume = 20
 	var/butt_count = 5  //count of butt sprite variations
 
 /obj/item/clothing/mask/cigarette/New()
@@ -505,6 +507,7 @@ ZIPPO
 	throwforce = 4
 	flags = TABLEPASS | CONDUCT
 	slot_flags = SLOT_BELT
+	attack_verb = list("burnt", "singed")
 	var/lit = 0
 
 /obj/item/weapon/lighter/zippo
