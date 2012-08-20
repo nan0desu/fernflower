@@ -108,27 +108,37 @@
 
 	else
 		var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
+		var/used = 0
 		for(var/obj/machinery/door/poddoor/M in world)
 			if (M.id == src.id)
 				if (M.density)
 					spawn( 0 )
-						if(id == "Core_Shutters")
-							a.autosay("\"CORE EMERGENCY SHUTTERS ARE UP.\"","Core control computer")
-						if(id == "supermatter_vent")
-							a.autosay("\"EMERGENCY CORE VENT INITIATED.\"","Core control computer")
-						if(id == "Secure Gate" && security_level <= 1)
-							a.autosay("\"WARNING: Attempt to access in armory, but prevented till red alert is not declared.\"","Station Security System")
-							return
+						if(!used)
+							if(id == "Core_Shutters")
+								a.autosay("\"CORE EMERGENCY SHUTTERS ARE UP.\"","Core control computer")
+								used = 1
+							if(id == "supermatter_vent")
+								a.autosay("\"EMERGENCY CORE VENT INITIATED.\"","Core control computer")
+								used = 1
+							if(id == "Secure Gate" && security_level <= 1)
+								a.autosay("\"WARNING: Attempt to access in armory, but prevented till red alert is not declared.\"","Station Security System")
+								used = 1
+								return
 						M.open()
+						used = 0
 						del(a)
 						return
 				else
 					spawn( 0 )
-						if(id == "Core_Shutters")
-							a.autosay("\"CORE EMERGENCY SHUTTERS ARE DOWN.\"","Core control computer")
-						if(id == "supermatter_vent")
-							a.autosay("\"EMERGENCY CORE VENT FINISHED.\"","Core control computer")
+						if(!used)
+							if(id == "Core_Shutters")
+								a.autosay("\"CORE EMERGENCY SHUTTERS ARE DOWN.\"","Core control computer")
+								used = 1
+							if(id == "supermatter_vent")
+								a.autosay("\"EMERGENCY CORE VENT FINISHED.\"","Core control computer")
+								used = 1
 						M.close()
+						used = 0
 						del(a)
 						return
 
