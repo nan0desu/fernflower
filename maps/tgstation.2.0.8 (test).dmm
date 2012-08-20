@@ -612,7 +612,7 @@
 "alN" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{req_access_txt = 1},/turf/simulated/wall,/area/crew_quarters)
 "alO" = (/obj/structure/cable,/obj/machinery/power/solar{id = "auxsolareast"; name = "Port Auxiliary Solar Array"},/turf/simulated/floor/airless{icon_state = "solarpanel"},/area/solar/auxport)
 "alP" = (/turf/simulated/shuttle/wall{icon_state = "swall_s5"; dir = 2},/area/shuttle/prison/station)
-"alQ" = (/obj/structure/shuttle/engine/propulsion/burst,/turf/space,/area/shuttle/prison/station)
+"alQ" = (/obj/structure/shuttle/engine/propulsion/burst,/turf/unsimulated/floor{icon_state = "circuit"},/area/shuttle/prison/station)
 "alR" = (/turf/simulated/shuttle/wall{icon_state = "swall_s9"; dir = 2},/area/shuttle/prison/station)
 "alS" = (/obj/structure/bookcase/manuals/medical,/turf/simulated/floor{icon_state = "white"},/area/security/brig)
 "alT" = (/obj/structure/table,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = "Streight"},/obj/item/stack/medical/bruise_pack,/obj/item/stack/medical/ointment,/turf/simulated/floor{icon_state = "white"},/area/security/brig)
