@@ -1110,12 +1110,30 @@
 				clothing_overlays += image("icon" = 'mob.dmi', "icon_state" = "[o]_splint2", "layer" = CUFFED_LAYER)
 
 	if (r_hand)
-		clothing_overlays += image("icon" = 'items_righthand.dmi', "icon_state" = r_hand.item_state ? r_hand.item_state : r_hand.icon_state, "layer" = INHANDS_LAYER)
-		r_hand.screen_loc = ui_rhand
+		if (lying)
+			var/icon/rhicon = new /icon("icon" = 'items_righthand.dmi', "icon_state" = r_hand.item_state ? r_hand.item_state : r_hand.icon_state, "dir" = SOUTH)
+			rhicon.Turn(90)
+			rhicon.Shift(SOUTH, 6)
+			rhicon.Shift(EAST, 1)
+			clothing_overlays += image("icon" = rhicon, "layer" = INHANDS_LAYER)
+			r_hand.screen_loc = ui_rhand
+		else
+			clothing_overlays += image("icon" = 'items_righthand.dmi', "icon_state" = r_hand.item_state ? r_hand.item_state : r_hand.icon_state, "layer" = INHANDS_LAYER)
+			r_hand.screen_loc = ui_rhand
 
 	if (l_hand)
-		clothing_overlays += image("icon" = 'items_lefthand.dmi', "icon_state" = l_hand.item_state ? l_hand.item_state : l_hand.icon_state, "layer" = INHANDS_LAYER)
-		l_hand.screen_loc = ui_lhand
+		if (lying)
+			var/icon/lhicon = new /icon("icon" = 'items_lefthand.dmi', "icon_state" = l_hand.item_state ? l_hand.item_state : l_hand.icon_state, "dir" = SOUTH)
+			lhicon.Turn(90)
+			lhicon.Shift(SOUTH, 6)
+			lhicon.Shift(EAST, 1)
+			clothing_overlays += image("icon" = lhicon, "layer" = INHANDS_LAYER)
+
+
+			l_hand.screen_loc = ui_lhand
+		else
+			clothing_overlays += image("icon" = 'items_lefthand.dmi', "icon_state" = l_hand.item_state ? l_hand.item_state : l_hand.icon_state, "layer" = INHANDS_LAYER)
+			l_hand.screen_loc = ui_lhand
 
 
 	var/shielded = 0

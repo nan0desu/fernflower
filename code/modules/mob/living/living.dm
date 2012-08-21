@@ -315,13 +315,13 @@
 	if (buckled)
 		if(buckled == /obj/structure/stool/bed || istype(buckled, /obj/machinery/conveyor))
 			lying = 1
-		if(lying)
+/*		if(lying) //Commented out illogical peace of code.
 			var/h = hand
 			hand = 0
 			drop_item()
 			hand = 1
 			drop_item()
-			hand = h
+			hand = h*/
 		density = 1
 	else
 		density = !lying
