@@ -167,6 +167,10 @@
 
 	var/walltype = "wall"
 
+/turf/simulated/wall/meteorhit()
+	if(prob(10))
+		return ..()
+
 /turf/simulated/wall/mineral
 	name = "mineral wall"
 	desc = "This shouldn't exist"
