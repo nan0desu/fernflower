@@ -3,8 +3,7 @@ world
 	turf = /turf/space
 	area = /area
 	view = "15x15"
-	New()
-		del(world)
+
 
 	Topic(href, href_list[])
 //		world << "Received a Topic() call!"
