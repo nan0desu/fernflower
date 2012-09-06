@@ -75,14 +75,16 @@ obj
 			temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST
 			firelevel = 10000 //Calculated by gas_mixture.calculate_firelevel()
 			archived_firelevel = 0
-
+			deleted = 0
 		process()
 			. = 1
+			if (deleted)
+				return
 
 			if(firelevel > vsc.IgnitionLevel)
 
 				var/turf/simulated/floor/S = loc
-				if(!S.zone) del src //Cannot exist where zones are broken.
+				if(!S.zone) DelMe() //Cannot exist where zones are broken.
 
 				if(istype(S,/turf/simulated/floor))
 					var
@@ -144,18 +146,17 @@ obj
 							flow.zburn(liquid)
 
 						else
-
-							del src
+							DelMe()
 
 
 						S.assume_air(flow) //Then put it back where you found it.
 
 					else
-						del src
+						DelMe()
 				else
-					del src
+					DelMe()
 			else
-				del src
+				DelMe()
 
 			for(var/mob/living/carbon/human/M in loc)
 				M.FireBurn(min(max(0.1,firelevel / 20),10)) //Burn the humans!
@@ -169,6 +170,19 @@ obj
 			for(var/mob/living/carbon/human/M in loc)
 				M.FireBurn(min(max(0.1,firelevel / 20),10)) //Burn the humans!
 			air_master.active_hotspots.Add(src)
+
+		proc/DelMe() //Optimising deletion process. Such a laggy peace of shit.
+			deleted = 1
+			invisibility = 101
+			air_master.active_hotspots.Remove(src)
+			spawn (0)
+				set background = 1
+				if (istype(loc, /turf/simulated))
+					ul_SetLuminosity(0)
+
+				loc = null
+
+				//del src		Let's try to utilise garbage collection once again.
 
 		Del()
 			if (istype(loc, /turf/simulated))
