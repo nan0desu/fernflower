@@ -969,24 +969,6 @@
 	m_amt = 90
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 
-/obj/item/weapon/golden_extinguisher
-	name = "golden fire extinguisher"
-	desc = "Holy Space Jesus! It's made of pure gold!"
-	icon = '1.dmi'
-	icon_state = "golden_fire_extinguisher"
-	var/last_use = 1.0
-	var/safety = 1
-	hitsound = 'smash.ogg'
-	flags = FPRINT | USEDELAY | TABLEPASS | CONDUCT
-	throwforce = 30
-	w_class = 3.0
-	throw_speed = 2
-	throw_range = 10
-	force = 30.0
-	item_state = "golden_fire_extinguisher"
-	m_amt = 90
-	attack_verb = list("violently crashed")
-
 /obj/item/weapon/extinguisher/mini
 	name = "fire extinguisher"
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
