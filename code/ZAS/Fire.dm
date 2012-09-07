@@ -11,8 +11,6 @@ Attach to transfer valve and open. BOOM.
 */
 
 
-
-
 //Some legacy definitions so fires can be started.
 atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	return null
@@ -96,6 +94,10 @@ obj
 
 					firelevel = air_contents.calculate_firelevel(liquid)
 
+					if (firelevel * air_contents.temperature/100>2500)
+						if (prob(firelevel/100))
+							explosion(S, -1, -1, 1, 3)
+
 					//Ensure that there is an appropriate amount of fuel and O2 here.
 					if(firelevel > 0.25 && (air_contents.toxins || fuel || liquid))
 
@@ -103,6 +105,18 @@ obj
 							if(S.air_check_directions&direction) //Grab all valid bordering tiles
 
 								var/turf/simulated/enemy_tile = get_step(S, direction)
+
+
+								var
+									datum/gas_mixture/tair_contents = enemy_tile.return_air()
+									//Get whatever trace fuels are in the area
+									datum/gas/volatile_fuel/tfuel = locate(/datum/gas/volatile_fuel/) in tair_contents.trace_gases
+									//Also get liquid fuels on the ground.
+									obj/liquid_fuel/tliquid = locate() in enemy_tile
+
+								if (tair_contents.oxygen < 0.5 || !(tair_contents.toxins || tfuel || tliquid))
+									//If there is nothing to ignite then skip it.
+									continue
 
 								if(istype(enemy_tile))
 									//If extinguisher mist passed over the turf it's trying to spread to, don't spread and
@@ -275,7 +289,7 @@ datum/gas_mixture/proc/zburn(obj/liquid_fuel/liquid)
 				fuel_sources++
 
 			//Toxins
-		if(toxins > 0.3) fuel_sources++
+		if(toxins > 0.00001) fuel_sources++
 
 		if(!fuel_sources) return 0 //If there's no fuel, there's no burn. Can't divide by zero anyway.
 
@@ -287,10 +301,10 @@ datum/gas_mixture/proc/zburn(obj/liquid_fuel/liquid)
 				//Reaches a maximum practical temperature of around 4500.
 
 			//Increase temperature.
-			temperature = max( 1700*log(0.4*firelevel + 1.23) , temperature )
+			temperature += (max( 1700*log(0.4*firelevel + 1.23) , temperature ) - temperature)*0.02
 
 			//Consume some gas.
-			var/consumed_gas = min(oxygen,0.05*firelevel,total_fuel) / fuel_sources
+			var/consumed_gas = min(oxygen,0.005*firelevel,total_fuel) / fuel_sources
 
 			oxygen = max(0,oxygen-consumed_gas)
 
@@ -317,13 +331,13 @@ datum/gas_mixture/proc/calculate_firelevel(obj/liquid_fuel/liquid)
 		datum/gas/volatile_fuel/fuel = locate() in trace_gases
 		liquid_concentration = 0
 
-		oxy_concentration = oxygen / volume
-		tox_concentration = toxins / volume
+		oxy_concentration = oxygen*100 / volume
+		tox_concentration = toxins*40 / volume
 		fuel_concentration = 0
 
 	if(fuel) fuel_concentration = (fuel.moles*5) / volume
 	if(liquid) liquid_concentration = (liquid.amount*15) / volume
-	return (oxy_concentration + tox_concentration + liquid_concentration + fuel_concentration)*100
+	return min(oxy_concentration * ((tox_concentration<0.001?0:tox_concentration) + liquid_concentration + fuel_concentration)*100*(temperature/T0C+0.1),100)
 
 /mob/living/carbon/human/proc/FireBurn(mx as num)
 	//Burns mobs due to fire. Respects heat transfer coefficients on various body parts.
