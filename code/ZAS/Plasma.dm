@@ -78,7 +78,9 @@ obj/item/proc
 	//Handles all the bad things plasma can do.
 
 	//Contamination
-	if(vsc.plc.CLOTH_CONTAMINATION) contaminate()
+	if(vsc.plc.CLOTH_CONTAMINATION)
+		if(!pl_head_protected() || !pl_suit_protected())
+			contaminate()
 
 	//Anything else requires them to not be dead.
 	if(stat >= 2)
