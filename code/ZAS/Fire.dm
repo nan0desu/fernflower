@@ -94,7 +94,9 @@ obj
 
 					firelevel = air_contents.calculate_firelevel(liquid)
 
-					if (firelevel * air_contents.temperature/100>2500)
+
+
+					if (firelevel * air_contents.temperature>250000)
 						if (prob(firelevel/100))
 							explosion(S, -1, -1, 1, 3)
 
