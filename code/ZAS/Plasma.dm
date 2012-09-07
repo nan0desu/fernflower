@@ -109,10 +109,11 @@ obj/item/proc
 
 	//Genetic Corruption
 	if(vsc.plc.GENETIC_CORRUPTION)
-		if(rand(1,10000) < vsc.plc.GENETIC_CORRUPTION)
-			randmutb(src)
-			src << "\red High levels of toxins cause you to spontaneously mutate."
-			domutcheck(src,null)
+		if(!pl_head_protected() || !pl_suit_protected())
+			if(rand(1,10000) < vsc.plc.GENETIC_CORRUPTION)
+				randmutb(src)
+				src << "\red High levels of toxins cause you to spontaneously mutate."
+				domutcheck(src,null)
 
 
 /mob/living/carbon/human/proc/burn_eyes()
