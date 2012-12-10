@@ -8,7 +8,10 @@ var/global/BSACooldown = 0
 	for (var/mob/M in world)
 		if (M && M.client && M.client.holder && M.client.holder.level > -3 && M.client.holder.level != 0) //Lets not spam our retirees. Or moderators!
 			if (admin_ref)
-				M << dd_replaceText(rendered, "%admin_ref%", "\ref[M]")
+				if (admin_ref == 2)
+					M << dd_replaceText(rendered, "%admin_ref%", "\ref[M.client.holder]")
+				else
+					M << dd_replaceText(rendered, "%admin_ref%", "\ref[M]")
 			else
 				M << rendered
 
@@ -3048,7 +3051,6 @@ var/global/BSACooldown = 0
 
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
-		//send2irc(world.url,"Server Rebooting!")
 		sleep(50)
 		world.Reboot()
 

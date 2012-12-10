@@ -1,6 +1,6 @@
 
-var/jsonpath = "/home/bay12/public_html"
-var/dmepath = "/home/bay12/git/baystation12.dme"
+var/jsonpath = "/srv/byond/green"
+var/dmepath = "/srv/byond/green/baystation12.dme"
 var/makejson = 1 //temp
 proc/makejson()
 
@@ -95,8 +95,3 @@ client/proc/ChangeMap(var/X as text)
 	set name = "Change Map"
 	set category  = "Admin"
 	switchmap(X,X)
-proc/send2irc(msg,msg2)
- 	shell("python nudge.py [msg] [msg2]")
-proc/send2adminirc(channel,msg)
-	world << channel << " "<< msg
-	shell("python nudge.py '[channel]' [msg]")

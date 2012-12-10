@@ -232,13 +232,15 @@ obj/liquid_fuel
 
 	proc/Spread()
 		//Allows liquid fuels to sometimes flow into other tiles.
-		if(amount < 0.5) return
+		if(amount < 2) return
 		var/turf/simulated/S = loc
 		if(!istype(S)) return
 		for(var/d in cardinal)
 			if(S.air_check_directions & d)
 				if(rand(25))
 					var/turf/simulated/O = get_step(src,d)
+					for(var/obj.block in O)
+						if(block.density) break
 					if(!locate(/obj/liquid_fuel) in O)
 						new/obj/liquid_fuel(O,amount*0.25)
 						amount *= 0.75
@@ -284,7 +286,7 @@ datum/gas_mixture/proc/zburn(obj/liquid_fuel/liquid)
 
 		if(liquid)
 		//Liquid Fuel
-			if(liquid.amount <= 0)
+			if(liquid.amount <= 1) // so small amount of fuel cause infinite burning, so lets ignore it if amount less than 1
 				del liquid
 			else
 				total_fuel += liquid.amount
@@ -320,7 +322,7 @@ datum/gas_mixture/proc/zburn(obj/liquid_fuel/liquid)
 
 			if(liquid)
 				liquid.amount -= consumed_gas
-				if(liquid.amount <= 0) del liquid
+				if(liquid.amount <= 1) del liquid
 
 			update_values()
 			return consumed_gas*fuel_sources
@@ -374,5 +376,9 @@ datum/gas_mixture/proc/calculate_firelevel(obj/liquid_fuel/liquid)
 	apply_damage(0.6*mx*legs_exposure, BURN, "r_leg", 0, 0, "Fire")
 	apply_damage(0.4*mx*arms_exposure, BURN, "l_arm", 0, 0, "Fire")
 	apply_damage(0.4*mx*arms_exposure, BURN, "r_arm", 0, 0, "Fire")
+
+	if(getFireLoss() > 300)
+		new /obj/effect/decal/ash(loc)
+		del(src)
 
 	flash_pain()

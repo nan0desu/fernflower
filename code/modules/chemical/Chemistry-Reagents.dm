@@ -1078,6 +1078,20 @@ datum
 				return
 
 
+		myoglobilin
+			name = "Myoglobilin"
+			id = "reviver"
+			description = "Myoglobilin. Liquid with a harsh acidic flavor. May prevent the clinical death."
+			reagent_state = LIQUID
+			color = "#A8A8A8"
+
+			reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+				src = null
+				if(istype(M, /mob/living/carbon))
+					if(M:health < -200)
+						M:health = -100
+
+
 		space_cleaner
 			name = "Space cleaner"
 			id = "cleaner"
@@ -3178,7 +3192,7 @@ datum
 				slurr_adj = 15
 
 
-			sbiten
+		sbiten
 			name = "Sbiten"
 			id = "sbiten"
 			description = "A spicy Vodka! Might be a little hot for the little guys!"
@@ -3721,3 +3735,20 @@ datum
 				M:slowed_metabolism = 1
 				..(0,02)
 				return
+
+		freezer
+			name = "Liquid vacuum"
+			id = "freezer"
+			description = "Unknown substance"
+			reagent_state = SOLID
+			color = "#619494"
+
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				if (!M.freezed)
+					freezemob(M)
+				if( holder.has_reagent("freezer") )
+					holder.remove_reagent("freezer", 2)
+				..()
+				return
+

@@ -131,6 +131,19 @@ proc/process_ghost_teleport_locs()
 	luminosity = 1
 	ul_Lighting = 0
 
+/area/shuttle/spaceship
+	name = "\improper Space Ship"
+	icon_state = "shuttle"
+	luminosity = 0
+
+/area/shuttle/spaceship/target
+	name = "\improper Space Ship"
+	icon_state = "shuttle"
+
+/area/shuttle/spaceship/init
+	name = "\improper Space Ship"
+	icon_state = "shuttle"
+
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
 
@@ -440,6 +453,7 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
+	ul_Lighting = 0
 
 /area/tdome/tdome1
 	name = "\improper Thunderdome (Team 1)"
@@ -497,6 +511,7 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
 	requires_power = 0
+	ul_Lighting = 0
 
 
 

@@ -149,7 +149,6 @@
 
 //Crispy fullban
 /world/Reboot(var/reason)
-	send2irc(world.url,"Server Rebooting!")
 	socket_talk.send_raw("type=reboot")
 	for(var/client/C)
 		if (config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite

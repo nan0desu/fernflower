@@ -60,6 +60,7 @@
 	proc/check_fire(var/mob/living/target as mob, var/mob/living/user as mob)  //Checks if you can hit them or not.
 		if(!istype(target) || !istype(user))
 			return 0
+		user << "PIF PAF"
 		var/obj/item/projectile/test/in_chamber = new /obj/item/projectile/test(get_step_to(user,target)) //Making the test....
 		in_chamber.target = target
 		in_chamber.flags = flags //Set the flags...
@@ -101,13 +102,13 @@
 				M.attack_log += "\[[time_stamp()]\] <b>[firer]/[firer.ckey]</b> shot <b>[M]/[M.ckey]</b> with a <b>[src]</b>"
 				firer.attack_log += "\[[time_stamp()]\] <b>[firer]/[firer.ckey]</b> shot <b>[M]/[M.ckey]</b> with a <b>[src]</b>"
 				log_admin("ATTACK: [firer] ([firer.ckey]) shot [M] ([M.ckey]) with [src].")
-				message_admins("ATTACK: [firer] ([firer.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[firer]\">Jump</a>) shot [M] ([M.ckey]) with [src].")
+				message_admins("ATTACK: [firer] ([firer.ckey])(<A HREF='?src=%admin_ref%;adminplayerobservejump=\ref[firer]'>JMP</A>) shot [M] ([M.ckey]) with [src].", 2)
 				log_attack("<font color='red'>[firer] ([firer.ckey]) shot [M] ([M.ckey]) with a [src]</font>")
 
 			else
 				M.attack_log += "\[[time_stamp()]\] <b>UNKNOWN SUBJECT (No longer exists)</b> shot <b>[M]/[M.ckey]</b> with a <b>[src]</b>"
 				log_admin("ATTACK: UNKNOWN (no longer exists) shot [M] ([M.ckey]) with [src].")
-				message_admins("ATTACK: UNKNOWN (no longer exists) shot [M] ([M.ckey])(<a href=\"byond://?src=%admin_ref%;teleto=\ref[M]\">Jump</a>) with [src].")
+				message_admins("ATTACK: UNKNOWN (no longer exists) shot [M] ([M.ckey])(<A HREF='?src=%admin_ref%;adminplayerobservejump=\ref[M]'>JMP</A>) with [src].", 2)
 				log_attack("<font color='red'>UNKNOWN shot [M] ([M.ckey]) with a [src]</font>")
 
 
@@ -146,6 +147,7 @@
 
 
 	proc/fired()
+
 		spawn while(src)
 			if((!( current ) || loc == current))
 				current = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z)

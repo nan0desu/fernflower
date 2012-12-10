@@ -170,12 +170,11 @@
 	if(!amt)
 		return
 
-	var/amm = 0.1 * amt
 	var/turf/T = get_turf(src)
 	var/list/obj/effect/decal/cleanable/blood/drip/nums = list()
 	var/list/iconL = list("1","2","3","4","5")
 
-	vessel.remove_reagent("blood",amm)
+	vessel.remove_reagent("blood",amt)
 
 	for(var/obj/effect/decal/cleanable/blood/drip/G in T)
 		nums += G
