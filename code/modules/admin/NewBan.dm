@@ -213,7 +213,7 @@ var/list/bwhitelist
 		RemoveBan(A)*/
 
 //////////////////////////////////// WHITELIST ////////////////////////////////////
-
+/*
 /proc/load_bwhitelist()
 	log_admin("Loading whitelist")
 	bwhitelist = list()
@@ -240,3 +240,4 @@ var/list/bwhitelist
 		return 1
 	return 0
 
+*/
